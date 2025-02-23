@@ -1,0 +1,13 @@
+Le projet consiste à optimiser un code qui traite une matrice 2D afin d'identifier et d'afficher la valeur maximale ainsi que ses coordonnées associées.
+
+Le travail implique également l'écriture dans un fichier d'une liste comportant 2 × nx × ny éléments, organisée comme suit :
+
+nx ny
+rand1 rand2
+rand3 rand4
+
+où tous les nombres générés aléatoirement se situent dans l'intervalle [-1, 1].
+
+L'optimisation se focalise sur la refonte de la structure d'allocation utilisée dans la version v1. Grâce à ces modifications, nous obtenons un gain de performance multiplié par 3 sur un Threadripper 3970X en mode single-core (3,7 GHz). Toutefois, la stabilité de cette solution n'a pas encore été évaluée.
+
+Il convient également de préciser que, outre la génération et l'enregistrement de valeurs aléatoires dans un fichier, nous procédons aussi à la lecture de ce fichier pour réaliser les opérations nécessaires.
