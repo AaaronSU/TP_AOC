@@ -1,0 +1,57 @@
+
+* Info: "ref-cycles" not supported on otapie: fallback to "cpu-clock"Metarepetition 1/31: running 1000 warmup instances and 20000 measure instances
+Metarepetition 2/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 3/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 4/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 5/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 6/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 7/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 8/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 9/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 10/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 11/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 12/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 13/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 14/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 15/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 16/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 17/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 18/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 19/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 20/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 21/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 22/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 23/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 24/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 25/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 26/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 27/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 28/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 29/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 30/31: running 1 warmup instances and 20000 measure instances
+Metarepetition 31/31: running 1 warmup instances and 20000 measure instances
+MIN 593899839 RDTSC-cycles (0.14 per inner-iter)
+MED 597871678 RDTSC-cycles (0.14 per inner-iter)
+GOOD STABILITY: 0.67 %
+
+* Info: Dumping samples (host otapie, process 33306)
+* Info: Dumping source info for callchain nodes (host otapie, process 33306)
+* Info: Building/writing metadata (host otapie)
+* Info: Finished collect step (host otapie, process 33306)
+
+Your experiment path is /home/mac/rendu_AOC/rendu_TP1/optimisation_parallel_report/tools/lprof_npsu_run_0
+
+To display your profiling results:
+#############################################################################################################################################
+#    LEVEL    |     REPORT     |                                                  COMMAND                                                   #
+#############################################################################################################################################
+#  Functions  |  Cluster-wide  |  maqao lprof -df xp=/home/mac/rendu_AOC/rendu_TP1/optimisation_parallel_report/tools/lprof_npsu_run_0      #
+#  Functions  |  Per-node      |  maqao lprof -df -dn xp=/home/mac/rendu_AOC/rendu_TP1/optimisation_parallel_report/tools/lprof_npsu_run_0  #
+#  Functions  |  Per-process   |  maqao lprof -df -dp xp=/home/mac/rendu_AOC/rendu_TP1/optimisation_parallel_report/tools/lprof_npsu_run_0  #
+#  Functions  |  Per-thread    |  maqao lprof -df -dt xp=/home/mac/rendu_AOC/rendu_TP1/optimisation_parallel_report/tools/lprof_npsu_run_0  #
+#  Loops      |  Cluster-wide  |  maqao lprof -dl xp=/home/mac/rendu_AOC/rendu_TP1/optimisation_parallel_report/tools/lprof_npsu_run_0      #
+#  Loops      |  Per-node      |  maqao lprof -dl -dn xp=/home/mac/rendu_AOC/rendu_TP1/optimisation_parallel_report/tools/lprof_npsu_run_0  #
+#  Loops      |  Per-process   |  maqao lprof -dl -dp xp=/home/mac/rendu_AOC/rendu_TP1/optimisation_parallel_report/tools/lprof_npsu_run_0  #
+#  Loops      |  Per-thread    |  maqao lprof -dl -dt xp=/home/mac/rendu_AOC/rendu_TP1/optimisation_parallel_report/tools/lprof_npsu_run_0  #
+#############################################################################################################################################
+

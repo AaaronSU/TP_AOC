@@ -1,0 +1,4 @@
+module;src_file;score;issue;opts;
+measure;driver.c;0.375;"-O3 or -Ofast is missing. ";"GNU C17 14.2.1 20250207 -mtune=generic -march=x86-64 -g -O2 ";
+measure;driver.c;;"-march=x86-64 is used but it should be replaced by a more architecture specific option or -march=native.";"";
+measure;driver.c;;"-funroll-loops is missing. ";"";

@@ -1,0 +1,16 @@
+********************************************************************************
+MAQAO 2.21.1 - a9bb74606c7e260f7f87782e64f16b00a6f20c1b::20250121-112452 || 2025/01/21
+maqao OV -R1 xp=baseline_report --replace -- build/measure 200 1000 20000 
+CPY:  [true] build/measure --> /home/mac/rendu_AOC/rendu_TP1/baseline_report/binaries/measure
+CMD:   /usr/bin/maqao lprof _caller=oneview  --xp="/home/mac/rendu_AOC/rendu_TP1/baseline_report/tools/lprof_npsu_run_0" --mpi-command="" --collect-CPU-time-intervals --collect-topology   -- /home/mac/rendu_AOC/rendu_TP1/baseline_report/binaries/measure  200 1000 20000
+In run run_0, 1 loops were discarded from static analysis because their coverage
+are lower than object_coverage_threshold value (0.01%).
+That represents 0.0026685169432312% of the execution time. To include them, change the value
+in the experiment directory configuration file, then rerun the command with the additionnal parameter
+--force-static-analysis
+3 functions were discarded from static analysis because their coverage
+are lower than object_coverage_threshold value (0.01%).
+That represents 0.013342584716156% of the execution time. To include them, change the value
+in the experiment directory configuration file, then rerun the command with the additionnal parameter
+--force-static-analysis
+CMD:  /usr/bin/maqao otter  -input=/home/mac/rendu_AOC/rendu_TP1/baseline_report/OTTER/input_manifest.csv -output=/home/mac/rendu_AOC/rendu_TP1/baseline_report/OTTER/output_manifest.csv

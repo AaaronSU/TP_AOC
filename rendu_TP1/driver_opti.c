@@ -2,26 +2,26 @@
 #include <stdlib.h> // atoi, qsort
 #include <stdint.h>
 #include <omp.h>
+#include <immintrin.h>
 
 #define NB_METAS 31
 
 extern uint64_t rdtsc ();
 
-void kernel(unsigned n, const double *m, double *x, const double *y)
+void kernel(unsigned n, double const m[n][n], double x[n], const double y[16])
 {
    double const_k = 0.0;
    for (unsigned k = 0; k < 16; k++) {
       const_k += y[k];
    }
    
-   #pragma omp parallel for simd
+#pragma omp parallel for simd
    for (unsigned i = 0; i < n; i++) {
-      double sum = 0.0;
-      int indice = i * n;
+      x[i] = 0.0;
       for (unsigned j = 0; j < n; j++) {
-         sum += m[indice + j];
+         x[i] += m[i][j];
       }
-      x[i] = sum * const_k;
+      x[i] = x[i] * const_k;
    }
 }
 
@@ -64,13 +64,20 @@ int main (int argc, char *argv[]) {
       unsigned i;
 
       /* allocate arrays. TODO: adjust for each kernel */
-      double *mat = (double *)malloc(size * size * sizeof(double));
-      double *x   = (double *)malloc(size * sizeof(double));
-      double *y   = (double *)malloc(size * sizeof(double));
+      double (*mat)[size] = malloc(size * sizeof(*mat));
+      double *x = malloc(size * sizeof(double));
+      double *y = malloc(16 * sizeof(double));
 
+      if (!mat || !x || !y) {
+         fprintf(stderr, "Allocation failed\n");
+         free(mat);
+         free(x);
+         free(y);
+         return EXIT_FAILURE;
+      }
       /* init arrays */
       srand(0);
-      init_array(size * size, mat);
+      init_array(size * size, (double *)mat);
       init_array(16, y);
 
       /* warmup (repw repetitions in first meta, 1 repet in next metas) */

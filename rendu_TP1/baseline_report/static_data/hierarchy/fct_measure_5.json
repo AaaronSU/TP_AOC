@@ -1,0 +1,80 @@
+{
+  "__fct":
+    {
+      "loops":
+        {
+          "_8":
+            {
+              "src_regions":
+                [
+                  {
+                    "path": "/home/mac/rendu_AOC/rendu_TP1/driver.c",
+                    "regions":
+                      [
+                        [
+                        15,
+                        15
+                        ]
+                      ]
+                  }
+                ],
+              "src": "driver.c:15-15"
+            },
+          "_7":
+            {
+              "_6":
+                {
+                  "_5":
+                    {
+                      "src_regions":
+                        [
+                          {
+                            "path": "/home/mac/rendu_AOC/rendu_TP1/driver.c",
+                            "regions":
+                              [
+                                [
+                                17,
+                                18
+                                ]
+                              ]
+                          }
+                        ],
+                      "src": "driver.c:17-18"
+                    },
+                  "src_regions":
+                    [
+                      {
+                        "path": "/home/mac/rendu_AOC/rendu_TP1/driver.c",
+                        "regions":
+                          [
+                            [
+                            10,
+                            10
+                            ],
+                            [
+                            16,
+                            18
+                            ]
+                          ]
+                      }
+                    ],
+                  "src": "driver.c:10-18"
+                },
+              "src_regions":
+                [
+                  {
+                    "path": "/home/mac/rendu_AOC/rendu_TP1/driver.c",
+                    "regions":
+                      [
+                        [
+                        10,
+                        18
+                        ]
+                      ]
+                  }
+                ],
+              "src": "driver.c:10-18"
+            }
+        }
+    }
+}

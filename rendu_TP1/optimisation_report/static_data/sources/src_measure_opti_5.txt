@@ -1,0 +1,11 @@
+/home/mac/rendu_AOC/rendu_TP1/driver_opti.c: 19 - 93
+--------------------------------------------------------------------------------
+
+19:    for (unsigned i = 0; i < n; i++) {
+20:       x[i] = 0.0;
+21:       for (unsigned j = 0; j < n; j++) {
+22:          x[i] += m[i][j];
+23:       }
+24:       x[i] = x[i] * const_k;
+[...]
+93:       for (i=0; i<repm; i++) {

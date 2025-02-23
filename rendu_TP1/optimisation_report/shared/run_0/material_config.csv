@@ -1,0 +1,2 @@
+node;proc_name;architecture_code;uarchitecture_code;architecture;uarchitecture;cpui_model_name;cpui_cache_size;cpui_cpu_cores;max_frequency;cur_frequency;driver_frequency;scaling_governor;huge_pages;os_version;pids;
+otapie;AMD_fam17h_mod31h;2;36;x86_64;ZEN_V2;AMD Ryzen Threadripper 3970X 32-Core Processor;512 KB;32;4549121;2200000;acpi-cpufreq;schedutil;always;Linux 6.13.3-arch1-1 #1 SMP PREEMPT_DYNAMIC Mon, 17 Feb 2025 17:42:11 +0000;33229;

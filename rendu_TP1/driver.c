@@ -6,7 +6,7 @@
 
 extern uint64_t rdtsc ();
 
-void kernel(unsigned n, double **const m, double *x, const double y[16])
+void kernel(unsigned n, double const m[n][n], double x[n], const double y[16])
 {
    unsigned i, j, k;
    for (i=0; i<n; i++){
@@ -21,21 +21,6 @@ void kernel(unsigned n, double **const m, double *x, const double y[16])
    }
 }
 
-// TODO: adjust for each kernel
-static void init_matrix(int n, double** m) {
-   int i, j;
-
-   for (i=0; i<n; i++)
-      for (j=0; j<n; j++)
-         m[i][j] = (double) rand() / RAND_MAX;
-}
-
-static void init_array(int n, double *x){
-   int i;
-   for (i=0; i<n; i++)
-      x[i] = (double) rand() / RAND_MAX;
-}
-
 static int cmp_uint64 (const void *a, const void *b) {
    const uint64_t va = *((uint64_t *) a);
    const uint64_t vb = *((uint64_t *) b);
@@ -44,6 +29,13 @@ static int cmp_uint64 (const void *a, const void *b) {
    if (va > vb) return 1;
    return 0;
 }
+
+static void init_array(int n, double *x){
+   int i;
+   for (i=0; i<n; i++)
+      x[i] = (double) rand() / RAND_MAX;
+}
+
 
 int main (int argc, char *argv[]) {
    /* check command line arguments */
@@ -67,16 +59,20 @@ int main (int argc, char *argv[]) {
       unsigned i;
 
       /* allocate arrays. TODO: adjust for each kernel */
-      double **mat = (double **)malloc(size * sizeof(double*));
-      for (unsigned i=0; i<size; i++){
-         mat[i] = (double *)malloc(size * sizeof(double));
-      }
-      double *x = (double *)malloc(size * sizeof(double));
-      double *y = (double *)malloc(16 * sizeof(double));
+      double (*mat)[size] = malloc(size * sizeof(*mat));
+      double *x = malloc(size * sizeof(double));
+      double *y = malloc(16 * sizeof(double));
 
+      if (!mat || !x || !y) {
+         fprintf(stderr, "Allocation failed\n");
+         free(mat);
+         free(x);
+         free(y);
+         return EXIT_FAILURE;
+      }
       /* init arrays */
       srand(0);
-      init_matrix(size, mat);
+      init_array(size * size, (double *)mat);
       init_array(16, y);
 
       /* warmup (repw repetitions in first meta, 1 repet in next metas) */
@@ -112,15 +108,15 @@ int main (int argc, char *argv[]) {
       return EXIT_FAILURE;
    }
    printf ("MIN %lu RDTSC-cycles (%.2f per inner-iter)\n",
-           min, (double) min / nb_inner_iters);
+           min, (float) min / nb_inner_iters);
 
    // Median value
    const uint64_t med = tdiff[NB_METAS/2];
    printf ("MED %lu RDTSC-cycles (%.2f per inner-iter)\n",
-           med, (double) med / nb_inner_iters);
+           med, (float) med / nb_inner_iters);
 
    // Stability: (med-min)/min
-   const double stab = (med - min) * 100.0f / min;
+   const float stab = (med - min) * 100.0f / min;
    if (stab >= 10)
       printf ("BAD STABILITY: %.2f %%\n", stab);
    else if (stab >= 5)

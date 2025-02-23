@@ -1,0 +1,60 @@
+address;source_location;insn;indent
+0x175a;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:21;LEA	-0x20(%R8),%RCX;
+0x175e;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:21;LEA	(%R8,%RSI,1),%RAX;
+0x1762;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:93;MOV	%RSI,%RDX;
+0x1765;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:93;VXORPD	%XMM11,%XMM11,%XMM11;
+0x176a;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:93;SHR	$0x5,%RCX;
+0x176e;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:93;INC	%RCX;
+0x1771;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:93;AND	$0x7,%ECX;
+0x1774;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:93;JE	17d7 <main+0x707>;
+0x1776;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:93;CMP	$0x1,%RCX;
+0x177a;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:93;JE	17ca <main+0x6fa>;
+0x177c;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:93;CMP	$0x2,%RCX;
+0x1780;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:93;JE	17c2 <main+0x6f2>;
+0x1782;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:93;CMP	$0x3,%RCX;
+0x1786;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:93;JE	17ba <main+0x6ea>;
+0x1788;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:93;CMP	$0x4,%RCX;
+0x178c;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:93;JE	17b2 <main+0x6e2>;
+0x178e;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:93;CMP	$0x5,%RCX;
+0x1792;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:93;JE	17aa <main+0x6da>;
+0x1794;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:93;CMP	$0x6,%RCX;
+0x1798;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:93;JE	17a2 <main+0x6d2>;
+0x179a;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:22;VMOVUPD	(%RSI),%YMM11;
+0x179e;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:21;LEA	0x20(%RSI),%RDX;
+0x17a2;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:22;VADDPD	(%RDX),%YMM11,%YMM11;
+0x17a6;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:21;ADD	$0x20,%RDX;
+0x17aa;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:22;VADDPD	(%RDX),%YMM11,%YMM11;
+0x17ae;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:21;ADD	$0x20,%RDX;
+0x17b2;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:22;VADDPD	(%RDX),%YMM11,%YMM11;
+0x17b6;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:21;ADD	$0x20,%RDX;
+0x17ba;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:22;VADDPD	(%RDX),%YMM11,%YMM11;
+0x17be;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:21;ADD	$0x20,%RDX;
+0x17c2;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:22;VADDPD	(%RDX),%YMM11,%YMM11;
+0x17c6;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:21;ADD	$0x20,%RDX;
+0x17ca;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:22;VADDPD	(%RDX),%YMM11,%YMM11;
+0x17ce;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:21;ADD	$0x20,%RDX;
+0x17d2;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:21;CMP	%RDX,%RAX;
+0x17d5;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:21;JE	1813 <main+0x743>;
+0x17d7;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:22;VADDPD	(%RDX),%YMM11,%YMM12;  (4) 
+0x17db;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:22;ADD	$0x100,%RDX;  (4) 
+0x17e2;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:22;VADDPD	-0xe0(%RDX),%YMM12,%YMM13;  (4) 
+0x17ea;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:22;VADDPD	-0xc0(%RDX),%YMM13,%YMM14;  (4) 
+0x17f2;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:22;VADDPD	-0xa0(%RDX),%YMM14,%YMM15;  (4) 
+0x17fa;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:22;VADDPD	-0x80(%RDX),%YMM15,%YMM7;  (4) 
+0x17ff;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:22;VADDPD	-0x60(%RDX),%YMM7,%YMM6;  (4) 
+0x1804;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:22;VADDPD	-0x40(%RDX),%YMM6,%YMM0;  (4) 
+0x1809;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:22;VADDPD	-0x20(%RDX),%YMM0,%YMM11;  (4) 
+0x180e;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:21;CMP	%RDX,%RAX;  (4) 
+0x1811;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:21;JNE	17d7 <main+0x707>;  (4) 
+0x1813;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:21;VEXTRACTF128	$0x1,%YMM11,%XMM2;
+0x1819;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:21;VADDPD	%XMM11,%XMM2,%XMM3;
+0x181e;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:21;VUNPCKHPD	%XMM3,%XMM3,%XMM4;
+0x1822;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:21;VADDPD	%XMM3,%XMM4,%XMM10;
+0x1826;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:21;TEST	%R10D,%R10D;
+0x1829;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:21;JE	1a10 <main+0x940>;
+0x1a10;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:24;VMULSD	%XMM1,%XMM10,%XMM5;
+0x1a14;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:19;ADD	$0x8,%R11;
+0x1a18;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:19;ADD	%R13,%RSI;
+0x1a1b;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:24;VMOVSD	%XMM5,-0x8(%R11);
+0x1a21;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:19;CMP	%R9,%R11;
+0x1a24;/home/mac/rendu_AOC/rendu_TP1/driver_opti.c:19;JNE	175a <main+0x68a>;
