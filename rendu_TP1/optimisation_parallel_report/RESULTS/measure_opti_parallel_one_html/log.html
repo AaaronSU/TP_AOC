@@ -142,6 +142,11 @@ MAQAO 2.21.1 - a9bb74606c7e260f7f87782e64f16b00a6f20c1b::20250121-112452 || 2025
 maqao OV -R1 xp=optimisation_parallel_report --replace -- build/measure_opti_parallel 200 1000 20000 
 CPY:  [true] build/measure_opti_parallel --> /home/mac/rendu_AOC/rendu_TP1/optimisation_parallel_report/binaries/measure_opti_parallel
 CMD:   /usr/bin/maqao lprof _caller=oneview  --xp="/home/mac/rendu_AOC/rendu_TP1/optimisation_parallel_report/tools/lprof_npsu_run_0" --mpi-command="" --collect-CPU-time-intervals --collect-topology   -- /home/mac/rendu_AOC/rendu_TP1/optimisation_parallel_report/binaries/measure_opti_parallel  200 1000 20000
+1 functions were discarded from static analysis because their coverage
+are lower than object_coverage_threshold value (0.01%).
+That represents 0.0035097585059702% of the execution time. To include them, change the value
+in the experiment directory configuration file, then rerun the command with the additionnal parameter
+--force-static-analysis
 </pre>
 <script>
 function _onresize () {

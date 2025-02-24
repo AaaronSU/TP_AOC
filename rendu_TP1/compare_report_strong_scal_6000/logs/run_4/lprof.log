@@ -1,0 +1,56 @@
+
+* Info: Detected 1 Lprof instances in otapie. 
+If this is incorrect, rerun with number-processes-per-node=X
+[0m
+* Info: "ref-cycles" not supported on otapie: fallback to "cpu-clock"[0mMetarepetition 1/31: running 10 warmup instances and 150 measure instances
+Metarepetition 2/31: running 1 warmup instances and 150 measure instances
+Metarepetition 3/31: running 1 warmup instances and 150 measure instances
+Metarepetition 4/31: running 1 warmup instances and 150 measure instances
+Metarepetition 5/31: running 1 warmup instances and 150 measure instances
+Metarepetition 6/31: running 1 warmup instances and 150 measure instances
+Metarepetition 7/31: running 1 warmup instances and 150 measure instances
+Metarepetition 8/31: running 1 warmup instances and 150 measure instances
+Metarepetition 9/31: running 1 warmup instances and 150 measure instances
+Metarepetition 10/31: running 1 warmup instances and 150 measure instances
+Metarepetition 11/31: running 1 warmup instances and 150 measure instances
+Metarepetition 12/31: running 1 warmup instances and 150 measure instances
+Metarepetition 13/31: running 1 warmup instances and 150 measure instances
+Metarepetition 14/31: running 1 warmup instances and 150 measure instances
+Metarepetition 15/31: running 1 warmup instances and 150 measure instances
+Metarepetition 16/31: running 1 warmup instances and 150 measure instances
+Metarepetition 17/31: running 1 warmup instances and 150 measure instances
+Metarepetition 18/31: running 1 warmup instances and 150 measure instances
+Metarepetition 19/31: running 1 warmup instances and 150 measure instances
+Metarepetition 20/31: running 1 warmup instances and 150 measure instances
+Metarepetition 21/31: running 1 warmup instances and 150 measure instances
+Metarepetition 22/31: running 1 warmup instances and 150 measure instances
+Metarepetition 23/31: running 1 warmup instances and 150 measure instances
+Metarepetition 24/31: running 1 warmup instances and 150 measure instances
+Metarepetition 25/31: running 1 warmup instances and 150 measure instances
+Metarepetition 26/31: running 1 warmup instances and 150 measure instances
+Metarepetition 27/31: running 1 warmup instances and 150 measure instances
+Metarepetition 28/31: running 1 warmup instances and 150 measure instances
+Metarepetition 29/31: running 1 warmup instances and 150 measure instances
+Metarepetition 30/31: running 1 warmup instances and 150 measure instances
+Metarepetition 31/31: running 1 warmup instances and 150 measure instances
+MIN 7225616632 RDTSC-cycles (14.43 per inner-iter)
+MED 7241025948 RDTSC-cycles (14.46 per inner-iter)
+GOOD STABILITY: 0.21 %
+
+
+Your experiment path is /home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal_6000/tools/lprof_npsu_run_4
+
+To display your profiling results:
+################################################################################################################################################
+#    LEVEL    |     REPORT     |                                                    COMMAND                                                    #
+################################################################################################################################################
+#  Functions  |  Cluster-wide  |  maqao lprof -df xp=/home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal_6000/tools/lprof_npsu_run_4      #
+#  Functions  |  Per-node      |  maqao lprof -df -dn xp=/home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal_6000/tools/lprof_npsu_run_4  #
+#  Functions  |  Per-process   |  maqao lprof -df -dp xp=/home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal_6000/tools/lprof_npsu_run_4  #
+#  Functions  |  Per-thread    |  maqao lprof -df -dt xp=/home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal_6000/tools/lprof_npsu_run_4  #
+#  Loops      |  Cluster-wide  |  maqao lprof -dl xp=/home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal_6000/tools/lprof_npsu_run_4      #
+#  Loops      |  Per-node      |  maqao lprof -dl -dn xp=/home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal_6000/tools/lprof_npsu_run_4  #
+#  Loops      |  Per-process   |  maqao lprof -dl -dp xp=/home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal_6000/tools/lprof_npsu_run_4  #
+#  Loops      |  Per-thread    |  maqao lprof -dl -dt xp=/home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal_6000/tools/lprof_npsu_run_4  #
+################################################################################################################################################
+

@@ -91,6 +91,13 @@ addLoadEvent(function(){
   for (let i = 0; i < series.length; i++) {
     series[i].style["display"] = "none";
   }
+</script><div style="margin-top: 10px; margin-bottom: 10px; background-color: var(--chart_background); overflow-x:auto; overflow-y:hidden;"><div id="chart_cat_117" style="height:400px;margin-top:20px;" ></div></div>
+<script class="code" >
+  var div_chart = document.getElementById ("chart_cat_117");
+  var series  = div_chart.getElementsByClassName ("jqplot-table-legend");
+  for (let i = 0; i < series.length; i++) {
+    series[i].style["display"] = "none";
+  }
 </script><script>
 function _onresize () {
   const queryString = window.location.search;
@@ -102,15 +109,15 @@ function _onresize () {
      cpu_id = root+tid;
   }
   if (false) {}
-  else if (cpu_id == "0_otapie_17") {
+  else if (cpu_id == "0_otapie_16") {
   const d = document.getElementById ("chart_cat_116");
   d.style.display = "";
   d.innerHTML = "";
   $(document).ready(function(){
-  var plot116_data = [[0.1149577787146,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,83.389335870743,],];
+  var plot116_data = [[74.975711107254,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,73.638653755188,0,1.0820599272847,100,100,100,100,100,100,100,100,100,100,100,100,100,94.55019235611,],];
   var plot116_ticks = [['1'],[''],[''],[''],['5'],[''],[''],[''],[''],['10'],[''],[''],[''],[''],['15'],[''],[''],[''],[''],['20'],[''],[''],[''],[''],['25'],[''],[''],[''],[''],['30'],[''],[''],[''],[''],['35'],[''],[''],[''],[''],['40'],[''],[''],[''],[''],['45'],[''],[''],[''],[''],['50'],[''],[''],[''],[''],['55'],[''],[''],[''],[''],['60'],[''],[''],[''],[''],['65'],[''],[''],[''],[''],['70'],[''],[''],[''],[''],['75'],[''],[''],[''],[''],['80'],[''],[''],[''],[''],['85'],[''],[''],[''],[''],['90'],[''],[''],[''],[''],['95'],[''],[''],[''],[''],['100'],];
   var plot116 = jQuery.jqplot ('chart_cat_116', plot116_data, {
-    seriesColors:['#0a92f3','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#a51d31',],
+    seriesColors:['#922c49','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#922c49','#0a92f3','#0a92f3','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#c2070c','#b90f18',],
     seriesDefaults: {
       renderer: jQuery.jqplot.BarRenderer,
       rendererOptions: {varyBarColor: true,},
@@ -133,9 +140,41 @@ function _onresize () {
     series[i].style["display"] = "none";
   }
   }
+  else if (cpu_id == "0_otapie_4") {
+  const d = document.getElementById ("chart_cat_117");
+  d.style.display = "";
+  d.innerHTML = "";
+  $(document).ready(function(){
+  var plot117_data = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1.5192333608866,100,75.121456384659,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],];
+  var plot117_ticks = [['1'],[''],[''],[''],['5'],[''],[''],[''],[''],['10'],[''],[''],[''],[''],['15'],[''],[''],[''],[''],['20'],[''],[''],[''],[''],['25'],[''],[''],[''],[''],['30'],[''],[''],[''],[''],['35'],[''],[''],[''],[''],['40'],[''],[''],[''],[''],['45'],[''],[''],[''],[''],['50'],[''],[''],[''],[''],['55'],[''],[''],[''],[''],['60'],[''],[''],[''],[''],['65'],[''],[''],[''],[''],['70'],[''],[''],[''],[''],['75'],[''],[''],[''],[''],['80'],[''],[''],[''],[''],['85'],[''],[''],[''],[''],['90'],[''],[''],[''],[''],['95'],[''],[''],[''],[''],['100'],];
+  var plot117 = jQuery.jqplot ('chart_cat_117', plot117_data, {
+    seriesColors:['#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#c2070c','#9b243d','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3','#0a92f3',],
+    seriesDefaults: {
+      renderer: jQuery.jqplot.BarRenderer,
+      rendererOptions: {varyBarColor: true,},
+      pointLabels: {show: false      },
+    },
+    axes: {
+      xaxis: {
+        renderer: $.jqplot.CategoryAxisRenderer,ticks: plot117_ticks,label: 'Time Slice',labelRenderer: $.jqplot.CanvasAxisLabelRenderer,tickRenderer: $.jqplot.CanvasAxisTickRenderer,tickOptions: {angle: -30, fontSize: '10pt'}},
+      yaxis: {label: 'CPU Usage',labelRenderer: $.jqplot.CanvasAxisLabelRenderer,autoscale:true,min:0,},
+      y2axis: {autoscale:true,min:0,}
+    },
+    highlighter: {tooltipContentEditor: function (str, seriesIndex, pointIndex) {return (pointIndex + 1)+' - '+plot117_data[seriesIndex][pointIndex];},show: true,showTooltip: true,sizeAdjust: 10,formatString: '%s',tooltipLocation: 'n',useAxesFormatters: false,},
+    legend: {renderer: $.jqplot.EnhancedLegendRenderer, show: true,location: 's',placement: 'outsideGrid',rendererOptions: {numberRows: '1',},},
+    series: [{label:'count', yaxis:'yaxis', },],
+  });
+});
+  var div_chart = document.getElementById ("chart_cat_117");
+  var series  = div_chart.getElementsByClassName ("jqplot-table-legend");
+  for (let i = 0; i < series.length; i++) {
+    series[i].style["display"] = "none";
+  }
+  }
 }
 addLoadEvent(function(){
   document.getElementById ("chart_cat_116").style.display = "none";
+  document.getElementById ("chart_cat_117").style.display = "none";
    _onresize();
 });
 var resizeId;

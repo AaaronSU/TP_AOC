@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html translate="no" lang="en-US"><head><title>OV - measure_opti_parallel - Loops</title>
+<meta charset="utf-8" />
+<meta name="google" content="notranslate" />
+<link rel="stylesheet" type="text/css" media="screen" href="css/ui.jqgrid.css" />
+<link rel="stylesheet" type="text/css" href="css/themes/redmond_custom/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="css/themes/redmond_custom/jquery.jqplot.min.css" />
+<link rel="stylesheet" type="text/css" href="css/MAQAO_theme.css" />
+<link rel="stylesheet" type="text/css" href="css/maqao_modal.css" />
+<link rel="stylesheet" type="text/css" href="css/global.css" />
+<link rel="stylesheet" type="text/css" href="css/maqao_menu.css" />
+<script src="js/jquery-1.9.0.min.js" ></script>
+<script src="js/jquery-ui-1.10.3.custom.min.js" ></script>
+<script src="js/grid.locale-en.js" ></script>
+<script src="js/jquery.jqGrid.min.js" ></script>
+<script src="js/d3.min.js" ></script>
+<script class="include" src="js/jquery.jqplot.min.js"></script>
+<script class="include" src="js/jqplot.pieRenderer.min.js"></script>
+<script class="include" src="js/jqplot.barRenderer.min.js"></script>
+<script class="include" src="js/jqplot.categoryAxisRenderer.min.js"></script>
+<script class="include" src="js/jqplot.pointLabels.min.js"></script>
+<script class="include" src="js/jqplot.cursor.min.js"></script>
+<script class="include" src="js/jqplot.canvasTextRenderer.min.js"></script>
+<script class="include" src="js/jqplot.canvasAxisTickRenderer.min.js"></script>
+<script class="include" src="js/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<script class="include" src="js/jqplot.enhancedLegendRenderer.min.js"></script>
+<script class="include" src="js/jqplot.highlighter.min.js"></script>
+<script class="include" src="js/jqplot.logAxisRenderer.min.js"></script>
+<script class="include" src="js/maqao_menu.js"></script>
+<script>
+$( function() {
+  $( document ).tooltip({
+    content: function() {
+      if (this.classList.contains ("tooltip-maqao")
+      ||  this.classList.contains ("tooltip-maqao-button")) {
+        return tooltips_texts[$(this).attr('tooltip_id')];
+      }
+    },
+    position: {
+      my: "center bottom-20",
+        at: "center top",
+        using: function( position, feedback ) {
+          $( this ).css( position );
+          $( "<div>" )
+            .addClass( "arrow-tt" )
+            .addClass( feedback.vertical )
+            .addClass( feedback.horizontal )
+            .appendTo( this );
+        }
+      }
+  });
+} );
+
+// Code from https://www.htmlgoodies.com/beyond/javascript/article.php/3724571/Using-Multiple-JavaScript-Onload-Functions.htm
+function addLoadEvent(func) {
+  var oldonload = window.onload;
+  if (typeof window.onload != 'function') {
+    window.onload = func;
+  } else {
+    window.onload = function() {
+      if (oldonload) {
+        oldonload();
+      }
+      func();
+    }
+  }
+}
+function loadCSS(filename){ 
+  var file = document.createElement("link");
+  file.setAttribute("rel", "stylesheet");
+  file.setAttribute("type", "text/css");
+  file.setAttribute("href", filename);
+  document.head.appendChild(file);
+}
+addLoadEvent(function(){
+  var theme = localStorage.getItem("__MAQAO_OV_theme__");
+  if (theme) {
+    loadCSS("css/"+theme+".css");
+  }
+  else {
+    localStorage.setItem("__MAQAO_OV_theme__", "MAQAO_theme");
+    loadCSS("css/MAQAO_theme.css");
+  }
+});
+</script>
+</head><body>
+<div id="page_title"><img alt="MAQAO" id="maqao_logo" src="images/MAQAO_small_logo.png"/><ul id="maqao_menu"><li ><a  href="index.html">Global</a><ul><li ><a  href="config.html">Configurations</a></li><li ><a  href="env.html">Environment Variables</a></li><li ><a  href="outputs.html">Outputs</a></li><li ><a  href="log.html">Logs</a></li></ul></li><li ><a  href="summary.html">Summary</a></li><li ><a  href="application.html">Application</a></li><li ><a  href="fcts_and_loops.html">Functions</a></li><li ><a class="_current_page _first_menu_level" href="loops_index.html">Loops</a></li><li ><a  href="topology.html">Topology</a><ul><li ><a  href="lstopo.html">lstopo</a></li><li ><a  href="lstopo_PU.html">lstopo_PU</a></li><li ><a  href="lstopo_threads.html">lstopo_threads</a></li></ul></li></ul>
+<span><img alt="options" id="menu_options_icon" src="images/gear_20.png" onclick="__open_options ()"/></span>
+</div>
+<script>
+function __change_theme () {
+  var new_theme = document.getElementById("select_theme").value;
+  localStorage.setItem("__MAQAO_OV_theme__", new_theme);
+    loadCSS("css/"+new_theme+".css");
+}
+function __open_options () {
+  var elem = document.getElementById ("options_configuration");
+  if (elem.dataset.open == "false") {
+    elem.dataset.open = "true";
+    elem.style.display = "block";
+  }
+  else {
+    elem.dataset.open = "false";
+    elem.style.display = "none";
+  }
+}
+</script>
+<div id="anchor_file_start"></div>
+<div id="maqao_content">
+<div>
+  <div id="spacer_page_title" ></div>
+  <div id="options_configuration" data-open="false" style="display:none;">
+    <h3 id="options_configuration_header">Report Configuration</h3>
+    <span style="margin-left:10px;"><label for="select_theme">Theme: </label>    <select name="theme" id="select_theme" onchange="__change_theme ()">  <option value="MAQAO_theme">MAQAO_theme</option>  <option value="darkgrey">darkgrey</option>  <option value="cyan">cyan</option></select></span></div>
+</div>
+<script>
+  let theme = localStorage.getItem("__MAQAO_OV_theme__");
+  if (theme) {
+    document.getElementById("select_theme").value = theme;
+  }
+document.getElementById("spacer_page_title").style.height = (document.getElementById("page_title").clientHeight + 25)+"px";
+var obj = document.getElementById("page_title");
+if (obj) {
+  var elems = document.getElementsByClassName ("_first_menu_level")
+  if (obj.clientHeight < 90) {
+    for (var i = 0; i < elems.length; i++) {
+      elems.item(i).style.borderBottomLeftRadius = "";
+      elems.item(i).style.borderBottomRightRadius = "";
+    }
+  }
+  else {
+    for (var i = 0; i < elems.length; i++) {
+      elems.item(i).style.borderBottomLeftRadius = "10px";
+      elems.item(i).style.borderBottomRightRadius = "10px";
+    }
+  }
+}
+</script>
+<button id="button_toggle_loop_index" onclick="toggle_loop_index();" type="button" style="margin-bottom: 10px;margin-right: 10px;cursor:pointer;">Show Innermost Profile</button><button onclick="window.open('expert_summary.html');" type="button" style="margin-bottom: 10px;margin-right: 10px;cursor:pointer;">Open Expert Summary</button><div class="_fixed_box" ><h3 class="_header">Loops Index<span class="tooltip-maqao-button help-maqao" title="" tooltip_id="0" ></span></h3>
+<div class="_content"><div class="_accordion_box collapsed" ><h3 id="_accordion_header_1" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>Scalability Runs Description<span class="tooltip-maqao-button help-maqao" title="" tooltip_id="1" ></span></h3><div id="_accordion_content_1" class="_content collapsed"><table><tr><th>Run run_1x1</th><td><span style="white-space: nowrap;margin-left: 30px;">Number processes: 1</span><span style="white-space: nowrap;margin-left: 30px;">Number nodes: 1</span><span style="white-space: nowrap;margin-left: 30px;">Run Command: &lt;executable&gt; 6000 10 150</span><span style="white-space: nowrap;margin-left: 30px;">MPI Command: mpirun -n &lt;number_processes&gt;</span><span style="white-space: nowrap;margin-left: 30px;">Dataset: </span><span style="white-space: nowrap;margin-left: 30px;">Run Directory: .</span><span style="white-space: nowrap;margin-left: 30px;">OMP_NUM_THREADS: 1</span></td></tr><tr><th>Run run_1x2</th><td><span style="white-space: nowrap;margin-left: 30px;">Number processes: 1</span><span style="white-space: nowrap;margin-left: 30px;">Number nodes: 1</span><span style="white-space: nowrap;margin-left: 30px;">Run Command: &lt;executable&gt; 6000 10 150</span><span style="white-space: nowrap;margin-left: 30px;">MPI Command: mpirun -n &lt;number_processes&gt;</span><span style="white-space: nowrap;margin-left: 30px;">Dataset: </span><span style="white-space: nowrap;margin-left: 30px;">Run Directory: .</span><span style="white-space: nowrap;margin-left: 30px;">OMP_NUM_THREADS: 2</span></td></tr><tr><th>Run run_1x4</th><td><span style="white-space: nowrap;margin-left: 30px;">Number processes: 1</span><span style="white-space: nowrap;margin-left: 30px;">Number nodes: 1</span><span style="white-space: nowrap;margin-left: 30px;">Run Command: &lt;executable&gt; 6000 10 150</span><span style="white-space: nowrap;margin-left: 30px;">MPI Command: mpirun -n &lt;number_processes&gt;</span><span style="white-space: nowrap;margin-left: 30px;">Dataset: </span><span style="white-space: nowrap;margin-left: 30px;">Run Directory: .</span><span style="white-space: nowrap;margin-left: 30px;">OMP_NUM_THREADS: 4</span></td></tr><tr><th>Run run_1x8</th><td><span style="white-space: nowrap;margin-left: 30px;">Number processes: 1</span><span style="white-space: nowrap;margin-left: 30px;">Number nodes: 1</span><span style="white-space: nowrap;margin-left: 30px;">Run Command: &lt;executable&gt; 6000 10 150</span><span style="white-space: nowrap;margin-left: 30px;">MPI Command: mpirun -n &lt;number_processes&gt;</span><span style="white-space: nowrap;margin-left: 30px;">Dataset: </span><span style="white-space: nowrap;margin-left: 30px;">Run Directory: .</span><span style="white-space: nowrap;margin-left: 30px;">OMP_NUM_THREADS: 8</span></td></tr><tr><th>Run run_1x16</th><td><span style="white-space: nowrap;margin-left: 30px;">Number processes: 1</span><span style="white-space: nowrap;margin-left: 30px;">Number nodes: 1</span><span style="white-space: nowrap;margin-left: 30px;">Run Command: &lt;executable&gt; 6000 10 150</span><span style="white-space: nowrap;margin-left: 30px;">MPI Command: mpirun -n &lt;number_processes&gt;</span><span style="white-space: nowrap;margin-left: 30px;">Dataset: </span><span style="white-space: nowrap;margin-left: 30px;">Run Directory: .</span><span style="white-space: nowrap;margin-left: 30px;">OMP_NUM_THREADS: 16</span></td></tr><tr><th>Run run_1x32</th><td><span style="white-space: nowrap;margin-left: 30px;">Number processes: 1</span><span style="white-space: nowrap;margin-left: 30px;">Number nodes: 1</span><span style="white-space: nowrap;margin-left: 30px;">Run Command: &lt;executable&gt; 6000 10 150</span><span style="white-space: nowrap;margin-left: 30px;">MPI Command: mpirun -n &lt;number_processes&gt;</span><span style="white-space: nowrap;margin-left: 30px;">Dataset: </span><span style="white-space: nowrap;margin-left: 30px;">Run Directory: .</span><span style="white-space: nowrap;margin-left: 30px;">OMP_NUM_THREADS: 32</span></td></tr></table>
+</div></div><div class="_accordion_box collapsed" ><h3 id="_accordion_header_2" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>Filters<span class="tooltip-maqao-button help-maqao" title="" tooltip_id="2" ></span></h3><div id="_accordion_content_2" class="_content collapsed"><form><u>Modules:</u><br style="margin-bottom:10px;">
+<input id="_input_check_all_mods" type="checkbox" style="vertical-align: middle;cursor:pointer" onchange="_onchange_modules (this)" checked ><span id="_input_check_all_mods_text">Uncheck all modules</span><br>
+<input id="_input_check_mod_measure_opti_parallel" type="checkbox" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" checked >measure_opti_parallel - 85.029607623815 %<br>
+<br>
+<u>Dynamic Results:</u><br style="margin-bottom:10px;">
+<input id="_input_check_all_decan" type="checkbox" style="vertical-align: middle;cursor:pointer"><span id="_input_check_all_decan_text">Get only loops with dynamic results</span><br>
+</form><hr><button type="button" onclick="_upd_table();" style="cursor:pointer;">Filter Results</button>
+</div></div><div class="_div_table" id="_fixed_210" ><div class="_accordion_box" ><h3 id="_accordion_header_3" class="_header" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25BC;</span>Columns Filter<span class="tooltip-maqao-button help-maqao" title="" tooltip_id="3" ></span></h3><div id="_accordion_content_3" class="_content"><div style="max-height:165px;"><form>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt4" onclick="click_table_menu('_table210_opt4', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="4" >Level</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt5" onclick="click_table_menu('_table210_opt5', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" checked  ><span class="tooltip-maqao" title="" tooltip_id="5" >Exclusive Coverage run_1x1 (%)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt6" onclick="click_table_menu('_table210_opt6', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" checked  ><span class="tooltip-maqao" title="" tooltip_id="6" >Exclusive Coverage run_1x2 (%)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt7" onclick="click_table_menu('_table210_opt7', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" checked  ><span class="tooltip-maqao" title="" tooltip_id="7" >Exclusive Coverage run_1x4 (%)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt8" onclick="click_table_menu('_table210_opt8', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" checked  ><span class="tooltip-maqao" title="" tooltip_id="8" >Exclusive Coverage run_1x8 (%)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt9" onclick="click_table_menu('_table210_opt9', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" checked  ><span class="tooltip-maqao" title="" tooltip_id="9" >Exclusive Coverage run_1x16 (%)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt10" onclick="click_table_menu('_table210_opt10', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" checked  ><span class="tooltip-maqao" title="" tooltip_id="10" >Exclusive Coverage run_1x32 (%)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt11" onclick="click_table_menu('_table210_opt11', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="11" >Inclusive Coverage run_1x1 (%)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt12" onclick="click_table_menu('_table210_opt12', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="12" >Inclusive Coverage run_1x2 (%)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt13" onclick="click_table_menu('_table210_opt13', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="13" >Inclusive Coverage run_1x4 (%)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt14" onclick="click_table_menu('_table210_opt14', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="14" >Inclusive Coverage run_1x8 (%)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt15" onclick="click_table_menu('_table210_opt15', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="15" >Inclusive Coverage run_1x16 (%)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt16" onclick="click_table_menu('_table210_opt16', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="16" >Inclusive Coverage run_1x32 (%)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt17" onclick="click_table_menu('_table210_opt17', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="17" >Max Exclusive Time Over Threads run_1x1 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt18" onclick="click_table_menu('_table210_opt18', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="18" >Max Exclusive Time Over Threads run_1x2 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt19" onclick="click_table_menu('_table210_opt19', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="19" >Max Exclusive Time Over Threads run_1x4 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt20" onclick="click_table_menu('_table210_opt20', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="20" >Max Exclusive Time Over Threads run_1x8 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt21" onclick="click_table_menu('_table210_opt21', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="21" >Max Exclusive Time Over Threads run_1x16 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt22" onclick="click_table_menu('_table210_opt22', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="22" >Max Exclusive Time Over Threads run_1x32 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt23" onclick="click_table_menu('_table210_opt23', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="23" >Max Inclusive Time Over Threads run_1x1 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt24" onclick="click_table_menu('_table210_opt24', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="24" >Max Inclusive Time Over Threads run_1x2 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt25" onclick="click_table_menu('_table210_opt25', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="25" >Max Inclusive Time Over Threads run_1x4 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt26" onclick="click_table_menu('_table210_opt26', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="26" >Max Inclusive Time Over Threads run_1x8 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt27" onclick="click_table_menu('_table210_opt27', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="27" >Max Inclusive Time Over Threads run_1x16 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt28" onclick="click_table_menu('_table210_opt28', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="28" >Max Inclusive Time Over Threads run_1x32 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt29" onclick="click_table_menu('_table210_opt29', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="29" >Exclusive Time w.r.t. Wall Time run_1x1 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt30" onclick="click_table_menu('_table210_opt30', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="30" >Exclusive Time w.r.t. Wall Time run_1x2 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt31" onclick="click_table_menu('_table210_opt31', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="31" >Exclusive Time w.r.t. Wall Time run_1x4 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt32" onclick="click_table_menu('_table210_opt32', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="32" >Exclusive Time w.r.t. Wall Time run_1x8 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt33" onclick="click_table_menu('_table210_opt33', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="33" >Exclusive Time w.r.t. Wall Time run_1x16 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt34" onclick="click_table_menu('_table210_opt34', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="34" >Exclusive Time w.r.t. Wall Time run_1x32 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt35" onclick="click_table_menu('_table210_opt35', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="35" >Inclusive Time w.r.t. Wall Time run_1x1 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt36" onclick="click_table_menu('_table210_opt36', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="36" >Inclusive Time w.r.t. Wall Time run_1x2 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt37" onclick="click_table_menu('_table210_opt37', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="37" >Inclusive Time w.r.t. Wall Time run_1x4 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt38" onclick="click_table_menu('_table210_opt38', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="38" >Inclusive Time w.r.t. Wall Time run_1x8 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt39" onclick="click_table_menu('_table210_opt39', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="39" >Inclusive Time w.r.t. Wall Time run_1x16 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt40" onclick="click_table_menu('_table210_opt40', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="40" >Inclusive Time w.r.t. Wall Time run_1x32 (s)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt41" onclick="click_table_menu('_table210_opt41', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="41" >Nb Threads run_1x1</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt42" onclick="click_table_menu('_table210_opt42', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="42" >Nb Threads run_1x2</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt43" onclick="click_table_menu('_table210_opt43', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="43" >Nb Threads run_1x4</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt44" onclick="click_table_menu('_table210_opt44', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="44" >Nb Threads run_1x8</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt45" onclick="click_table_menu('_table210_opt45', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="45" >Nb Threads run_1x16</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt46" onclick="click_table_menu('_table210_opt46', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="46" >Nb Threads run_1x32</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt47" onclick="click_table_menu('_table210_opt47', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" checked  ><span class="tooltip-maqao" title="" tooltip_id="47" >Vectorization Ratio (%)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt48" onclick="click_table_menu('_table210_opt48', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" checked  ><span class="tooltip-maqao" title="" tooltip_id="48" >Vector Length Use (%)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt49" onclick="click_table_menu('_table210_opt49', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="49" >Speedup If No Scalar Integer</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt50" onclick="click_table_menu('_table210_opt50', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="50" >Speedup If FP Vectorized</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt51" onclick="click_table_menu('_table210_opt51', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="51" >Speedup If Fully Vectorized</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt52" onclick="click_table_menu('_table210_opt52', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="52" >Speedup If Perfect Load Balancing run_1x1</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt53" onclick="click_table_menu('_table210_opt53', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="53" >Speedup If Perfect Load Balancing run_1x2</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt54" onclick="click_table_menu('_table210_opt54', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="54" >Speedup If Perfect Load Balancing run_1x4</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt55" onclick="click_table_menu('_table210_opt55', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="55" >Speedup If Perfect Load Balancing run_1x8</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt56" onclick="click_table_menu('_table210_opt56', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="56" >Speedup If Perfect Load Balancing run_1x16</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt57" onclick="click_table_menu('_table210_opt57', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="57" >Speedup If Perfect Load Balancing run_1x32</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt58" onclick="click_table_menu('_table210_opt58', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" >Stride 0</span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt59" onclick="click_table_menu('_table210_opt59', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" >Stride 1</span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt60" onclick="click_table_menu('_table210_opt60', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" >Stride n</span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt61" onclick="click_table_menu('_table210_opt61', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" >Stride Unknown</span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt62" onclick="click_table_menu('_table210_opt62', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" >Stride Indirect</span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt63" onclick="click_table_menu('_table210_opt63', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="58" >(run_1x1) Efficiency</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt64" onclick="click_table_menu('_table210_opt64', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="59" >(run_1x1) Potential Speed-Up (%)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt65" onclick="click_table_menu('_table210_opt65', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="60" >(run_1x2) Efficiency</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt66" onclick="click_table_menu('_table210_opt66', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="61" >(run_1x2) Potential Speed-Up (%)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt67" onclick="click_table_menu('_table210_opt67', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="62" >(run_1x4) Efficiency</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt68" onclick="click_table_menu('_table210_opt68', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="63" >(run_1x4) Potential Speed-Up (%)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt69" onclick="click_table_menu('_table210_opt69', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="64" >(run_1x8) Efficiency</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt70" onclick="click_table_menu('_table210_opt70', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="65" >(run_1x8) Potential Speed-Up (%)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt71" onclick="click_table_menu('_table210_opt71', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="66" >(run_1x16) Efficiency</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt72" onclick="click_table_menu('_table210_opt72', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="67" >(run_1x16) Potential Speed-Up (%)</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt73" onclick="click_table_menu('_table210_opt73', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="68" >(run_1x32) Efficiency</span></span>
+<span style="white-space:nowrap;"><input class="input_check_table_menu" type="checkbox" id="_table210_opt74" onclick="click_table_menu('_table210_opt74', '_table210_opt_all', 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" ><span class="tooltip-maqao" title="" tooltip_id="69" >(run_1x32) Potential Speed-Up (%)</span></span>
+<span style='white-space:nowrap;'><input class="input_check_table_menu" type="button" id="_table210_opt_all" onclick="set_all_table_menu(this, 'list_opts_table210')" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" value="Select all"></span>
+<span style='white-space:nowrap;'><input class="input_check_table_menu" type="button" id="_table210_opt_select_all_coverages" onclick="select_all_coverages(_fixed_table_210, '_table210', this)" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" value="Select All Coverages" data-selected="false" data-text="Select All Coverages" data-text_alt="Deselect All Coverages" ></span>
+<span style='white-space:nowrap;'><input class="input_check_table_menu" type="button" id="_table210_opt_select_all_times_oth" onclick="select_all_times_oth(_fixed_table_210, '_table210', this)" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" value="Select All Times Over Threads" data-selected="false" data-text="Select All Times Over Threads" data-text_alt="Deselect All Times Over Threads" ></span>
+<span style='white-space:nowrap;'><input class="input_check_table_menu" type="button" id="_table210_opt_select_all_times_wt" onclick="select_all_times_wt(_fixed_table_210, '_table210', this)" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" value="Select All Times w.r.t. Wall Time" data-selected="false" data-text="Select All Times w.r.t. Wall Time" data-text_alt="Deselect All Times w.r.t. Wall Time" ></span>
+<span style='white-space:nowrap;'><input class="input_check_table_menu" type="button" id="_table210_opt_select_all_speedups" onclick="select_all_speedups(_fixed_table_210, '_table210', this)" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" value="Select All Speed-Ups" data-selected="false" data-text="Select All Speed-Ups" data-text_alt="Deselect All Speed-Ups" ></span>
+<span style='white-space:nowrap;'><input class="input_check_table_menu" type="button" id="_table210_opt_select_all_efficiencies" onclick="select_all_efficiencies(_fixed_table_210, '_table210', this)" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" value="Select All Efficiencies" data-selected="false" data-text="Select All Efficiencies" data-text_alt="Deselect All Efficiencies" ></span>
+</form></div>
+</div></div><div style="overflow:auto;">
+<table class="_fixed_table" id="_fixed_table_210"><tr><th class="_freezed_row  _left _freezed_col tooltip-maqao" title="" tooltip_id="70"><span></span>Loop id</th><th class="_freezed_row  tooltip-maqao" title="" tooltip_id="71"><span></span>Source Location</th><th class="_freezed_row  tooltip-maqao" title="" tooltip_id="72"><span></span>Source Function</th><th class="_freezed_row  _table210_opt4 _tcol_hidden tooltip-maqao" title="" tooltip_id="73"><span></span>Level</th><th class="_freezed_row  _table210_opt5 tooltip-maqao" title="" tooltip_id="74"><span></span>Exclusive Coverage run_1x1 (%)</th><th class="_freezed_row  _table210_opt6 tooltip-maqao" title="" tooltip_id="75"><span></span>Exclusive Coverage run_1x2 (%)</th><th class="_freezed_row  _table210_opt7 tooltip-maqao" title="" tooltip_id="76"><span></span>Exclusive Coverage run_1x4 (%)</th><th class="_freezed_row  _table210_opt8 tooltip-maqao" title="" tooltip_id="77"><span></span>Exclusive Coverage run_1x8 (%)</th><th class="_freezed_row  _table210_opt9 tooltip-maqao" title="" tooltip_id="78"><span></span>Exclusive Coverage run_1x16 (%)</th><th class="_freezed_row  _table210_opt10 tooltip-maqao" title="" tooltip_id="79"><span></span>Exclusive Coverage run_1x32 (%)</th><th class="_freezed_row  _table210_opt11 _tcol_hidden tooltip-maqao" title="" tooltip_id="80"><span></span>Inclusive Coverage run_1x1 (%)</th><th class="_freezed_row  _table210_opt12 _tcol_hidden tooltip-maqao" title="" tooltip_id="81"><span></span>Inclusive Coverage run_1x2 (%)</th><th class="_freezed_row  _table210_opt13 _tcol_hidden tooltip-maqao" title="" tooltip_id="82"><span></span>Inclusive Coverage run_1x4 (%)</th><th class="_freezed_row  _table210_opt14 _tcol_hidden tooltip-maqao" title="" tooltip_id="83"><span></span>Inclusive Coverage run_1x8 (%)</th><th class="_freezed_row  _table210_opt15 _tcol_hidden tooltip-maqao" title="" tooltip_id="84"><span></span>Inclusive Coverage run_1x16 (%)</th><th class="_freezed_row  _table210_opt16 _tcol_hidden tooltip-maqao" title="" tooltip_id="85"><span></span>Inclusive Coverage run_1x32 (%)</th><th class="_freezed_row  _table210_opt17 _tcol_hidden tooltip-maqao" title="" tooltip_id="86"><span></span>Max Exclusive Time Over Threads run_1x1 (s)</th><th class="_freezed_row  _table210_opt18 _tcol_hidden tooltip-maqao" title="" tooltip_id="87"><span></span>Max Exclusive Time Over Threads run_1x2 (s)</th><th class="_freezed_row  _table210_opt19 _tcol_hidden tooltip-maqao" title="" tooltip_id="88"><span></span>Max Exclusive Time Over Threads run_1x4 (s)</th><th class="_freezed_row  _table210_opt20 _tcol_hidden tooltip-maqao" title="" tooltip_id="89"><span></span>Max Exclusive Time Over Threads run_1x8 (s)</th><th class="_freezed_row  _table210_opt21 _tcol_hidden tooltip-maqao" title="" tooltip_id="90"><span></span>Max Exclusive Time Over Threads run_1x16 (s)</th><th class="_freezed_row  _table210_opt22 _tcol_hidden tooltip-maqao" title="" tooltip_id="91"><span></span>Max Exclusive Time Over Threads run_1x32 (s)</th><th class="_freezed_row  _table210_opt23 _tcol_hidden tooltip-maqao" title="" tooltip_id="92"><span></span>Max Inclusive Time Over Threads run_1x1 (s)</th><th class="_freezed_row  _table210_opt24 _tcol_hidden tooltip-maqao" title="" tooltip_id="93"><span></span>Max Inclusive Time Over Threads run_1x2 (s)</th><th class="_freezed_row  _table210_opt25 _tcol_hidden tooltip-maqao" title="" tooltip_id="94"><span></span>Max Inclusive Time Over Threads run_1x4 (s)</th><th class="_freezed_row  _table210_opt26 _tcol_hidden tooltip-maqao" title="" tooltip_id="95"><span></span>Max Inclusive Time Over Threads run_1x8 (s)</th><th class="_freezed_row  _table210_opt27 _tcol_hidden tooltip-maqao" title="" tooltip_id="96"><span></span>Max Inclusive Time Over Threads run_1x16 (s)</th><th class="_freezed_row  _table210_opt28 _tcol_hidden tooltip-maqao" title="" tooltip_id="97"><span></span>Max Inclusive Time Over Threads run_1x32 (s)</th><th class="_freezed_row  _table210_opt29 _tcol_hidden tooltip-maqao" title="" tooltip_id="98"><span></span>Exclusive Time w.r.t. Wall Time run_1x1 (s)</th><th class="_freezed_row  _table210_opt30 _tcol_hidden tooltip-maqao" title="" tooltip_id="99"><span></span>Exclusive Time w.r.t. Wall Time run_1x2 (s)</th><th class="_freezed_row  _table210_opt31 _tcol_hidden tooltip-maqao" title="" tooltip_id="100"><span></span>Exclusive Time w.r.t. Wall Time run_1x4 (s)</th><th class="_freezed_row  _table210_opt32 _tcol_hidden tooltip-maqao" title="" tooltip_id="101"><span></span>Exclusive Time w.r.t. Wall Time run_1x8 (s)</th><th class="_freezed_row  _table210_opt33 _tcol_hidden tooltip-maqao" title="" tooltip_id="102"><span></span>Exclusive Time w.r.t. Wall Time run_1x16 (s)</th><th class="_freezed_row  _table210_opt34 _tcol_hidden tooltip-maqao" title="" tooltip_id="103"><span></span>Exclusive Time w.r.t. Wall Time run_1x32 (s)</th><th class="_freezed_row  _table210_opt35 _tcol_hidden tooltip-maqao" title="" tooltip_id="104"><span></span>Inclusive Time w.r.t. Wall Time run_1x1 (s)</th><th class="_freezed_row  _table210_opt36 _tcol_hidden tooltip-maqao" title="" tooltip_id="105"><span></span>Inclusive Time w.r.t. Wall Time run_1x2 (s)</th><th class="_freezed_row  _table210_opt37 _tcol_hidden tooltip-maqao" title="" tooltip_id="106"><span></span>Inclusive Time w.r.t. Wall Time run_1x4 (s)</th><th class="_freezed_row  _table210_opt38 _tcol_hidden tooltip-maqao" title="" tooltip_id="107"><span></span>Inclusive Time w.r.t. Wall Time run_1x8 (s)</th><th class="_freezed_row  _table210_opt39 _tcol_hidden tooltip-maqao" title="" tooltip_id="108"><span></span>Inclusive Time w.r.t. Wall Time run_1x16 (s)</th><th class="_freezed_row  _table210_opt40 _tcol_hidden tooltip-maqao" title="" tooltip_id="109"><span></span>Inclusive Time w.r.t. Wall Time run_1x32 (s)</th><th class="_freezed_row  _table210_opt41 _tcol_hidden tooltip-maqao" title="" tooltip_id="110"><span></span>Nb Threads run_1x1</th><th class="_freezed_row  _table210_opt42 _tcol_hidden tooltip-maqao" title="" tooltip_id="111"><span></span>Nb Threads run_1x2</th><th class="_freezed_row  _table210_opt43 _tcol_hidden tooltip-maqao" title="" tooltip_id="112"><span></span>Nb Threads run_1x4</th><th class="_freezed_row  _table210_opt44 _tcol_hidden tooltip-maqao" title="" tooltip_id="113"><span></span>Nb Threads run_1x8</th><th class="_freezed_row  _table210_opt45 _tcol_hidden tooltip-maqao" title="" tooltip_id="114"><span></span>Nb Threads run_1x16</th><th class="_freezed_row  _table210_opt46 _tcol_hidden tooltip-maqao" title="" tooltip_id="115"><span></span>Nb Threads run_1x32</th><th class="_freezed_row  _table210_opt47 tooltip-maqao" title="" tooltip_id="116"><span></span>Vectorization Ratio (%)</th><th class="_freezed_row  _table210_opt48 tooltip-maqao" title="" tooltip_id="117"><span></span>Vector Length Use (%)</th><th class="_freezed_row  _table210_opt49 _tcol_hidden tooltip-maqao" title="" tooltip_id="118"><span></span>Speedup If No Scalar Integer</th><th class="_freezed_row  _table210_opt50 _tcol_hidden tooltip-maqao" title="" tooltip_id="119"><span></span>Speedup If FP Vectorized</th><th class="_freezed_row  _table210_opt51 _tcol_hidden tooltip-maqao" title="" tooltip_id="120"><span></span>Speedup If Fully Vectorized</th><th class="_freezed_row  _table210_opt52 _tcol_hidden tooltip-maqao" title="" tooltip_id="121"><span></span>Speedup If Perfect Load Balancing run_1x1</th><th class="_freezed_row  _table210_opt53 _tcol_hidden tooltip-maqao" title="" tooltip_id="122"><span></span>Speedup If Perfect Load Balancing run_1x2</th><th class="_freezed_row  _table210_opt54 _tcol_hidden tooltip-maqao" title="" tooltip_id="123"><span></span>Speedup If Perfect Load Balancing run_1x4</th><th class="_freezed_row  _table210_opt55 _tcol_hidden tooltip-maqao" title="" tooltip_id="124"><span></span>Speedup If Perfect Load Balancing run_1x8</th><th class="_freezed_row  _table210_opt56 _tcol_hidden tooltip-maqao" title="" tooltip_id="125"><span></span>Speedup If Perfect Load Balancing run_1x16</th><th class="_freezed_row  _table210_opt57 _tcol_hidden tooltip-maqao" title="" tooltip_id="126"><span></span>Speedup If Perfect Load Balancing run_1x32</th><th class="_freezed_row  _table210_opt58 _tcol_hidden"><span></span>Stride 0</th><th class="_freezed_row  _table210_opt59 _tcol_hidden"><span></span>Stride 1</th><th class="_freezed_row  _table210_opt60 _tcol_hidden"><span></span>Stride n</th><th class="_freezed_row  _table210_opt61 _tcol_hidden"><span></span>Stride Unknown</th><th class="_freezed_row  _table210_opt62 _tcol_hidden"><span></span>Stride Indirect</th><th class="_freezed_row  _table210_opt63 _tcol_hidden tooltip-maqao" title="" tooltip_id="127"><span></span>(run_1x1) Efficiency</th><th class="_freezed_row  _table210_opt64 _tcol_hidden tooltip-maqao" title="" tooltip_id="128"><span></span>(run_1x1) Potential Speed-Up (%)</th><th class="_freezed_row  _table210_opt65 _tcol_hidden tooltip-maqao" title="" tooltip_id="129"><span></span>(run_1x2) Efficiency</th><th class="_freezed_row  _table210_opt66 _tcol_hidden tooltip-maqao" title="" tooltip_id="130"><span></span>(run_1x2) Potential Speed-Up (%)</th><th class="_freezed_row  _table210_opt67 _tcol_hidden tooltip-maqao" title="" tooltip_id="131"><span></span>(run_1x4) Efficiency</th><th class="_freezed_row  _table210_opt68 _tcol_hidden tooltip-maqao" title="" tooltip_id="132"><span></span>(run_1x4) Potential Speed-Up (%)</th><th class="_freezed_row  _table210_opt69 _tcol_hidden tooltip-maqao" title="" tooltip_id="133"><span></span>(run_1x8) Efficiency</th><th class="_freezed_row  _table210_opt70 _tcol_hidden tooltip-maqao" title="" tooltip_id="134"><span></span>(run_1x8) Potential Speed-Up (%)</th><th class="_freezed_row  _table210_opt71 _tcol_hidden tooltip-maqao" title="" tooltip_id="135"><span></span>(run_1x16) Efficiency</th><th class="_freezed_row  _table210_opt72 _tcol_hidden tooltip-maqao" title="" tooltip_id="136"><span></span>(run_1x16) Potential Speed-Up (%)</th><th class="_freezed_row  _table210_opt73 _tcol_hidden tooltip-maqao" title="" tooltip_id="137"><span></span>(run_1x32) Efficiency</th><th class="_freezed_row  _table210_opt74 _tcol_hidden tooltip-maqao" title="" tooltip_id="138"><span></span>(run_1x32) Potential Speed-Up (%)</th></tr><tr id="_tr_210_1"  ondblclick="_action_144(this,1,-1, 'loops/measure_opti_parallel_6.html');"  style="cursor:pointer;"><td id="_td_210_1_1"  data-_i="1" data-_j="1"  data-_p = "measure_opti_parallel_6"  class=" _left _freezed_col  _centered" >6</td><td id="_td_210_1_2"  data-_i="1" data-_j="2"  data-_p = "measure_opti_parallel_6"  style="word-break:break-all;" >measure_opti_parallel - driver_opti.c:22-23</td><td id="_td_210_1_3"  data-_i="1" data-_j="3"  data-_p = "measure_opti_parallel_6"  style="word-break:break-all;" >kernel._omp_fn.0</td><td id="_td_210_1_4"  data-_i="1" data-_j="4"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt4 _tcol_hidden" >Innermost</td><td id="_td_210_1_5"  data-_i="1" data-_j="5"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt5"  style="background:#FB3918;" >83.30</td><td id="_td_210_1_6"  data-_i="1" data-_j="6"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt6"  style="background:#FB3918;" >83.06</td><td id="_td_210_1_7"  data-_i="1" data-_j="7"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt7"  style="background:#FB3918;" >83.03</td><td id="_td_210_1_8"  data-_i="1" data-_j="8"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt8"  style="background:#FB3918;" >82.88</td><td id="_td_210_1_9"  data-_i="1" data-_j="9"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt9"  style="background:#FB3918;" >82.60</td><td id="_td_210_1_10"  data-_i="1" data-_j="10"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt10"  style="background:#FB3918;" >82.24</td><td id="_td_210_1_11"  data-_i="1" data-_j="11"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt11 _tcol_hidden" >83.30</td><td id="_td_210_1_12"  data-_i="1" data-_j="12"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt12 _tcol_hidden" >83.06</td><td id="_td_210_1_13"  data-_i="1" data-_j="13"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt13 _tcol_hidden" >83.03</td><td id="_td_210_1_14"  data-_i="1" data-_j="14"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt14 _tcol_hidden" >82.88</td><td id="_td_210_1_15"  data-_i="1" data-_j="15"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt15 _tcol_hidden" >82.60</td><td id="_td_210_1_16"  data-_i="1" data-_j="16"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt16 _tcol_hidden" >82.24</td><td id="_td_210_1_17"  data-_i="1" data-_j="17"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt17 _tcol_hidden" >61.18</td><td id="_td_210_1_18"  data-_i="1" data-_j="18"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt18 _tcol_hidden" >30.52</td><td id="_td_210_1_19"  data-_i="1" data-_j="19"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt19 _tcol_hidden" >15.44</td><td id="_td_210_1_20"  data-_i="1" data-_j="20"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt20 _tcol_hidden" >7.90</td><td id="_td_210_1_21"  data-_i="1" data-_j="21"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt21 _tcol_hidden" >3.99</td><td id="_td_210_1_22"  data-_i="1" data-_j="22"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt22 _tcol_hidden" >2.09</td><td id="_td_210_1_23"  data-_i="1" data-_j="23"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt23 _tcol_hidden" >61.18</td><td id="_td_210_1_24"  data-_i="1" data-_j="24"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt24 _tcol_hidden" >30.52</td><td id="_td_210_1_25"  data-_i="1" data-_j="25"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt25 _tcol_hidden" >15.44</td><td id="_td_210_1_26"  data-_i="1" data-_j="26"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt26 _tcol_hidden" >7.90</td><td id="_td_210_1_27"  data-_i="1" data-_j="27"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt27 _tcol_hidden" >3.99</td><td id="_td_210_1_28"  data-_i="1" data-_j="28"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt28 _tcol_hidden" >2.09</td><td id="_td_210_1_29"  data-_i="1" data-_j="29"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt29 _tcol_hidden" >61.18</td><td id="_td_210_1_30"  data-_i="1" data-_j="30"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt30 _tcol_hidden" >35.35</td><td id="_td_210_1_31"  data-_i="1" data-_j="31"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt31 _tcol_hidden" >22.56</td><td id="_td_210_1_32"  data-_i="1" data-_j="32"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt32 _tcol_hidden" >16.34</td><td id="_td_210_1_33"  data-_i="1" data-_j="33"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt33 _tcol_hidden" >13.08</td><td id="_td_210_1_34"  data-_i="1" data-_j="34"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt34 _tcol_hidden" >11.38</td><td id="_td_210_1_35"  data-_i="1" data-_j="35"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt35 _tcol_hidden" >61.18</td><td id="_td_210_1_36"  data-_i="1" data-_j="36"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt36 _tcol_hidden" >35.35</td><td id="_td_210_1_37"  data-_i="1" data-_j="37"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt37 _tcol_hidden" >22.56</td><td id="_td_210_1_38"  data-_i="1" data-_j="38"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt38 _tcol_hidden" >16.34</td><td id="_td_210_1_39"  data-_i="1" data-_j="39"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt39 _tcol_hidden" >13.08</td><td id="_td_210_1_40"  data-_i="1" data-_j="40"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt40 _tcol_hidden" >11.38</td><td id="_td_210_1_41"  data-_i="1" data-_j="41"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt41 _tcol_hidden" >1</td><td id="_td_210_1_42"  data-_i="1" data-_j="42"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt42 _tcol_hidden" >2</td><td id="_td_210_1_43"  data-_i="1" data-_j="43"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt43 _tcol_hidden" >4</td><td id="_td_210_1_44"  data-_i="1" data-_j="44"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt44 _tcol_hidden" >8</td><td id="_td_210_1_45"  data-_i="1" data-_j="45"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt45 _tcol_hidden" >16</td><td id="_td_210_1_46"  data-_i="1" data-_j="46"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt46 _tcol_hidden" >32</td><td id="_td_210_1_47"  data-_i="1" data-_j="47"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt47"  style="background:#66cc00" >100</td><td id="_td_210_1_48"  data-_i="1" data-_j="48"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt48"  style="background:#66cc00" >100</td><td id="_td_210_1_49"  data-_i="1" data-_j="49"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt49 _tcol_hidden" >1</td><td id="_td_210_1_50"  data-_i="1" data-_j="50"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt50 _tcol_hidden" >1</td><td id="_td_210_1_51"  data-_i="1" data-_j="51"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt51 _tcol_hidden" >1</td><td id="_td_210_1_52"  data-_i="1" data-_j="52"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt52 _tcol_hidden" >1</td><td id="_td_210_1_53"  data-_i="1" data-_j="53"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt53 _tcol_hidden" >1</td><td id="_td_210_1_54"  data-_i="1" data-_j="54"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt54 _tcol_hidden" >1.01</td><td id="_td_210_1_55"  data-_i="1" data-_j="55"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt55 _tcol_hidden" >1.04</td><td id="_td_210_1_56"  data-_i="1" data-_j="56"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt56 _tcol_hidden" >1.06</td><td id="_td_210_1_57"  data-_i="1" data-_j="57"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt57 _tcol_hidden" >1.12</td><td id="_td_210_1_58"  data-_i="1" data-_j="58"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt58 _tcol_hidden" >0</td><td id="_td_210_1_59"  data-_i="1" data-_j="59"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt59 _tcol_hidden" >0</td><td id="_td_210_1_60"  data-_i="1" data-_j="60"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt60 _tcol_hidden" >2</td><td id="_td_210_1_61"  data-_i="1" data-_j="61"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt61 _tcol_hidden" >0</td><td id="_td_210_1_62"  data-_i="1" data-_j="62"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt62 _tcol_hidden" >0</td><td id="_td_210_1_63"  data-_i="1" data-_j="63"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt63 _tcol_hidden"  style="background:#579619;" >1</td><td id="_td_210_1_64"  data-_i="1" data-_j="64"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt64 _tcol_hidden"  style="background:#458B00;" >0</td><td id="_td_210_1_65"  data-_i="1" data-_j="65"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt65 _tcol_hidden"  style="background:#6AA232;" >0.87</td><td id="_td_210_1_66"  data-_i="1" data-_j="66"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt66 _tcol_hidden"  style="background:#C69E3B;" >11.18</td><td id="_td_210_1_67"  data-_i="1" data-_j="67"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt67 _tcol_hidden"  style="background:#8FB966;" >0.68</td><td id="_td_210_1_68"  data-_i="1" data-_j="68"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt68 _tcol_hidden"  style="background:#C97F70;" >26.74</td><td id="_td_210_1_69"  data-_i="1" data-_j="69"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt69 _tcol_hidden"  style="background:#BF9223;" >0.47</td><td id="_td_210_1_70"  data-_i="1" data-_j="70"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt70 _tcol_hidden"  style="background:#AE4029;" >44.08</td><td id="_td_210_1_71"  data-_i="1" data-_j="71"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt71 _tcol_hidden"  style="background:#B75541;" >0.29</td><td id="_td_210_1_72"  data-_i="1" data-_j="72"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt72 _tcol_hidden"  style="background:#942610;" >58.46</td><td id="_td_210_1_73"  data-_i="1" data-_j="73"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt73 _tcol_hidden"  style="background:#AE4029;" >0.17</td><td id="_td_210_1_74"  data-_i="1" data-_j="74"  data-_p = "measure_opti_parallel_6"  class=" _centered _table210_opt74 _tcol_hidden"  style="background:#942610;" >68.42</td></tr>
+<tr id="_tr_210_2"  ondblclick="_action_144(this,2,-1, 'loops/measure_opti_parallel_4.html');"  style="cursor:pointer;"><td id="_td_210_2_1"  data-_i="2" data-_j="1"  data-_p = "measure_opti_parallel_4"  class=" _left _freezed_col  _centered" >4</td><td id="_td_210_2_2"  data-_i="2" data-_j="2"  data-_p = "measure_opti_parallel_4"  style="word-break:break-all;" >measure_opti_parallel - driver_opti.c:41-42</td><td id="_td_210_2_3"  data-_i="2" data-_j="3"  data-_p = "measure_opti_parallel_4"  style="word-break:break-all;" >main</td><td id="_td_210_2_4"  data-_i="2" data-_j="4"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt4 _tcol_hidden" >Innermost</td><td id="_td_210_2_5"  data-_i="2" data-_j="5"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt5"  style="background:#947FA5;" >1.46</td><td id="_td_210_2_6"  data-_i="2" data-_j="6"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt6"  style="background:#947FA5;" >1.38</td><td id="_td_210_2_7"  data-_i="2" data-_j="7"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt7"  style="background:#947FA5;" >1.28</td><td id="_td_210_2_8"  data-_i="2" data-_j="8"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt8"  style="background:#947FA5;" >1.31</td><td id="_td_210_2_9"  data-_i="2" data-_j="9"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt9"  style="background:#947FA5;" >1.43</td><td id="_td_210_2_10"  data-_i="2" data-_j="10"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt10"  style="background:#947FA5;" >1.52</td><td id="_td_210_2_11"  data-_i="2" data-_j="11"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt11 _tcol_hidden" >1.46</td><td id="_td_210_2_12"  data-_i="2" data-_j="12"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt12 _tcol_hidden" >1.38</td><td id="_td_210_2_13"  data-_i="2" data-_j="13"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt13 _tcol_hidden" >1.28</td><td id="_td_210_2_14"  data-_i="2" data-_j="14"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt14 _tcol_hidden" >1.31</td><td id="_td_210_2_15"  data-_i="2" data-_j="15"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt15 _tcol_hidden" >1.43</td><td id="_td_210_2_16"  data-_i="2" data-_j="16"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt16 _tcol_hidden" >1.52</td><td id="_td_210_2_17"  data-_i="2" data-_j="17"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt17 _tcol_hidden" >1.07</td><td id="_td_210_2_18"  data-_i="2" data-_j="18"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt18 _tcol_hidden" >1.01</td><td id="_td_210_2_19"  data-_i="2" data-_j="19"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt19 _tcol_hidden" >0.94</td><td id="_td_210_2_20"  data-_i="2" data-_j="20"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt20 _tcol_hidden" >0.96</td><td id="_td_210_2_21"  data-_i="2" data-_j="21"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt21 _tcol_hidden" >1.04</td><td id="_td_210_2_22"  data-_i="2" data-_j="22"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt22 _tcol_hidden" >1.11</td><td id="_td_210_2_23"  data-_i="2" data-_j="23"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt23 _tcol_hidden" >1.07</td><td id="_td_210_2_24"  data-_i="2" data-_j="24"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt24 _tcol_hidden" >1.01</td><td id="_td_210_2_25"  data-_i="2" data-_j="25"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt25 _tcol_hidden" >0.94</td><td id="_td_210_2_26"  data-_i="2" data-_j="26"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt26 _tcol_hidden" >0.96</td><td id="_td_210_2_27"  data-_i="2" data-_j="27"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt27 _tcol_hidden" >1.04</td><td id="_td_210_2_28"  data-_i="2" data-_j="28"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt28 _tcol_hidden" >1.11</td><td id="_td_210_2_29"  data-_i="2" data-_j="29"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt29 _tcol_hidden" >1.07</td><td id="_td_210_2_30"  data-_i="2" data-_j="30"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt30 _tcol_hidden" >0.59</td><td id="_td_210_2_31"  data-_i="2" data-_j="31"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt31 _tcol_hidden" >0.35</td><td id="_td_210_2_32"  data-_i="2" data-_j="32"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt32 _tcol_hidden" >0.26</td><td id="_td_210_2_33"  data-_i="2" data-_j="33"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt33 _tcol_hidden" >0.23</td><td id="_td_210_2_34"  data-_i="2" data-_j="34"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt34 _tcol_hidden" >0.21</td><td id="_td_210_2_35"  data-_i="2" data-_j="35"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt35 _tcol_hidden" >1.07</td><td id="_td_210_2_36"  data-_i="2" data-_j="36"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt36 _tcol_hidden" >0.59</td><td id="_td_210_2_37"  data-_i="2" data-_j="37"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt37 _tcol_hidden" >0.35</td><td id="_td_210_2_38"  data-_i="2" data-_j="38"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt38 _tcol_hidden" >0.26</td><td id="_td_210_2_39"  data-_i="2" data-_j="39"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt39 _tcol_hidden" >0.23</td><td id="_td_210_2_40"  data-_i="2" data-_j="40"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt40 _tcol_hidden" >0.21</td><td id="_td_210_2_41"  data-_i="2" data-_j="41"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt41 _tcol_hidden" >1</td><td id="_td_210_2_42"  data-_i="2" data-_j="42"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt42 _tcol_hidden" >1</td><td id="_td_210_2_43"  data-_i="2" data-_j="43"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt43 _tcol_hidden" >1</td><td id="_td_210_2_44"  data-_i="2" data-_j="44"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt44 _tcol_hidden" >1</td><td id="_td_210_2_45"  data-_i="2" data-_j="45"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt45 _tcol_hidden" >1</td><td id="_td_210_2_46"  data-_i="2" data-_j="46"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt46 _tcol_hidden" >1</td><td id="_td_210_2_47"  data-_i="2" data-_j="47"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt47"  style="background:#FF3333" >25</td><td id="_td_210_2_48"  data-_i="2" data-_j="48"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt48"  style="background:#FF3333" >28.13</td><td id="_td_210_2_49"  data-_i="2" data-_j="49"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt49 _tcol_hidden"  style="background:#FFCC99" >1.71</td><td id="_td_210_2_50"  data-_i="2" data-_j="50"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt50 _tcol_hidden"  style="background:#FFCC99" >1.67</td><td id="_td_210_2_51"  data-_i="2" data-_j="51"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt51 _tcol_hidden"  style="background:#FF950E" >5.83</td><td id="_td_210_2_52"  data-_i="2" data-_j="52"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt52 _tcol_hidden" >1</td><td id="_td_210_2_53"  data-_i="2" data-_j="53"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt53 _tcol_hidden" >1</td><td id="_td_210_2_54"  data-_i="2" data-_j="54"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt54 _tcol_hidden" >1</td><td id="_td_210_2_55"  data-_i="2" data-_j="55"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt55 _tcol_hidden" >1</td><td id="_td_210_2_56"  data-_i="2" data-_j="56"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt56 _tcol_hidden" >1</td><td id="_td_210_2_57"  data-_i="2" data-_j="57"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt57 _tcol_hidden" >1</td><td id="_td_210_2_58"  data-_i="2" data-_j="58"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt58 _tcol_hidden" >1</td><td id="_td_210_2_59"  data-_i="2" data-_j="59"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt59 _tcol_hidden" >1</td><td id="_td_210_2_60"  data-_i="2" data-_j="60"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt60 _tcol_hidden" >0</td><td id="_td_210_2_61"  data-_i="2" data-_j="61"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt61 _tcol_hidden" >0</td><td id="_td_210_2_62"  data-_i="2" data-_j="62"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt62 _tcol_hidden" >0</td><td id="_td_210_2_63"  data-_i="2" data-_j="63"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt63 _tcol_hidden"  style="background:#579619;" >1</td><td id="_td_210_2_64"  data-_i="2" data-_j="64"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt64 _tcol_hidden"  style="background:#458B00;" >0</td><td id="_td_210_2_65"  data-_i="2" data-_j="65"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt65 _tcol_hidden"  style="background:#579619;" >0.91</td><td id="_td_210_2_66"  data-_i="2" data-_j="66"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt66 _tcol_hidden"  style="background:#579619;" >0.12</td><td id="_td_210_2_67"  data-_i="2" data-_j="67"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt67 _tcol_hidden"  style="background:#7CAD4C;" >0.77</td><td id="_td_210_2_68"  data-_i="2" data-_j="68"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt68 _tcol_hidden"  style="background:#579619;" >0.3</td><td id="_td_210_2_69"  data-_i="2" data-_j="69"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt69 _tcol_hidden"  style="background:#C69E3B;" >0.52</td><td id="_td_210_2_70"  data-_i="2" data-_j="70"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt70 _tcol_hidden"  style="background:#579619;" >0.63</td><td id="_td_210_2_71"  data-_i="2" data-_j="71"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt71 _tcol_hidden"  style="background:#C06A59;" >0.3</td><td id="_td_210_2_72"  data-_i="2" data-_j="72"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt72 _tcol_hidden"  style="background:#D4B66C;" >1.01</td><td id="_td_210_2_73"  data-_i="2" data-_j="73"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt73 _tcol_hidden"  style="background:#AE4029;" >0.16</td><td id="_td_210_2_74"  data-_i="2" data-_j="74"  data-_p = "measure_opti_parallel_4"  class=" _centered _table210_opt74 _tcol_hidden"  style="background:#D4B66C;" >1.28</td></tr>
+<tr id="_tr_210_3"  ondblclick="_action_144(this,3,-1, 'loops/measure_opti_parallel_7.html');"  style="cursor:pointer;"><td id="_td_210_3_1"  data-_i="3" data-_j="1"  data-_p = "measure_opti_parallel_7"  class=" _left _freezed_col  _centered" >7</td><td id="_td_210_3_2"  data-_i="3" data-_j="2"  data-_p = "measure_opti_parallel_7"  style="word-break:break-all;" >measure_opti_parallel - driver_opti.c:21-25</td><td id="_td_210_3_3"  data-_i="3" data-_j="3"  data-_p = "measure_opti_parallel_7"  style="word-break:break-all;" >kernel._omp_fn.0</td><td id="_td_210_3_4"  data-_i="3" data-_j="4"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt4 _tcol_hidden" >InBetween</td><td id="_td_210_3_5"  data-_i="3" data-_j="5"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt5"  style="background:#7B90C8;" >0.27</td><td id="_td_210_3_6"  data-_i="3" data-_j="6"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt6"  style="background:#7B90C8;" >0.31</td><td id="_td_210_3_7"  data-_i="3" data-_j="7"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt7"  style="background:#7B90C8;" >0.27</td><td id="_td_210_3_8"  data-_i="3" data-_j="8"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt8"  style="background:#7B90C8;" >0.27</td><td id="_td_210_3_9"  data-_i="3" data-_j="9"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt9"  style="background:#7B90C8;" >0.26</td><td id="_td_210_3_10"  data-_i="3" data-_j="10"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt10"  style="background:#7B90C8;" >0.33</td><td id="_td_210_3_11"  data-_i="3" data-_j="11"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt11 _tcol_hidden" >83.57</td><td id="_td_210_3_12"  data-_i="3" data-_j="12"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt12 _tcol_hidden" >83.37</td><td id="_td_210_3_13"  data-_i="3" data-_j="13"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt13 _tcol_hidden" >83.30</td><td id="_td_210_3_14"  data-_i="3" data-_j="14"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt14 _tcol_hidden" >83.15</td><td id="_td_210_3_15"  data-_i="3" data-_j="15"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt15 _tcol_hidden" >82.86</td><td id="_td_210_3_16"  data-_i="3" data-_j="16"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt16 _tcol_hidden" >82.57</td><td id="_td_210_3_17"  data-_i="3" data-_j="17"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt17 _tcol_hidden" >0.20</td><td id="_td_210_3_18"  data-_i="3" data-_j="18"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt18 _tcol_hidden" >0.13</td><td id="_td_210_3_19"  data-_i="3" data-_j="19"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt19 _tcol_hidden"  style="background:#C69E3B;" >0.06</td><td id="_td_210_3_20"  data-_i="3" data-_j="20"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt20 _tcol_hidden"  style="background:#C69E3B;" >0.04</td><td id="_td_210_3_21"  data-_i="3" data-_j="21"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt21 _tcol_hidden"  style="background:#C69E3B;" >0.03</td><td id="_td_210_3_22"  data-_i="3" data-_j="22"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt22 _tcol_hidden"  style="background:#C69E3B;" >0.02</td><td id="_td_210_3_23"  data-_i="3" data-_j="23"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt23 _tcol_hidden" >61.38</td><td id="_td_210_3_24"  data-_i="3" data-_j="24"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt24 _tcol_hidden" >30.62</td><td id="_td_210_3_25"  data-_i="3" data-_j="25"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt25 _tcol_hidden" >15.49</td><td id="_td_210_3_26"  data-_i="3" data-_j="26"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt26 _tcol_hidden" >7.93</td><td id="_td_210_3_27"  data-_i="3" data-_j="27"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt27 _tcol_hidden" >4.00</td><td id="_td_210_3_28"  data-_i="3" data-_j="28"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt28 _tcol_hidden" >2.10</td><td id="_td_210_3_29"  data-_i="3" data-_j="29"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt29 _tcol_hidden" >0.20</td><td id="_td_210_3_30"  data-_i="3" data-_j="30"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt30 _tcol_hidden" >0.13</td><td id="_td_210_3_31"  data-_i="3" data-_j="31"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt31 _tcol_hidden" >0.07</td><td id="_td_210_3_32"  data-_i="3" data-_j="32"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt32 _tcol_hidden" >0.05</td><td id="_td_210_3_33"  data-_i="3" data-_j="33"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt33 _tcol_hidden" >0.04</td><td id="_td_210_3_34"  data-_i="3" data-_j="34"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt34 _tcol_hidden" >0.05</td><td id="_td_210_3_35"  data-_i="3" data-_j="35"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt35 _tcol_hidden" >61.38</td><td id="_td_210_3_36"  data-_i="3" data-_j="36"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt36 _tcol_hidden" >35.48</td><td id="_td_210_3_37"  data-_i="3" data-_j="37"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt37 _tcol_hidden" >22.63</td><td id="_td_210_3_38"  data-_i="3" data-_j="38"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt38 _tcol_hidden" >16.39</td><td id="_td_210_3_39"  data-_i="3" data-_j="39"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt39 _tcol_hidden" >13.12</td><td id="_td_210_3_40"  data-_i="3" data-_j="40"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt40 _tcol_hidden" >11.42</td><td id="_td_210_3_41"  data-_i="3" data-_j="41"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt41 _tcol_hidden" >1</td><td id="_td_210_3_42"  data-_i="3" data-_j="42"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt42 _tcol_hidden" >2</td><td id="_td_210_3_43"  data-_i="3" data-_j="43"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt43 _tcol_hidden" >4</td><td id="_td_210_3_44"  data-_i="3" data-_j="44"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt44 _tcol_hidden" >8</td><td id="_td_210_3_45"  data-_i="3" data-_j="45"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt45 _tcol_hidden" >14</td><td id="_td_210_3_46"  data-_i="3" data-_j="46"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt46 _tcol_hidden" >26</td><td id="_td_210_3_47"  data-_i="3" data-_j="47"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt47"  style="background:#FF3333" >44</td><td id="_td_210_3_48"  data-_i="3" data-_j="48"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt48"  style="background:#FF3333" >49</td><td id="_td_210_3_49"  data-_i="3" data-_j="49"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt49 _tcol_hidden"  style="background:#FFCC99" >1.6</td><td id="_td_210_3_50"  data-_i="3" data-_j="50"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt50 _tcol_hidden" >1</td><td id="_td_210_3_51"  data-_i="3" data-_j="51"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt51 _tcol_hidden"  style="background:#FFCC99" >1.36</td><td id="_td_210_3_52"  data-_i="3" data-_j="52"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt52 _tcol_hidden" >1</td><td id="_td_210_3_53"  data-_i="3" data-_j="53"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt53 _tcol_hidden" >1.13</td><td id="_td_210_3_54"  data-_i="3" data-_j="54"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt54 _tcol_hidden" >1.3</td><td id="_td_210_3_55"  data-_i="3" data-_j="55"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt55 _tcol_hidden" >1.4</td><td id="_td_210_3_56"  data-_i="3" data-_j="56"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt56 _tcol_hidden" >1.84</td><td id="_td_210_3_57"  data-_i="3" data-_j="57"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt57 _tcol_hidden" >2.17</td><td id="_td_210_3_58"  data-_i="3" data-_j="58"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt58 _tcol_hidden" >NA</td><td id="_td_210_3_59"  data-_i="3" data-_j="59"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt59 _tcol_hidden" >NA</td><td id="_td_210_3_60"  data-_i="3" data-_j="60"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt60 _tcol_hidden" >NA</td><td id="_td_210_3_61"  data-_i="3" data-_j="61"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt61 _tcol_hidden" >NA</td><td id="_td_210_3_62"  data-_i="3" data-_j="62"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt62 _tcol_hidden" >NA</td><td id="_td_210_3_63"  data-_i="3" data-_j="63"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt63 _tcol_hidden"  style="background:#579619;" >1</td><td id="_td_210_3_64"  data-_i="3" data-_j="64"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt64 _tcol_hidden"  style="background:#458B00;" >0</td><td id="_td_210_3_65"  data-_i="3" data-_j="65"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt65 _tcol_hidden"  style="background:#7CAD4C;" >0.75</td><td id="_td_210_3_66"  data-_i="3" data-_j="66"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt66 _tcol_hidden"  style="background:#579619;" >0.08</td><td id="_td_210_3_67"  data-_i="3" data-_j="67"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt67 _tcol_hidden"  style="background:#8FB966;" >0.67</td><td id="_td_210_3_68"  data-_i="3" data-_j="68"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt68 _tcol_hidden"  style="background:#579619;" >0.09</td><td id="_td_210_3_69"  data-_i="3" data-_j="69"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt69 _tcol_hidden"  style="background:#BF9223;" >0.46</td><td id="_td_210_3_70"  data-_i="3" data-_j="70"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt70 _tcol_hidden"  style="background:#579619;" >0.15</td><td id="_td_210_3_71"  data-_i="3" data-_j="71"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt71 _tcol_hidden"  style="background:#C06A59;" >0.3</td><td id="_td_210_3_72"  data-_i="3" data-_j="72"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt72 _tcol_hidden"  style="background:#579619;" >0.18</td><td id="_td_210_3_73"  data-_i="3" data-_j="73"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt73 _tcol_hidden"  style="background:#AE4029;" >0.14</td><td id="_td_210_3_74"  data-_i="3" data-_j="74"  data-_p = "measure_opti_parallel_7"  class=" _centered _table210_opt74 _tcol_hidden"  style="background:#579619;" >0.28</td></tr>
+<tr id="_tr_210_4"  ondblclick="_action_144(this,4,-1, 'loops/measure_opti_parallel_2.html');"  style="cursor:pointer;"><td id="_td_210_4_1"  data-_i="4" data-_j="1"  data-_p = "measure_opti_parallel_2"  class=" _left _freezed_col  _centered" >2</td><td id="_td_210_4_2"  data-_i="4" data-_j="2"  data-_p = "measure_opti_parallel_2"  style="word-break:break-all;" ><span class="tooltip-maqao" title="" tooltip_id="139" >measure_opti_parallel - driver_opti.c:17-94 [...]</span></td><td id="_td_210_4_3"  data-_i="4" data-_j="3"  data-_p = "measure_opti_parallel_2"  style="word-break:break-all;" >main</td><td id="_td_210_4_4"  data-_i="4" data-_j="4"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt4 _tcol_hidden" >Innermost</td><td id="_td_210_4_5"  data-_i="4" data-_j="5"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt5"  style="background:#7B90C8;" >0.00</td><td id="_td_210_4_6"  data-_i="4" data-_j="6"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt6"  style="background:#7B90C8;" >0.00</td><td id="_td_210_4_7"  data-_i="4" data-_j="7"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt7"  style="background:#7B90C8;" >0.00</td><td id="_td_210_4_8"  data-_i="4" data-_j="8"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt8"  style="background:#7B90C8;" >0.01</td><td id="_td_210_4_9"  data-_i="4" data-_j="9"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt9"  style="background:#7B90C8;" >0.00</td><td id="_td_210_4_10"  data-_i="4" data-_j="10"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt10"  style="background:#7B90C8;" >0.00</td><td id="_td_210_4_11"  data-_i="4" data-_j="11"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt11 _tcol_hidden" >0.00</td><td id="_td_210_4_12"  data-_i="4" data-_j="12"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt12 _tcol_hidden" >0.00</td><td id="_td_210_4_13"  data-_i="4" data-_j="13"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt13 _tcol_hidden" >0.00</td><td id="_td_210_4_14"  data-_i="4" data-_j="14"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt14 _tcol_hidden" >0.01</td><td id="_td_210_4_15"  data-_i="4" data-_j="15"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt15 _tcol_hidden" >0.00</td><td id="_td_210_4_16"  data-_i="4" data-_j="16"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt16 _tcol_hidden" >0.00</td><td id="_td_210_4_17"  data-_i="4" data-_j="17"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt17 _tcol_hidden" ></td><td id="_td_210_4_18"  data-_i="4" data-_j="18"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt18 _tcol_hidden" ></td><td id="_td_210_4_19"  data-_i="4" data-_j="19"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt19 _tcol_hidden" ></td><td id="_td_210_4_20"  data-_i="4" data-_j="20"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt20 _tcol_hidden"  style="background:#A52B12;" >0.01</td><td id="_td_210_4_21"  data-_i="4" data-_j="21"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt21 _tcol_hidden" ></td><td id="_td_210_4_22"  data-_i="4" data-_j="22"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt22 _tcol_hidden" ></td><td id="_td_210_4_23"  data-_i="4" data-_j="23"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt23 _tcol_hidden" ></td><td id="_td_210_4_24"  data-_i="4" data-_j="24"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt24 _tcol_hidden" ></td><td id="_td_210_4_25"  data-_i="4" data-_j="25"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt25 _tcol_hidden" ></td><td id="_td_210_4_26"  data-_i="4" data-_j="26"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt26 _tcol_hidden" >0.01</td><td id="_td_210_4_27"  data-_i="4" data-_j="27"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt27 _tcol_hidden" ></td><td id="_td_210_4_28"  data-_i="4" data-_j="28"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt28 _tcol_hidden" ></td><td id="_td_210_4_29"  data-_i="4" data-_j="29"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt29 _tcol_hidden" ></td><td id="_td_210_4_30"  data-_i="4" data-_j="30"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt30 _tcol_hidden" ></td><td id="_td_210_4_31"  data-_i="4" data-_j="31"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt31 _tcol_hidden" ></td><td id="_td_210_4_32"  data-_i="4" data-_j="32"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt32 _tcol_hidden" >0.00</td><td id="_td_210_4_33"  data-_i="4" data-_j="33"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt33 _tcol_hidden" ></td><td id="_td_210_4_34"  data-_i="4" data-_j="34"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt34 _tcol_hidden" ></td><td id="_td_210_4_35"  data-_i="4" data-_j="35"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt35 _tcol_hidden" ></td><td id="_td_210_4_36"  data-_i="4" data-_j="36"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt36 _tcol_hidden" ></td><td id="_td_210_4_37"  data-_i="4" data-_j="37"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt37 _tcol_hidden" ></td><td id="_td_210_4_38"  data-_i="4" data-_j="38"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt38 _tcol_hidden" >0.00</td><td id="_td_210_4_39"  data-_i="4" data-_j="39"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt39 _tcol_hidden" ></td><td id="_td_210_4_40"  data-_i="4" data-_j="40"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt40 _tcol_hidden" ></td><td id="_td_210_4_41"  data-_i="4" data-_j="41"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt41 _tcol_hidden" ></td><td id="_td_210_4_42"  data-_i="4" data-_j="42"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt42 _tcol_hidden" ></td><td id="_td_210_4_43"  data-_i="4" data-_j="43"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt43 _tcol_hidden" ></td><td id="_td_210_4_44"  data-_i="4" data-_j="44"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt44 _tcol_hidden" >1</td><td id="_td_210_4_45"  data-_i="4" data-_j="45"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt45 _tcol_hidden" ></td><td id="_td_210_4_46"  data-_i="4" data-_j="46"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt46 _tcol_hidden" ></td><td id="_td_210_4_47"  data-_i="4" data-_j="47"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt47"  style="background:#FF3333" >20</td><td id="_td_210_4_48"  data-_i="4" data-_j="48"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt48"  style="background:#FF3333" >27.5</td><td id="_td_210_4_49"  data-_i="4" data-_j="49"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt49 _tcol_hidden"  style="background:#FFCC99" >1.5</td><td id="_td_210_4_50"  data-_i="4" data-_j="50"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt50 _tcol_hidden" >1.09</td><td id="_td_210_4_51"  data-_i="4" data-_j="51"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt51 _tcol_hidden"  style="background:#FF950E" >4</td><td id="_td_210_4_52"  data-_i="4" data-_j="52"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt52 _tcol_hidden" >0</td><td id="_td_210_4_53"  data-_i="4" data-_j="53"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt53 _tcol_hidden" >0</td><td id="_td_210_4_54"  data-_i="4" data-_j="54"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt54 _tcol_hidden" >0</td><td id="_td_210_4_55"  data-_i="4" data-_j="55"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt55 _tcol_hidden" >1</td><td id="_td_210_4_56"  data-_i="4" data-_j="56"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt56 _tcol_hidden" >0</td><td id="_td_210_4_57"  data-_i="4" data-_j="57"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt57 _tcol_hidden" >0</td><td id="_td_210_4_58"  data-_i="4" data-_j="58"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt58 _tcol_hidden" >1</td><td id="_td_210_4_59"  data-_i="4" data-_j="59"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt59 _tcol_hidden" >0</td><td id="_td_210_4_60"  data-_i="4" data-_j="60"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt60 _tcol_hidden" >0</td><td id="_td_210_4_61"  data-_i="4" data-_j="61"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt61 _tcol_hidden" >0</td><td id="_td_210_4_62"  data-_i="4" data-_j="62"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt62 _tcol_hidden" >0</td><td id="_td_210_4_63"  data-_i="4" data-_j="63"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt63 _tcol_hidden" ></td><td id="_td_210_4_64"  data-_i="4" data-_j="64"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt64 _tcol_hidden" ></td><td id="_td_210_4_65"  data-_i="4" data-_j="65"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt65 _tcol_hidden" ></td><td id="_td_210_4_66"  data-_i="4" data-_j="66"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt66 _tcol_hidden" ></td><td id="_td_210_4_67"  data-_i="4" data-_j="67"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt67 _tcol_hidden" ></td><td id="_td_210_4_68"  data-_i="4" data-_j="68"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt68 _tcol_hidden" ></td><td id="_td_210_4_69"  data-_i="4" data-_j="69"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt69 _tcol_hidden"  style="background:#579619;" >1</td><td id="_td_210_4_70"  data-_i="4" data-_j="70"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt70 _tcol_hidden"  style="background:#458B00;" >0</td><td id="_td_210_4_71"  data-_i="4" data-_j="71"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt71 _tcol_hidden" ></td><td id="_td_210_4_72"  data-_i="4" data-_j="72"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt72 _tcol_hidden" ></td><td id="_td_210_4_73"  data-_i="4" data-_j="73"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt73 _tcol_hidden" ></td><td id="_td_210_4_74"  data-_i="4" data-_j="74"  data-_p = "measure_opti_parallel_2"  class=" _centered _table210_opt74 _tcol_hidden" ></td></tr>
+</table></div>
+</div><script>
+function _action_144 (obj, i, j, p){open(""+p+"");}
+</script>
+<style>
+.menu {
+width: 250px;
+  color: var(--cntxt_menu_font);
+  z-index: 4;
+  box-shadow: 0 4px 5px 3px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  display: none;
+  transition: 0.2s display ease-in;
+  background-color: var(--cntxt_menu_background);
+}
+.menu-options {
+  list-style: none;
+  padding: 0px 0;
+  z-index: 1;
+  font-weight: 500;
+  z-index: 1;
+  font-size: 14px;
+  padding: 2px 10px 2px 10px;
+  cursor: pointer;
+  color: var(--cntxt_menu_font);
+}
+.menu-option:hover {
+  background: var(--cntxt_menu_background_over);
+}
+</style>
+<div class="menu" data-visible=false id="mctxMenu4">
+  <ul class="menu-options">
+<li class="menu-option" id="mctxMenu4_1" onclick="_action_145('_p', '_p4_1')" oncontextmenu="_action_145('_p', '_p4_1')" >Load Distribution</li>
+<li class="menu-option" id="mctxMenu4_2" onclick="_action_146('_p', '_p4_2')" oncontextmenu="_action_146('_p', '_p4_2')" >Sorted Load Distribution</li>
+<li class="menu-option" id="mctxMenu4_3" onclick="_action_147('_p', '_p4_3')" oncontextmenu="_action_147('_p', '_p4_3')" >Load Distribution All Threads</li>
+<li class="menu-option" id="mctxMenu4_4" onclick="_action_148('_p', '_p4_4')" oncontextmenu="_action_148('_p', '_p4_4')" >Scalability Report</li>
+<li class="menu-option" id="mctxMenu4_5" onclick="_action_149('_p', '_p4_5')" oncontextmenu="_action_149('_p', '_p4_5')" >Load Callchains</li>
+<li class="menu-option" id="mctxMenu4_6" onclick="_action_150('_p', '_p4_6')" oncontextmenu="_action_150('_p', '_p4_6')" >Go to report ...</li>
+  </ul>
+</div>
+<script>
+function toggleMenu_210 (menu, command) {
+  menu.style.display = command === "show" ? "block" : "none";
+  if (menu.style.display == "block") {
+    menu.dataset.visible = true;
+  }
+  else {
+    menu.dataset.visible = false;
+    if (_previous_elem != null) {
+      _previous_elem.parentNode.classList.remove ("selected-context");
+    }
+  }
+}
+const setPosition_210 = (menu, { top, left }) => {
+  menu.style.left = `${left}px`;
+  menu.style.top = `${top}px`;
+  toggleMenu_210(menu, "show");
+};
+var _global_elem = null;
+var _previous_elem = null;
+var _ids;
+var _current_menu = null;
+
+document.addEventListener("click", e => {
+  if (_current_menu != null && _current_menu.dataset.visible) {
+    toggleMenu_210 (_current_menu, "hide");
+    _current_menu = null;
+  }
+});
+document.getElementById("mctxMenu4").addEventListener('contextmenu', event => event.preventDefault());
+
+let _ids_210_4 = ["_tr_210_1", "_tr_210_2", "_tr_210_3", "_tr_210_4"];
+for (var i = 0; i < _ids_210_4.length; i++) {
+  var elem = document.getElementById(_ids_210_4[i]);
+  elem.addEventListener("contextmenu", e => {
+    e.preventDefault();
+    _global_elem = event.target || event.srcElement;
+    if (_global_elem.nodeName == "SPAN") {
+       _global_elem = _global_elem.parentNode;
+    }
+    const origin = {
+      left: e.clientX, top: e.clientY
+    };
+    if (_current_menu != null && _current_menu.dataset.visible) {
+      toggleMenu_210 (_current_menu, "hide");
+      _current_menu = null;
+    }
+    _previous_elem = _global_elem;    var menu = document.getElementById("mctxMenu4");
+    if (menu != null) {
+      _current_menu = menu;
+      setPosition_210(menu, origin);
+      _global_elem.parentNode.classList.add ("selected-context");
+    }
+    return false;
+  });
+}
+function _action_145 (p, pm){document.getElementById("maqao_modal-body").innerHTML="<object id=\"maqao_modal-body_content\" type=\"text/html\" data=\"modals/"+_global_elem.dataset._p+".html?mode=loadbal\"></object>";var modal = document.getElementById('MaqaoModal');modal.style.display = "block";}
+function _action_146 (p, pm){document.getElementById("maqao_modal-body").innerHTML="<object id=\"maqao_modal-body_content\" type=\"text/html\" data=\"modals/"+_global_elem.dataset._p+".html?mode=loadbal_sorted\"></object>";var modal = document.getElementById('MaqaoModal');modal.style.display = "block";}
+function _action_147 (p, pm){document.getElementById("maqao_modal-body").innerHTML="<object id=\"maqao_modal-body_content\" type=\"text/html\" data=\"modals/"+_global_elem.dataset._p+".html?mode=loadbal_all\"></object>";var modal = document.getElementById('MaqaoModal');modal.style.display = "block";}
+function _action_148 (p, pm){document.getElementById("maqao_modal-body").innerHTML="<object id=\"maqao_modal-body_content\" type=\"text/html\" data=\"modals/"+_global_elem.dataset._p+".html?mode=scalability\"></object>";var modal = document.getElementById('MaqaoModal');modal.style.display = "block";}
+function _action_149 (p, pm){document.getElementById("maqao_modal-body").innerHTML="<object id=\"maqao_modal-body_content\" type=\"text/html\" data=\"modals/"+_global_elem.dataset._p+".html?mode=callchains\"></object>";var modal = document.getElementById('MaqaoModal');modal.style.display = "block";}
+function _action_150 (p, pm){open("loops/"+_global_elem.dataset._p+".html", "_self");}
+</script>
+<script>
+var list_opts_table210 = ['_table210_opt4','_table210_opt5','_table210_opt6','_table210_opt7','_table210_opt8','_table210_opt9','_table210_opt10','_table210_opt11','_table210_opt12','_table210_opt13','_table210_opt14','_table210_opt15','_table210_opt16','_table210_opt17','_table210_opt18','_table210_opt19','_table210_opt20','_table210_opt21','_table210_opt22','_table210_opt23','_table210_opt24','_table210_opt25','_table210_opt26','_table210_opt27','_table210_opt28','_table210_opt29','_table210_opt30','_table210_opt31','_table210_opt32','_table210_opt33','_table210_opt34','_table210_opt35','_table210_opt36','_table210_opt37','_table210_opt38','_table210_opt39','_table210_opt40','_table210_opt41','_table210_opt42','_table210_opt43','_table210_opt44','_table210_opt45','_table210_opt46','_table210_opt47','_table210_opt48','_table210_opt49','_table210_opt50','_table210_opt51','_table210_opt52','_table210_opt53','_table210_opt54','_table210_opt55','_table210_opt56','_table210_opt57','_table210_opt58','_table210_opt59','_table210_opt60','_table210_opt61','_table210_opt62','_table210_opt63','_table210_opt64','_table210_opt65','_table210_opt66','_table210_opt67','_table210_opt68','_table210_opt69','_table210_opt70','_table210_opt71','_table210_opt72','_table210_opt73','_table210_opt74',];
+function __reset_checkboxes_table210 () {
+  var displayed_columns = [{id:"_table210_opt1", value:true}, {id:"_table210_opt2", value:true}, {id:"_table210_opt3", value:true}, {id:"_table210_opt4", value:false}, {id:"_table210_opt5", value:true}, {id:"_table210_opt6", value:true}, {id:"_table210_opt7", value:true}, {id:"_table210_opt8", value:true}, {id:"_table210_opt9", value:true}, {id:"_table210_opt10", value:true}, {id:"_table210_opt11", value:false}, {id:"_table210_opt12", value:false}, {id:"_table210_opt13", value:false}, {id:"_table210_opt14", value:false}, {id:"_table210_opt15", value:false}, {id:"_table210_opt16", value:false}, {id:"_table210_opt17", value:false}, {id:"_table210_opt18", value:false}, {id:"_table210_opt19", value:false}, {id:"_table210_opt20", value:false}, {id:"_table210_opt21", value:false}, {id:"_table210_opt22", value:false}, {id:"_table210_opt23", value:false}, {id:"_table210_opt24", value:false}, {id:"_table210_opt25", value:false}, {id:"_table210_opt26", value:false}, {id:"_table210_opt27", value:false}, {id:"_table210_opt28", value:false}, {id:"_table210_opt29", value:false}, {id:"_table210_opt30", value:false}, {id:"_table210_opt31", value:false}, {id:"_table210_opt32", value:false}, {id:"_table210_opt33", value:false}, {id:"_table210_opt34", value:false}, {id:"_table210_opt35", value:false}, {id:"_table210_opt36", value:false}, {id:"_table210_opt37", value:false}, {id:"_table210_opt38", value:false}, {id:"_table210_opt39", value:false}, {id:"_table210_opt40", value:false}, {id:"_table210_opt41", value:false}, {id:"_table210_opt42", value:false}, {id:"_table210_opt43", value:false}, {id:"_table210_opt44", value:false}, {id:"_table210_opt45", value:false}, {id:"_table210_opt46", value:false}, {id:"_table210_opt47", value:true}, {id:"_table210_opt48", value:true}, {id:"_table210_opt49", value:false}, {id:"_table210_opt50", value:false}, {id:"_table210_opt51", value:false}, {id:"_table210_opt52", value:false}, {id:"_table210_opt53", value:false}, {id:"_table210_opt54", value:false}, {id:"_table210_opt55", value:false}, {id:"_table210_opt56", value:false}, {id:"_table210_opt57", value:false}, {id:"_table210_opt58", value:false}, {id:"_table210_opt59", value:false}, {id:"_table210_opt60", value:false}, {id:"_table210_opt61", value:false}, {id:"_table210_opt62", value:false}, {id:"_table210_opt63", value:false}, {id:"_table210_opt64", value:false}, {id:"_table210_opt65", value:false}, {id:"_table210_opt66", value:false}, {id:"_table210_opt67", value:false}, {id:"_table210_opt68", value:false}, {id:"_table210_opt69", value:false}, {id:"_table210_opt70", value:false}, {id:"_table210_opt71", value:false}, {id:"_table210_opt72", value:false}, {id:"_table210_opt73", value:false}, {id:"_table210_opt74", value:false}];
+  // Update initial state using localStorage
+  for (var i = 0; i < displayed_columns.length; i++) {
+    var dcol = displayed_columns[i];
+    var val = localStorage.getItem (dcol.id);
+    if (val) {
+      dcol.value = (val === "true");
+    }
+    var obj = document.getElementById(dcol.id);
+    if (obj) {
+      if (dcol.value == true) {
+        obj.checked = true;
+      }
+      else {
+        obj.checked = false;
+      }
+    }
+  }
+  // Update table
+  var table = document.getElementById("_fixed_table_210");
+  for (let i in table.rows) {
+    let row = table.rows[i]
+    for (let j in row.cells) {
+      let col = row.cells[j]
+      if (col.classList) {
+        if (displayed_columns[j].value == true) {
+          col.classList.remove("_tcol_hidden");
+        }
+        else {
+          col.classList.add("_tcol_hidden");
+        }
+      }
+    }
+  }
+  {
+    var value = localStorage.getItem("_table210_opt_all");
+    if (value) {
+      var obj = document.getElementById ("_table210_opt_all");
+      if (obj) {
+        obj.value = value;
+      }
+    }
+  }
+  _check_all_checkbox_ ("_table210_opt_all", "list_opts_table210");
+  {
+    var text     = localStorage.getItem("_table210_opt_select_all_coverages_value");
+    var selected = localStorage.getItem("_table210_opt_select_all_coverages_selected");
+    if (text && selected) {
+      var checkbox = document.getElementById ("_table210_opt_select_all_coverages");
+      if (checkbox) {
+        checkbox.dataset.selected = selected;
+        checkbox.value            = text;
+      }
+    }
+  }
+  {
+    var text     = localStorage.getItem("_table210_opt_select_all_times_oth_value");
+    var selected = localStorage.getItem("_table210_opt_select_all_times_oth_selected");
+    if (text && selected) {
+      var checkbox = document.getElementById ("_table210_opt_select_all_times_oth");
+      if (checkbox) {
+        checkbox.dataset.selected = selected;
+        checkbox.value            = text;
+      }
+    }
+  }
+  {
+    var text     = localStorage.getItem("_table210_opt_select_all_times_wt_value");
+    var selected = localStorage.getItem("_table210_opt_select_all_times_wt_selected");
+    if (text && selected) {
+      var checkbox = document.getElementById ("_table210_opt_select_all_times_wt");
+      if (checkbox) {
+        checkbox.dataset.selected = selected;
+        checkbox.value            = text;
+      }
+    }
+  }
+  {
+    var text     = localStorage.getItem("_table210_opt_select_all_speedups_value");
+    var selected = localStorage.getItem("_table210_opt_select_all_speedups_selected");
+    if (text && selected) {
+      var checkbox = document.getElementById ("_table210_opt_select_all_speedups");
+      if (checkbox) {
+        checkbox.dataset.selected = selected;
+        checkbox.value            = text;
+      }
+    }
+  }
+  {
+    var text     = localStorage.getItem("_table210_opt_select_all_efficiencies_value");
+    var selected = localStorage.getItem("_table210_opt_select_all_efficiencies_selected");
+    if (text && selected) {
+      var checkbox = document.getElementById ("_table210_opt_select_all_efficiencies");
+      if (checkbox) {
+        checkbox.dataset.selected = selected;
+        checkbox.value            = text;
+      }
+    }
+  }
+};
+addLoadEvent(function(){
+  __reset_checkboxes_table210 ();
+});
+</script>
+<script>
+function select_all_coverages(table, id_root, checkbox){
+  for (var j = 0, col; col = table.rows[0].cells[j]; j++) {
+    var regex = /Coverage/;
+    if (regex.test(col.innerHTML) == true) {
+      var classes = col.className.split(' ');
+      for (var c = 0; c < classes.length; c++) {
+        if (classes[c].indexOf(id_root) != -1) {
+          if (document.getElementById (classes[c]).checked == false
+          && checkbox.dataset.selected == "false") {
+            document.getElementById (classes[c]).checked = true;
+            click_table_menu (classes[c]);
+          }
+          else if (document.getElementById (classes[c]).checked == true
+          && checkbox.dataset.selected == "true") {
+            document.getElementById (classes[c]).checked = false;
+            click_table_menu (classes[c]);
+          }
+        }
+      }
+    }
+  }
+  if (checkbox.dataset.selected == "true") {
+    checkbox.dataset.selected = "false";
+    checkbox.value = checkbox.dataset.text;
+  }
+  else {
+    checkbox.dataset.selected = "true";
+    checkbox.value = checkbox.dataset.text_alt;
+  }
+  localStorage.setItem(checkbox.id+"_value", checkbox.value);
+  localStorage.setItem(checkbox.id+"_selected", checkbox.dataset.selected);
+  _check_all_checkbox_ (id_root + "_opt_all", "list_opts" + id_root);
+}
+function select_all_times_oth(table, id_root, checkbox){
+  for (var j = 0, col; col = table.rows[0].cells[j]; j++) {
+    var regex = /(Max .* Time Over Threads)/;
+    if (regex.test(col.innerHTML) == true) {
+      var classes = col.className.split(' ');
+      for (var c = 0; c < classes.length; c++) {
+        if (classes[c].indexOf(id_root) != -1) {
+          if (document.getElementById (classes[c]).checked == false
+          && checkbox.dataset.selected == "false") {
+            document.getElementById (classes[c]).checked = true;
+            click_table_menu (classes[c]);
+          }
+          else if (document.getElementById (classes[c]).checked == true
+          && checkbox.dataset.selected == "true") {
+            document.getElementById (classes[c]).checked = false;
+            click_table_menu (classes[c]);
+          }
+        }
+      }
+    }
+  }
+  if (checkbox.dataset.selected == "true") {
+    checkbox.dataset.selected = "false";
+    checkbox.value = checkbox.dataset.text;
+  }
+  else {
+    checkbox.dataset.selected = "true";
+    checkbox.value = checkbox.dataset.text_alt;
+  }
+  localStorage.setItem(checkbox.id+"_value", checkbox.value);
+  localStorage.setItem(checkbox.id+"_selected", checkbox.dataset.selected);
+  _check_all_checkbox_ (id_root + "_opt_all", "list_opts" + id_root);
+}
+function select_all_times_wt(table, id_root, checkbox){
+  for (var j = 0, col; col = table.rows[0].cells[j]; j++) {
+    var regex = /(Time w.r.t. Wall Time)/;
+    if (regex.test(col.innerHTML) == true) {
+      var classes = col.className.split(' ');
+      for (var c = 0; c < classes.length; c++) {
+        if (classes[c].indexOf(id_root) != -1) {
+          if (document.getElementById (classes[c]).checked == false
+          && checkbox.dataset.selected == "false") {
+            document.getElementById (classes[c]).checked = true;
+            click_table_menu (classes[c]);
+          }
+          else if (document.getElementById (classes[c]).checked == true
+          && checkbox.dataset.selected == "true") {
+            document.getElementById (classes[c]).checked = false;
+            click_table_menu (classes[c]);
+          }
+        }
+      }
+    }
+  }
+  if (checkbox.dataset.selected == "true") {
+    checkbox.dataset.selected = "false";
+    checkbox.value = checkbox.dataset.text;
+  }
+  else {
+    checkbox.dataset.selected = "true";
+    checkbox.value = checkbox.dataset.text_alt;
+  }
+  localStorage.setItem(checkbox.id+"_value", checkbox.value);
+  localStorage.setItem(checkbox.id+"_selected", checkbox.dataset.selected);
+  _check_all_checkbox_ (id_root + "_opt_all", "list_opts" + id_root);
+}
+function select_all_speedups(table, id_root, checkbox){
+  for (var j = 0, col; col = table.rows[0].cells[j]; j++) {
+    var regex = /Potential Speed-Up/;
+    if (regex.test(col.innerHTML) == true) {
+      var classes = col.className.split(' ');
+      for (var c = 0; c < classes.length; c++) {
+        if (classes[c].indexOf(id_root) != -1) {
+          if (document.getElementById (classes[c]).checked == false
+          && checkbox.dataset.selected == "false") {
+            document.getElementById (classes[c]).checked = true;
+            click_table_menu (classes[c]);
+          }
+          else if (document.getElementById (classes[c]).checked == true
+          && checkbox.dataset.selected == "true") {
+            document.getElementById (classes[c]).checked = false;
+            click_table_menu (classes[c]);
+          }
+        }
+      }
+    }
+  }
+  if (checkbox.dataset.selected == "true") {
+    checkbox.dataset.selected = "false";
+    checkbox.value = checkbox.dataset.text;
+  }
+  else {
+    checkbox.dataset.selected = "true";
+    checkbox.value = checkbox.dataset.text_alt;
+  }
+  localStorage.setItem(checkbox.id+"_value", checkbox.value);
+  localStorage.setItem(checkbox.id+"_selected", checkbox.dataset.selected);
+  _check_all_checkbox_ (id_root + "_opt_all", "list_opts" + id_root);
+}
+function select_all_efficiencies(table, id_root, checkbox){
+  for (var j = 0, col; col = table.rows[0].cells[j]; j++) {
+    var regex = /Efficiency/;
+    if (regex.test(col.innerHTML) == true) {
+      var classes = col.className.split(' ');
+      for (var c = 0; c < classes.length; c++) {
+        if (classes[c].indexOf(id_root) != -1) {
+          if (document.getElementById (classes[c]).checked == false
+          && checkbox.dataset.selected == "false") {
+            document.getElementById (classes[c]).checked = true;
+            click_table_menu (classes[c]);
+          }
+          else if (document.getElementById (classes[c]).checked == true
+          && checkbox.dataset.selected == "true") {
+            document.getElementById (classes[c]).checked = false;
+            click_table_menu (classes[c]);
+          }
+        }
+      }
+    }
+  }
+  if (checkbox.dataset.selected == "true") {
+    checkbox.dataset.selected = "false";
+    checkbox.value = checkbox.dataset.text;
+  }
+  else {
+    checkbox.dataset.selected = "true";
+    checkbox.value = checkbox.dataset.text_alt;
+  }
+  localStorage.setItem(checkbox.id+"_value", checkbox.value);
+  localStorage.setItem(checkbox.id+"_selected", checkbox.dataset.selected);
+  _check_all_checkbox_ (id_root + "_opt_all", "list_opts" + id_root);
+}
+</script>
+</div></div><script>
+// Function called to check / uncheck all modules in the filter
+function _onchange_modules (obj) {
+  var inputs = ["_input_check_mod_measure_opti_parallel", ];
+  if (obj.checked == true) {
+    document.getElementById("_input_check_all_mods_text").innerHTML = "Uncheck all modules";
+    for (var i = 0; i < inputs.length; i++) {
+      document.getElementById(inputs[i]).checked = true;
+    }
+  }
+  else {
+    document.getElementById("_input_check_all_mods_text").innerHTML = "Check all modules";
+    for (var i = 0; i < inputs.length; i++) {
+      document.getElementById(inputs[i]).checked = false;
+    }
+  }
+}
+// Function called to handle filters
+function _upd_table() {
+  var tab     = document.getElementById("_fixed_table_210");
+  var rows    = tab.childNodes[0].rows;
+  var nb_rows = rows.length;
+  var button  = document.getElementById("button_toggle_loop_index");
+  for (var i = 1; i < nb_rows; i++) {
+    var cells = rows[i].cells;
+    if (cells[1].innerHTML != "") {
+       if (document.getElementById("_input_check_all_decan").checked == true
+       &&  cells[0].style.backgroundColor == "") {
+          rows[i].classList.add("_tree_hidden");
+      }
+      else if ((document.getElementById("_input_check_mod_" + cells[1].textContent.replace (/ - .*/g, "")).checked == false)
+      ||  ((button.innerHTML.localeCompare ("Show Full Profile") == 0)
+        && (cells[3].innerHTML.localeCompare("Single") != 0)
+        && (cells[3].innerHTML.localeCompare("Innermost") != 0))) {
+          rows[i].classList.add("_tree_hidden");
+      }
+      else {
+          rows[i].classList.remove("_tree_hidden");
+      }
+    }
+  }
+}
+addLoadEvent(function(){
+  var boxs_on  = ["_input_check_all_mods","_input_check_mod_measure_opti_parallel", ];
+  var boxs_off = ["_input_check_all_decan"];
+  for (var i = 0; i < boxs_on.length; i++) {
+    document.getElementById(boxs_on[i]).checked = true;
+  }
+  for (var i = 0; i < boxs_off.length; i++) {
+    document.getElementById(boxs_off[i]).checked = false;
+  }
+});
+function getPos(el) {
+  for (var lx=0, ly=0;
+      el != null;
+      lx += el.offsetLeft, ly += el.offsetTop, el = el.offsetParent);
+  return {x: lx,y: ly};
+}
+function _onresize () {
+  __maqao_legacy_onresize ();
+  var d = document.getElementById ("_fixed_table_210").parentNode;
+  d.style.maxHeight = (window.innerHeight - getPos (d).y - 20)+"px";
+}
+window.onresize = _onresize;
+function toggle_loop_index() {
+  var table = document.getElementById("_fixed_table_210");
+  var button = document.getElementById("button_toggle_loop_index");
+  if (button.innerHTML.localeCompare ("Show Full Profile") == 0) {
+    button.innerHTML = "Show Innermost Profile";
+    for (var i = 1, row; row = table.rows[i]; i++) {
+      var mod = "";
+      if (row.cells[1].children.length == 0) {
+        mod = row.cells[1].innerHTML.replace (/ - .*/g, "");
+      }
+      else {
+        mod = row.cells[1].children[0].innerText.replace (/ - .*/g, "");
+      }
+      if (document.getElementById("_input_check_mod_" + mod).checked == true) {
+        row.classList.remove ("_tree_hidden");
+      }
+    }
+    let level_selector_id = "_table210_opt4";
+    let level_selector = document.getElementById (level_selector_id);
+    if (level_selector && level_selector.checked == false ) {
+       level_selector.checked = true;
+       click_table_menu(level_selector_id, "_table210_opt_all", "list_opts_table210");
+       level_selector.dataset.allLoopsFlag = "true";
+    }
+  }
+  else {
+    button.innerHTML = "Show Full Profile";
+    for (var i = 1, row; row = table.rows[i]; i++) {
+      if (row.cells[3].innerHTML.localeCompare("Single") != 0
+      && row.cells[3].innerHTML.localeCompare("Innermost") != 0) {
+        row.classList.add ("_tree_hidden");
+      }
+    }
+    let level_selector_id = "_table210_opt4";
+    let level_selector = document.getElementById (level_selector_id);
+    if (level_selector && level_selector.checked == true && level_selector.dataset.allLoopsFlag == "true") {
+       level_selector.checked = false;
+       click_table_menu(level_selector_id, "_table210_opt_all", "list_opts_table210");
+       level_selector.dataset.allLoopsFlag = "false";
+    }
+  }
+}
+addLoadEvent(function(){
+  toggle_loop_index();
+  _onresize ();
+});
+</script>
+
+  <div id="MaqaoModal" class="maqao_modal">
+    <div class="maqao_modal-content">
+      <div class="maqao_modal-header">
+        <span class="maqao_close">&times;</span>
+      </div>
+      <div id="maqao_modal-body" class="maqao_modal-body">
+      </div>
+    </div>
+  </div>
+</div><script>
+var tooltips_texts = ['List of profiled loops. Details about metrics can be obtained by moving the cursor on the column header. Rows can be sorted ascending or descending by clicking on the column header. Colors in the coverage column are from red for hot loops to blue for cold loops. Some additionnal columns can be displayed by clicking on the form above the table. Double click on a loop to display its analysis report in a new tab.',
+'Summary of all user-defined parameters in multiruns_params table',
+'A form that can be displayed / hidden by clicking on the header to specify which modules must be displayed in the profiling. By clicking on the button, only checked categories are displayed.',
+'A set of filters to display / hide some columns',
+'Loop Level (Innermost / Single / InBetween / Outermost)',
+'Exclusive percentage of the execution time spent in the loop for run run_1x1',
+'Exclusive percentage of the execution time spent in the loop for run run_1x2',
+'Exclusive percentage of the execution time spent in the loop for run run_1x4',
+'Exclusive percentage of the execution time spent in the loop for run run_1x8',
+'Exclusive percentage of the execution time spent in the loop for run run_1x16',
+'Exclusive percentage of the execution time spent in the loop for run run_1x32',
+'Inclusive percentage of the execution time spent in the loop for run run_1x1',
+'Inclusive percentage of the execution time spent in the loop for run run_1x2',
+'Inclusive percentage of the execution time spent in the loop for run run_1x4',
+'Inclusive percentage of the execution time spent in the loop for run run_1x8',
+'Inclusive percentage of the execution time spent in the loop for run run_1x16',
+'Inclusive percentage of the execution time spent in the loop for run run_1x32',
+'Maximal exclusive execution time over all threads spent in the loop in seconds for run run_1x1',
+'Maximal exclusive execution time over all threads spent in the loop in seconds for run run_1x2',
+'Maximal exclusive execution time over all threads spent in the loop in seconds for run run_1x4',
+'Maximal exclusive execution time over all threads spent in the loop in seconds for run run_1x8',
+'Maximal exclusive execution time over all threads spent in the loop in seconds for run run_1x16',
+'Maximal exclusive execution time over all threads spent in the loop in seconds for run run_1x32',
+'Maximal inclusive execution time over all threads spent in the loop in seconds for run run_1x1',
+'Maximal inclusive execution time over all threads spent in the loop in seconds for run run_1x2',
+'Maximal inclusive execution time over all threads spent in the loop in seconds for run run_1x4',
+'Maximal inclusive execution time over all threads spent in the loop in seconds for run run_1x8',
+'Maximal inclusive execution time over all threads spent in the loop in seconds for run run_1x16',
+'Maximal inclusive execution time over all threads spent in the loop in seconds for run run_1x32',
+'Exclusive time of the loop with regard to the global wall time in seconds for run run_1x1',
+'Exclusive time of the loop with regard to the global wall time in seconds for run run_1x2',
+'Exclusive time of the loop with regard to the global wall time in seconds for run run_1x4',
+'Exclusive time of the loop with regard to the global wall time in seconds for run run_1x8',
+'Exclusive time of the loop with regard to the global wall time in seconds for run run_1x16',
+'Exclusive time of the loop with regard to the global wall time in seconds for run run_1x32',
+'Inclusive time of the loop with regard to the global wall time in seconds for run run_1x1',
+'Inclusive time of the loop with regard to the global wall time in seconds for run run_1x2',
+'Inclusive time of the loop with regard to the global wall time in seconds for run run_1x4',
+'Inclusive time of the loop with regard to the global wall time in seconds for run run_1x8',
+'Inclusive time of the loop with regard to the global wall time in seconds for run run_1x16',
+'Inclusive time of the loop with regard to the global wall time in seconds for run run_1x32',
+'Number of threads that executed the loop for run run_1x1',
+'Number of threads that executed the loop for run run_1x2',
+'Number of threads that executed the loop for run run_1x4',
+'Number of threads that executed the loop for run run_1x8',
+'Number of threads that executed the loop for run run_1x16',
+'Number of threads that executed the loop for run run_1x32',
+'Percentage of the loop that have been vectorized. The color is red when the value is lower than 70%, orange when the value is between 70% and 90% and green when it is greater than 90%.',
+'Average width (percentage) of vector registers used by the loop. The color is red when the value is lower than 70%, orange when the value is between 70% and 90% and green when it is greater than 90%',
+'Optimistic speedup of the loop available if it has no scalar integer instructions. This speedup can be achieved by removing all instructions which do not perform any floating-point computation or memory accesses. Instructions used to handle the loop control flow are not included in the instructions set to remove. A light orange color means the speedup is between 1 and 2, a darker orange color means the speedup is greater than 2.',
+'Optimistic speedup of the loop available if it has all its floating point computation vectorized. This speedup can be achived by vectorizing all instructions performing floating point computation. It does not take into account memory accesses. A light orange color means the speedup is between 1 and 2, a darker orange color means the speedup is greater than 2.</li>',
+'Optimistic speedup of the loop available if it has all its instructions vectorized. This speedup can be achived by vectorizing all instructions, both floating point computation instructions and memory accesses instructions. A light orange color means the speedup is between 1 and 2, a darker orange color means the speedup is greater than 2;</li>',
+'Optimistic speedup of the loop available if it is perfectly load balanced for run run_1x1. This speedup can be achieved by balancing all threads. A light orange color means the speedup is between 1 and 2, a darker orange color means the speedup is greater than 2;</li>',
+'Optimistic speedup of the loop available if it is perfectly load balanced for run run_1x2. This speedup can be achieved by balancing all threads. A light orange color means the speedup is between 1 and 2, a darker orange color means the speedup is greater than 2;</li>',
+'Optimistic speedup of the loop available if it is perfectly load balanced for run run_1x4. This speedup can be achieved by balancing all threads. A light orange color means the speedup is between 1 and 2, a darker orange color means the speedup is greater than 2;</li>',
+'Optimistic speedup of the loop available if it is perfectly load balanced for run run_1x8. This speedup can be achieved by balancing all threads. A light orange color means the speedup is between 1 and 2, a darker orange color means the speedup is greater than 2;</li>',
+'Optimistic speedup of the loop available if it is perfectly load balanced for run run_1x16. This speedup can be achieved by balancing all threads. A light orange color means the speedup is between 1 and 2, a darker orange color means the speedup is greater than 2;</li>',
+'Optimistic speedup of the loop available if it is perfectly load balanced for run run_1x32. This speedup can be achieved by balancing all threads. A light orange color means the speedup is between 1 and 2, a darker orange color means the speedup is greater than 2;</li>',
+'Efficiency = (Time (Ref) / Time (run_1x1)) / Ideal_Speedup',
+'Speedup at the application level based on the efficiency: Speedup = (1 - Efficiency) * Coverage.',
+'Efficiency = (Time (Ref) / Time (run_1x2)) / Ideal_Speedup',
+'Speedup at the application level based on the efficiency: Speedup = (1 - Efficiency) * Coverage.',
+'Efficiency = (Time (Ref) / Time (run_1x4)) / Ideal_Speedup',
+'Speedup at the application level based on the efficiency: Speedup = (1 - Efficiency) * Coverage.',
+'Efficiency = (Time (Ref) / Time (run_1x8)) / Ideal_Speedup',
+'Speedup at the application level based on the efficiency: Speedup = (1 - Efficiency) * Coverage.',
+'Efficiency = (Time (Ref) / Time (run_1x16)) / Ideal_Speedup',
+'Speedup at the application level based on the efficiency: Speedup = (1 - Efficiency) * Coverage.',
+'Efficiency = (Time (Ref) / Time (run_1x32)) / Ideal_Speedup',
+'Speedup at the application level based on the efficiency: Speedup = (1 - Efficiency) * Coverage.',
+'MAQAO loop identifier. A green cell means the loop has been dynamically analyzed with DECAN, an orange cell means there no DECAN results but only VPROF results',
+'Name of the source file that contains the loop and its location in the file.',
+'Name of the fonction that contains the loop.',
+'Loop Level (Innermost / Single / InBetween / Outermost)',
+'Exclusive percentage of the execution time spent in the loop for run run_1x1',
+'Exclusive percentage of the execution time spent in the loop for run run_1x2',
+'Exclusive percentage of the execution time spent in the loop for run run_1x4',
+'Exclusive percentage of the execution time spent in the loop for run run_1x8',
+'Exclusive percentage of the execution time spent in the loop for run run_1x16',
+'Exclusive percentage of the execution time spent in the loop for run run_1x32',
+'Inclusive percentage of the execution time spent in the loop for run run_1x1',
+'Inclusive percentage of the execution time spent in the loop for run run_1x2',
+'Inclusive percentage of the execution time spent in the loop for run run_1x4',
+'Inclusive percentage of the execution time spent in the loop for run run_1x8',
+'Inclusive percentage of the execution time spent in the loop for run run_1x16',
+'Inclusive percentage of the execution time spent in the loop for run run_1x32',
+'Maximal exclusive execution time over all threads spent in the loop in seconds for run run_1x1',
+'Maximal exclusive execution time over all threads spent in the loop in seconds for run run_1x2',
+'Maximal exclusive execution time over all threads spent in the loop in seconds for run run_1x4',
+'Maximal exclusive execution time over all threads spent in the loop in seconds for run run_1x8',
+'Maximal exclusive execution time over all threads spent in the loop in seconds for run run_1x16',
+'Maximal exclusive execution time over all threads spent in the loop in seconds for run run_1x32',
+'Maximal inclusive execution time over all threads spent in the loop in seconds for run run_1x1',
+'Maximal inclusive execution time over all threads spent in the loop in seconds for run run_1x2',
+'Maximal inclusive execution time over all threads spent in the loop in seconds for run run_1x4',
+'Maximal inclusive execution time over all threads spent in the loop in seconds for run run_1x8',
+'Maximal inclusive execution time over all threads spent in the loop in seconds for run run_1x16',
+'Maximal inclusive execution time over all threads spent in the loop in seconds for run run_1x32',
+'Exclusive time of the loop with regard to the global wall time in seconds for run run_1x1',
+'Exclusive time of the loop with regard to the global wall time in seconds for run run_1x2',
+'Exclusive time of the loop with regard to the global wall time in seconds for run run_1x4',
+'Exclusive time of the loop with regard to the global wall time in seconds for run run_1x8',
+'Exclusive time of the loop with regard to the global wall time in seconds for run run_1x16',
+'Exclusive time of the loop with regard to the global wall time in seconds for run run_1x32',
+'Inclusive time of the loop with regard to the global wall time in seconds for run run_1x1',
+'Inclusive time of the loop with regard to the global wall time in seconds for run run_1x2',
+'Inclusive time of the loop with regard to the global wall time in seconds for run run_1x4',
+'Inclusive time of the loop with regard to the global wall time in seconds for run run_1x8',
+'Inclusive time of the loop with regard to the global wall time in seconds for run run_1x16',
+'Inclusive time of the loop with regard to the global wall time in seconds for run run_1x32',
+'Number of threads that executed the loop for run run_1x1',
+'Number of threads that executed the loop for run run_1x2',
+'Number of threads that executed the loop for run run_1x4',
+'Number of threads that executed the loop for run run_1x8',
+'Number of threads that executed the loop for run run_1x16',
+'Number of threads that executed the loop for run run_1x32',
+'Percentage of the loop that have been vectorized. The color is red when the value is lower than 70%, orange when the value is between 70% and 90% and green when it is greater than 90%.',
+'Average width (percentage) of vector registers used by the loop. The color is red when the value is lower than 70%, orange when the value is between 70% and 90% and green when it is greater than 90%',
+'Optimistic speedup of the loop available if it has no scalar integer instructions. This speedup can be achieved by removing all instructions which do not perform any floating-point computation or memory accesses. Instructions used to handle the loop control flow are not included in the instructions set to remove. A light orange color means the speedup is between 1 and 2, a darker orange color means the speedup is greater than 2.',
+'Optimistic speedup of the loop available if it has all its floating point computation vectorized. This speedup can be achived by vectorizing all instructions performing floating point computation. It does not take into account memory accesses. A light orange color means the speedup is between 1 and 2, a darker orange color means the speedup is greater than 2.</li>',
+'Optimistic speedup of the loop available if it has all its instructions vectorized. This speedup can be achived by vectorizing all instructions, both floating point computation instructions and memory accesses instructions. A light orange color means the speedup is between 1 and 2, a darker orange color means the speedup is greater than 2;</li>',
+'Optimistic speedup of the loop available if it is perfectly load balanced for run run_1x1. This speedup can be achieved by balancing all threads. A light orange color means the speedup is between 1 and 2, a darker orange color means the speedup is greater than 2;</li>',
+'Optimistic speedup of the loop available if it is perfectly load balanced for run run_1x2. This speedup can be achieved by balancing all threads. A light orange color means the speedup is between 1 and 2, a darker orange color means the speedup is greater than 2;</li>',
+'Optimistic speedup of the loop available if it is perfectly load balanced for run run_1x4. This speedup can be achieved by balancing all threads. A light orange color means the speedup is between 1 and 2, a darker orange color means the speedup is greater than 2;</li>',
+'Optimistic speedup of the loop available if it is perfectly load balanced for run run_1x8. This speedup can be achieved by balancing all threads. A light orange color means the speedup is between 1 and 2, a darker orange color means the speedup is greater than 2;</li>',
+'Optimistic speedup of the loop available if it is perfectly load balanced for run run_1x16. This speedup can be achieved by balancing all threads. A light orange color means the speedup is between 1 and 2, a darker orange color means the speedup is greater than 2;</li>',
+'Optimistic speedup of the loop available if it is perfectly load balanced for run run_1x32. This speedup can be achieved by balancing all threads. A light orange color means the speedup is between 1 and 2, a darker orange color means the speedup is greater than 2;</li>',
+'Efficiency = (Time (Ref) / Time (run_1x1)) / Ideal_Speedup',
+'Speedup at the application level based on the efficiency: Speedup = (1 - Efficiency) * Coverage.',
+'Efficiency = (Time (Ref) / Time (run_1x2)) / Ideal_Speedup',
+'Speedup at the application level based on the efficiency: Speedup = (1 - Efficiency) * Coverage.',
+'Efficiency = (Time (Ref) / Time (run_1x4)) / Ideal_Speedup',
+'Speedup at the application level based on the efficiency: Speedup = (1 - Efficiency) * Coverage.',
+'Efficiency = (Time (Ref) / Time (run_1x8)) / Ideal_Speedup',
+'Speedup at the application level based on the efficiency: Speedup = (1 - Efficiency) * Coverage.',
+'Efficiency = (Time (Ref) / Time (run_1x16)) / Ideal_Speedup',
+'Speedup at the application level based on the efficiency: Speedup = (1 - Efficiency) * Coverage.',
+'Efficiency = (Time (Ref) / Time (run_1x32)) / Ideal_Speedup',
+'Speedup at the application level based on the efficiency: Speedup = (1 - Efficiency) * Coverage.',
+'/home/mac/rendu_AOC/rendu_TP1/driver_opti.c: 17-19<br>/home/mac/rendu_AOC/rendu_TP1/driver_opti.c: 94-94<br>'];
+var modal = document.getElementById('MaqaoModal');
+var span = document.getElementsByClassName("maqao_close")[0];
+span.onclick = function() {
+    modal.style.display = "none";
+}
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+const comparer = (idx, asc) => (a, b) => ((v1, v2) => 
+    v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v2 - v1 : v1.toString().localeCompare(v2)
+    )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
+addLoadEvent(function(){
+  document.querySelectorAll('._fixed_table:not(._no_auto_sorting) th').forEach(th => th.addEventListener('click', (() => {
+    const table = th.closest('table');
+    // Remove all symbols in header
+    table.querySelectorAll('th').forEach(function (e) {
+      e.firstChild.textContent = "";
+    });
+    // Change the symbol on the clicked header
+    if (this.asc != true) {
+      th.firstChild.textContent = "\u25BC";
+    }
+    else {
+      th.firstChild.textContent = "\u25B2";
+    }
+    Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
+        .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+        .forEach(tr => table.appendChild(tr) );
+  })));
+});
+addLoadEvent(function(){
+  document.querySelectorAll('._tree_table:not(._no_auto_sorting) th').forEach(th => th.addEventListener('click', (() => {
+    const table = th.closest('table');
+    // Remove all symbols in header
+    table.querySelectorAll('th').forEach(function (e) {
+      e.firstChild.textContent = "";
+    });
+    // Change the symbol on the clicked header
+    if (this.asc != true) {
+      th.firstChild.textContent = "\u25BC";
+    }
+    else {
+      th.firstChild.textContent = "\u25B2";
+    }
+    let last_id = "";
+    const t_outermost = new Array ();
+    const t_children  = new Map ();
+    for (let i = 1, row; row = table.rows[i]; i++) {
+      if (row.classList.contains ("_outer_row")) {
+        t_outermost.push (row);
+        last_id = row.id;
+        t_children [last_id] = new Array ();
+      }
+      else {
+        t_children [last_id].push (row);
+      }
+    }
+    t_outermost.sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc));
+    for (let i = 0, row; row = t_outermost[i]; i++) {
+      table.appendChild(row)
+      for (let j = 0, child; child = t_children[row.id][j]; j++) {
+        table.appendChild(child)
+      }
+    }
+  })));
+});
+function _check_all_checkbox_ (obj_id, opts_ids) {
+  var obj   = document.getElementById (obj_id);
+  var opts  = window[opts_ids];
+  var count = 0
+  for (i = 0; i < opts.length; i++) {
+    var obj_s = document.getElementById(opts[i]);
+    if (obj_s.checked) {
+      count ++;
+    }
+  }
+  if (count == 0) {
+    obj.value = "Select all";
+  }
+  else if (count == opts.length) {
+    obj.value = "Select none";
+  }
+}
+// Fonction for table selector
+function click_table_menu (c, obj_id, opt_ids) {
+  var is_checked = document.getElementById (c).checked;
+  localStorage.setItem(c, is_checked);
+  $("."+c).each(function(index, element) {
+    if (is_checked) {
+      element.classList.remove("_tcol_hidden");
+    }
+    else {
+      element.classList.add("_tcol_hidden");
+    }
+  });
+  if (obj_id != undefined) {
+    _check_all_checkbox_ (obj_id, opt_ids)
+  }
+}
+function set_all_table_menu (obj, var_opt_ids) {
+  var opt_ids = window[var_opt_ids];
+  var is_selected = true
+  if (obj.value == "Select all") {
+    is_selected = false;
+  }
+  for (i = 0; i < opt_ids.length; i++) {
+    var obj_s = document.getElementById(opt_ids[i]);
+    if (is_selected == obj_s.checked) {
+      obj_s.checked = !obj_s.checked;
+      click_table_menu (opt_ids[i]);
+    }
+  }
+  if (is_selected == false) {
+    obj.value = "Select none";
+  } else {
+    obj.value = "Select all";
+  }
+  localStorage.setItem(obj.id, obj.value);
+}
+// Script for accordion box
+function _click_accordion_header(obj) {
+  var content = obj.nextSibling;
+  content.classList.toggle('collapsed');
+  obj.classList.toggle('collapsed');
+  obj.parentNode.classList.toggle('collapsed');
+  // Check if the box must be openned ...
+  if (obj.classList.contains ('collapsed'))
+  {
+    obj.firstChild.textContent = "\u25B6";
+  }
+  // or closed.
+  else 
+  {
+    obj.firstChild.textContent = "\u25BC";
+  }
+  if (typeof _onresize === "function") {
+    _onresize ();
+  }
+}
+  // Script for paged table
+function _click_paged_prev(obj) {
+  var pages_content_id = '_paged_tables_page_' + obj.parentNode.parentNode.id.substr (obj.parentNode.parentNode.id.lastIndexOf('_') + 1);
+  var pages_content = document.getElementById(pages_content_id).innerHTML;
+  var max_pages = pages_content.substr (pages_content.lastIndexOf('/') + 1);
+  var cur_page  = pages_content.substring (pages_content.lastIndexOf(' ') + 1, pages_content.lastIndexOf('/'));
+  max_pages = Number (max_pages);
+  cur_page  = Number (cur_page);
+  if (cur_page > 1) {
+    var div_paged = obj.parentNode.parentNode.id;
+    var i;
+    var x = document.getElementsByClassName(div_paged + '_' + (cur_page - 1));
+    for (i = 0; i < x.length; i++) {
+      x[i].classList.toggle('_paged_hidden');
+    }
+    x = document.getElementsByClassName(div_paged + '_' + (cur_page - 2));
+    for (i = 0; i < x.length; i++) {
+      x[i].classList.toggle('_paged_hidden');
+    }
+  document.getElementById(pages_content_id).textContent = "Page " + (cur_page - 1) + "/" + max_pages;
+  }
+}
+function _click_paged_next(obj) {
+  var pages_content_id = '_paged_tables_page_' + obj.parentNode.parentNode.id.substr (obj.parentNode.parentNode.id.lastIndexOf('_') + 1);
+  var pages_content = document.getElementById(pages_content_id).innerHTML;
+  var max_pages = pages_content.substr (pages_content.lastIndexOf('/') + 1);
+  var cur_page  = pages_content.substring (pages_content.lastIndexOf(' ') + 1, pages_content.lastIndexOf('/'));
+  max_pages = Number (max_pages);
+  cur_page  = Number (cur_page);
+  if (cur_page < max_pages) {
+    var div_paged = obj.parentNode.parentNode.id;
+    var i;
+    var x = document.getElementsByClassName(div_paged + '_' + (cur_page - 1));
+    for (i = 0; i < x.length; i++) {
+      x[i].classList.toggle('_paged_hidden');
+    }
+    x = document.getElementsByClassName(div_paged + '_' + cur_page);
+    for (i = 0; i < x.length; i++) {
+      x[i].classList.toggle('_paged_hidden');
+    }
+    document.getElementById(pages_content_id).textContent = "Page " + (cur_page + 1) + "/" + max_pages;
+  }
+}
+// Function for tree table
+function _click_tree(obj) {
+  if (obj.innerHTML == "\u25BA") {
+    obj.textContent = "\u25BC";
+    // Open childs
+    var x = document.getElementsByClassName(obj.parentNode.parentNode.id);
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.toggle('_tree_hidden');
+    }
+  }
+  else if (obj.innerHTML == "\u25BC") {
+    obj.textContent = "\u25BA";
+    // Close all childs
+    var trs = document.getElementsByTagName('tr');
+    var r   = obj.parentNode.parentNode.id+'_';
+    var re  = new RegExp (r, "g");
+    for (var i = 0; i < trs.length; i++) {
+      var s = trs[i].id+""
+      if (s.match(re)) {
+        var o = document.getElementById(s);
+        if (! o.classList.contains('_tree_hidden')) {
+          o.classList.toggle('_tree_hidden');
+        }
+        if (o.firstChild.firstChild.textContent == "\u25BC") {
+          o.firstChild.firstChild.textContent = "\u25BA";
+        }
+        if (o.firstChild.childNodes.length == 3) {
+          o.firstChild.childNodes[2].textContent = '+';
+        }
+      }
+    }
+    if (obj.parentNode.childNodes.length == 3) {
+      obj.parentNode.childNodes[2].textContent = '+';
+    }
+  }
+}
+function _click_expand (obj) {
+  var trs = document.getElementsByTagName('tr');
+  var r   = obj.parentNode.parentNode.id+'_';
+  var re  = new RegExp (r, "g");
+  // Symbole + => expand all
+  if (obj.textContent == "+") {
+    for (var i = 0; i < trs.length; i++) {
+      var s = trs[i].id+"";
+      if (s.match(re)) {
+        var o = document.getElementById(s);
+        if (o.classList.contains('_tree_hidden')) {
+           o.classList.toggle('_tree_hidden');
+        }
+        if (o.firstChild.firstChild.textContent == "\u25BA") {
+          o.firstChild.firstChild.textContent = "\u25BC";
+        }
+        if (o.firstChild.childNodes.length == 3) {
+          o.firstChild.childNodes[2].textContent = '\u2010';
+        }
+      }
+    }
+    var o = obj.parentNode.parentNode;
+    if (o.firstChild.firstChild.textContent == "\u25BA") {
+      o.firstChild.firstChild.textContent = "\u25BC";
+    }
+    obj.textContent = "\u2010";
+  }
+  // Symbole - => collapse all
+  else {
+    for (var i = 0; i < trs.length; i++) {
+      var s = trs[i].id+"";
+      if (s.match(re)) {
+        var o = document.getElementById(s);
+        if (! o.classList.contains('_tree_hidden')) {
+           o.classList.toggle('_tree_hidden');
+        }
+        if (o.firstChild.firstChild.textContent == "\u25BC") {
+          o.firstChild.firstChild.textContent = "\u25BA";
+        }
+        if (o.firstChild.childNodes.length == 3) {
+          o.firstChild.childNodes[2].textContent = '+';
+        }
+      }
+    }
+    var o = obj.parentNode.parentNode;
+    if (o.firstChild.firstChild.textContent == "\u25BC") {
+      o.firstChild.firstChild.textContent = "\u25BA";
+    }
+    obj.textContent = "+";
+  }
+}
+// Hide unselected tabs
+addLoadEvent(function(){
+  var x = document.getElementsByClassName("_tab_header_li");
+  for (var i = 0; i < x.length; i++) {
+    if (x[i].classList.contains("selected_tab") == false) {
+      var e = document.getElementById (x[i].dataset.tab);
+      e.style.display = "none";
+    }
+  }
+});
+// Change tab
+function change_tab (e, baseId) {
+  // Handle tabs
+  var i = 1;
+  while (true) {
+    var id = baseId + i;
+    var t = document.getElementById (id);
+    if (t == null) {
+      break;
+    }
+    if (id == e.dataset.tab) {
+      t.style.removeProperty("display");
+    }
+    else {
+      t.style.display = "none";
+    }
+    i = i + 1;
+  }
+  // Handle headers
+  $(e).siblings().each( function () {
+    this.classList.remove("selected_tab");
+  });
+  e.classList.add("selected_tab");
+}
+function __maqao_legacy_onresize () {
+  var obj = document.getElementById("spacer_page_title");
+  if (obj) {
+    obj.style.height = (document.getElementById("page_title").clientHeight + 20)+"px";
+  }
+  var obj = document.getElementById("page_title");
+  if (obj) {
+    var elems = document.getElementsByClassName ("_first_menu_level")
+    if (obj.clientHeight < 90) {
+      for (var i = 0; i < elems.length; i++) {
+        elems.item(i).style.borderBottomLeftRadius = "";
+        elems.item(i).style.borderBottomRightRadius = "";
+      }
+    }
+    else {
+      for (var i = 0; i < elems.length; i++) {
+        elems.item(i).style.borderBottomLeftRadius = "10px";
+        elems.item(i).style.borderBottomRightRadius = "10px";
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+loop_id;module;function_name;function_id;source_info;level;inc_time_p;inc_time_s;inc_time_s_min;inc_time_s_avg;inc_time_s_max;inc_cov_deviation;inc_time_deviation;exc_time_p;exc_time_s;exc_time_s_min;exc_time_s_avg;exc_time_s_max;exc_cov_deviation;exc_time_deviation;nb_threads;flops;
+6;measure_opti_parallel;kernel._omp_fn.0;5;driver_opti.c:22-23;Innermost;17.038536071777;0.41999992728233;;;;;;17.038536071777;0.41999992728233;;;;;;;;
+7;measure_opti_parallel;kernel._omp_fn.0;5;driver_opti.c:21-25;InBetween;22.718050003052;0.55999994277954;;;;;;5.6795125007629;0.13999998569489;;;;;;;;
+4;measure_opti_parallel;main;1;driver_opti.c:41-42;Innermost;0.2028397321701;0.00499999942258;;;;;;0.2028397321701;0.00499999942258;;;;;;;;
+2;measure_opti_parallel;main;1;driver_opti.c:17-19,driver_opti.c:94-94;Innermost;0.2028397321701;0.00499999942258;;;;;;0.2028397321701;0.00499999942258;;;;;;;;

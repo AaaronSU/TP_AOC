@@ -1,8 +1,0 @@
-function_id;module;function_name;source_info;inc_time_p;inc_time_s;inc_time_s_min;inc_time_s_avg;inc_time_s_max;inc_cov_deviation;inc_time_deviation;exc_time_p;exc_time_s;exc_time_s_min;exc_time_s_avg;exc_time_s_max;exc_cov_deviation;exc_time_deviation;nb_threads;cats;label_name;flops;
-332;libgomp.so.1.0.0;gomp_barrier_wait_end;;59.572406768799;3.0649995803833;0;0;0;0;0;59.572406768799;3.0649995803833;0;0;0;0;0;;"0,0,100,0,0,0,0,0,0,0";gomp_barrier_wait_end;;
-5;measure_opti_parallel;kernel._omp_fn.0;driver_opti.c:18-24;13.799806594849;0.70999985933304;0;0;0;0;0;1.2633624076843;0.064999982714653;0;0;0;0;0;;"100,0,0,0,0,0,0,0,0,0";kernel._omp_fn.0;;
-336;libgomp.so.1.0.0;gomp_team_barrier_wait_end;;12.342080116272;0.63499993085861;0;0;0;0;0;12.342080116272;0.63499993085861;0;0;0;0;0;;"0,0,100,0,0,0,0,0,0,0";gomp_team_barrier_wait_end;;
-333;libgomp.so.1.0.0;gomp_barrier_wait;;6.1224493980408;0.31499996781349;0;0;0;0;0;6.1224493980408;0.31499996781349;0;0;0;0;0;;"0,0,100,0,0,0,0,0,0,0";gomp_barrier_wait;;
-296;libgomp.so.1.0.0;gomp_thread_start;;5.4421772956848;0.27999997138977;0;0;0;0;0;5.4421772956848;0.27999997138977;0;0;0;0;0;;"0,0,100,0,0,0,0,0,0,0";gomp_thread_start;;
-338;libgomp.so.1.0.0;gomp_team_barrier_wait_final;;2.5267250537872;0.12999998033047;0;0;0;0;0;2.5267250537872;0.12999998033047;0;0;0;0;0;;"0,0,100,0,0,0,0,0,0,0";gomp_team_barrier_wait_final;;
-235;libgomp.so.1.0.0;gomp_ialias_omp_get_num_threads;;0.19436347484589;0.00999999884516;0;0;0;0;0;0.19436347484589;0.00999999884516;0;0;0;0;0;;"0,0,100,0,0,0,0,0,0,0";gomp_ialias_omp_get_num_threads;;

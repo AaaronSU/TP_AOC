@@ -1,0 +1,24 @@
+{
+  "content":
+    {
+      "logs_subdir": "logs/run_3",
+      "decan_csv": "shared/run_3/decan.csv",
+      "env_dir": "shared/run_3/",
+      "expert_run_csv": "shared/run_3/expert_run.csv",
+      "material_config": "shared/run_3/material_config.csv",
+      "rep_spd_prompt": "shared/run_3/prompt_speedups.csv",
+      "prompt": "shared/run_3/prompt",
+      "summary_0": "shared/run_3/summary_0.json",
+      "shared": "shared/run_3",
+      "expert_loops_csv": "shared/run_3/expert_loops.csv",
+      "status": "shared/run_3/status.csv",
+      "rep_categorization": "shared/run_3/lprof_categorization.csv",
+      "vprof_csv": "shared/run_3/vprof.csv",
+      "vprof_dir": "tools/vprof/run_3",
+      "summary_1": "shared/run_3/summary_1.json",
+      "summary_2": "shared/run_3/summary_2.json",
+      "localvars_csv": "shared/run_3/local_vars.csv",
+      "global_metrics": "shared/run_3/global_metrics.csv",
+      "config": "shared/run_3/config.json"
+    }
+}

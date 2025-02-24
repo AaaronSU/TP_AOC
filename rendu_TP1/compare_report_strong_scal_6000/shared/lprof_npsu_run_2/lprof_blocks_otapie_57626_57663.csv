@@ -1,0 +1,5 @@
+block_id;module;source_info;time_p;time_s;time_s_min;time_s_avg;time_s_max;cov_deviation;time_deviation;nb_threads;flops;
+174;measure_opti_parallel;driver_opti.c:22-23;99.57152557373;15.104998588562;;;;;;;;
+188;measure_opti_parallel;driver_opti.c:22-22;0.16479894518852;0.024999998509884;;;;;;;;
+189;measure_opti_parallel;driver_opti.c:25-25;0.098879367113113;0.014999997802079;;;;;;;;
+176;measure_opti_parallel;driver_opti.c:22-23;0.032959789037704;0.00499999942258;;;;;;;;

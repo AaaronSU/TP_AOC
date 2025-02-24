@@ -1,0 +1,8 @@
+/home/mac/rendu_AOC/rendu_TP1/driver_opti.c: 17 - 94
+--------------------------------------------------------------------------------
+
+17:    double tmp;
+18:    
+19: #pragma omp parallel for simd private(tmp) schedule(static)
+[...]
+94:       for (i=0; i<repm; i++) {

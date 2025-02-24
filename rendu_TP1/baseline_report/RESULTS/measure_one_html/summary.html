@@ -136,13 +136,13 @@ if (obj) {
   }
 }
 </script>
-<h3 style="background-color: var(--header_background);color: var(--header_font);margin: 0px;padding: 5px 0px 5px 10px;border: 1px solid var(--table_border);border-radius: 5px;" class="_header">measure - 2025-02-23 16:48:24 - MAQAO 2.21.1</h3>
+<h3 style="background-color: var(--header_background);color: var(--header_font);margin: 0px;padding: 5px 0px 5px 10px;border: 1px solid var(--table_border);border-radius: 5px;" class="_header">measure - 2025-02-23 17:57:45 - MAQAO 2.21.1</h3>
 <p>Help is available by moving the cursor above any <img src="images/help_icon_20.png" style="vertical-align: middle;background-color:var(--fixed_box_header_background);"></img> symbol or by checking <a href="https://maqao.exascale-computing.eu/documentation.html">MAQAO website</a>.</p>
-<div class="_accordion_box" style="margin-top:2px;"><h3 class="_header" onclick="_click_accordion_header(this)"><span class="_accordion_box_button">&#x25BC;</span>Stylizer<span class="tooltip-maqao-button help-maqao" title="" tooltip_id="0"></span><span class="_report_header_color_box" style="background-color:#FF3333;"><span style="background-color:#66cc00;display:inline-block;width:75.999572991744%;">&nbsp;</span><span style="background-color:#ffa64d;display:inline-block;width:4.000427008256%;">&nbsp;</span></span></h3><div class="_content">
+<div class="_accordion_box" style="margin-top:2px;"><h3 class="_header" onclick="_click_accordion_header(this)"><span class="_accordion_box_button">&#x25BC;</span>Stylizer<span class="tooltip-maqao-button help-maqao" title="" tooltip_id="0"></span><span class="_report_header_color_box" style="background-color:#FF3333;"><span style="background-color:#66cc00;display:inline-block;width:75.999567906213%;">&nbsp;</span><span style="background-color:#ffa64d;display:inline-block;width:4.0004320937873%;">&nbsp;</span></span></h3><div class="_content">
 <div class="row">
   <div class="column">
     <div class="report_entry" style="background-color: #8cd98c;">
-      <p class="short">[ 4 / 4 ] Application profile is long enough (187.37 s)</p>
+      <p class="short">[ 4 / 4 ] Application profile is long enough (185.16 s)</p>
       <p class="long">To have good quality measurements, it is advised that the application profiling time is greater than 10 seconds.</p>
     </div>
     <div class="report_entry" style="background-color: #8cd98c;">
@@ -173,7 +173,7 @@ Architecture specific options are needed to produce efficient code for a specifi
   </div>
 </div>
 </div>
-<div class="_accordion_box collapsed" style="margin-top:2px;"><h3 class="_header collapsed" onclick="_click_accordion_header(this)"><span class="_accordion_box_button">&#x25B6;</span>Strategizer<span class="tooltip-maqao-button help-maqao" title="" tooltip_id="1"></span><span class="_report_header_color_box" style="background-color:#FF3333;"><span style="background-color:#66cc00;display:inline-block;width:100%;">&nbsp;</span><span style="background-color:#ffa64d;display:inline-block;width:0%;">&nbsp;</span></span></h3><div class="_content collapsed">
+<div class="_accordion_box" style="margin-top:2px;"><h3 class="_header" onclick="_click_accordion_header(this)"><span class="_accordion_box_button">&#x25BC;</span>Strategizer<span class="tooltip-maqao-button help-maqao" title="" tooltip_id="1"></span><span class="_report_header_color_box" style="background-color:#FF3333;"><span style="background-color:#66cc00;display:inline-block;width:97.058823529412%;">&nbsp;</span><span style="background-color:#ffa64d;display:inline-block;width:2.9411764705882%;">&nbsp;</span></span></h3><div class="_content">
 <div class="row">
   <div class="column">
     <div class="report_entry" style="background-color: #8cd98c;">
@@ -182,28 +182,28 @@ Architecture specific options are needed to produce efficient code for a specifi
     </div>
     <div class="report_entry" style="background-color: #8cd98c;">
       <p class="short">[ 4 / 4 ] CPU activity is good</p>
-      <p class="long">CPU cores are active 99.99% of time</p>
+      <p class="long">CPU cores are active 99.98% of time</p>
     </div>
     <div class="report_entry" style="background-color: #8cd98c;">
       <p class="short">[ 4 / 4 ] Threads activity is good</p>
-      <p class="long">On average, more than 99.99% of observed threads are actually active </p>
+      <p class="long">On average, more than 99.98% of observed threads are actually active </p>
     </div>
-    <div class="report_entry" style="background-color: #8cd98c;">
-      <p class="short">[ 4 / 4 ] Affinity is good (99.97%)</p>
-      <p class="long">Threads are not migrating to CPU cores: probably successfully pinned</p>
+    <div class="report_entry" style="background-color: #ffa64d;">
+      <p class="short">[ 3 / 4 ] Affinity stability is lower than 90% (88.25%)</p>
+      <p class="long">Threads are often migrating to other CPU cores/threads. For OpenMP, typically set (OMP_PLACES=cores OMP_PROC_BIND=close) or (OMP_PLACES=threads OMP_PROC_BIND=spread). With OpenMPI + OpenMP, use --bind-to core --map-by node:PE=$OMP_NUM_THREADS --report-bindings. With IntelMPI + OpenMP, set I_MPI_PIN_DOMAIN=omp:compact or I_MPI_PIN_DOMAIN=omp:scatter and use -print-rank-map.</p>
     </div>
     <div class="report_entry" style="background-color: #8cd98c;">
       <p class="short">[ 4 / 4 ] Loop profile is not flat</p>
-      <p class="long">At least one loop coverage is greater than 4% (99.70%), representing an hotspot for the application</p>
+      <p class="long">At least one loop coverage is greater than 4% (99.74%), representing an hotspot for the application</p>
     </div>
   </div>
   <div class="column">
     <div class="report_entry" style="background-color: #8cd98c;">
-      <p class="short">[ 4 / 4 ] Enough time of the experiment time spent in analyzed innermost loops (99.70%)</p>
+      <p class="short">[ 4 / 4 ] Enough time of the experiment time spent in analyzed innermost loops (99.74%)</p>
       <p class="long">If the time spent in analyzed innermost loops is less than 15%, standard innermost loop optimizations such as vectorisation will have a limited impact on application performances.</p>
     </div>
     <div class="report_entry" style="background-color: #8cd98c;">
-      <p class="short">[ 3 / 3 ] Cumulative Outermost/In between loops coverage (0.28%) lower than cumulative innermost loop coverage (99.70%)</p>
+      <p class="short">[ 3 / 3 ] Cumulative Outermost/In between loops coverage (0.25%) lower than cumulative innermost loop coverage (99.74%)</p>
       <p class="long">Having cumulative Outermost/In between loops coverage greater than cumulative innermost loop coverage will make loop optimization more complex</p>
     </div>
     <div class="report_entry" style="background-color: #8cd98c;">
@@ -238,14 +238,6 @@ Architecture specific options are needed to produce efficient code for a specifi
 <tr class="_tree_hidden _tr_1_2"  id="_tr_1_2_3" ><td id="_tr_1_2_3-1"  data-_i="13" data-_j="1"  class=" _left"  style="background:var(--accordion_box_header_background_opened);font-weight:bold;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:15px;cursor:pointer;" >&#x25BA;</span>Vectorization Roadblocks<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_1_2_3-2"  data-_i="13" data-_j="2"  style="background:var(--accordion_box_header_background_opened);font-weight:bold;" ></td><td id="_tr_1_2_3-3"  data-_i="13" data-_j="3"  class=" _centered"  style="background:var(--accordion_box_header_background_opened);font-weight:bold;" >4</td></tr>
 <tr class="_tree_hidden _tr_1_2_3"  id="_tr_1_2_3_1" ><td id="_tr_1_2_3_1-1"  data-_i="14" data-_j="1"  class=" _left" ><span style="margin-right:10px;margin-left:33px;" >&#x25CB;</span></td><td id="_tr_1_2_3_1-2"  data-_i="14" data-_j="2" >[SA] Presence of constant non unit stride data access - Use array restructuring, perform loop interchange or use gather instructions to lower a bit the cost. There are 1 issues ( = data accesses) costing 2 point each.</td><td id="_tr_1_2_3_1-3"  data-_i="14" data-_j="3"  class=" _centered" >2</td></tr>
 <tr class="_tree_hidden _tr_1_2_3"  id="_tr_1_2_3_2" ><td id="_tr_1_2_3_2-1"  data-_i="15" data-_j="1"  class=" _left" ><span style="margin-right:10px;margin-left:33px;" >&#x25CB;</span></td><td id="_tr_1_2_3_2-2"  data-_i="15" data-_j="2" >[SA] Non innermost loop (InBetween) - Collapse loop with innermost ones. This issue costs 2 points.</td><td id="_tr_1_2_3_2-3"  data-_i="15" data-_j="3"  class=" _centered" >2</td></tr>
-<tr class=" _outer_row"  id="_tr_1_3"  ondblclick="_action_5(this,16,-1, 'measure_7');"  style="cursor:pointer;"><td id="_tr_1_3-1"  data-_i="16" data-_j="1"  class=" _left"  style="background:var(--accordion_box_header_background_opened_hover);font-weight:bold;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:0px;cursor:pointer;" >&#x25BA;</span>Loop 7 - measure<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_1_3-2"  data-_i="16" data-_j="2"  style="background:var(--accordion_box_header_background_opened_hover);font-weight:bold;" >Execution Time: 0 % - <span style="background:#FF3333;">Vectorization Ratio: 0.00 %</span> - <span style="background:#FF3333;">Vector Length Use: 25.00 %</span></td><td id="_tr_1_3-3"  data-_i="16" data-_j="3"  class=" _centered"  style="background:var(--accordion_box_header_background_opened_hover);font-weight:bold;" ></td></tr>
-<tr class="_tree_hidden _tr_1_3"  id="_tr_1_3_1" ><td id="_tr_1_3_1-1"  data-_i="17" data-_j="1"  class=" _left"  style="background:var(--accordion_box_header_background_opened);font-weight:bold;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:15px;cursor:pointer;" >&#x25BA;</span>Control Flow Issues<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_1_3_1-2"  data-_i="17" data-_j="2"  style="background:var(--accordion_box_header_background_opened);font-weight:bold;" ></td><td id="_tr_1_3_1-3"  data-_i="17" data-_j="3"  class=" _centered"  style="background:var(--accordion_box_header_background_opened);font-weight:bold;" >2</td></tr>
-<tr class="_tree_hidden _tr_1_3_1"  id="_tr_1_3_1_1" ><td id="_tr_1_3_1_1-1"  data-_i="18" data-_j="1"  class=" _left" ><span style="margin-right:10px;margin-left:33px;" >&#x25CB;</span></td><td id="_tr_1_3_1_1-2"  data-_i="18" data-_j="2" >[SA] Non innermost loop (Outermost) - Collapse loop with innermost ones. This issue costs 2 points.</td><td id="_tr_1_3_1_1-3"  data-_i="18" data-_j="3"  class=" _centered" >2</td></tr>
-<tr class="_tree_hidden _tr_1_3"  id="_tr_1_3_2" ><td id="_tr_1_3_2-1"  data-_i="19" data-_j="1"  class=" _left"  style="background:var(--accordion_box_header_background_opened);font-weight:bold;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:15px;cursor:pointer;" >&#x25BA;</span>Data Access Issues<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_1_3_2-2"  data-_i="19" data-_j="2"  style="background:var(--accordion_box_header_background_opened);font-weight:bold;" ></td><td id="_tr_1_3_2-3"  data-_i="19" data-_j="3"  class=" _centered"  style="background:var(--accordion_box_header_background_opened);font-weight:bold;" >2</td></tr>
-<tr class="_tree_hidden _tr_1_3_2"  id="_tr_1_3_2_1" ><td id="_tr_1_3_2_1-1"  data-_i="20" data-_j="1"  class=" _left" ><span style="margin-right:10px;margin-left:33px;" >&#x25CB;</span></td><td id="_tr_1_3_2_1-2"  data-_i="20" data-_j="2" >[SA] Presence of constant non unit stride data access - Use array restructuring, perform loop interchange or use gather instructions to lower a bit the cost. There are 1 issues ( = data accesses) costing 2 point each.</td><td id="_tr_1_3_2_1-3"  data-_i="20" data-_j="3"  class=" _centered" >2</td></tr>
-<tr class="_tree_hidden _tr_1_3"  id="_tr_1_3_3" ><td id="_tr_1_3_3-1"  data-_i="21" data-_j="1"  class=" _left"  style="background:var(--accordion_box_header_background_opened);font-weight:bold;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:15px;cursor:pointer;" >&#x25BA;</span>Vectorization Roadblocks<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_1_3_3-2"  data-_i="21" data-_j="2"  style="background:var(--accordion_box_header_background_opened);font-weight:bold;" ></td><td id="_tr_1_3_3-3"  data-_i="21" data-_j="3"  class=" _centered"  style="background:var(--accordion_box_header_background_opened);font-weight:bold;" >4</td></tr>
-<tr class="_tree_hidden _tr_1_3_3"  id="_tr_1_3_3_1" ><td id="_tr_1_3_3_1-1"  data-_i="22" data-_j="1"  class=" _left" ><span style="margin-right:10px;margin-left:33px;" >&#x25CB;</span></td><td id="_tr_1_3_3_1-2"  data-_i="22" data-_j="2" >[SA] Presence of constant non unit stride data access - Use array restructuring, perform loop interchange or use gather instructions to lower a bit the cost. There are 1 issues ( = data accesses) costing 2 point each.</td><td id="_tr_1_3_3_1-3"  data-_i="22" data-_j="3"  class=" _centered" >2</td></tr>
-<tr class="_tree_hidden _tr_1_3_3"  id="_tr_1_3_3_2" ><td id="_tr_1_3_3_2-1"  data-_i="23" data-_j="1"  class=" _left" ><span style="margin-right:10px;margin-left:33px;" >&#x25CB;</span></td><td id="_tr_1_3_3_2-2"  data-_i="23" data-_j="2" >[SA] Non innermost loop (Outermost) - Collapse loop with innermost ones. This issue costs 2 points.</td><td id="_tr_1_3_3_2-3"  data-_i="23" data-_j="3"  class=" _centered" >2</td></tr>
 </table></div>
 <script>
 function _action_5 (obj, i, j, p){open("loops/"+p+".html");}

@@ -1,0 +1,46 @@
+{
+    "config":
+      {
+        "number_processes": 1,
+        "base_run_name": "run_1x1",
+        "mpi_command": "mpirun -n <number_processes>",
+        "run_command": "<executable> 6000 10 150",
+        "multiruns_params":
+          [
+            {
+              "number_processes": 1,
+              "name": "run_1x2",
+              "envv_OMP_NUM_THREADS": 2,
+              "run_command": "<executable> 6000 10 150"
+            },
+            {
+              "number_processes": 1,
+              "name": "run_1x4",
+              "envv_OMP_NUM_THREADS": 4,
+              "run_command": "<executable> 6000 10 150"
+            },
+            {
+              "number_processes": 1,
+              "name": "run_1x8",
+              "envv_OMP_NUM_THREADS": 8,
+              "run_command": "<executable> 6000 10 150"
+            },
+            {
+              "number_processes": 1,
+              "name": "run_1x16",
+              "envv_OMP_NUM_THREADS": 16,
+              "run_command": "<executable> 6000 10 150"
+            },
+            {
+              "number_processes": 1,
+              "name": "run_1x32",
+              "envv_OMP_NUM_THREADS": 32,
+              "run_command": "<executable> 6000 10 150"
+            }
+          ],
+        "executable": "./build/measure_opti_parallel",
+        "envv_OMP_NUM_THREADS": 1,
+        "comments": "A simple scalability experiment that assumes the executable uses either MPI or OpenMP to analyze its scalability"
+      
+  }
+}

@@ -1,0 +1,16 @@
+********************************************************************************
+MAQAO 2.21.1 - a9bb74606c7e260f7f87782e64f16b00a6f20c1b::20250121-112452 || 2025/01/21
+maqao oneview -R1 --with-scalability=strong -xp=compare_report_strong_scal --replace -c=strong_scalability.json 
+CPY:  [true] ./build/measure_opti_parallel --> /home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal/binaries/measure_opti_parallel
+CMD:  OMP_NUM_THREADS=1   /usr/bin/maqao lprof _caller=oneview  --xp="/home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal/tools/lprof_npsu_run_0" --mpi-command="mpirun -n 1" --collect-CPU-time-intervals --collect-topology   -- /home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal/binaries/measure_opti_parallel 200 1000 20000
+CMD:  OMP_NUM_THREADS=2   /usr/bin/maqao lprof _caller=oneview  --xp="/home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal/tools/lprof_npsu_run_1" --mpi-command="mpirun -n 1" --collect-CPU-time-intervals --collect-topology   -- /home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal/binaries/measure_opti_parallel 200 1000 20000
+CMD:  OMP_NUM_THREADS=4   /usr/bin/maqao lprof _caller=oneview  --xp="/home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal/tools/lprof_npsu_run_2" --mpi-command="mpirun -n 1" --collect-CPU-time-intervals --collect-topology   -- /home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal/binaries/measure_opti_parallel 200 1000 20000
+CMD:  OMP_NUM_THREADS=8   /usr/bin/maqao lprof _caller=oneview  --xp="/home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal/tools/lprof_npsu_run_3" --mpi-command="mpirun -n 1" --collect-CPU-time-intervals --collect-topology   -- /home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal/binaries/measure_opti_parallel 200 1000 20000
+CMD:  OMP_NUM_THREADS=16   /usr/bin/maqao lprof _caller=oneview  --xp="/home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal/tools/lprof_npsu_run_4" --mpi-command="mpirun -n 1" --collect-CPU-time-intervals --collect-topology   -- /home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal/binaries/measure_opti_parallel 200 1000 20000
+CMD:  OMP_NUM_THREADS=32   /usr/bin/maqao lprof _caller=oneview  --xp="/home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal/tools/lprof_npsu_run_5" --mpi-command="mpirun -n 1" --collect-CPU-time-intervals --collect-topology   -- /home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal/binaries/measure_opti_parallel 200 1000 20000
+In run run_1x32, 1 loops were discarded from static analysis because their coverage
+are lower than object_coverage_threshold value (0.01%).
+That represents 0.0074041145853698% of the execution time. To include them, change the value
+in the experiment directory configuration file, then rerun the command with the additionnal parameter
+--force-static-analysis
+CMD:  /usr/bin/maqao otter  -input=/home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal/OTTER/input_manifest.csv -output=/home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal/OTTER/output_manifest.csv

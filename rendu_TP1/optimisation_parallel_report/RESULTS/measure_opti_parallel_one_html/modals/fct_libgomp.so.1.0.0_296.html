@@ -114,8 +114,8 @@ function set_ldbal_input_ () {
   // According to selector, draw both charts
   if (selector_run.value  == "1") {
 $(document).ready(function(){
-  var ordinals = ['otapie_33306_33339','otapie_33306_33340','otapie_33306_33341','otapie_33306_33342','otapie_33306_33343','otapie_33306_33344','otapie_33306_33345','otapie_33306_33346','otapie_33306_33347','otapie_33306_33348','otapie_33306_33349','otapie_33306_33350','otapie_33306_33351','otapie_33306_33352','otapie_33306_33353','otapie_33306_33354','otapie_33306_33355','otapie_33306_33356','otapie_33306_33357','otapie_33306_33358','otapie_33306_33359','otapie_33306_33360','otapie_33306_33361','otapie_33306_33362','otapie_33306_33363','otapie_33306_33364','otapie_33306_33365','otapie_33306_33366','otapie_33306_33367','otapie_33306_33368','otapie_33306_33369'];
-  var data = [{value:0.87293916940689,offset:0, i:0,color:"#333399"},{value:0.67895239591599,offset:0, i:1,color:"#333399"},{value:0.5819593667984,offset:0, i:2,color:"#333399"},{value:2.3300974369049,offset:0, i:3,color:"#333399"},{value:1.8446604013443,offset:0, i:4,color:"#333399"},{value:3.1037836074829,offset:0, i:5,color:"#333399"},{value:3.1067960262299,offset:0, i:6,color:"#333399"},{value:3.7937748432159,offset:0, i:7,color:"#333399"},{value:4.7572827339172,offset:0, i:8,color:"#333399"},{value:3.9805819988251,offset:0, i:9,color:"#333399"},{value:3.3947627544403,offset:0, i:10,color:"#333399"},{value:2.9097967147827,offset:0, i:11,color:"#333399"},{value:4.2801566123962,offset:0, i:12,color:"#333399"},{value:5.1456332206726,offset:0, i:13,color:"#333399"},{value:5.4421772956848,offset:0, i:14,color:"#333399"},{value:2.5242722034454,offset:0, i:15,color:"#333399"},{value:2.6290168762207,offset:0, i:16,color:"#333399"},{value:2.4366478919983,offset:0, i:17,color:"#333399"},{value:3.2007756233215,offset:0, i:18,color:"#333399"},{value:3.7937743663788,offset:0, i:19,color:"#333399"},{value:2.8128035068512,offset:0, i:20,color:"#333399"},{value:3.0067899227142,offset:0, i:21,color:"#333399"},{value:3.3947627544403,offset:0, i:22,color:"#333399"},{value:4.4834308624268,offset:0, i:23,color:"#333399"},{value:2.9097967147827,offset:0, i:24,color:"#333399"},{value:4.5586814880371,offset:0, i:25,color:"#333399"},{value:3.7974684238434,offset:0, i:26,color:"#333399"},{value:3.7900869846344,offset:0, i:27,color:"#333399"},{value:3.7073192596436,offset:0, i:28,color:"#333399"},{value:3.8797283172607,offset:0, i:29,color:"#333399"},{value:3.6857421398163,offset:0, i:30,color:"#333399"}];
+  var ordinals = ['otapie_40247_40280','otapie_40247_40281','otapie_40247_40282','otapie_40247_40283','otapie_40247_40284','otapie_40247_40285','otapie_40247_40286','otapie_40247_40287','otapie_40247_40288','otapie_40247_40289','otapie_40247_40290','otapie_40247_40291','otapie_40247_40292','otapie_40247_40293','otapie_40247_40294','otapie_40247_40295','otapie_40247_40296','otapie_40247_40297','otapie_40247_40298','otapie_40247_40299','otapie_40247_40300','otapie_40247_40301','otapie_40247_40302','otapie_40247_40303','otapie_40247_40304','otapie_40247_40305','otapie_40247_40306','otapie_40247_40307','otapie_40247_40308','otapie_40247_40309','otapie_40247_40310'];
+  var data = [{value:0.44792860746384,offset:0, i:0,color:"#333399"},{value:0.78299802541733,offset:0, i:1,color:"#333399"},{value:0.22371377050877,offset:0, i:2,color:"#333399"},{value:3.2474808692932,offset:0, i:3,color:"#333399"},{value:3.80313372612,offset:0, i:4,color:"#333399"},{value:2.6845648288727,offset:0, i:5,color:"#333399"},{value:2.8026916980743,offset:0, i:6,color:"#333399"},{value:2.5871777534485,offset:0, i:7,color:"#333399"},{value:3.8031332492828,offset:0, i:8,color:"#333399"},{value:2.908278465271,offset:0, i:9,color:"#333399"},{value:5.0335583686829,offset:0, i:10,color:"#333399"},{value:3.5955073833466,offset:0, i:11,color:"#333399"},{value:5.2749752998352,offset:0, i:12,color:"#333399"},{value:2.2396426200867,offset:0, i:13,color:"#333399"},{value:3.3557059764862,offset:0, i:14,color:"#333399"},{value:4.6697063446045,offset:0, i:15,color:"#333399"},{value:5.8890175819397,offset:0, i:16,color:"#333399"},{value:5.8295998573303,offset:0, i:17,color:"#333399"},{value:5.7239098548889,offset:0, i:18,color:"#333399"},{value:4.5871553421021,offset:0, i:19,color:"#333399"},{value:5.5056200027466,offset:0, i:20,color:"#333399"},{value:5.1454153060913,offset:0, i:21,color:"#333399"},{value:5.7239084243774,offset:0, i:22,color:"#333399"},{value:3.9370086193085,offset:0, i:23,color:"#333399"},{value:4.9272136688232,offset:0, i:24,color:"#333399"},{value:4.8098449707031,offset:0, i:25,color:"#333399"},{value:3.9149897098541,offset:0, i:26,color:"#333399"},{value:5.0561828613281,offset:0, i:27,color:"#333399"},{value:6.3829808235168,offset:0, i:28,color:"#333399"},{value:4.250560760498,offset:0, i:29,color:"#333399"},{value:4.4742732048035,offset:0, i:30,color:"#333399"}];
   var widthgl  = _width;
   var widthin  = _width;
   var heightgl = 480;
@@ -229,42 +229,42 @@ $(document).ready(function(){
       bars.attr("transform", "translate(" + d3.event.transform.x+",0)scale(" + d3.event.transform.k + ",1)")
   }
 });
-$("#zoom_chart_138_0").click( function () {window.open("../topo/run_0_otapie_33306_33339.html");});
-$("#zoom_chart_138_1").click( function () {window.open("../topo/run_0_otapie_33306_33340.html");});
-$("#zoom_chart_138_2").click( function () {window.open("../topo/run_0_otapie_33306_33341.html");});
-$("#zoom_chart_138_3").click( function () {window.open("../topo/run_0_otapie_33306_33342.html");});
-$("#zoom_chart_138_4").click( function () {window.open("../topo/run_0_otapie_33306_33343.html");});
-$("#zoom_chart_138_5").click( function () {window.open("../topo/run_0_otapie_33306_33344.html");});
-$("#zoom_chart_138_6").click( function () {window.open("../topo/run_0_otapie_33306_33345.html");});
-$("#zoom_chart_138_7").click( function () {window.open("../topo/run_0_otapie_33306_33346.html");});
-$("#zoom_chart_138_8").click( function () {window.open("../topo/run_0_otapie_33306_33347.html");});
-$("#zoom_chart_138_9").click( function () {window.open("../topo/run_0_otapie_33306_33348.html");});
-$("#zoom_chart_138_10").click( function () {window.open("../topo/run_0_otapie_33306_33349.html");});
-$("#zoom_chart_138_11").click( function () {window.open("../topo/run_0_otapie_33306_33350.html");});
-$("#zoom_chart_138_12").click( function () {window.open("../topo/run_0_otapie_33306_33351.html");});
-$("#zoom_chart_138_13").click( function () {window.open("../topo/run_0_otapie_33306_33352.html");});
-$("#zoom_chart_138_14").click( function () {window.open("../topo/run_0_otapie_33306_33353.html");});
-$("#zoom_chart_138_15").click( function () {window.open("../topo/run_0_otapie_33306_33354.html");});
-$("#zoom_chart_138_16").click( function () {window.open("../topo/run_0_otapie_33306_33355.html");});
-$("#zoom_chart_138_17").click( function () {window.open("../topo/run_0_otapie_33306_33356.html");});
-$("#zoom_chart_138_18").click( function () {window.open("../topo/run_0_otapie_33306_33357.html");});
-$("#zoom_chart_138_19").click( function () {window.open("../topo/run_0_otapie_33306_33358.html");});
-$("#zoom_chart_138_20").click( function () {window.open("../topo/run_0_otapie_33306_33359.html");});
-$("#zoom_chart_138_21").click( function () {window.open("../topo/run_0_otapie_33306_33360.html");});
-$("#zoom_chart_138_22").click( function () {window.open("../topo/run_0_otapie_33306_33361.html");});
-$("#zoom_chart_138_23").click( function () {window.open("../topo/run_0_otapie_33306_33362.html");});
-$("#zoom_chart_138_24").click( function () {window.open("../topo/run_0_otapie_33306_33363.html");});
-$("#zoom_chart_138_25").click( function () {window.open("../topo/run_0_otapie_33306_33364.html");});
-$("#zoom_chart_138_26").click( function () {window.open("../topo/run_0_otapie_33306_33365.html");});
-$("#zoom_chart_138_27").click( function () {window.open("../topo/run_0_otapie_33306_33366.html");});
-$("#zoom_chart_138_28").click( function () {window.open("../topo/run_0_otapie_33306_33367.html");});
-$("#zoom_chart_138_29").click( function () {window.open("../topo/run_0_otapie_33306_33368.html");});
-$("#zoom_chart_138_30").click( function () {window.open("../topo/run_0_otapie_33306_33369.html");});
+$("#zoom_chart_138_0").click( function () {window.open("../topo/run_0_otapie_40247_40280.html");});
+$("#zoom_chart_138_1").click( function () {window.open("../topo/run_0_otapie_40247_40281.html");});
+$("#zoom_chart_138_2").click( function () {window.open("../topo/run_0_otapie_40247_40282.html");});
+$("#zoom_chart_138_3").click( function () {window.open("../topo/run_0_otapie_40247_40283.html");});
+$("#zoom_chart_138_4").click( function () {window.open("../topo/run_0_otapie_40247_40284.html");});
+$("#zoom_chart_138_5").click( function () {window.open("../topo/run_0_otapie_40247_40285.html");});
+$("#zoom_chart_138_6").click( function () {window.open("../topo/run_0_otapie_40247_40286.html");});
+$("#zoom_chart_138_7").click( function () {window.open("../topo/run_0_otapie_40247_40287.html");});
+$("#zoom_chart_138_8").click( function () {window.open("../topo/run_0_otapie_40247_40288.html");});
+$("#zoom_chart_138_9").click( function () {window.open("../topo/run_0_otapie_40247_40289.html");});
+$("#zoom_chart_138_10").click( function () {window.open("../topo/run_0_otapie_40247_40290.html");});
+$("#zoom_chart_138_11").click( function () {window.open("../topo/run_0_otapie_40247_40291.html");});
+$("#zoom_chart_138_12").click( function () {window.open("../topo/run_0_otapie_40247_40292.html");});
+$("#zoom_chart_138_13").click( function () {window.open("../topo/run_0_otapie_40247_40293.html");});
+$("#zoom_chart_138_14").click( function () {window.open("../topo/run_0_otapie_40247_40294.html");});
+$("#zoom_chart_138_15").click( function () {window.open("../topo/run_0_otapie_40247_40295.html");});
+$("#zoom_chart_138_16").click( function () {window.open("../topo/run_0_otapie_40247_40296.html");});
+$("#zoom_chart_138_17").click( function () {window.open("../topo/run_0_otapie_40247_40297.html");});
+$("#zoom_chart_138_18").click( function () {window.open("../topo/run_0_otapie_40247_40298.html");});
+$("#zoom_chart_138_19").click( function () {window.open("../topo/run_0_otapie_40247_40299.html");});
+$("#zoom_chart_138_20").click( function () {window.open("../topo/run_0_otapie_40247_40300.html");});
+$("#zoom_chart_138_21").click( function () {window.open("../topo/run_0_otapie_40247_40301.html");});
+$("#zoom_chart_138_22").click( function () {window.open("../topo/run_0_otapie_40247_40302.html");});
+$("#zoom_chart_138_23").click( function () {window.open("../topo/run_0_otapie_40247_40303.html");});
+$("#zoom_chart_138_24").click( function () {window.open("../topo/run_0_otapie_40247_40304.html");});
+$("#zoom_chart_138_25").click( function () {window.open("../topo/run_0_otapie_40247_40305.html");});
+$("#zoom_chart_138_26").click( function () {window.open("../topo/run_0_otapie_40247_40306.html");});
+$("#zoom_chart_138_27").click( function () {window.open("../topo/run_0_otapie_40247_40307.html");});
+$("#zoom_chart_138_28").click( function () {window.open("../topo/run_0_otapie_40247_40308.html");});
+$("#zoom_chart_138_29").click( function () {window.open("../topo/run_0_otapie_40247_40309.html");});
+$("#zoom_chart_138_30").click( function () {window.open("../topo/run_0_otapie_40247_40310.html");});
   }
   if (selector_run.value  == "1") {
 $(document).ready(function(){
-  var ordinals = ['otapie_33306_33339','otapie_33306_33340','otapie_33306_33341','otapie_33306_33342','otapie_33306_33343','otapie_33306_33344','otapie_33306_33345','otapie_33306_33346','otapie_33306_33347','otapie_33306_33348','otapie_33306_33349','otapie_33306_33350','otapie_33306_33351','otapie_33306_33352','otapie_33306_33353','otapie_33306_33354','otapie_33306_33355','otapie_33306_33356','otapie_33306_33357','otapie_33306_33358','otapie_33306_33359','otapie_33306_33360','otapie_33306_33361','otapie_33306_33362','otapie_33306_33363','otapie_33306_33364','otapie_33306_33365','otapie_33306_33366','otapie_33306_33367','otapie_33306_33368','otapie_33306_33369'];
-  var data = [{value:0.044999998062849,offset:0, i:0,color:"#333399"},{value:0.034999996423721,offset:0, i:1,color:"#333399"},{value:0.029999997466803,offset:0, i:2,color:"#333399"},{value:0.11999998241663,offset:0, i:3,color:"#333399"},{value:0.094999998807907,offset:0, i:4,color:"#333399"},{value:0.15999998152256,offset:0, i:5,color:"#333399"},{value:0.15999999642372,offset:0, i:6,color:"#333399"},{value:0.19499999284744,offset:0, i:7,color:"#333399"},{value:0.24499997496605,offset:0, i:8,color:"#333399"},{value:0.2049999833107,offset:0, i:9,color:"#333399"},{value:0.17499998211861,offset:0, i:10,color:"#333399"},{value:0.14999997615814,offset:0, i:11,color:"#333399"},{value:0.21999998390675,offset:0, i:12,color:"#333399"},{value:0.26499998569489,offset:0, i:13,color:"#333399"},{value:0.27999997138977,offset:0, i:14,color:"#333399"},{value:0.12999998033047,offset:0, i:15,color:"#333399"},{value:0.13499999046326,offset:0, i:16,color:"#333399"},{value:0.12499999254942,offset:0, i:17,color:"#333399"},{value:0.16499997675419,offset:0, i:18,color:"#333399"},{value:0.19499999284744,offset:0, i:19,color:"#333399"},{value:0.14499998092651,offset:0, i:20,color:"#333399"},{value:0.15499998629093,offset:0, i:21,color:"#333399"},{value:0.17499999701977,offset:0, i:22,color:"#333399"},{value:0.22999998927116,offset:0, i:23,color:"#333399"},{value:0.1499999910593,offset:0, i:24,color:"#333399"},{value:0.23499996960163,offset:0, i:25,color:"#333399"},{value:0.19499997794628,offset:0, i:26,color:"#333399"},{value:0.19499996304512,offset:0, i:27,color:"#333399"},{value:0.18999998271465,offset:0, i:28,color:"#333399"},{value:0.19999995827675,offset:0, i:29,color:"#333399"},{value:0.18999999761581,offset:0, i:30,color:"#333399"}];
+  var ordinals = ['otapie_40247_40280','otapie_40247_40281','otapie_40247_40282','otapie_40247_40283','otapie_40247_40284','otapie_40247_40285','otapie_40247_40286','otapie_40247_40287','otapie_40247_40288','otapie_40247_40289','otapie_40247_40290','otapie_40247_40291','otapie_40247_40292','otapie_40247_40293','otapie_40247_40294','otapie_40247_40295','otapie_40247_40296','otapie_40247_40297','otapie_40247_40298','otapie_40247_40299','otapie_40247_40300','otapie_40247_40301','otapie_40247_40302','otapie_40247_40303','otapie_40247_40304','otapie_40247_40305','otapie_40247_40306','otapie_40247_40307','otapie_40247_40308','otapie_40247_40309','otapie_40247_40310'];
+  var data = [{value:0.019999995827675,offset:0, i:0,color:"#333399"},{value:0.034999988973141,offset:0, i:1,color:"#333399"},{value:0.0099999969825149,offset:0, i:2,color:"#333399"},{value:0.14499998092651,offset:0, i:3,color:"#333399"},{value:0.16999997198582,offset:0, i:4,color:"#333399"},{value:0.11999996751547,offset:0, i:5,color:"#333399"},{value:0.12499997019768,offset:0, i:6,color:"#333399"},{value:0.11499997973442,offset:0, i:7,color:"#333399"},{value:0.16999995708466,offset:0, i:8,color:"#333399"},{value:0.12999996542931,offset:0, i:9,color:"#333399"},{value:0.22499994933605,offset:0, i:10,color:"#333399"},{value:0.15999998152256,offset:0, i:11,color:"#333399"},{value:0.23499993979931,offset:0, i:12,color:"#333399"},{value:0.099999971687794,offset:0, i:13,color:"#333399"},{value:0.14999997615814,offset:0, i:14,color:"#333399"},{value:0.2049999833107,offset:0, i:15,color:"#333399"},{value:0.25999996066093,offset:0, i:16,color:"#333399"},{value:0.25999999046326,offset:0, i:17,color:"#333399"},{value:0.25499996542931,offset:0, i:18,color:"#333399"},{value:0.19999995827675,offset:0, i:19,color:"#333399"},{value:0.24499994516373,offset:0, i:20,color:"#333399"},{value:0.22999995946884,offset:0, i:21,color:"#333399"},{value:0.25499993562698,offset:0, i:22,color:"#333399"},{value:0.17499995231628,offset:0, i:23,color:"#333399"},{value:0.21999995410442,offset:0, i:24,color:"#333399"},{value:0.21499994397163,offset:0, i:25,color:"#333399"},{value:0.17499993741512,offset:0, i:26,color:"#333399"},{value:0.22499996423721,offset:0, i:27,color:"#333399"},{value:0.2849999666214,offset:0, i:28,color:"#333399"},{value:0.18999995291233,offset:0, i:29,color:"#333399"},{value:0.19999995827675,offset:0, i:30,color:"#333399"}];
   var widthgl  = _width;
   var widthin  = _width;
   var heightgl = 480;
@@ -378,37 +378,37 @@ $(document).ready(function(){
       bars.attr("transform", "translate(" + d3.event.transform.x+",0)scale(" + d3.event.transform.k + ",1)")
   }
 });
-$("#zoom_chart_139_0").click( function () {window.open("../topo/run_0_otapie_33306_33339.html");});
-$("#zoom_chart_139_1").click( function () {window.open("../topo/run_0_otapie_33306_33340.html");});
-$("#zoom_chart_139_2").click( function () {window.open("../topo/run_0_otapie_33306_33341.html");});
-$("#zoom_chart_139_3").click( function () {window.open("../topo/run_0_otapie_33306_33342.html");});
-$("#zoom_chart_139_4").click( function () {window.open("../topo/run_0_otapie_33306_33343.html");});
-$("#zoom_chart_139_5").click( function () {window.open("../topo/run_0_otapie_33306_33344.html");});
-$("#zoom_chart_139_6").click( function () {window.open("../topo/run_0_otapie_33306_33345.html");});
-$("#zoom_chart_139_7").click( function () {window.open("../topo/run_0_otapie_33306_33346.html");});
-$("#zoom_chart_139_8").click( function () {window.open("../topo/run_0_otapie_33306_33347.html");});
-$("#zoom_chart_139_9").click( function () {window.open("../topo/run_0_otapie_33306_33348.html");});
-$("#zoom_chart_139_10").click( function () {window.open("../topo/run_0_otapie_33306_33349.html");});
-$("#zoom_chart_139_11").click( function () {window.open("../topo/run_0_otapie_33306_33350.html");});
-$("#zoom_chart_139_12").click( function () {window.open("../topo/run_0_otapie_33306_33351.html");});
-$("#zoom_chart_139_13").click( function () {window.open("../topo/run_0_otapie_33306_33352.html");});
-$("#zoom_chart_139_14").click( function () {window.open("../topo/run_0_otapie_33306_33353.html");});
-$("#zoom_chart_139_15").click( function () {window.open("../topo/run_0_otapie_33306_33354.html");});
-$("#zoom_chart_139_16").click( function () {window.open("../topo/run_0_otapie_33306_33355.html");});
-$("#zoom_chart_139_17").click( function () {window.open("../topo/run_0_otapie_33306_33356.html");});
-$("#zoom_chart_139_18").click( function () {window.open("../topo/run_0_otapie_33306_33357.html");});
-$("#zoom_chart_139_19").click( function () {window.open("../topo/run_0_otapie_33306_33358.html");});
-$("#zoom_chart_139_20").click( function () {window.open("../topo/run_0_otapie_33306_33359.html");});
-$("#zoom_chart_139_21").click( function () {window.open("../topo/run_0_otapie_33306_33360.html");});
-$("#zoom_chart_139_22").click( function () {window.open("../topo/run_0_otapie_33306_33361.html");});
-$("#zoom_chart_139_23").click( function () {window.open("../topo/run_0_otapie_33306_33362.html");});
-$("#zoom_chart_139_24").click( function () {window.open("../topo/run_0_otapie_33306_33363.html");});
-$("#zoom_chart_139_25").click( function () {window.open("../topo/run_0_otapie_33306_33364.html");});
-$("#zoom_chart_139_26").click( function () {window.open("../topo/run_0_otapie_33306_33365.html");});
-$("#zoom_chart_139_27").click( function () {window.open("../topo/run_0_otapie_33306_33366.html");});
-$("#zoom_chart_139_28").click( function () {window.open("../topo/run_0_otapie_33306_33367.html");});
-$("#zoom_chart_139_29").click( function () {window.open("../topo/run_0_otapie_33306_33368.html");});
-$("#zoom_chart_139_30").click( function () {window.open("../topo/run_0_otapie_33306_33369.html");});
+$("#zoom_chart_139_0").click( function () {window.open("../topo/run_0_otapie_40247_40280.html");});
+$("#zoom_chart_139_1").click( function () {window.open("../topo/run_0_otapie_40247_40281.html");});
+$("#zoom_chart_139_2").click( function () {window.open("../topo/run_0_otapie_40247_40282.html");});
+$("#zoom_chart_139_3").click( function () {window.open("../topo/run_0_otapie_40247_40283.html");});
+$("#zoom_chart_139_4").click( function () {window.open("../topo/run_0_otapie_40247_40284.html");});
+$("#zoom_chart_139_5").click( function () {window.open("../topo/run_0_otapie_40247_40285.html");});
+$("#zoom_chart_139_6").click( function () {window.open("../topo/run_0_otapie_40247_40286.html");});
+$("#zoom_chart_139_7").click( function () {window.open("../topo/run_0_otapie_40247_40287.html");});
+$("#zoom_chart_139_8").click( function () {window.open("../topo/run_0_otapie_40247_40288.html");});
+$("#zoom_chart_139_9").click( function () {window.open("../topo/run_0_otapie_40247_40289.html");});
+$("#zoom_chart_139_10").click( function () {window.open("../topo/run_0_otapie_40247_40290.html");});
+$("#zoom_chart_139_11").click( function () {window.open("../topo/run_0_otapie_40247_40291.html");});
+$("#zoom_chart_139_12").click( function () {window.open("../topo/run_0_otapie_40247_40292.html");});
+$("#zoom_chart_139_13").click( function () {window.open("../topo/run_0_otapie_40247_40293.html");});
+$("#zoom_chart_139_14").click( function () {window.open("../topo/run_0_otapie_40247_40294.html");});
+$("#zoom_chart_139_15").click( function () {window.open("../topo/run_0_otapie_40247_40295.html");});
+$("#zoom_chart_139_16").click( function () {window.open("../topo/run_0_otapie_40247_40296.html");});
+$("#zoom_chart_139_17").click( function () {window.open("../topo/run_0_otapie_40247_40297.html");});
+$("#zoom_chart_139_18").click( function () {window.open("../topo/run_0_otapie_40247_40298.html");});
+$("#zoom_chart_139_19").click( function () {window.open("../topo/run_0_otapie_40247_40299.html");});
+$("#zoom_chart_139_20").click( function () {window.open("../topo/run_0_otapie_40247_40300.html");});
+$("#zoom_chart_139_21").click( function () {window.open("../topo/run_0_otapie_40247_40301.html");});
+$("#zoom_chart_139_22").click( function () {window.open("../topo/run_0_otapie_40247_40302.html");});
+$("#zoom_chart_139_23").click( function () {window.open("../topo/run_0_otapie_40247_40303.html");});
+$("#zoom_chart_139_24").click( function () {window.open("../topo/run_0_otapie_40247_40304.html");});
+$("#zoom_chart_139_25").click( function () {window.open("../topo/run_0_otapie_40247_40305.html");});
+$("#zoom_chart_139_26").click( function () {window.open("../topo/run_0_otapie_40247_40306.html");});
+$("#zoom_chart_139_27").click( function () {window.open("../topo/run_0_otapie_40247_40307.html");});
+$("#zoom_chart_139_28").click( function () {window.open("../topo/run_0_otapie_40247_40308.html");});
+$("#zoom_chart_139_29").click( function () {window.open("../topo/run_0_otapie_40247_40309.html");});
+$("#zoom_chart_139_30").click( function () {window.open("../topo/run_0_otapie_40247_40310.html");});
   }
 }
 function set_previous_ldbal_input_ () {
@@ -460,8 +460,8 @@ function set_ldbal_input_sorted () {
   // According to selector, draw both charts
   if (selector_run.value  == "1") {
 $(document).ready(function(){
-  var ordinals = ['otapie_33306_33353','otapie_33306_33352','otapie_33306_33347','otapie_33306_33364','otapie_33306_33362','otapie_33306_33351','otapie_33306_33348','otapie_33306_33368','otapie_33306_33365','otapie_33306_33346','otapie_33306_33358','otapie_33306_33366','otapie_33306_33367','otapie_33306_33369','otapie_33306_33349','otapie_33306_33361','otapie_33306_33357','otapie_33306_33345','otapie_33306_33344','otapie_33306_33360','otapie_33306_33363','otapie_33306_33350','otapie_33306_33359','otapie_33306_33355','otapie_33306_33354','otapie_33306_33356','otapie_33306_33342','otapie_33306_33343','otapie_33306_33339','otapie_33306_33340','otapie_33306_33341'];
-  var data = [{value:5.4421772956848,offset:0, i:0,color:"#333399"},{value:5.1456332206726,offset:0, i:1,color:"#333399"},{value:4.7572827339172,offset:0, i:2,color:"#333399"},{value:4.5586814880371,offset:0, i:3,color:"#333399"},{value:4.4834308624268,offset:0, i:4,color:"#333399"},{value:4.2801566123962,offset:0, i:5,color:"#333399"},{value:3.9805819988251,offset:0, i:6,color:"#333399"},{value:3.8797283172607,offset:0, i:7,color:"#333399"},{value:3.7974684238434,offset:0, i:8,color:"#333399"},{value:3.7937748432159,offset:0, i:9,color:"#333399"},{value:3.7937743663788,offset:0, i:10,color:"#333399"},{value:3.7900869846344,offset:0, i:11,color:"#333399"},{value:3.7073192596436,offset:0, i:12,color:"#333399"},{value:3.6857421398163,offset:0, i:13,color:"#333399"},{value:3.3947627544403,offset:0, i:14,color:"#333399"},{value:3.3947627544403,offset:0, i:15,color:"#333399"},{value:3.2007756233215,offset:0, i:16,color:"#333399"},{value:3.1067960262299,offset:0, i:17,color:"#333399"},{value:3.1037836074829,offset:0, i:18,color:"#333399"},{value:3.0067899227142,offset:0, i:19,color:"#333399"},{value:2.9097967147827,offset:0, i:20,color:"#333399"},{value:2.9097967147827,offset:0, i:21,color:"#333399"},{value:2.8128035068512,offset:0, i:22,color:"#333399"},{value:2.6290168762207,offset:0, i:23,color:"#333399"},{value:2.5242722034454,offset:0, i:24,color:"#333399"},{value:2.4366478919983,offset:0, i:25,color:"#333399"},{value:2.3300974369049,offset:0, i:26,color:"#333399"},{value:1.8446604013443,offset:0, i:27,color:"#333399"},{value:0.87293916940689,offset:0, i:28,color:"#333399"},{value:0.67895239591599,offset:0, i:29,color:"#333399"},{value:0.5819593667984,offset:0, i:30,color:"#333399"}];
+  var ordinals = ['otapie_40247_40308','otapie_40247_40296','otapie_40247_40297','otapie_40247_40298','otapie_40247_40302','otapie_40247_40300','otapie_40247_40292','otapie_40247_40301','otapie_40247_40307','otapie_40247_40290','otapie_40247_40304','otapie_40247_40305','otapie_40247_40295','otapie_40247_40299','otapie_40247_40310','otapie_40247_40309','otapie_40247_40303','otapie_40247_40306','otapie_40247_40284','otapie_40247_40288','otapie_40247_40291','otapie_40247_40294','otapie_40247_40283','otapie_40247_40289','otapie_40247_40286','otapie_40247_40285','otapie_40247_40287','otapie_40247_40293','otapie_40247_40281','otapie_40247_40280','otapie_40247_40282'];
+  var data = [{value:6.3829808235168,offset:0, i:0,color:"#333399"},{value:5.8890175819397,offset:0, i:1,color:"#333399"},{value:5.8295998573303,offset:0, i:2,color:"#333399"},{value:5.7239098548889,offset:0, i:3,color:"#333399"},{value:5.7239084243774,offset:0, i:4,color:"#333399"},{value:5.5056200027466,offset:0, i:5,color:"#333399"},{value:5.2749752998352,offset:0, i:6,color:"#333399"},{value:5.1454153060913,offset:0, i:7,color:"#333399"},{value:5.0561828613281,offset:0, i:8,color:"#333399"},{value:5.0335583686829,offset:0, i:9,color:"#333399"},{value:4.9272136688232,offset:0, i:10,color:"#333399"},{value:4.8098449707031,offset:0, i:11,color:"#333399"},{value:4.6697063446045,offset:0, i:12,color:"#333399"},{value:4.5871553421021,offset:0, i:13,color:"#333399"},{value:4.4742732048035,offset:0, i:14,color:"#333399"},{value:4.250560760498,offset:0, i:15,color:"#333399"},{value:3.9370086193085,offset:0, i:16,color:"#333399"},{value:3.9149897098541,offset:0, i:17,color:"#333399"},{value:3.80313372612,offset:0, i:18,color:"#333399"},{value:3.8031332492828,offset:0, i:19,color:"#333399"},{value:3.5955073833466,offset:0, i:20,color:"#333399"},{value:3.3557059764862,offset:0, i:21,color:"#333399"},{value:3.2474808692932,offset:0, i:22,color:"#333399"},{value:2.908278465271,offset:0, i:23,color:"#333399"},{value:2.8026916980743,offset:0, i:24,color:"#333399"},{value:2.6845648288727,offset:0, i:25,color:"#333399"},{value:2.5871777534485,offset:0, i:26,color:"#333399"},{value:2.2396426200867,offset:0, i:27,color:"#333399"},{value:0.78299802541733,offset:0, i:28,color:"#333399"},{value:0.44792860746384,offset:0, i:29,color:"#333399"},{value:0.22371377050877,offset:0, i:30,color:"#333399"}];
   var widthgl  = _width;
   var widthin  = _width;
   var heightgl = 480;
@@ -575,42 +575,42 @@ $(document).ready(function(){
       bars.attr("transform", "translate(" + d3.event.transform.x+",0)scale(" + d3.event.transform.k + ",1)")
   }
 });
-$("#zoom_chart_142_0").click( function () {window.open("../topo/run_0_otapie_33306_33353.html");});
-$("#zoom_chart_142_1").click( function () {window.open("../topo/run_0_otapie_33306_33352.html");});
-$("#zoom_chart_142_2").click( function () {window.open("../topo/run_0_otapie_33306_33347.html");});
-$("#zoom_chart_142_3").click( function () {window.open("../topo/run_0_otapie_33306_33364.html");});
-$("#zoom_chart_142_4").click( function () {window.open("../topo/run_0_otapie_33306_33362.html");});
-$("#zoom_chart_142_5").click( function () {window.open("../topo/run_0_otapie_33306_33351.html");});
-$("#zoom_chart_142_6").click( function () {window.open("../topo/run_0_otapie_33306_33348.html");});
-$("#zoom_chart_142_7").click( function () {window.open("../topo/run_0_otapie_33306_33368.html");});
-$("#zoom_chart_142_8").click( function () {window.open("../topo/run_0_otapie_33306_33365.html");});
-$("#zoom_chart_142_9").click( function () {window.open("../topo/run_0_otapie_33306_33346.html");});
-$("#zoom_chart_142_10").click( function () {window.open("../topo/run_0_otapie_33306_33358.html");});
-$("#zoom_chart_142_11").click( function () {window.open("../topo/run_0_otapie_33306_33366.html");});
-$("#zoom_chart_142_12").click( function () {window.open("../topo/run_0_otapie_33306_33367.html");});
-$("#zoom_chart_142_13").click( function () {window.open("../topo/run_0_otapie_33306_33369.html");});
-$("#zoom_chart_142_14").click( function () {window.open("../topo/run_0_otapie_33306_33349.html");});
-$("#zoom_chart_142_15").click( function () {window.open("../topo/run_0_otapie_33306_33361.html");});
-$("#zoom_chart_142_16").click( function () {window.open("../topo/run_0_otapie_33306_33357.html");});
-$("#zoom_chart_142_17").click( function () {window.open("../topo/run_0_otapie_33306_33345.html");});
-$("#zoom_chart_142_18").click( function () {window.open("../topo/run_0_otapie_33306_33344.html");});
-$("#zoom_chart_142_19").click( function () {window.open("../topo/run_0_otapie_33306_33360.html");});
-$("#zoom_chart_142_20").click( function () {window.open("../topo/run_0_otapie_33306_33363.html");});
-$("#zoom_chart_142_21").click( function () {window.open("../topo/run_0_otapie_33306_33350.html");});
-$("#zoom_chart_142_22").click( function () {window.open("../topo/run_0_otapie_33306_33359.html");});
-$("#zoom_chart_142_23").click( function () {window.open("../topo/run_0_otapie_33306_33355.html");});
-$("#zoom_chart_142_24").click( function () {window.open("../topo/run_0_otapie_33306_33354.html");});
-$("#zoom_chart_142_25").click( function () {window.open("../topo/run_0_otapie_33306_33356.html");});
-$("#zoom_chart_142_26").click( function () {window.open("../topo/run_0_otapie_33306_33342.html");});
-$("#zoom_chart_142_27").click( function () {window.open("../topo/run_0_otapie_33306_33343.html");});
-$("#zoom_chart_142_28").click( function () {window.open("../topo/run_0_otapie_33306_33339.html");});
-$("#zoom_chart_142_29").click( function () {window.open("../topo/run_0_otapie_33306_33340.html");});
-$("#zoom_chart_142_30").click( function () {window.open("../topo/run_0_otapie_33306_33341.html");});
+$("#zoom_chart_142_0").click( function () {window.open("../topo/run_0_otapie_40247_40308.html");});
+$("#zoom_chart_142_1").click( function () {window.open("../topo/run_0_otapie_40247_40296.html");});
+$("#zoom_chart_142_2").click( function () {window.open("../topo/run_0_otapie_40247_40297.html");});
+$("#zoom_chart_142_3").click( function () {window.open("../topo/run_0_otapie_40247_40298.html");});
+$("#zoom_chart_142_4").click( function () {window.open("../topo/run_0_otapie_40247_40302.html");});
+$("#zoom_chart_142_5").click( function () {window.open("../topo/run_0_otapie_40247_40300.html");});
+$("#zoom_chart_142_6").click( function () {window.open("../topo/run_0_otapie_40247_40292.html");});
+$("#zoom_chart_142_7").click( function () {window.open("../topo/run_0_otapie_40247_40301.html");});
+$("#zoom_chart_142_8").click( function () {window.open("../topo/run_0_otapie_40247_40307.html");});
+$("#zoom_chart_142_9").click( function () {window.open("../topo/run_0_otapie_40247_40290.html");});
+$("#zoom_chart_142_10").click( function () {window.open("../topo/run_0_otapie_40247_40304.html");});
+$("#zoom_chart_142_11").click( function () {window.open("../topo/run_0_otapie_40247_40305.html");});
+$("#zoom_chart_142_12").click( function () {window.open("../topo/run_0_otapie_40247_40295.html");});
+$("#zoom_chart_142_13").click( function () {window.open("../topo/run_0_otapie_40247_40299.html");});
+$("#zoom_chart_142_14").click( function () {window.open("../topo/run_0_otapie_40247_40310.html");});
+$("#zoom_chart_142_15").click( function () {window.open("../topo/run_0_otapie_40247_40309.html");});
+$("#zoom_chart_142_16").click( function () {window.open("../topo/run_0_otapie_40247_40303.html");});
+$("#zoom_chart_142_17").click( function () {window.open("../topo/run_0_otapie_40247_40306.html");});
+$("#zoom_chart_142_18").click( function () {window.open("../topo/run_0_otapie_40247_40284.html");});
+$("#zoom_chart_142_19").click( function () {window.open("../topo/run_0_otapie_40247_40288.html");});
+$("#zoom_chart_142_20").click( function () {window.open("../topo/run_0_otapie_40247_40291.html");});
+$("#zoom_chart_142_21").click( function () {window.open("../topo/run_0_otapie_40247_40294.html");});
+$("#zoom_chart_142_22").click( function () {window.open("../topo/run_0_otapie_40247_40283.html");});
+$("#zoom_chart_142_23").click( function () {window.open("../topo/run_0_otapie_40247_40289.html");});
+$("#zoom_chart_142_24").click( function () {window.open("../topo/run_0_otapie_40247_40286.html");});
+$("#zoom_chart_142_25").click( function () {window.open("../topo/run_0_otapie_40247_40285.html");});
+$("#zoom_chart_142_26").click( function () {window.open("../topo/run_0_otapie_40247_40287.html");});
+$("#zoom_chart_142_27").click( function () {window.open("../topo/run_0_otapie_40247_40293.html");});
+$("#zoom_chart_142_28").click( function () {window.open("../topo/run_0_otapie_40247_40281.html");});
+$("#zoom_chart_142_29").click( function () {window.open("../topo/run_0_otapie_40247_40280.html");});
+$("#zoom_chart_142_30").click( function () {window.open("../topo/run_0_otapie_40247_40282.html");});
   }
   if (selector_run.value  == "1") {
 $(document).ready(function(){
-  var ordinals = ['otapie_33306_33353','otapie_33306_33352','otapie_33306_33347','otapie_33306_33364','otapie_33306_33362','otapie_33306_33351','otapie_33306_33348','otapie_33306_33368','otapie_33306_33358','otapie_33306_33346','otapie_33306_33365','otapie_33306_33366','otapie_33306_33369','otapie_33306_33367','otapie_33306_33361','otapie_33306_33349','otapie_33306_33357','otapie_33306_33345','otapie_33306_33344','otapie_33306_33360','otapie_33306_33363','otapie_33306_33350','otapie_33306_33359','otapie_33306_33355','otapie_33306_33354','otapie_33306_33356','otapie_33306_33342','otapie_33306_33343','otapie_33306_33339','otapie_33306_33340','otapie_33306_33341'];
-  var data = [{value:0.27999997138977,offset:0, i:0,color:"#333399"},{value:0.26499998569489,offset:0, i:1,color:"#333399"},{value:0.24499997496605,offset:0, i:2,color:"#333399"},{value:0.23499996960163,offset:0, i:3,color:"#333399"},{value:0.22999998927116,offset:0, i:4,color:"#333399"},{value:0.21999998390675,offset:0, i:5,color:"#333399"},{value:0.2049999833107,offset:0, i:6,color:"#333399"},{value:0.19999995827675,offset:0, i:7,color:"#333399"},{value:0.19499999284744,offset:0, i:8,color:"#333399"},{value:0.19499999284744,offset:0, i:9,color:"#333399"},{value:0.19499997794628,offset:0, i:10,color:"#333399"},{value:0.19499996304512,offset:0, i:11,color:"#333399"},{value:0.18999999761581,offset:0, i:12,color:"#333399"},{value:0.18999998271465,offset:0, i:13,color:"#333399"},{value:0.17499999701977,offset:0, i:14,color:"#333399"},{value:0.17499998211861,offset:0, i:15,color:"#333399"},{value:0.16499997675419,offset:0, i:16,color:"#333399"},{value:0.15999999642372,offset:0, i:17,color:"#333399"},{value:0.15999998152256,offset:0, i:18,color:"#333399"},{value:0.15499998629093,offset:0, i:19,color:"#333399"},{value:0.1499999910593,offset:0, i:20,color:"#333399"},{value:0.14999997615814,offset:0, i:21,color:"#333399"},{value:0.14499998092651,offset:0, i:22,color:"#333399"},{value:0.13499999046326,offset:0, i:23,color:"#333399"},{value:0.12999998033047,offset:0, i:24,color:"#333399"},{value:0.12499999254942,offset:0, i:25,color:"#333399"},{value:0.11999998241663,offset:0, i:26,color:"#333399"},{value:0.094999998807907,offset:0, i:27,color:"#333399"},{value:0.044999998062849,offset:0, i:28,color:"#333399"},{value:0.034999996423721,offset:0, i:29,color:"#333399"},{value:0.029999997466803,offset:0, i:30,color:"#333399"}];
+  var ordinals = ['otapie_40247_40308','otapie_40247_40297','otapie_40247_40296','otapie_40247_40298','otapie_40247_40302','otapie_40247_40300','otapie_40247_40292','otapie_40247_40301','otapie_40247_40307','otapie_40247_40290','otapie_40247_40304','otapie_40247_40305','otapie_40247_40295','otapie_40247_40299','otapie_40247_40310','otapie_40247_40309','otapie_40247_40303','otapie_40247_40306','otapie_40247_40284','otapie_40247_40288','otapie_40247_40291','otapie_40247_40294','otapie_40247_40283','otapie_40247_40289','otapie_40247_40286','otapie_40247_40285','otapie_40247_40287','otapie_40247_40293','otapie_40247_40281','otapie_40247_40280','otapie_40247_40282'];
+  var data = [{value:0.2849999666214,offset:0, i:0,color:"#333399"},{value:0.25999999046326,offset:0, i:1,color:"#333399"},{value:0.25999996066093,offset:0, i:2,color:"#333399"},{value:0.25499996542931,offset:0, i:3,color:"#333399"},{value:0.25499993562698,offset:0, i:4,color:"#333399"},{value:0.24499994516373,offset:0, i:5,color:"#333399"},{value:0.23499993979931,offset:0, i:6,color:"#333399"},{value:0.22999995946884,offset:0, i:7,color:"#333399"},{value:0.22499996423721,offset:0, i:8,color:"#333399"},{value:0.22499994933605,offset:0, i:9,color:"#333399"},{value:0.21999995410442,offset:0, i:10,color:"#333399"},{value:0.21499994397163,offset:0, i:11,color:"#333399"},{value:0.2049999833107,offset:0, i:12,color:"#333399"},{value:0.19999995827675,offset:0, i:13,color:"#333399"},{value:0.19999995827675,offset:0, i:14,color:"#333399"},{value:0.18999995291233,offset:0, i:15,color:"#333399"},{value:0.17499995231628,offset:0, i:16,color:"#333399"},{value:0.17499993741512,offset:0, i:17,color:"#333399"},{value:0.16999997198582,offset:0, i:18,color:"#333399"},{value:0.16999995708466,offset:0, i:19,color:"#333399"},{value:0.15999998152256,offset:0, i:20,color:"#333399"},{value:0.14999997615814,offset:0, i:21,color:"#333399"},{value:0.14499998092651,offset:0, i:22,color:"#333399"},{value:0.12999996542931,offset:0, i:23,color:"#333399"},{value:0.12499997019768,offset:0, i:24,color:"#333399"},{value:0.11999996751547,offset:0, i:25,color:"#333399"},{value:0.11499997973442,offset:0, i:26,color:"#333399"},{value:0.099999971687794,offset:0, i:27,color:"#333399"},{value:0.034999988973141,offset:0, i:28,color:"#333399"},{value:0.019999995827675,offset:0, i:29,color:"#333399"},{value:0.0099999969825149,offset:0, i:30,color:"#333399"}];
   var widthgl  = _width;
   var widthin  = _width;
   var heightgl = 480;
@@ -724,37 +724,37 @@ $(document).ready(function(){
       bars.attr("transform", "translate(" + d3.event.transform.x+",0)scale(" + d3.event.transform.k + ",1)")
   }
 });
-$("#zoom_chart_143_0").click( function () {window.open("../topo/run_0_otapie_33306_33353.html");});
-$("#zoom_chart_143_1").click( function () {window.open("../topo/run_0_otapie_33306_33352.html");});
-$("#zoom_chart_143_2").click( function () {window.open("../topo/run_0_otapie_33306_33347.html");});
-$("#zoom_chart_143_3").click( function () {window.open("../topo/run_0_otapie_33306_33364.html");});
-$("#zoom_chart_143_4").click( function () {window.open("../topo/run_0_otapie_33306_33362.html");});
-$("#zoom_chart_143_5").click( function () {window.open("../topo/run_0_otapie_33306_33351.html");});
-$("#zoom_chart_143_6").click( function () {window.open("../topo/run_0_otapie_33306_33348.html");});
-$("#zoom_chart_143_7").click( function () {window.open("../topo/run_0_otapie_33306_33368.html");});
-$("#zoom_chart_143_8").click( function () {window.open("../topo/run_0_otapie_33306_33358.html");});
-$("#zoom_chart_143_9").click( function () {window.open("../topo/run_0_otapie_33306_33346.html");});
-$("#zoom_chart_143_10").click( function () {window.open("../topo/run_0_otapie_33306_33365.html");});
-$("#zoom_chart_143_11").click( function () {window.open("../topo/run_0_otapie_33306_33366.html");});
-$("#zoom_chart_143_12").click( function () {window.open("../topo/run_0_otapie_33306_33369.html");});
-$("#zoom_chart_143_13").click( function () {window.open("../topo/run_0_otapie_33306_33367.html");});
-$("#zoom_chart_143_14").click( function () {window.open("../topo/run_0_otapie_33306_33361.html");});
-$("#zoom_chart_143_15").click( function () {window.open("../topo/run_0_otapie_33306_33349.html");});
-$("#zoom_chart_143_16").click( function () {window.open("../topo/run_0_otapie_33306_33357.html");});
-$("#zoom_chart_143_17").click( function () {window.open("../topo/run_0_otapie_33306_33345.html");});
-$("#zoom_chart_143_18").click( function () {window.open("../topo/run_0_otapie_33306_33344.html");});
-$("#zoom_chart_143_19").click( function () {window.open("../topo/run_0_otapie_33306_33360.html");});
-$("#zoom_chart_143_20").click( function () {window.open("../topo/run_0_otapie_33306_33363.html");});
-$("#zoom_chart_143_21").click( function () {window.open("../topo/run_0_otapie_33306_33350.html");});
-$("#zoom_chart_143_22").click( function () {window.open("../topo/run_0_otapie_33306_33359.html");});
-$("#zoom_chart_143_23").click( function () {window.open("../topo/run_0_otapie_33306_33355.html");});
-$("#zoom_chart_143_24").click( function () {window.open("../topo/run_0_otapie_33306_33354.html");});
-$("#zoom_chart_143_25").click( function () {window.open("../topo/run_0_otapie_33306_33356.html");});
-$("#zoom_chart_143_26").click( function () {window.open("../topo/run_0_otapie_33306_33342.html");});
-$("#zoom_chart_143_27").click( function () {window.open("../topo/run_0_otapie_33306_33343.html");});
-$("#zoom_chart_143_28").click( function () {window.open("../topo/run_0_otapie_33306_33339.html");});
-$("#zoom_chart_143_29").click( function () {window.open("../topo/run_0_otapie_33306_33340.html");});
-$("#zoom_chart_143_30").click( function () {window.open("../topo/run_0_otapie_33306_33341.html");});
+$("#zoom_chart_143_0").click( function () {window.open("../topo/run_0_otapie_40247_40308.html");});
+$("#zoom_chart_143_1").click( function () {window.open("../topo/run_0_otapie_40247_40297.html");});
+$("#zoom_chart_143_2").click( function () {window.open("../topo/run_0_otapie_40247_40296.html");});
+$("#zoom_chart_143_3").click( function () {window.open("../topo/run_0_otapie_40247_40298.html");});
+$("#zoom_chart_143_4").click( function () {window.open("../topo/run_0_otapie_40247_40302.html");});
+$("#zoom_chart_143_5").click( function () {window.open("../topo/run_0_otapie_40247_40300.html");});
+$("#zoom_chart_143_6").click( function () {window.open("../topo/run_0_otapie_40247_40292.html");});
+$("#zoom_chart_143_7").click( function () {window.open("../topo/run_0_otapie_40247_40301.html");});
+$("#zoom_chart_143_8").click( function () {window.open("../topo/run_0_otapie_40247_40307.html");});
+$("#zoom_chart_143_9").click( function () {window.open("../topo/run_0_otapie_40247_40290.html");});
+$("#zoom_chart_143_10").click( function () {window.open("../topo/run_0_otapie_40247_40304.html");});
+$("#zoom_chart_143_11").click( function () {window.open("../topo/run_0_otapie_40247_40305.html");});
+$("#zoom_chart_143_12").click( function () {window.open("../topo/run_0_otapie_40247_40295.html");});
+$("#zoom_chart_143_13").click( function () {window.open("../topo/run_0_otapie_40247_40299.html");});
+$("#zoom_chart_143_14").click( function () {window.open("../topo/run_0_otapie_40247_40310.html");});
+$("#zoom_chart_143_15").click( function () {window.open("../topo/run_0_otapie_40247_40309.html");});
+$("#zoom_chart_143_16").click( function () {window.open("../topo/run_0_otapie_40247_40303.html");});
+$("#zoom_chart_143_17").click( function () {window.open("../topo/run_0_otapie_40247_40306.html");});
+$("#zoom_chart_143_18").click( function () {window.open("../topo/run_0_otapie_40247_40284.html");});
+$("#zoom_chart_143_19").click( function () {window.open("../topo/run_0_otapie_40247_40288.html");});
+$("#zoom_chart_143_20").click( function () {window.open("../topo/run_0_otapie_40247_40291.html");});
+$("#zoom_chart_143_21").click( function () {window.open("../topo/run_0_otapie_40247_40294.html");});
+$("#zoom_chart_143_22").click( function () {window.open("../topo/run_0_otapie_40247_40283.html");});
+$("#zoom_chart_143_23").click( function () {window.open("../topo/run_0_otapie_40247_40289.html");});
+$("#zoom_chart_143_24").click( function () {window.open("../topo/run_0_otapie_40247_40286.html");});
+$("#zoom_chart_143_25").click( function () {window.open("../topo/run_0_otapie_40247_40285.html");});
+$("#zoom_chart_143_26").click( function () {window.open("../topo/run_0_otapie_40247_40287.html");});
+$("#zoom_chart_143_27").click( function () {window.open("../topo/run_0_otapie_40247_40293.html");});
+$("#zoom_chart_143_28").click( function () {window.open("../topo/run_0_otapie_40247_40281.html");});
+$("#zoom_chart_143_29").click( function () {window.open("../topo/run_0_otapie_40247_40280.html");});
+$("#zoom_chart_143_30").click( function () {window.open("../topo/run_0_otapie_40247_40282.html");});
   }
 }
 function set_previous_ldbal_input_sorted () {
@@ -806,8 +806,8 @@ function set_ldbal_input_all () {
   // According to selector, draw both charts
   if (selector_run.value  == "1") {
 $(document).ready(function(){
-  var ordinals = ['otapie_33306_33306','otapie_33306_33339','otapie_33306_33340','otapie_33306_33341','otapie_33306_33342','otapie_33306_33343','otapie_33306_33344','otapie_33306_33345','otapie_33306_33346','otapie_33306_33347','otapie_33306_33348','otapie_33306_33349','otapie_33306_33350','otapie_33306_33351','otapie_33306_33352','otapie_33306_33353','otapie_33306_33354','otapie_33306_33355','otapie_33306_33356','otapie_33306_33357','otapie_33306_33358','otapie_33306_33359','otapie_33306_33360','otapie_33306_33361','otapie_33306_33362','otapie_33306_33363','otapie_33306_33364','otapie_33306_33365','otapie_33306_33366','otapie_33306_33367','otapie_33306_33368','otapie_33306_33369'];
-  var data = [{value:0,offset:0, i:0,color:"#333399"},{value:0.87293916940689,offset:0, i:1,color:"#333399"},{value:0.67895239591599,offset:0, i:2,color:"#333399"},{value:0.5819593667984,offset:0, i:3,color:"#333399"},{value:2.3300974369049,offset:0, i:4,color:"#333399"},{value:1.8446604013443,offset:0, i:5,color:"#333399"},{value:3.1037836074829,offset:0, i:6,color:"#333399"},{value:3.1067960262299,offset:0, i:7,color:"#333399"},{value:3.7937748432159,offset:0, i:8,color:"#333399"},{value:4.7572827339172,offset:0, i:9,color:"#333399"},{value:3.9805819988251,offset:0, i:10,color:"#333399"},{value:3.3947627544403,offset:0, i:11,color:"#333399"},{value:2.9097967147827,offset:0, i:12,color:"#333399"},{value:4.2801566123962,offset:0, i:13,color:"#333399"},{value:5.1456332206726,offset:0, i:14,color:"#333399"},{value:5.4421772956848,offset:0, i:15,color:"#333399"},{value:2.5242722034454,offset:0, i:16,color:"#333399"},{value:2.6290168762207,offset:0, i:17,color:"#333399"},{value:2.4366478919983,offset:0, i:18,color:"#333399"},{value:3.2007756233215,offset:0, i:19,color:"#333399"},{value:3.7937743663788,offset:0, i:20,color:"#333399"},{value:2.8128035068512,offset:0, i:21,color:"#333399"},{value:3.0067899227142,offset:0, i:22,color:"#333399"},{value:3.3947627544403,offset:0, i:23,color:"#333399"},{value:4.4834308624268,offset:0, i:24,color:"#333399"},{value:2.9097967147827,offset:0, i:25,color:"#333399"},{value:4.5586814880371,offset:0, i:26,color:"#333399"},{value:3.7974684238434,offset:0, i:27,color:"#333399"},{value:3.7900869846344,offset:0, i:28,color:"#333399"},{value:3.7073192596436,offset:0, i:29,color:"#333399"},{value:3.8797283172607,offset:0, i:30,color:"#333399"},{value:3.6857421398163,offset:0, i:31,color:"#333399"}];
+  var ordinals = ['otapie_40247_40247','otapie_40247_40280','otapie_40247_40281','otapie_40247_40282','otapie_40247_40283','otapie_40247_40284','otapie_40247_40285','otapie_40247_40286','otapie_40247_40287','otapie_40247_40288','otapie_40247_40289','otapie_40247_40290','otapie_40247_40291','otapie_40247_40292','otapie_40247_40293','otapie_40247_40294','otapie_40247_40295','otapie_40247_40296','otapie_40247_40297','otapie_40247_40298','otapie_40247_40299','otapie_40247_40300','otapie_40247_40301','otapie_40247_40302','otapie_40247_40303','otapie_40247_40304','otapie_40247_40305','otapie_40247_40306','otapie_40247_40307','otapie_40247_40308','otapie_40247_40309','otapie_40247_40310'];
+  var data = [{value:0,offset:0, i:0,color:"#333399"},{value:0.44792860746384,offset:0, i:1,color:"#333399"},{value:0.78299802541733,offset:0, i:2,color:"#333399"},{value:0.22371377050877,offset:0, i:3,color:"#333399"},{value:3.2474808692932,offset:0, i:4,color:"#333399"},{value:3.80313372612,offset:0, i:5,color:"#333399"},{value:2.6845648288727,offset:0, i:6,color:"#333399"},{value:2.8026916980743,offset:0, i:7,color:"#333399"},{value:2.5871777534485,offset:0, i:8,color:"#333399"},{value:3.8031332492828,offset:0, i:9,color:"#333399"},{value:2.908278465271,offset:0, i:10,color:"#333399"},{value:5.0335583686829,offset:0, i:11,color:"#333399"},{value:3.5955073833466,offset:0, i:12,color:"#333399"},{value:5.2749752998352,offset:0, i:13,color:"#333399"},{value:2.2396426200867,offset:0, i:14,color:"#333399"},{value:3.3557059764862,offset:0, i:15,color:"#333399"},{value:4.6697063446045,offset:0, i:16,color:"#333399"},{value:5.8890175819397,offset:0, i:17,color:"#333399"},{value:5.8295998573303,offset:0, i:18,color:"#333399"},{value:5.7239098548889,offset:0, i:19,color:"#333399"},{value:4.5871553421021,offset:0, i:20,color:"#333399"},{value:5.5056200027466,offset:0, i:21,color:"#333399"},{value:5.1454153060913,offset:0, i:22,color:"#333399"},{value:5.7239084243774,offset:0, i:23,color:"#333399"},{value:3.9370086193085,offset:0, i:24,color:"#333399"},{value:4.9272136688232,offset:0, i:25,color:"#333399"},{value:4.8098449707031,offset:0, i:26,color:"#333399"},{value:3.9149897098541,offset:0, i:27,color:"#333399"},{value:5.0561828613281,offset:0, i:28,color:"#333399"},{value:6.3829808235168,offset:0, i:29,color:"#333399"},{value:4.250560760498,offset:0, i:30,color:"#333399"},{value:4.4742732048035,offset:0, i:31,color:"#333399"}];
   var widthgl  = _width;
   var widthin  = _width;
   var heightgl = 480;
@@ -921,42 +921,42 @@ $(document).ready(function(){
       bars.attr("transform", "translate(" + d3.event.transform.x+",0)scale(" + d3.event.transform.k + ",1)")
   }
 });
-$("#zoom_chart_146_1").click( function () {window.open("../topo/run_0_otapie_33306_33339.html");});
-$("#zoom_chart_146_2").click( function () {window.open("../topo/run_0_otapie_33306_33340.html");});
-$("#zoom_chart_146_3").click( function () {window.open("../topo/run_0_otapie_33306_33341.html");});
-$("#zoom_chart_146_4").click( function () {window.open("../topo/run_0_otapie_33306_33342.html");});
-$("#zoom_chart_146_5").click( function () {window.open("../topo/run_0_otapie_33306_33343.html");});
-$("#zoom_chart_146_6").click( function () {window.open("../topo/run_0_otapie_33306_33344.html");});
-$("#zoom_chart_146_7").click( function () {window.open("../topo/run_0_otapie_33306_33345.html");});
-$("#zoom_chart_146_8").click( function () {window.open("../topo/run_0_otapie_33306_33346.html");});
-$("#zoom_chart_146_9").click( function () {window.open("../topo/run_0_otapie_33306_33347.html");});
-$("#zoom_chart_146_10").click( function () {window.open("../topo/run_0_otapie_33306_33348.html");});
-$("#zoom_chart_146_11").click( function () {window.open("../topo/run_0_otapie_33306_33349.html");});
-$("#zoom_chart_146_12").click( function () {window.open("../topo/run_0_otapie_33306_33350.html");});
-$("#zoom_chart_146_13").click( function () {window.open("../topo/run_0_otapie_33306_33351.html");});
-$("#zoom_chart_146_14").click( function () {window.open("../topo/run_0_otapie_33306_33352.html");});
-$("#zoom_chart_146_15").click( function () {window.open("../topo/run_0_otapie_33306_33353.html");});
-$("#zoom_chart_146_16").click( function () {window.open("../topo/run_0_otapie_33306_33354.html");});
-$("#zoom_chart_146_17").click( function () {window.open("../topo/run_0_otapie_33306_33355.html");});
-$("#zoom_chart_146_18").click( function () {window.open("../topo/run_0_otapie_33306_33356.html");});
-$("#zoom_chart_146_19").click( function () {window.open("../topo/run_0_otapie_33306_33357.html");});
-$("#zoom_chart_146_20").click( function () {window.open("../topo/run_0_otapie_33306_33358.html");});
-$("#zoom_chart_146_21").click( function () {window.open("../topo/run_0_otapie_33306_33359.html");});
-$("#zoom_chart_146_22").click( function () {window.open("../topo/run_0_otapie_33306_33360.html");});
-$("#zoom_chart_146_23").click( function () {window.open("../topo/run_0_otapie_33306_33361.html");});
-$("#zoom_chart_146_24").click( function () {window.open("../topo/run_0_otapie_33306_33362.html");});
-$("#zoom_chart_146_25").click( function () {window.open("../topo/run_0_otapie_33306_33363.html");});
-$("#zoom_chart_146_26").click( function () {window.open("../topo/run_0_otapie_33306_33364.html");});
-$("#zoom_chart_146_27").click( function () {window.open("../topo/run_0_otapie_33306_33365.html");});
-$("#zoom_chart_146_28").click( function () {window.open("../topo/run_0_otapie_33306_33366.html");});
-$("#zoom_chart_146_29").click( function () {window.open("../topo/run_0_otapie_33306_33367.html");});
-$("#zoom_chart_146_30").click( function () {window.open("../topo/run_0_otapie_33306_33368.html");});
-$("#zoom_chart_146_31").click( function () {window.open("../topo/run_0_otapie_33306_33369.html");});
+$("#zoom_chart_146_1").click( function () {window.open("../topo/run_0_otapie_40247_40280.html");});
+$("#zoom_chart_146_2").click( function () {window.open("../topo/run_0_otapie_40247_40281.html");});
+$("#zoom_chart_146_3").click( function () {window.open("../topo/run_0_otapie_40247_40282.html");});
+$("#zoom_chart_146_4").click( function () {window.open("../topo/run_0_otapie_40247_40283.html");});
+$("#zoom_chart_146_5").click( function () {window.open("../topo/run_0_otapie_40247_40284.html");});
+$("#zoom_chart_146_6").click( function () {window.open("../topo/run_0_otapie_40247_40285.html");});
+$("#zoom_chart_146_7").click( function () {window.open("../topo/run_0_otapie_40247_40286.html");});
+$("#zoom_chart_146_8").click( function () {window.open("../topo/run_0_otapie_40247_40287.html");});
+$("#zoom_chart_146_9").click( function () {window.open("../topo/run_0_otapie_40247_40288.html");});
+$("#zoom_chart_146_10").click( function () {window.open("../topo/run_0_otapie_40247_40289.html");});
+$("#zoom_chart_146_11").click( function () {window.open("../topo/run_0_otapie_40247_40290.html");});
+$("#zoom_chart_146_12").click( function () {window.open("../topo/run_0_otapie_40247_40291.html");});
+$("#zoom_chart_146_13").click( function () {window.open("../topo/run_0_otapie_40247_40292.html");});
+$("#zoom_chart_146_14").click( function () {window.open("../topo/run_0_otapie_40247_40293.html");});
+$("#zoom_chart_146_15").click( function () {window.open("../topo/run_0_otapie_40247_40294.html");});
+$("#zoom_chart_146_16").click( function () {window.open("../topo/run_0_otapie_40247_40295.html");});
+$("#zoom_chart_146_17").click( function () {window.open("../topo/run_0_otapie_40247_40296.html");});
+$("#zoom_chart_146_18").click( function () {window.open("../topo/run_0_otapie_40247_40297.html");});
+$("#zoom_chart_146_19").click( function () {window.open("../topo/run_0_otapie_40247_40298.html");});
+$("#zoom_chart_146_20").click( function () {window.open("../topo/run_0_otapie_40247_40299.html");});
+$("#zoom_chart_146_21").click( function () {window.open("../topo/run_0_otapie_40247_40300.html");});
+$("#zoom_chart_146_22").click( function () {window.open("../topo/run_0_otapie_40247_40301.html");});
+$("#zoom_chart_146_23").click( function () {window.open("../topo/run_0_otapie_40247_40302.html");});
+$("#zoom_chart_146_24").click( function () {window.open("../topo/run_0_otapie_40247_40303.html");});
+$("#zoom_chart_146_25").click( function () {window.open("../topo/run_0_otapie_40247_40304.html");});
+$("#zoom_chart_146_26").click( function () {window.open("../topo/run_0_otapie_40247_40305.html");});
+$("#zoom_chart_146_27").click( function () {window.open("../topo/run_0_otapie_40247_40306.html");});
+$("#zoom_chart_146_28").click( function () {window.open("../topo/run_0_otapie_40247_40307.html");});
+$("#zoom_chart_146_29").click( function () {window.open("../topo/run_0_otapie_40247_40308.html");});
+$("#zoom_chart_146_30").click( function () {window.open("../topo/run_0_otapie_40247_40309.html");});
+$("#zoom_chart_146_31").click( function () {window.open("../topo/run_0_otapie_40247_40310.html");});
   }
   if (selector_run.value  == "1") {
 $(document).ready(function(){
-  var ordinals = ['otapie_33306_33306','otapie_33306_33339','otapie_33306_33340','otapie_33306_33341','otapie_33306_33342','otapie_33306_33343','otapie_33306_33344','otapie_33306_33345','otapie_33306_33346','otapie_33306_33347','otapie_33306_33348','otapie_33306_33349','otapie_33306_33350','otapie_33306_33351','otapie_33306_33352','otapie_33306_33353','otapie_33306_33354','otapie_33306_33355','otapie_33306_33356','otapie_33306_33357','otapie_33306_33358','otapie_33306_33359','otapie_33306_33360','otapie_33306_33361','otapie_33306_33362','otapie_33306_33363','otapie_33306_33364','otapie_33306_33365','otapie_33306_33366','otapie_33306_33367','otapie_33306_33368','otapie_33306_33369'];
-  var data = [{value:0,offset:0, i:0,color:"#333399"},{value:0.044999998062849,offset:0, i:1,color:"#333399"},{value:0.034999996423721,offset:0, i:2,color:"#333399"},{value:0.029999997466803,offset:0, i:3,color:"#333399"},{value:0.11999998241663,offset:0, i:4,color:"#333399"},{value:0.094999998807907,offset:0, i:5,color:"#333399"},{value:0.15999998152256,offset:0, i:6,color:"#333399"},{value:0.15999999642372,offset:0, i:7,color:"#333399"},{value:0.19499999284744,offset:0, i:8,color:"#333399"},{value:0.24499997496605,offset:0, i:9,color:"#333399"},{value:0.2049999833107,offset:0, i:10,color:"#333399"},{value:0.17499998211861,offset:0, i:11,color:"#333399"},{value:0.14999997615814,offset:0, i:12,color:"#333399"},{value:0.21999998390675,offset:0, i:13,color:"#333399"},{value:0.26499998569489,offset:0, i:14,color:"#333399"},{value:0.27999997138977,offset:0, i:15,color:"#333399"},{value:0.12999998033047,offset:0, i:16,color:"#333399"},{value:0.13499999046326,offset:0, i:17,color:"#333399"},{value:0.12499999254942,offset:0, i:18,color:"#333399"},{value:0.16499997675419,offset:0, i:19,color:"#333399"},{value:0.19499999284744,offset:0, i:20,color:"#333399"},{value:0.14499998092651,offset:0, i:21,color:"#333399"},{value:0.15499998629093,offset:0, i:22,color:"#333399"},{value:0.17499999701977,offset:0, i:23,color:"#333399"},{value:0.22999998927116,offset:0, i:24,color:"#333399"},{value:0.1499999910593,offset:0, i:25,color:"#333399"},{value:0.23499996960163,offset:0, i:26,color:"#333399"},{value:0.19499997794628,offset:0, i:27,color:"#333399"},{value:0.19499996304512,offset:0, i:28,color:"#333399"},{value:0.18999998271465,offset:0, i:29,color:"#333399"},{value:0.19999995827675,offset:0, i:30,color:"#333399"},{value:0.18999999761581,offset:0, i:31,color:"#333399"}];
+  var ordinals = ['otapie_40247_40247','otapie_40247_40280','otapie_40247_40281','otapie_40247_40282','otapie_40247_40283','otapie_40247_40284','otapie_40247_40285','otapie_40247_40286','otapie_40247_40287','otapie_40247_40288','otapie_40247_40289','otapie_40247_40290','otapie_40247_40291','otapie_40247_40292','otapie_40247_40293','otapie_40247_40294','otapie_40247_40295','otapie_40247_40296','otapie_40247_40297','otapie_40247_40298','otapie_40247_40299','otapie_40247_40300','otapie_40247_40301','otapie_40247_40302','otapie_40247_40303','otapie_40247_40304','otapie_40247_40305','otapie_40247_40306','otapie_40247_40307','otapie_40247_40308','otapie_40247_40309','otapie_40247_40310'];
+  var data = [{value:0,offset:0, i:0,color:"#333399"},{value:0.019999995827675,offset:0, i:1,color:"#333399"},{value:0.034999988973141,offset:0, i:2,color:"#333399"},{value:0.0099999969825149,offset:0, i:3,color:"#333399"},{value:0.14499998092651,offset:0, i:4,color:"#333399"},{value:0.16999997198582,offset:0, i:5,color:"#333399"},{value:0.11999996751547,offset:0, i:6,color:"#333399"},{value:0.12499997019768,offset:0, i:7,color:"#333399"},{value:0.11499997973442,offset:0, i:8,color:"#333399"},{value:0.16999995708466,offset:0, i:9,color:"#333399"},{value:0.12999996542931,offset:0, i:10,color:"#333399"},{value:0.22499994933605,offset:0, i:11,color:"#333399"},{value:0.15999998152256,offset:0, i:12,color:"#333399"},{value:0.23499993979931,offset:0, i:13,color:"#333399"},{value:0.099999971687794,offset:0, i:14,color:"#333399"},{value:0.14999997615814,offset:0, i:15,color:"#333399"},{value:0.2049999833107,offset:0, i:16,color:"#333399"},{value:0.25999996066093,offset:0, i:17,color:"#333399"},{value:0.25999999046326,offset:0, i:18,color:"#333399"},{value:0.25499996542931,offset:0, i:19,color:"#333399"},{value:0.19999995827675,offset:0, i:20,color:"#333399"},{value:0.24499994516373,offset:0, i:21,color:"#333399"},{value:0.22999995946884,offset:0, i:22,color:"#333399"},{value:0.25499993562698,offset:0, i:23,color:"#333399"},{value:0.17499995231628,offset:0, i:24,color:"#333399"},{value:0.21999995410442,offset:0, i:25,color:"#333399"},{value:0.21499994397163,offset:0, i:26,color:"#333399"},{value:0.17499993741512,offset:0, i:27,color:"#333399"},{value:0.22499996423721,offset:0, i:28,color:"#333399"},{value:0.2849999666214,offset:0, i:29,color:"#333399"},{value:0.18999995291233,offset:0, i:30,color:"#333399"},{value:0.19999995827675,offset:0, i:31,color:"#333399"}];
   var widthgl  = _width;
   var widthin  = _width;
   var heightgl = 480;
@@ -1070,37 +1070,37 @@ $(document).ready(function(){
       bars.attr("transform", "translate(" + d3.event.transform.x+",0)scale(" + d3.event.transform.k + ",1)")
   }
 });
-$("#zoom_chart_147_1").click( function () {window.open("../topo/run_0_otapie_33306_33339.html");});
-$("#zoom_chart_147_2").click( function () {window.open("../topo/run_0_otapie_33306_33340.html");});
-$("#zoom_chart_147_3").click( function () {window.open("../topo/run_0_otapie_33306_33341.html");});
-$("#zoom_chart_147_4").click( function () {window.open("../topo/run_0_otapie_33306_33342.html");});
-$("#zoom_chart_147_5").click( function () {window.open("../topo/run_0_otapie_33306_33343.html");});
-$("#zoom_chart_147_6").click( function () {window.open("../topo/run_0_otapie_33306_33344.html");});
-$("#zoom_chart_147_7").click( function () {window.open("../topo/run_0_otapie_33306_33345.html");});
-$("#zoom_chart_147_8").click( function () {window.open("../topo/run_0_otapie_33306_33346.html");});
-$("#zoom_chart_147_9").click( function () {window.open("../topo/run_0_otapie_33306_33347.html");});
-$("#zoom_chart_147_10").click( function () {window.open("../topo/run_0_otapie_33306_33348.html");});
-$("#zoom_chart_147_11").click( function () {window.open("../topo/run_0_otapie_33306_33349.html");});
-$("#zoom_chart_147_12").click( function () {window.open("../topo/run_0_otapie_33306_33350.html");});
-$("#zoom_chart_147_13").click( function () {window.open("../topo/run_0_otapie_33306_33351.html");});
-$("#zoom_chart_147_14").click( function () {window.open("../topo/run_0_otapie_33306_33352.html");});
-$("#zoom_chart_147_15").click( function () {window.open("../topo/run_0_otapie_33306_33353.html");});
-$("#zoom_chart_147_16").click( function () {window.open("../topo/run_0_otapie_33306_33354.html");});
-$("#zoom_chart_147_17").click( function () {window.open("../topo/run_0_otapie_33306_33355.html");});
-$("#zoom_chart_147_18").click( function () {window.open("../topo/run_0_otapie_33306_33356.html");});
-$("#zoom_chart_147_19").click( function () {window.open("../topo/run_0_otapie_33306_33357.html");});
-$("#zoom_chart_147_20").click( function () {window.open("../topo/run_0_otapie_33306_33358.html");});
-$("#zoom_chart_147_21").click( function () {window.open("../topo/run_0_otapie_33306_33359.html");});
-$("#zoom_chart_147_22").click( function () {window.open("../topo/run_0_otapie_33306_33360.html");});
-$("#zoom_chart_147_23").click( function () {window.open("../topo/run_0_otapie_33306_33361.html");});
-$("#zoom_chart_147_24").click( function () {window.open("../topo/run_0_otapie_33306_33362.html");});
-$("#zoom_chart_147_25").click( function () {window.open("../topo/run_0_otapie_33306_33363.html");});
-$("#zoom_chart_147_26").click( function () {window.open("../topo/run_0_otapie_33306_33364.html");});
-$("#zoom_chart_147_27").click( function () {window.open("../topo/run_0_otapie_33306_33365.html");});
-$("#zoom_chart_147_28").click( function () {window.open("../topo/run_0_otapie_33306_33366.html");});
-$("#zoom_chart_147_29").click( function () {window.open("../topo/run_0_otapie_33306_33367.html");});
-$("#zoom_chart_147_30").click( function () {window.open("../topo/run_0_otapie_33306_33368.html");});
-$("#zoom_chart_147_31").click( function () {window.open("../topo/run_0_otapie_33306_33369.html");});
+$("#zoom_chart_147_1").click( function () {window.open("../topo/run_0_otapie_40247_40280.html");});
+$("#zoom_chart_147_2").click( function () {window.open("../topo/run_0_otapie_40247_40281.html");});
+$("#zoom_chart_147_3").click( function () {window.open("../topo/run_0_otapie_40247_40282.html");});
+$("#zoom_chart_147_4").click( function () {window.open("../topo/run_0_otapie_40247_40283.html");});
+$("#zoom_chart_147_5").click( function () {window.open("../topo/run_0_otapie_40247_40284.html");});
+$("#zoom_chart_147_6").click( function () {window.open("../topo/run_0_otapie_40247_40285.html");});
+$("#zoom_chart_147_7").click( function () {window.open("../topo/run_0_otapie_40247_40286.html");});
+$("#zoom_chart_147_8").click( function () {window.open("../topo/run_0_otapie_40247_40287.html");});
+$("#zoom_chart_147_9").click( function () {window.open("../topo/run_0_otapie_40247_40288.html");});
+$("#zoom_chart_147_10").click( function () {window.open("../topo/run_0_otapie_40247_40289.html");});
+$("#zoom_chart_147_11").click( function () {window.open("../topo/run_0_otapie_40247_40290.html");});
+$("#zoom_chart_147_12").click( function () {window.open("../topo/run_0_otapie_40247_40291.html");});
+$("#zoom_chart_147_13").click( function () {window.open("../topo/run_0_otapie_40247_40292.html");});
+$("#zoom_chart_147_14").click( function () {window.open("../topo/run_0_otapie_40247_40293.html");});
+$("#zoom_chart_147_15").click( function () {window.open("../topo/run_0_otapie_40247_40294.html");});
+$("#zoom_chart_147_16").click( function () {window.open("../topo/run_0_otapie_40247_40295.html");});
+$("#zoom_chart_147_17").click( function () {window.open("../topo/run_0_otapie_40247_40296.html");});
+$("#zoom_chart_147_18").click( function () {window.open("../topo/run_0_otapie_40247_40297.html");});
+$("#zoom_chart_147_19").click( function () {window.open("../topo/run_0_otapie_40247_40298.html");});
+$("#zoom_chart_147_20").click( function () {window.open("../topo/run_0_otapie_40247_40299.html");});
+$("#zoom_chart_147_21").click( function () {window.open("../topo/run_0_otapie_40247_40300.html");});
+$("#zoom_chart_147_22").click( function () {window.open("../topo/run_0_otapie_40247_40301.html");});
+$("#zoom_chart_147_23").click( function () {window.open("../topo/run_0_otapie_40247_40302.html");});
+$("#zoom_chart_147_24").click( function () {window.open("../topo/run_0_otapie_40247_40303.html");});
+$("#zoom_chart_147_25").click( function () {window.open("../topo/run_0_otapie_40247_40304.html");});
+$("#zoom_chart_147_26").click( function () {window.open("../topo/run_0_otapie_40247_40305.html");});
+$("#zoom_chart_147_27").click( function () {window.open("../topo/run_0_otapie_40247_40306.html");});
+$("#zoom_chart_147_28").click( function () {window.open("../topo/run_0_otapie_40247_40307.html");});
+$("#zoom_chart_147_29").click( function () {window.open("../topo/run_0_otapie_40247_40308.html");});
+$("#zoom_chart_147_30").click( function () {window.open("../topo/run_0_otapie_40247_40309.html");});
+$("#zoom_chart_147_31").click( function () {window.open("../topo/run_0_otapie_40247_40310.html");});
   }
 }
 function set_previous_ldbal_input_all () {
@@ -1126,9 +1126,9 @@ addLoadEvent(function(){
 <table style="width:100%;"><tr><td style="text-align:center;"><select id="callchains_select_run" size="1" onchange="set_callchains_input ();" autocomplete="off" style="cursor:pointer;">
            <option value="1">Run 1
 </select></td></tr></table>
-<div id="div_callchains_1"><div class="_div_table" ><table id="_tree_table_29" class="_tree_table"><tr><th class="_freezed_row  _left  tooltip-maqao" title="" tooltip_id="0" style="width:20%;"><span></span>Coverage (%)</th><th class="_freezed_row  tooltip-maqao" title="" tooltip_id="1" style="width:30%;"><span></span>Name</th><th class="_freezed_row  tooltip-maqao" title="" tooltip_id="2" style="width:30%;"><span></span>Source Location</th><th class="_freezed_row  tooltip-maqao" title="" tooltip_id="3" style="width:20%;"><span></span>Module</th></tr>
-<tr class=" _outer_row"  id="_tr_29_1" ><td id="_tr_29_1-1"  data-_i="1" data-_j="1"  class=" _left" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:0px;cursor:pointer;" >&#x25BA;</span>100.00<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_29_1-2"  data-_i="1" data-_j="2" >pthread_condattr_setpshared</td><td id="_tr_29_1-3"  data-_i="1" data-_j="3"  title="" tooltip_id="4" class=" tooltip-maqao" ></td><td id="_tr_29_1-4"  data-_i="1" data-_j="4"  class=" _centered" >libc.so.6</td></tr>
-<tr class="_tree_hidden _tr_29_1"  id="_tr_29_1_1" ><td id="_tr_29_1_1-1"  data-_i="2" data-_j="1"  class=" _left" ><span style="margin-right:10px;margin-left:18px;" >&#x25CB;</span></td><td id="_tr_29_1_1-2"  data-_i="2" data-_j="2" >__clone</td><td id="_tr_29_1_1-3"  data-_i="2" data-_j="3"  title="" tooltip_id="5" class=" tooltip-maqao" ></td><td id="_tr_29_1_1-4"  data-_i="2" data-_j="4"  class=" _centered" >libc.so.6</td></tr>
+<div id="div_callchains_1"><div class="_div_table" ><table id="_tree_table_30" class="_tree_table"><tr><th class="_freezed_row  _left  tooltip-maqao" title="" tooltip_id="0" style="width:20%;"><span></span>Coverage (%)</th><th class="_freezed_row  tooltip-maqao" title="" tooltip_id="1" style="width:30%;"><span></span>Name</th><th class="_freezed_row  tooltip-maqao" title="" tooltip_id="2" style="width:30%;"><span></span>Source Location</th><th class="_freezed_row  tooltip-maqao" title="" tooltip_id="3" style="width:20%;"><span></span>Module</th></tr>
+<tr class=" _outer_row"  id="_tr_30_1" ><td id="_tr_30_1-1"  data-_i="1" data-_j="1"  class=" _left" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:0px;cursor:pointer;" >&#x25BA;</span>100.00<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_30_1-2"  data-_i="1" data-_j="2" >pthread_condattr_setpshared</td><td id="_tr_30_1-3"  data-_i="1" data-_j="3"  title="" tooltip_id="4" class=" tooltip-maqao" ></td><td id="_tr_30_1-4"  data-_i="1" data-_j="4"  class=" _centered" >libc.so.6</td></tr>
+<tr class="_tree_hidden _tr_30_1"  id="_tr_30_1_1" ><td id="_tr_30_1_1-1"  data-_i="2" data-_j="1"  class=" _left" ><span style="margin-right:10px;margin-left:18px;" >&#x25CB;</span></td><td id="_tr_30_1_1-2"  data-_i="2" data-_j="2" >__clone</td><td id="_tr_30_1_1-3"  data-_i="2" data-_j="3"  title="" tooltip_id="5" class=" tooltip-maqao" ></td><td id="_tr_30_1_1-4"  data-_i="2" data-_j="4"  class=" _centered" >libc.so.6</td></tr>
 </table></div>
 </div>
 <script>

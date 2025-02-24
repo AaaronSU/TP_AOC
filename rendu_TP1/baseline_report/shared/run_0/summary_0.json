@@ -5,7 +5,7 @@
       "status": "good",
       "score": 4,
       "max_score": 4,
-      "text": "Application profile is long enough (187.37 s)",
+      "text": "Application profile is long enough (185.16 s)",
       "desc": "To have good quality measurements, it is advised that the application profiling time is greater than 10 seconds."
     },
     {
@@ -19,7 +19,7 @@
     {
       "name": "lvl0_utilitary_options",
       "status": "warning",
-      "score": 2.3999359487616,
+      "score": 2.3999351859319,
       "max_score": 3,
       "text": "Most of time spent in analyzed modules comes from functions without compilation information",
       "desc": "Functions without compilation information (typically not compiled with -g) cumulate 0.00% of the time spent in analyzed modules. Check that -g is present.\nRemark: if -g is indeed used, this can also be due to some compiler built-in functions (typically math) or statically linked libraries. This warning can be ignored in that case."

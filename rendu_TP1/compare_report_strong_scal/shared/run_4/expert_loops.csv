@@ -1,0 +1,4 @@
+ID;Module;Source Location;Source Function;Level;Max Time Over Threads (s);Time w.r.t. Wall Time (s);Coverage (% app. time);Speedup if no scalar integer;Speedup if FP arith vectorized;Speedup if fully vectorized;Speedup if FP only;Number of paths;Vectorization Ratio (%);Vectorization Efficiency (%);CQA cycles;CQA cycles if no scalar integer;CQA cycles if FP arith vectorized;CQA cycles if fully vectorized;CQA cycles if FP only
+Loop 6;measure_opti_parallel;driver_opti.c:22-23;kernel._omp_fn.0;Innermost;0.16500000655651;0.13791291415691;5.8437685966492;1.00;1.00;1.00;1.00;1;100.00;100.00;24.00;24.00;24.00;24.00;24.00
+Loop 7;measure_opti_parallel;driver_opti.c:21-25;kernel._omp_fn.0;InBetween;0.059999998658895;0.036940962076187;1.5652952194214;1.60;1.00;1.36;1.60;15;44.00;49.00;8.00;5.00;8.00;5.88;5.00
+Loop 4;measure_opti_parallel;driver_opti.c:41-42;main;Innermost;0.0049999998882413;0.00035181871498935;0.014907574281096;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA

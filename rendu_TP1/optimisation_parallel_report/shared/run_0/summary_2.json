@@ -1,11 +1,11 @@
 {
   "report": [
     {
-      "id_str": "Loop 5 - measure_opti_parallel",
+      "id_str": "Loop 6 - measure_opti_parallel",
       "module": "measure_opti_parallel",
-      "id": 5,
-      "analysis": "Execution Time: 12 % - Vectorization Ratio: 0.00 % - Vector Length Use: 25.00 %",
-      "coverage": 12.099298477173,
+      "id": 6,
+      "analysis": "Execution Time: 1 % - Vectorization Ratio: 100.00 % - Vector Length Use: 100.00 %",
+      "coverage": 1.8742109537125,
       "issues": [
         {
           "id_str": "Loop Computation Issues",
@@ -43,11 +43,11 @@
       ]
     },
     {
-      "id_str": "Loop 6 - measure_opti_parallel",
+      "id_str": "Loop 7 - measure_opti_parallel",
       "module": "measure_opti_parallel",
-      "id": 6,
-      "analysis": "Execution Time: 0 % - Vectorization Ratio: 3.45 % - Vector Length Use: 25.00 %",
-      "coverage": 0.09115494042635,
+      "id": 7,
+      "analysis": "Execution Time: 0 % - Vectorization Ratio: 44.00 % - Vector Length Use: 49.00 %",
+      "coverage": 0.43871977925301,
       "issues": [
         {
           "id_str": "Loop Computation Issues",
@@ -76,7 +76,23 @@
             },
             {
               "code": "L2_CF_4",
-              "analysis": "[SA] Non innermost loop (Outermost) - Collapse loop with innermost ones. This issue costs 2 points.",
+              "analysis": "[SA] Non innermost loop (InBetween) - Collapse loop with innermost ones. This issue costs 2 points.",
+              "score": 2,
+            }
+          ]
+        },
+        {
+          "id_str": "Data Access Issues",
+          "score": 2,
+          "issues": [
+            {
+              "code": "L2_DA_3",
+              "analysis": "[SA] Inefficient vectorization: more than 10% of the vector loads instructions are unaligned - When allocating arrays, don’t forget to align them. There are 0 issues ( = arrays) costing 2 points each",
+              "score": 0,
+            },
+            {
+              "code": "L2_DA_5",
+              "analysis": "[SA] Presence of special instructions executing on a single port (INSERT/EXTRACT, BLEND/MERGE) - Simplify data access and try to get stride 1 access. There are 2 issues (= instructions) costing 1 point each.",
               "score": 2,
             }
           ]
@@ -92,7 +108,18 @@
             },
             {
               "code": "L2_CF_4",
-              "analysis": "[SA] Non innermost loop (Outermost) - Collapse loop with innermost ones. This issue costs 2 points.",
+              "analysis": "[SA] Non innermost loop (InBetween) - Collapse loop with innermost ones. This issue costs 2 points.",
+              "score": 2,
+            }
+          ]
+        },
+        {
+          "id_str": "Inefficient Vectorization",
+          "score": 2,
+          "issues": [
+            {
+              "code": "L2_DA_5",
+              "analysis": "[SA] Presence of special instructions executing on a single port (INSERT/EXTRACT, BLEND/MERGE) - Simplify data access and try to get stride 1 access. There are 2 issues (= instructions) costing 1 point each.",
               "score": 2,
             }
           ]

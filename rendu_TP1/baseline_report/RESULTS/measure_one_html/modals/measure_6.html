@@ -97,25 +97,25 @@ addLoadEvent(function(){
       <td><button type="button" style="cursor:pointer;" onclick="set_next_ldbal_input_ ();">&rarr;</button></td>
     </tr>
   </table>
-<div style="margin: 10px; overflow-x:auto; overflow-y:hidden;"><div id="chart_cat_82" style="height:500px" ></div><div style="text-align:center;"></div></div>
+<div style="margin: 10px; overflow-x:auto; overflow-y:hidden;"><div id="chart_cat_62" style="height:500px" ></div><div style="text-align:center;"></div></div>
 <script class="code">
 </script>
-<div style="margin: 10px; overflow-x:auto; overflow-y:hidden;"><div id="chart_cat_83" style="height:500px" ></div><div style="text-align:center;"></div></div>
+<div style="margin: 10px; overflow-x:auto; overflow-y:hidden;"><div id="chart_cat_63" style="height:500px" ></div><div style="text-align:center;"></div></div>
 <script class="code">
 </script>
   <script>
 function set_ldbal_input_ () {
   var selector_run  = document.getElementById ("ldbal_select_run_");
   // Clear placeholder content and update their size
-  document.getElementById("chart_cat_82").innerHTML = "";
-  var _width = Math.floor(document.getElementById("chart_cat_82").getBoundingClientRect().width);
-  document.getElementById("chart_cat_83").innerHTML = "";
-  var _width = Math.floor(document.getElementById("chart_cat_83").getBoundingClientRect().width);
+  document.getElementById("chart_cat_62").innerHTML = "";
+  var _width = Math.floor(document.getElementById("chart_cat_62").getBoundingClientRect().width);
+  document.getElementById("chart_cat_63").innerHTML = "";
+  var _width = Math.floor(document.getElementById("chart_cat_63").getBoundingClientRect().width);
   // According to selector, draw both charts
   if (selector_run.value  == "1") {
 $(document).ready(function(){
-  var ordinals = ['otapie_27125_27125'];
-  var data = [{value:0.2668516933918,offset:0, i:0,color:"#333399"}];
+  var ordinals = ['otapie_36338_36338'];
+  var data = [{value:0.24303308129311,offset:0, i:0,color:"#333399"}];
   var widthgl  = _width;
   var widthin  = _width;
   var heightgl = 480;
@@ -125,7 +125,7 @@ $(document).ready(function(){
   height = heightgl - margin.top - margin.bottom,
   radius = (Math.min(width, height) / 2) - 10,
   node;
-  const svg = d3.select('#chart_cat_82')
+  const svg = d3.select('#chart_cat_62')
       .append('svg')
       .attr('width', widthin)
       .attr('height', heightin)
@@ -181,13 +181,13 @@ $(document).ready(function(){
     .text("Coverage (%)");
   let bars = svg.append('g')
     .attr('clip-path','url(#my-clip-path)')
-    .attr('id', 'zoom_chart_82')
+    .attr('id', 'zoom_chart_62')
     .selectAll('.bar')
     .data(data)
     .enter()
     .append('rect')
     .attr('class', 'bar')
-    .attr('id', function (d, i){ return 'zoom_chart_82_'+i;})
+    .attr('id', function (d, i){ return 'zoom_chart_62_'+i;})
     .attr('x', function(d, i){
       return xScale(d.i) - xBand.bandwidth()*0.9/2
     })
@@ -229,12 +229,12 @@ $(document).ready(function(){
       bars.attr("transform", "translate(" + d3.event.transform.x+",0)scale(" + d3.event.transform.k + ",1)")
   }
 });
-$("#zoom_chart_82_0").click( function () {window.open("../topo/run_0_otapie_27125_27125.html");});
+$("#zoom_chart_62_0").click( function () {window.open("../topo/run_0_otapie_36338_36338.html");});
   }
   if (selector_run.value  == "1") {
 $(document).ready(function(){
-  var ordinals = ['otapie_27125_27125'];
-  var data = [{value:0.49999991059303,offset:0, i:0,color:"#333399"}];
+  var ordinals = ['otapie_36338_36338'];
+  var data = [{value:0.44999992847443,offset:0, i:0,color:"#333399"}];
   var widthgl  = _width;
   var widthin  = _width;
   var heightgl = 480;
@@ -244,7 +244,7 @@ $(document).ready(function(){
   height = heightgl - margin.top - margin.bottom,
   radius = (Math.min(width, height) / 2) - 10,
   node;
-  const svg = d3.select('#chart_cat_83')
+  const svg = d3.select('#chart_cat_63')
       .append('svg')
       .attr('width', widthin)
       .attr('height', heightin)
@@ -300,13 +300,13 @@ $(document).ready(function(){
     .text("Time (s)");
   let bars = svg.append('g')
     .attr('clip-path','url(#my-clip-path)')
-    .attr('id', 'zoom_chart_83')
+    .attr('id', 'zoom_chart_63')
     .selectAll('.bar')
     .data(data)
     .enter()
     .append('rect')
     .attr('class', 'bar')
-    .attr('id', function (d, i){ return 'zoom_chart_83_'+i;})
+    .attr('id', function (d, i){ return 'zoom_chart_63_'+i;})
     .attr('x', function(d, i){
       return xScale(d.i) - xBand.bandwidth()*0.9/2
     })
@@ -348,7 +348,7 @@ $(document).ready(function(){
       bars.attr("transform", "translate(" + d3.event.transform.x+",0)scale(" + d3.event.transform.k + ",1)")
   }
 });
-$("#zoom_chart_83_0").click( function () {window.open("../topo/run_0_otapie_27125_27125.html");});
+$("#zoom_chart_63_0").click( function () {window.open("../topo/run_0_otapie_36338_36338.html");});
   }
 }
 function set_previous_ldbal_input_ () {
@@ -383,25 +383,25 @@ addLoadEvent(function(){
       <td><button type="button" style="cursor:pointer;" onclick="set_next_ldbal_input_sorted ();">&rarr;</button></td>
     </tr>
   </table>
-<div style="margin: 10px; overflow-x:auto; overflow-y:hidden;"><div id="chart_cat_86" style="height:500px" ></div><div style="text-align:center;"></div></div>
+<div style="margin: 10px; overflow-x:auto; overflow-y:hidden;"><div id="chart_cat_66" style="height:500px" ></div><div style="text-align:center;"></div></div>
 <script class="code">
 </script>
-<div style="margin: 10px; overflow-x:auto; overflow-y:hidden;"><div id="chart_cat_87" style="height:500px" ></div><div style="text-align:center;"></div></div>
+<div style="margin: 10px; overflow-x:auto; overflow-y:hidden;"><div id="chart_cat_67" style="height:500px" ></div><div style="text-align:center;"></div></div>
 <script class="code">
 </script>
   <script>
 function set_ldbal_input_sorted () {
   var selector_run  = document.getElementById ("ldbal_select_run_sorted");
   // Clear placeholder content and update their size
-  document.getElementById("chart_cat_86").innerHTML = "";
-  var _width = Math.floor(document.getElementById("chart_cat_86").getBoundingClientRect().width);
-  document.getElementById("chart_cat_87").innerHTML = "";
-  var _width = Math.floor(document.getElementById("chart_cat_87").getBoundingClientRect().width);
+  document.getElementById("chart_cat_66").innerHTML = "";
+  var _width = Math.floor(document.getElementById("chart_cat_66").getBoundingClientRect().width);
+  document.getElementById("chart_cat_67").innerHTML = "";
+  var _width = Math.floor(document.getElementById("chart_cat_67").getBoundingClientRect().width);
   // According to selector, draw both charts
   if (selector_run.value  == "1") {
 $(document).ready(function(){
-  var ordinals = ['otapie_27125_27125'];
-  var data = [{value:0.2668516933918,offset:0, i:0,color:"#333399"}];
+  var ordinals = ['otapie_36338_36338'];
+  var data = [{value:0.24303308129311,offset:0, i:0,color:"#333399"}];
   var widthgl  = _width;
   var widthin  = _width;
   var heightgl = 480;
@@ -411,7 +411,7 @@ $(document).ready(function(){
   height = heightgl - margin.top - margin.bottom,
   radius = (Math.min(width, height) / 2) - 10,
   node;
-  const svg = d3.select('#chart_cat_86')
+  const svg = d3.select('#chart_cat_66')
       .append('svg')
       .attr('width', widthin)
       .attr('height', heightin)
@@ -467,13 +467,13 @@ $(document).ready(function(){
     .text("Coverage (%)");
   let bars = svg.append('g')
     .attr('clip-path','url(#my-clip-path)')
-    .attr('id', 'zoom_chart_86')
+    .attr('id', 'zoom_chart_66')
     .selectAll('.bar')
     .data(data)
     .enter()
     .append('rect')
     .attr('class', 'bar')
-    .attr('id', function (d, i){ return 'zoom_chart_86_'+i;})
+    .attr('id', function (d, i){ return 'zoom_chart_66_'+i;})
     .attr('x', function(d, i){
       return xScale(d.i) - xBand.bandwidth()*0.9/2
     })
@@ -515,12 +515,12 @@ $(document).ready(function(){
       bars.attr("transform", "translate(" + d3.event.transform.x+",0)scale(" + d3.event.transform.k + ",1)")
   }
 });
-$("#zoom_chart_86_0").click( function () {window.open("../topo/run_0_otapie_27125_27125.html");});
+$("#zoom_chart_66_0").click( function () {window.open("../topo/run_0_otapie_36338_36338.html");});
   }
   if (selector_run.value  == "1") {
 $(document).ready(function(){
-  var ordinals = ['otapie_27125_27125'];
-  var data = [{value:0.49999991059303,offset:0, i:0,color:"#333399"}];
+  var ordinals = ['otapie_36338_36338'];
+  var data = [{value:0.44999992847443,offset:0, i:0,color:"#333399"}];
   var widthgl  = _width;
   var widthin  = _width;
   var heightgl = 480;
@@ -530,7 +530,7 @@ $(document).ready(function(){
   height = heightgl - margin.top - margin.bottom,
   radius = (Math.min(width, height) / 2) - 10,
   node;
-  const svg = d3.select('#chart_cat_87')
+  const svg = d3.select('#chart_cat_67')
       .append('svg')
       .attr('width', widthin)
       .attr('height', heightin)
@@ -586,13 +586,13 @@ $(document).ready(function(){
     .text("Time (s)");
   let bars = svg.append('g')
     .attr('clip-path','url(#my-clip-path)')
-    .attr('id', 'zoom_chart_87')
+    .attr('id', 'zoom_chart_67')
     .selectAll('.bar')
     .data(data)
     .enter()
     .append('rect')
     .attr('class', 'bar')
-    .attr('id', function (d, i){ return 'zoom_chart_87_'+i;})
+    .attr('id', function (d, i){ return 'zoom_chart_67_'+i;})
     .attr('x', function(d, i){
       return xScale(d.i) - xBand.bandwidth()*0.9/2
     })
@@ -634,7 +634,7 @@ $(document).ready(function(){
       bars.attr("transform", "translate(" + d3.event.transform.x+",0)scale(" + d3.event.transform.k + ",1)")
   }
 });
-$("#zoom_chart_87_0").click( function () {window.open("../topo/run_0_otapie_27125_27125.html");});
+$("#zoom_chart_67_0").click( function () {window.open("../topo/run_0_otapie_36338_36338.html");});
   }
 }
 function set_previous_ldbal_input_sorted () {
@@ -669,25 +669,25 @@ addLoadEvent(function(){
       <td><button type="button" style="cursor:pointer;" onclick="set_next_ldbal_input_all ();">&rarr;</button></td>
     </tr>
   </table>
-<div style="margin: 10px; overflow-x:auto; overflow-y:hidden;"><div id="chart_cat_90" style="height:500px" ></div><div style="text-align:center;"></div></div>
+<div style="margin: 10px; overflow-x:auto; overflow-y:hidden;"><div id="chart_cat_70" style="height:500px" ></div><div style="text-align:center;"></div></div>
 <script class="code">
 </script>
-<div style="margin: 10px; overflow-x:auto; overflow-y:hidden;"><div id="chart_cat_91" style="height:500px" ></div><div style="text-align:center;"></div></div>
+<div style="margin: 10px; overflow-x:auto; overflow-y:hidden;"><div id="chart_cat_71" style="height:500px" ></div><div style="text-align:center;"></div></div>
 <script class="code">
 </script>
   <script>
 function set_ldbal_input_all () {
   var selector_run  = document.getElementById ("ldbal_select_run_all");
   // Clear placeholder content and update their size
-  document.getElementById("chart_cat_90").innerHTML = "";
-  var _width = Math.floor(document.getElementById("chart_cat_90").getBoundingClientRect().width);
-  document.getElementById("chart_cat_91").innerHTML = "";
-  var _width = Math.floor(document.getElementById("chart_cat_91").getBoundingClientRect().width);
+  document.getElementById("chart_cat_70").innerHTML = "";
+  var _width = Math.floor(document.getElementById("chart_cat_70").getBoundingClientRect().width);
+  document.getElementById("chart_cat_71").innerHTML = "";
+  var _width = Math.floor(document.getElementById("chart_cat_71").getBoundingClientRect().width);
   // According to selector, draw both charts
   if (selector_run.value  == "1") {
 $(document).ready(function(){
-  var ordinals = ['otapie_27125_27125'];
-  var data = [{value:0.2668516933918,offset:0, i:0,color:"#333399"}];
+  var ordinals = ['otapie_36338_36338'];
+  var data = [{value:0.24303308129311,offset:0, i:0,color:"#333399"}];
   var widthgl  = _width;
   var widthin  = _width;
   var heightgl = 480;
@@ -697,7 +697,7 @@ $(document).ready(function(){
   height = heightgl - margin.top - margin.bottom,
   radius = (Math.min(width, height) / 2) - 10,
   node;
-  const svg = d3.select('#chart_cat_90')
+  const svg = d3.select('#chart_cat_70')
       .append('svg')
       .attr('width', widthin)
       .attr('height', heightin)
@@ -753,13 +753,13 @@ $(document).ready(function(){
     .text("Coverage (%)");
   let bars = svg.append('g')
     .attr('clip-path','url(#my-clip-path)')
-    .attr('id', 'zoom_chart_90')
+    .attr('id', 'zoom_chart_70')
     .selectAll('.bar')
     .data(data)
     .enter()
     .append('rect')
     .attr('class', 'bar')
-    .attr('id', function (d, i){ return 'zoom_chart_90_'+i;})
+    .attr('id', function (d, i){ return 'zoom_chart_70_'+i;})
     .attr('x', function(d, i){
       return xScale(d.i) - xBand.bandwidth()*0.9/2
     })
@@ -801,12 +801,12 @@ $(document).ready(function(){
       bars.attr("transform", "translate(" + d3.event.transform.x+",0)scale(" + d3.event.transform.k + ",1)")
   }
 });
-$("#zoom_chart_90_0").click( function () {window.open("../topo/run_0_otapie_27125_27125.html");});
+$("#zoom_chart_70_0").click( function () {window.open("../topo/run_0_otapie_36338_36338.html");});
   }
   if (selector_run.value  == "1") {
 $(document).ready(function(){
-  var ordinals = ['otapie_27125_27125'];
-  var data = [{value:0.49999991059303,offset:0, i:0,color:"#333399"}];
+  var ordinals = ['otapie_36338_36338'];
+  var data = [{value:0.44999992847443,offset:0, i:0,color:"#333399"}];
   var widthgl  = _width;
   var widthin  = _width;
   var heightgl = 480;
@@ -816,7 +816,7 @@ $(document).ready(function(){
   height = heightgl - margin.top - margin.bottom,
   radius = (Math.min(width, height) / 2) - 10,
   node;
-  const svg = d3.select('#chart_cat_91')
+  const svg = d3.select('#chart_cat_71')
       .append('svg')
       .attr('width', widthin)
       .attr('height', heightin)
@@ -872,13 +872,13 @@ $(document).ready(function(){
     .text("Time (s)");
   let bars = svg.append('g')
     .attr('clip-path','url(#my-clip-path)')
-    .attr('id', 'zoom_chart_91')
+    .attr('id', 'zoom_chart_71')
     .selectAll('.bar')
     .data(data)
     .enter()
     .append('rect')
     .attr('class', 'bar')
-    .attr('id', function (d, i){ return 'zoom_chart_91_'+i;})
+    .attr('id', function (d, i){ return 'zoom_chart_71_'+i;})
     .attr('x', function(d, i){
       return xScale(d.i) - xBand.bandwidth()*0.9/2
     })
@@ -920,7 +920,7 @@ $(document).ready(function(){
       bars.attr("transform", "translate(" + d3.event.transform.x+",0)scale(" + d3.event.transform.k + ",1)")
   }
 });
-$("#zoom_chart_91_0").click( function () {window.open("../topo/run_0_otapie_27125_27125.html");});
+$("#zoom_chart_71_0").click( function () {window.open("../topo/run_0_otapie_36338_36338.html");});
   }
 }
 function set_previous_ldbal_input_all () {

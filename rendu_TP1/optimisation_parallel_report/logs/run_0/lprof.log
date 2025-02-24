@@ -30,14 +30,14 @@ Metarepetition 28/31: running 1 warmup instances and 20000 measure instances
 Metarepetition 29/31: running 1 warmup instances and 20000 measure instances
 Metarepetition 30/31: running 1 warmup instances and 20000 measure instances
 Metarepetition 31/31: running 1 warmup instances and 20000 measure instances
-MIN 593899839 RDTSC-cycles (0.14 per inner-iter)
-MED 597871678 RDTSC-cycles (0.14 per inner-iter)
-GOOD STABILITY: 0.67 %
+MIN 497373499 RDTSC-cycles (0.12 per inner-iter)
+MED 501723515 RDTSC-cycles (0.12 per inner-iter)
+GOOD STABILITY: 0.87 %
 
-* Info: Dumping samples (host otapie, process 33306)
-* Info: Dumping source info for callchain nodes (host otapie, process 33306)
+* Info: Dumping samples (host otapie, process 40247)
+* Info: Dumping source info for callchain nodes (host otapie, process 40247)
 * Info: Building/writing metadata (host otapie)
-* Info: Finished collect step (host otapie, process 33306)
+* Info: Finished collect step (host otapie, process 40247)
 
 Your experiment path is /home/mac/rendu_AOC/rendu_TP1/optimisation_parallel_report/tools/lprof_npsu_run_0
 

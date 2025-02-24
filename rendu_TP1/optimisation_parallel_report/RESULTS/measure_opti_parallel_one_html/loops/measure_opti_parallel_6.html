@@ -140,12 +140,12 @@ if (obj) {
 <!-- ========================== Summary about the loop ========================== -->
   <table id="object_summary" style="width:100%;border: 1px solid var(--table_border);border-radius:5px;color:var(--header_font);background:var(--header_background);margin-bottom:15px;">
     <tr>
-      <th><button class="tooltip-maqao-button" onclick="window.location.href='measure_opti_parallel_5.html';" title="" tooltip_id="0" >Prev</button></th>
+      <th><button class="tooltip-maqao-button" title="" tooltip_id="0" style="cursor: not-allowed;">No Prev</button></th>
       <th>Loop Id: 6</th>
       <th>Module: measure_opti_parallel</th>
-      <th>Source: driver_opti.c:20-24</th>
-      <th>Coverage: 0.09%</th>
-      <th><button class="tooltip-maqao-button" title="" tooltip_id="1" style="cursor: not-allowed;">No Next</button></th>
+      <th>Source: driver_opti.c:22-23</th>
+      <th>Coverage: 1.87%</th>
+      <th><button class="tooltip-maqao-button" onclick="window.location.href='measure_opti_parallel_7.html';" title="" tooltip_id="1" >Next</button></th>
     </tr>
   </table>
   <div class="drag-container" id="main_section_content">
@@ -211,75 +211,17 @@ if (obj) {
 <div class="panelcontent" id="OV_panel_asm"><div>
   <div id="enable_groups_button" class="tooltip-maqao" title="" tooltip_id="4" data-groups="off" onclick="enable_groups (this);">Show groups analysis</div>
   <table style="width:100%;" id="table_asm">
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" style="word-break:break-all;"><pre>0x1e40 LEA	-0x8(%R11),%RCX</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" style="word-break:break-all;"><pre>0x1e44 MOV	%RBP,%R12</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" style="word-break:break-all;"><pre>0x1e47 MOVQ	$0,(%R10)</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" style="word-break:break-all;"><pre>0x1e4e VXORPD	%XMM0,%XMM0,%XMM0</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" style="word-break:break-all;"><pre>0x1e52 SHR	$0x3,%RCX</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" style="word-break:break-all;"><pre>0x1e56 SUB	%R11,%R12</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" style="word-break:break-all;"><pre>0x1e59 INC	%RCX</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" style="word-break:break-all;"><pre>0x1e5c AND	$0x7,%ECX</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" style="word-break:break-all;"><pre>0x1e5f JE	1ef7</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" style="word-break:break-all;"><pre>0x1e65 CMP	$0x1,%RCX</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" style="word-break:break-all;"><pre>0x1e69 JE	1ee3</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" style="word-break:break-all;"><pre>0x1e6b CMP	$0x2,%RCX</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" style="word-break:break-all;"><pre>0x1e6f JE	1ed4</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" style="word-break:break-all;"><pre>0x1e71 CMP	$0x3,%RCX</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" style="word-break:break-all;"><pre>0x1e75 JE	1ec5</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" style="word-break:break-all;"><pre>0x1e77 CMP	$0x4,%RCX</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" style="word-break:break-all;"><pre>0x1e7b JE	1eb6</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" style="word-break:break-all;"><pre>0x1e7d CMP	$0x5,%RCX</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" style="word-break:break-all;"><pre>0x1e81 JE	1ea7</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" style="word-break:break-all;"><pre>0x1e83 CMP	$0x6,%RCX</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" style="word-break:break-all;"><pre>0x1e87 JE	1e98</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>0x1e89 VMOVSD	(%R12),%XMM0</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" style="word-break:break-all;"><pre>0x1e8f ADD	$0x8,%R12</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>0x1e93 VMOVSD	%XMM0,(%R10)</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>0x1e98 VADDSD	(%R12),%XMM0,%XMM0</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" style="word-break:break-all;"><pre>0x1e9e ADD	$0x8,%R12</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>0x1ea2 VMOVSD	%XMM0,(%R10)</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>0x1ea7 VADDSD	(%R12),%XMM0,%XMM0</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" style="word-break:break-all;"><pre>0x1ead ADD	$0x8,%R12</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>0x1eb1 VMOVSD	%XMM0,(%R10)</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>0x1eb6 VADDSD	(%R12),%XMM0,%XMM0</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" style="word-break:break-all;"><pre>0x1ebc ADD	$0x8,%R12</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>0x1ec0 VMOVSD	%XMM0,(%R10)</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>0x1ec5 VADDSD	(%R12),%XMM0,%XMM0</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" style="word-break:break-all;"><pre>0x1ecb ADD	$0x8,%R12</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>0x1ecf VMOVSD	%XMM0,(%R10)</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>0x1ed4 VADDSD	(%R12),%XMM0,%XMM0</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" style="word-break:break-all;"><pre>0x1eda ADD	$0x8,%R12</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>0x1ede VMOVSD	%XMM0,(%R10)</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>0x1ee3 VADDSD	(%R12),%XMM0,%XMM0</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" style="word-break:break-all;"><pre>0x1ee9 ADD	$0x8,%R12</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>0x1eed VMOVSD	%XMM0,(%R10)</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" style="word-break:break-all;"><pre>0x1ef2 CMP	%R12,%RBP</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" style="word-break:break-all;"><pre>0x1ef5 JE	1f5f</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>  (5) 0x1ef7 VADDSD	(%R12),%XMM0,%XMM2</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" style="word-break:break-all;"><pre>  (5) 0x1efd ADD	$0x40,%R12</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>  (5) 0x1f01 VMOVSD	%XMM2,(%R10)</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>  (5) 0x1f06 VADDSD	-0x38(%R12),%XMM2,%XMM3</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>  (5) 0x1f0d VMOVSD	%XMM3,(%R10)</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>  (5) 0x1f12 VADDSD	-0x30(%R12),%XMM3,%XMM4</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>  (5) 0x1f19 VMOVSD	%XMM4,(%R10)</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>  (5) 0x1f1e VADDSD	-0x28(%R12),%XMM4,%XMM5</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>  (5) 0x1f25 VMOVSD	%XMM5,(%R10)</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>  (5) 0x1f2a VADDSD	-0x20(%R12),%XMM5,%XMM6</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>  (5) 0x1f31 VMOVSD	%XMM6,(%R10)</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>  (5) 0x1f36 VADDSD	-0x18(%R12),%XMM6,%XMM7</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>  (5) 0x1f3d VMOVSD	%XMM7,(%R10)</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>  (5) 0x1f42 VADDSD	-0x10(%R12),%XMM7,%XMM8</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>  (5) 0x1f49 VMOVSD	%XMM8,(%R10)</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>  (5) 0x1f4e VADDSD	-0x8(%R12),%XMM8,%XMM0</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>  (5) 0x1f55 VMOVSD	%XMM0,(%R10)</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" style="word-break:break-all;"><pre>  (5) 0x1f5a CMP	%R12,%RBP</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" style="word-break:break-all;"><pre>  (5) 0x1f5d JNE	1ef7</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_24" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_24')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_24" style="word-break:break-all;"><pre>0x1f5f VMULSD	%XMM0,%XMM1,%XMM9</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_24" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_24')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_24" style="word-break:break-all;"><pre>0x1f63 ADD	$0x8,%R10</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_24" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_24')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_24" style="word-break:break-all;"><pre>0x1f67 ADD	%RDI,%RBP</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_24" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_24')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_24" style="word-break:break-all;"><pre>0x1f6a VMOVSD	%XMM9,-0x8(%R10)</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_24" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_24')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_24" style="word-break:break-all;"><pre>0x1f70 CMP	%RBX,%R10</pre></td></tr>
-<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_24" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_24')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_24" style="word-break:break-all;"><pre>0x1f73 JNE	1e40</pre></td></tr>
+<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23" style="background-color:#ffb366;word-break:break-all;"><span class="tooltip-maqao" title="" tooltip_id="5"><pre>0x1ee7 VADDPD	(%RAX),%YMM0,%YMM2    [2]</pre></span></td></tr>
+<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23" style="word-break:break-all;"><pre>0x1eeb ADD	$0x100,%RAX</pre></td></tr>
+<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23" style="background-color:#d98c8c;word-break:break-all;"><span class="tooltip-maqao" title="" tooltip_id="6"><pre>0x1ef1 VADDPD	-0xe0(%RAX),%YMM2,%YMM3    [1]</pre></span></td></tr>
+<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23" style="background-color:#d98c8c;word-break:break-all;"><span class="tooltip-maqao" title="" tooltip_id="7"><pre>0x1ef9 VADDPD	-0xc0(%RAX),%YMM3,%YMM4    [1]</pre></span></td></tr>
+<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23" style="background-color:#d98c8c;word-break:break-all;"><span class="tooltip-maqao" title="" tooltip_id="8"><pre>0x1f01 VADDPD	-0xa0(%RAX),%YMM4,%YMM5    [1]</pre></span></td></tr>
+<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23" style="background-color:#d98c8c;word-break:break-all;"><span class="tooltip-maqao" title="" tooltip_id="9"><pre>0x1f09 VADDPD	-0x80(%RAX),%YMM5,%YMM6    [1]</pre></span></td></tr>
+<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23" style="background-color:#d98c8c;word-break:break-all;"><span class="tooltip-maqao" title="" tooltip_id="10"><pre>0x1f0e VADDPD	-0x60(%RAX),%YMM6,%YMM7    [1]</pre></span></td></tr>
+<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23" style="background-color:#d98c8c;word-break:break-all;"><span class="tooltip-maqao" title="" tooltip_id="11"><pre>0x1f13 VADDPD	-0x40(%RAX),%YMM7,%YMM8    [1]</pre></span></td></tr>
+<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23" style="background-color:#d98c8c;word-break:break-all;"><span class="tooltip-maqao" title="" tooltip_id="12"><pre>0x1f18 VADDPD	-0x20(%RAX),%YMM8,%YMM0    [1]</pre></span></td></tr>
+<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>0x1f1d CMP	%RAX,%R13</pre></td></tr>
+<tr onmouseover="panel_asm_onmouseover_tr (this)" onmouseout="panel_asm_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="asm_on_click_line('#panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22')"><td class="panel_asm__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" style="word-break:break-all;"><pre>0x1f20 JNE	1ee7</pre></td></tr>
   </table>
   <script>
 function panel_asm_onmouseover_tr (obj) {
@@ -304,7 +246,7 @@ function asm_onresize () {
 function asm_loadhelp (divId) {
   var e = document.getElementById (divId);
   if (e != null) {
-    e.setAttribute ("tooltip_id", "5");
+    e.setAttribute ("tooltip_id", "13");
   }
 }
 function enable_groups (div) {
@@ -373,14 +315,11 @@ for (var i = 0, row; row = table_asm.rows[i]; i++) {
 </div></div>
 <div class="panelcontent" id="OV_panel_src">
   <table id="panel_src_table_src" style="width:100%;">
-<tr class="panel_src__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_nil" onclick="panel_src_onclick (this);" onmouseover="panel_src_onmouseover_tr (this)" onmouseout="panel_src_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_nil"><td><pre>/home/mac/rendu_AOC/rendu_TP1/driver_opti.c: 20 - 24</pre></td></tr>
+<tr class="panel_src__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_nil" onclick="panel_src_onclick (this);" onmouseover="panel_src_onmouseover_tr (this)" onmouseout="panel_src_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_nil"><td><pre>/home/mac/rendu_AOC/rendu_TP1/driver_opti.c: 22 - 23</pre></td></tr>
 <tr class="panel_src__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_nil" onclick="panel_src_onclick (this);" onmouseover="panel_src_onmouseover_tr (this)" onmouseout="panel_src_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_nil"><td><pre>--------------------------------------------------------------------------------</pre></td></tr>
 <tr class="panel_src__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_nil" onclick="panel_src_onclick (this);" onmouseover="panel_src_onmouseover_tr (this)" onmouseout="panel_src_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_nil"><td><pre></pre></td></tr>
-<tr class="panel_src__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" onclick="panel_src_onclick (this);" onmouseover="panel_src_onmouseover_tr (this)" onmouseout="panel_src_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20" id="panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20"><td><pre>20:       x[i] = 0.0;</pre></td></tr>
-<tr class="panel_src__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" onclick="panel_src_onclick (this);" onmouseover="panel_src_onmouseover_tr (this)" onmouseout="panel_src_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21" id="panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21"><td><pre>21:       for (unsigned j = 0; j &lt; n; j++) {</pre></td></tr>
-<tr class="panel_src__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="panel_src_onclick (this);" onmouseover="panel_src_onmouseover_tr (this)" onmouseout="panel_src_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" id="panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22"><td><pre>22:          x[i] += m[i][j];</pre></td></tr>
-<tr class="panel_src__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23" onclick="panel_src_onclick (this);" onmouseover="panel_src_onmouseover_tr (this)" onmouseout="panel_src_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23" id="panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23"><td><pre>23:       }</pre></td></tr>
-<tr class="panel_src__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_24" onclick="panel_src_onclick (this);" onmouseover="panel_src_onmouseover_tr (this)" onmouseout="panel_src_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_24" id="panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_24"><td><pre>24:       x[i] = x[i] * const_k;</pre></td></tr>
+<tr class="panel_src__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" onclick="panel_src_onclick (this);" onmouseover="panel_src_onmouseover_tr (this)" onmouseout="panel_src_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22" id="panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22"><td><pre>22:       for (unsigned j = 0; j &lt; n; j++) {</pre></td></tr>
+<tr class="panel_src__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23" onclick="panel_src_onclick (this);" onmouseover="panel_src_onmouseover_tr (this)" onmouseout="panel_src_onmouseout_tr (this)" data-src="_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23" id="panel_src_line__home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23"><td><pre>23:          tmp += m[i][j];</pre></td></tr>
   </table>
   <script>
 function panel_src_onmouseover_tr (obj) {
@@ -444,7 +383,7 @@ function src_onresize () {
 function src_loadhelp (divId) {
   var e = document.getElementById (divId);
   if (e != null) {
-    e.setAttribute ("tooltip_id", "6");
+    e.setAttribute ("tooltip_id", "14");
   }
 }
   </script>
@@ -461,8 +400,14 @@ function src_loadhelp (divId) {
   <table style="width:100%;"><tr><td style="text-align:center;"><select id="callchains_select_run" size="1" onchange="set_callchains_input ();" autocomplete="off" style="cursor:pointer;">
            <option value="1">Run 1
   </select></td></tr></table>
-<div id="div_callchains_1"><div class="_div_table" ><table id="_tree_table_4" class="_tree_table"><tr><th class="_freezed_row  _left  tooltip-maqao" title="" tooltip_id="7" style="width:20%;"><span></span>Coverage (%)</th><th class="_freezed_row  tooltip-maqao" title="" tooltip_id="8" style="width:30%;"><span></span>Name</th><th class="_freezed_row  tooltip-maqao" title="" tooltip_id="9" style="width:30%;"><span></span>Source Location</th><th class="_freezed_row  tooltip-maqao" title="" tooltip_id="10" style="width:20%;"><span></span>Module</th></tr>
+<div id="div_callchains_1"><div class="_div_table" ><table id="_tree_table_3" class="_tree_table"><tr><th class="_freezed_row  _left  tooltip-maqao" title="" tooltip_id="15" style="width:20%;"><span></span>Coverage (%)</th><th class="_freezed_row  tooltip-maqao" title="" tooltip_id="16" style="width:30%;"><span></span>Name</th><th class="_freezed_row  tooltip-maqao" title="" tooltip_id="17" style="width:30%;"><span></span>Source Location</th><th class="_freezed_row  tooltip-maqao" title="" tooltip_id="18" style="width:20%;"><span></span>Module</th></tr>
+<tr class=" _outer_row"  id="_tr_3_1"  ondblclick="_action_7(this,1,-1, '../functions/libgomp.so.1.0.0_296.html');"  style="cursor:pointer;"><td id="_tr_3_1-1"  data-_i="1" data-_j="1"  class=" _left" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:0px;cursor:pointer;" >&#x25BA;</span>97.19<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_3_1-2"  data-_i="1" data-_j="2" >gomp_thread_start</td><td id="_tr_3_1-3"  data-_i="1" data-_j="3"  title="" tooltip_id="19" class=" tooltip-maqao" >team.c:130</td><td id="_tr_3_1-4"  data-_i="1" data-_j="4"  class=" _centered" >libgomp.so.1.0.0</td></tr>
+<tr class="_tree_hidden _tr_3_1"  id="_tr_3_1_1" ><td id="_tr_3_1_1-1"  data-_i="2" data-_j="1"  class=" _left" ><span style="margin-right:10px;margin-left:18px;" >&#x25CB;</span></td><td id="_tr_3_1_1-2"  data-_i="2" data-_j="2" >pthread_condattr_setpshared</td><td id="_tr_3_1_1-3"  data-_i="2" data-_j="3"  title="" tooltip_id="20" class=" tooltip-maqao" ></td><td id="_tr_3_1_1-4"  data-_i="2" data-_j="4"  class=" _centered" >libc.so.6</td></tr>
+<tr class="_tree_hidden _tr_3_1"  id="_tr_3_1_2" ><td id="_tr_3_1_2-1"  data-_i="3" data-_j="1"  class=" _left" ><span style="margin-right:10px;margin-left:18px;" >&#x25CB;</span></td><td id="_tr_3_1_2-2"  data-_i="3" data-_j="2" >__clone</td><td id="_tr_3_1_2-3"  data-_i="3" data-_j="3"  title="" tooltip_id="21" class=" tooltip-maqao" ></td><td id="_tr_3_1_2-4"  data-_i="3" data-_j="4"  class=" _centered" >libc.so.6</td></tr>
 </table></div>
+<script>
+function _action_7 (obj, i, j, p){open(""+p+"");}
+</script>
 </div>
   <script>
 function set_callchains_input () {
@@ -486,7 +431,7 @@ function callchains_onresize () {
 function callchains_loadhelp (divId) {
   var e = document.getElementById (divId);
   if (e != null) {
-    e.setAttribute ("tooltip_id", "11");
+    e.setAttribute ("tooltip_id", "22");
   }
 }
   </script>
@@ -510,10 +455,10 @@ function callchains_loadhelp (divId) {
       <td style="width:40%;" />
     </tr>
   </table>
-<div style="margin: 10px; overflow-x:auto; overflow-y:hidden;"><div id="chart_cat_22" style="height:500px" ></div><div style="text-align:center;"></div></div>
+<div style="margin: 10px; overflow-x:auto; overflow-y:hidden;"><div id="chart_cat_14" style="height:500px" ></div><div style="text-align:center;"></div></div>
 <script class="code">
 </script>
-<div style="margin: 10px; overflow-x:auto; overflow-y:hidden;"><div id="chart_cat_23" style="height:500px" ></div><div style="text-align:center;"></div></div>
+<div style="margin: 10px; overflow-x:auto; overflow-y:hidden;"><div id="chart_cat_15" style="height:500px" ></div><div style="text-align:center;"></div></div>
 <script class="code">
 </script>
   <script>
@@ -523,16 +468,16 @@ function set_ldbal_input () {
   document.getElementById ("main_section_div").dataset.ldbal = selector_type.value;
   document.getElementById ("main_section_div").dataset.run = selector_run.value;
   // Clear placeholder content and update their size
-  document.getElementById("chart_cat_22").innerHTML = "";
-  var _width = Math.floor(document.getElementById("chart_cat_22").getBoundingClientRect().width);
-  document.getElementById("chart_cat_23").innerHTML = "";
-  var _width = Math.floor(document.getElementById("chart_cat_23").getBoundingClientRect().width);
+  document.getElementById("chart_cat_14").innerHTML = "";
+  var _width = Math.floor(document.getElementById("chart_cat_14").getBoundingClientRect().width);
+  document.getElementById("chart_cat_15").innerHTML = "";
+  var _width = Math.floor(document.getElementById("chart_cat_15").getBoundingClientRect().width);
   // According to selectors, draw both charts
   if (selector_type.value == "regular"
   &&  selector_run.value  == "1") {
 $(document).ready(function(){
-  var ordinals = ['otapie_33306_33339','otapie_33306_33341','otapie_33306_33346','otapie_33306_33348','otapie_33306_33349','otapie_33306_33350','otapie_33306_33352','otapie_33306_33353','otapie_33306_33356','otapie_33306_33358','otapie_33306_33359','otapie_33306_33360','otapie_33306_33361','otapie_33306_33362','otapie_33306_33364','otapie_33306_33365','otapie_33306_33367','otapie_33306_33368','otapie_33306_33369'];
-  var data = [{value:0.19398647546768,offset:0, i:0,color:"#333399"},{value:0.19398646056652,offset:0, i:1,color:"#333399"},{value:0.097276285290718,offset:0, i:2,color:"#333399"},{value:0.097087368369102,offset:0, i:3,color:"#333399"},{value:0.19398646056652,offset:0, i:4,color:"#333399"},{value:0.09699323028326,offset:0, i:5,color:"#333399"},{value:0.097087413072586,offset:0, i:6,color:"#333399"},{value:0.19436347484589,offset:0, i:7,color:"#333399"},{value:0.097465917468071,offset:0, i:8,color:"#333399"},{value:0.097276270389557,offset:0, i:9,color:"#333399"},{value:0.2909796833992,offset:0, i:10,color:"#333399"},{value:0.19398644566536,offset:0, i:11,color:"#333399"},{value:0.09699322283268,offset:0, i:12,color:"#333399"},{value:0.097465887665749,offset:0, i:13,color:"#333399"},{value:0.19398646056652,offset:0, i:14,color:"#333399"},{value:0.19474197924137,offset:0, i:15,color:"#333399"},{value:0.29268309473991,offset:0, i:16,color:"#333399"},{value:0.09699322283268,offset:0, i:17,color:"#333399"},{value:0.096993207931519,offset:0, i:18,color:"#333399"}];
+  var ordinals = ['otapie_40247_40247','otapie_40247_40280','otapie_40247_40281','otapie_40247_40282','otapie_40247_40283','otapie_40247_40284','otapie_40247_40285','otapie_40247_40286','otapie_40247_40287','otapie_40247_40288','otapie_40247_40289','otapie_40247_40290','otapie_40247_40291','otapie_40247_40292','otapie_40247_40293','otapie_40247_40294','otapie_40247_40295','otapie_40247_40296','otapie_40247_40297','otapie_40247_40298','otapie_40247_40299','otapie_40247_40300','otapie_40247_40301','otapie_40247_40302','otapie_40247_40303','otapie_40247_40304','otapie_40247_40305','otapie_40247_40306','otapie_40247_40307','otapie_40247_40308','otapie_40247_40309','otapie_40247_40310'];
+  var data = [{value:1.7301038503647,offset:0, i:0,color:"#333399"},{value:1.7917144298553,offset:0, i:1,color:"#333399"},{value:1.6778529882431,offset:0, i:2,color:"#333399"},{value:1.7897101640701,offset:0, i:3,color:"#333399"},{value:3.0235161781311,offset:0, i:4,color:"#333399"},{value:1.6778529882431,offset:0, i:5,color:"#333399"},{value:1.7897100448608,offset:0, i:6,color:"#333399"},{value:1.5695074796677,offset:0, i:7,color:"#333399"},{value:2.249719619751,offset:0, i:8,color:"#333399"},{value:1.2304254770279,offset:0, i:9,color:"#333399"},{value:1.5659960508347,offset:0, i:10,color:"#333399"},{value:3.2438485622406,offset:0, i:11,color:"#333399"},{value:2.2471919059753,offset:0, i:12,color:"#333399"},{value:1.4590357542038,offset:0, i:13,color:"#333399"},{value:1.3437856435776,offset:0, i:14,color:"#333399"},{value:1.7897098064423,offset:0, i:15,color:"#333399"},{value:4.1002297401428,offset:0, i:16,color:"#333399"},{value:2.2650065422058,offset:0, i:17,color:"#333399"},{value:0.89686143398285,offset:0, i:18,color:"#333399"},{value:1.6835027933121,offset:0, i:19,color:"#333399"},{value:2.8669722080231,offset:0, i:20,color:"#333399"},{value:0.78651714324951,offset:0, i:21,color:"#333399"},{value:2.013423204422,offset:0, i:22,color:"#333399"},{value:3.0303044319153,offset:0, i:23,color:"#333399"},{value:2.0247476100922,offset:0, i:24,color:"#333399"},{value:1.0078392028809,offset:0, i:25,color:"#333399"},{value:1.2304254770279,offset:0, i:26,color:"#333399"},{value:1.6778529882431,offset:0, i:27,color:"#333399"},{value:2.2471921443939,offset:0, i:28,color:"#333399"},{value:1.2318032979965,offset:0, i:29,color:"#333399"},{value:1.6778529882431,offset:0, i:30,color:"#333399"},{value:1.1185683012009,offset:0, i:31,color:"#333399"}];
   var widthgl  = _width;
   var widthin  = _width;
   var heightgl = 480;
@@ -542,7 +487,7 @@ $(document).ready(function(){
   height = heightgl - margin.top - margin.bottom,
   radius = (Math.min(width, height) / 2) - 10,
   node;
-  const svg = d3.select('#chart_cat_22')
+  const svg = d3.select('#chart_cat_14')
       .append('svg')
       .attr('width', widthin)
       .attr('height', heightin)
@@ -598,13 +543,13 @@ $(document).ready(function(){
     .text("Coverage (%)");
   let bars = svg.append('g')
     .attr('clip-path','url(#my-clip-path)')
-    .attr('id', 'zoom_chart_22')
+    .attr('id', 'zoom_chart_14')
     .selectAll('.bar')
     .data(data)
     .enter()
     .append('rect')
     .attr('class', 'bar')
-    .attr('id', function (d, i){ return 'zoom_chart_22_'+i;})
+    .attr('id', function (d, i){ return 'zoom_chart_14_'+i;})
     .attr('x', function(d, i){
       return xScale(d.i) - xBand.bandwidth()*0.9/2
     })
@@ -646,31 +591,44 @@ $(document).ready(function(){
       bars.attr("transform", "translate(" + d3.event.transform.x+",0)scale(" + d3.event.transform.k + ",1)")
   }
 });
-$("#zoom_chart_22_0").click( function () {window.open("../topo/run_0_otapie_33306_33339.html");});
-$("#zoom_chart_22_1").click( function () {window.open("../topo/run_0_otapie_33306_33341.html");});
-$("#zoom_chart_22_2").click( function () {window.open("../topo/run_0_otapie_33306_33346.html");});
-$("#zoom_chart_22_3").click( function () {window.open("../topo/run_0_otapie_33306_33348.html");});
-$("#zoom_chart_22_4").click( function () {window.open("../topo/run_0_otapie_33306_33349.html");});
-$("#zoom_chart_22_5").click( function () {window.open("../topo/run_0_otapie_33306_33350.html");});
-$("#zoom_chart_22_6").click( function () {window.open("../topo/run_0_otapie_33306_33352.html");});
-$("#zoom_chart_22_7").click( function () {window.open("../topo/run_0_otapie_33306_33353.html");});
-$("#zoom_chart_22_8").click( function () {window.open("../topo/run_0_otapie_33306_33356.html");});
-$("#zoom_chart_22_9").click( function () {window.open("../topo/run_0_otapie_33306_33358.html");});
-$("#zoom_chart_22_10").click( function () {window.open("../topo/run_0_otapie_33306_33359.html");});
-$("#zoom_chart_22_11").click( function () {window.open("../topo/run_0_otapie_33306_33360.html");});
-$("#zoom_chart_22_12").click( function () {window.open("../topo/run_0_otapie_33306_33361.html");});
-$("#zoom_chart_22_13").click( function () {window.open("../topo/run_0_otapie_33306_33362.html");});
-$("#zoom_chart_22_14").click( function () {window.open("../topo/run_0_otapie_33306_33364.html");});
-$("#zoom_chart_22_15").click( function () {window.open("../topo/run_0_otapie_33306_33365.html");});
-$("#zoom_chart_22_16").click( function () {window.open("../topo/run_0_otapie_33306_33367.html");});
-$("#zoom_chart_22_17").click( function () {window.open("../topo/run_0_otapie_33306_33368.html");});
-$("#zoom_chart_22_18").click( function () {window.open("../topo/run_0_otapie_33306_33369.html");});
+$("#zoom_chart_14_0").click( function () {window.open("../topo/run_0_otapie_40247_40247.html");});
+$("#zoom_chart_14_1").click( function () {window.open("../topo/run_0_otapie_40247_40280.html");});
+$("#zoom_chart_14_2").click( function () {window.open("../topo/run_0_otapie_40247_40281.html");});
+$("#zoom_chart_14_3").click( function () {window.open("../topo/run_0_otapie_40247_40282.html");});
+$("#zoom_chart_14_4").click( function () {window.open("../topo/run_0_otapie_40247_40283.html");});
+$("#zoom_chart_14_5").click( function () {window.open("../topo/run_0_otapie_40247_40284.html");});
+$("#zoom_chart_14_6").click( function () {window.open("../topo/run_0_otapie_40247_40285.html");});
+$("#zoom_chart_14_7").click( function () {window.open("../topo/run_0_otapie_40247_40286.html");});
+$("#zoom_chart_14_8").click( function () {window.open("../topo/run_0_otapie_40247_40287.html");});
+$("#zoom_chart_14_9").click( function () {window.open("../topo/run_0_otapie_40247_40288.html");});
+$("#zoom_chart_14_10").click( function () {window.open("../topo/run_0_otapie_40247_40289.html");});
+$("#zoom_chart_14_11").click( function () {window.open("../topo/run_0_otapie_40247_40290.html");});
+$("#zoom_chart_14_12").click( function () {window.open("../topo/run_0_otapie_40247_40291.html");});
+$("#zoom_chart_14_13").click( function () {window.open("../topo/run_0_otapie_40247_40292.html");});
+$("#zoom_chart_14_14").click( function () {window.open("../topo/run_0_otapie_40247_40293.html");});
+$("#zoom_chart_14_15").click( function () {window.open("../topo/run_0_otapie_40247_40294.html");});
+$("#zoom_chart_14_16").click( function () {window.open("../topo/run_0_otapie_40247_40295.html");});
+$("#zoom_chart_14_17").click( function () {window.open("../topo/run_0_otapie_40247_40296.html");});
+$("#zoom_chart_14_18").click( function () {window.open("../topo/run_0_otapie_40247_40297.html");});
+$("#zoom_chart_14_19").click( function () {window.open("../topo/run_0_otapie_40247_40298.html");});
+$("#zoom_chart_14_20").click( function () {window.open("../topo/run_0_otapie_40247_40299.html");});
+$("#zoom_chart_14_21").click( function () {window.open("../topo/run_0_otapie_40247_40300.html");});
+$("#zoom_chart_14_22").click( function () {window.open("../topo/run_0_otapie_40247_40301.html");});
+$("#zoom_chart_14_23").click( function () {window.open("../topo/run_0_otapie_40247_40302.html");});
+$("#zoom_chart_14_24").click( function () {window.open("../topo/run_0_otapie_40247_40303.html");});
+$("#zoom_chart_14_25").click( function () {window.open("../topo/run_0_otapie_40247_40304.html");});
+$("#zoom_chart_14_26").click( function () {window.open("../topo/run_0_otapie_40247_40305.html");});
+$("#zoom_chart_14_27").click( function () {window.open("../topo/run_0_otapie_40247_40306.html");});
+$("#zoom_chart_14_28").click( function () {window.open("../topo/run_0_otapie_40247_40307.html");});
+$("#zoom_chart_14_29").click( function () {window.open("../topo/run_0_otapie_40247_40308.html");});
+$("#zoom_chart_14_30").click( function () {window.open("../topo/run_0_otapie_40247_40309.html");});
+$("#zoom_chart_14_31").click( function () {window.open("../topo/run_0_otapie_40247_40310.html");});
   }
   if (selector_type.value == "regular"
   &&  selector_run.value  == "1") {
 $(document).ready(function(){
-  var ordinals = ['otapie_33306_33339','otapie_33306_33341','otapie_33306_33346','otapie_33306_33348','otapie_33306_33349','otapie_33306_33350','otapie_33306_33352','otapie_33306_33353','otapie_33306_33356','otapie_33306_33358','otapie_33306_33359','otapie_33306_33360','otapie_33306_33361','otapie_33306_33362','otapie_33306_33364','otapie_33306_33365','otapie_33306_33367','otapie_33306_33368','otapie_33306_33369'];
-  var data = [{value:0.00999999884516,offset:0, i:0,color:"#333399"},{value:0.0099999997764826,offset:0, i:1,color:"#333399"},{value:0.0050000003539026,offset:0, i:2,color:"#333399"},{value:0.0049999998882413,offset:0, i:3,color:"#333399"},{value:0.0099999997764826,offset:0, i:4,color:"#333399"},{value:0.0049999998882413,offset:0, i:5,color:"#333399"},{value:0.0049999998882413,offset:0, i:6,color:"#333399"},{value:0.00999999884516,offset:0, i:7,color:"#333399"},{value:0.0049999998882413,offset:0, i:8,color:"#333399"},{value:0.0049999998882413,offset:0, i:9,color:"#333399"},{value:0.014999998733401,offset:0, i:10,color:"#333399"},{value:0.0099999997764826,offset:0, i:11,color:"#333399"},{value:0.0049999998882413,offset:0, i:12,color:"#333399"},{value:0.0049999998882413,offset:0, i:13,color:"#333399"},{value:0.0099999997764826,offset:0, i:14,color:"#333399"},{value:0.0099999997764826,offset:0, i:15,color:"#333399"},{value:0.014999998733401,offset:0, i:16,color:"#333399"},{value:0.0049999998882413,offset:0, i:17,color:"#333399"},{value:0.00499999942258,offset:0, i:18,color:"#333399"}];
+  var ordinals = ['otapie_40247_40247','otapie_40247_40280','otapie_40247_40281','otapie_40247_40282','otapie_40247_40283','otapie_40247_40284','otapie_40247_40285','otapie_40247_40286','otapie_40247_40287','otapie_40247_40288','otapie_40247_40289','otapie_40247_40290','otapie_40247_40291','otapie_40247_40292','otapie_40247_40293','otapie_40247_40294','otapie_40247_40295','otapie_40247_40296','otapie_40247_40297','otapie_40247_40298','otapie_40247_40299','otapie_40247_40300','otapie_40247_40301','otapie_40247_40302','otapie_40247_40303','otapie_40247_40304','otapie_40247_40305','otapie_40247_40306','otapie_40247_40307','otapie_40247_40308','otapie_40247_40309','otapie_40247_40310'];
+  var data = [{value:0.07499998062849,offset:0, i:0,color:"#333399"},{value:0.079999983310699,offset:0, i:1,color:"#333399"},{value:0.074999988079071,offset:0, i:2,color:"#333399"},{value:0.079999975860119,offset:0, i:3,color:"#333399"},{value:0.13499996066093,offset:0, i:4,color:"#333399"},{value:0.074999988079071,offset:0, i:5,color:"#333399"},{value:0.07999999076128,offset:0, i:6,color:"#333399"},{value:0.069999985396862,offset:0, i:7,color:"#333399"},{value:0.099999971687794,offset:0, i:8,color:"#333399"},{value:0.054999988526106,offset:0, i:9,color:"#333399"},{value:0.069999977946281,offset:0, i:10,color:"#333399"},{value:0.14499996602535,offset:0, i:11,color:"#333399"},{value:0.099999971687794,offset:0, i:12,color:"#333399"},{value:0.064999982714653,offset:0, i:13,color:"#333399"},{value:0.059999983757734,offset:0, i:14,color:"#333399"},{value:0.079999975860119,offset:0, i:15,color:"#333399"},{value:0.17999996244907,offset:0, i:16,color:"#333399"},{value:0.099999971687794,offset:0, i:17,color:"#333399"},{value:0.03999999165535,offset:0, i:18,color:"#333399"},{value:0.074999988079071,offset:0, i:19,color:"#333399"},{value:0.12499997764826,offset:0, i:20,color:"#333399"},{value:0.034999996423721,offset:0, i:21,color:"#333399"},{value:0.089999981224537,offset:0, i:22,color:"#333399"},{value:0.13499996066093,offset:0, i:23,color:"#333399"},{value:0.089999988675117,offset:0, i:24,color:"#333399"},{value:0.044999994337559,offset:0, i:25,color:"#333399"},{value:0.054999988526106,offset:0, i:26,color:"#333399"},{value:0.074999988079071,offset:0, i:27,color:"#333399"},{value:0.099999971687794,offset:0, i:28,color:"#333399"},{value:0.054999988526106,offset:0, i:29,color:"#333399"},{value:0.074999988079071,offset:0, i:30,color:"#333399"},{value:0.049999989569187,offset:0, i:31,color:"#333399"}];
   var widthgl  = _width;
   var widthin  = _width;
   var heightgl = 480;
@@ -680,7 +638,7 @@ $(document).ready(function(){
   height = heightgl - margin.top - margin.bottom,
   radius = (Math.min(width, height) / 2) - 10,
   node;
-  const svg = d3.select('#chart_cat_23')
+  const svg = d3.select('#chart_cat_15')
       .append('svg')
       .attr('width', widthin)
       .attr('height', heightin)
@@ -736,13 +694,13 @@ $(document).ready(function(){
     .text("Time (s)");
   let bars = svg.append('g')
     .attr('clip-path','url(#my-clip-path)')
-    .attr('id', 'zoom_chart_23')
+    .attr('id', 'zoom_chart_15')
     .selectAll('.bar')
     .data(data)
     .enter()
     .append('rect')
     .attr('class', 'bar')
-    .attr('id', function (d, i){ return 'zoom_chart_23_'+i;})
+    .attr('id', function (d, i){ return 'zoom_chart_15_'+i;})
     .attr('x', function(d, i){
       return xScale(d.i) - xBand.bandwidth()*0.9/2
     })
@@ -784,31 +742,44 @@ $(document).ready(function(){
       bars.attr("transform", "translate(" + d3.event.transform.x+",0)scale(" + d3.event.transform.k + ",1)")
   }
 });
-$("#zoom_chart_23_0").click( function () {window.open("../topo/run_0_otapie_33306_33339.html");});
-$("#zoom_chart_23_1").click( function () {window.open("../topo/run_0_otapie_33306_33341.html");});
-$("#zoom_chart_23_2").click( function () {window.open("../topo/run_0_otapie_33306_33346.html");});
-$("#zoom_chart_23_3").click( function () {window.open("../topo/run_0_otapie_33306_33348.html");});
-$("#zoom_chart_23_4").click( function () {window.open("../topo/run_0_otapie_33306_33349.html");});
-$("#zoom_chart_23_5").click( function () {window.open("../topo/run_0_otapie_33306_33350.html");});
-$("#zoom_chart_23_6").click( function () {window.open("../topo/run_0_otapie_33306_33352.html");});
-$("#zoom_chart_23_7").click( function () {window.open("../topo/run_0_otapie_33306_33353.html");});
-$("#zoom_chart_23_8").click( function () {window.open("../topo/run_0_otapie_33306_33356.html");});
-$("#zoom_chart_23_9").click( function () {window.open("../topo/run_0_otapie_33306_33358.html");});
-$("#zoom_chart_23_10").click( function () {window.open("../topo/run_0_otapie_33306_33359.html");});
-$("#zoom_chart_23_11").click( function () {window.open("../topo/run_0_otapie_33306_33360.html");});
-$("#zoom_chart_23_12").click( function () {window.open("../topo/run_0_otapie_33306_33361.html");});
-$("#zoom_chart_23_13").click( function () {window.open("../topo/run_0_otapie_33306_33362.html");});
-$("#zoom_chart_23_14").click( function () {window.open("../topo/run_0_otapie_33306_33364.html");});
-$("#zoom_chart_23_15").click( function () {window.open("../topo/run_0_otapie_33306_33365.html");});
-$("#zoom_chart_23_16").click( function () {window.open("../topo/run_0_otapie_33306_33367.html");});
-$("#zoom_chart_23_17").click( function () {window.open("../topo/run_0_otapie_33306_33368.html");});
-$("#zoom_chart_23_18").click( function () {window.open("../topo/run_0_otapie_33306_33369.html");});
+$("#zoom_chart_15_0").click( function () {window.open("../topo/run_0_otapie_40247_40247.html");});
+$("#zoom_chart_15_1").click( function () {window.open("../topo/run_0_otapie_40247_40280.html");});
+$("#zoom_chart_15_2").click( function () {window.open("../topo/run_0_otapie_40247_40281.html");});
+$("#zoom_chart_15_3").click( function () {window.open("../topo/run_0_otapie_40247_40282.html");});
+$("#zoom_chart_15_4").click( function () {window.open("../topo/run_0_otapie_40247_40283.html");});
+$("#zoom_chart_15_5").click( function () {window.open("../topo/run_0_otapie_40247_40284.html");});
+$("#zoom_chart_15_6").click( function () {window.open("../topo/run_0_otapie_40247_40285.html");});
+$("#zoom_chart_15_7").click( function () {window.open("../topo/run_0_otapie_40247_40286.html");});
+$("#zoom_chart_15_8").click( function () {window.open("../topo/run_0_otapie_40247_40287.html");});
+$("#zoom_chart_15_9").click( function () {window.open("../topo/run_0_otapie_40247_40288.html");});
+$("#zoom_chart_15_10").click( function () {window.open("../topo/run_0_otapie_40247_40289.html");});
+$("#zoom_chart_15_11").click( function () {window.open("../topo/run_0_otapie_40247_40290.html");});
+$("#zoom_chart_15_12").click( function () {window.open("../topo/run_0_otapie_40247_40291.html");});
+$("#zoom_chart_15_13").click( function () {window.open("../topo/run_0_otapie_40247_40292.html");});
+$("#zoom_chart_15_14").click( function () {window.open("../topo/run_0_otapie_40247_40293.html");});
+$("#zoom_chart_15_15").click( function () {window.open("../topo/run_0_otapie_40247_40294.html");});
+$("#zoom_chart_15_16").click( function () {window.open("../topo/run_0_otapie_40247_40295.html");});
+$("#zoom_chart_15_17").click( function () {window.open("../topo/run_0_otapie_40247_40296.html");});
+$("#zoom_chart_15_18").click( function () {window.open("../topo/run_0_otapie_40247_40297.html");});
+$("#zoom_chart_15_19").click( function () {window.open("../topo/run_0_otapie_40247_40298.html");});
+$("#zoom_chart_15_20").click( function () {window.open("../topo/run_0_otapie_40247_40299.html");});
+$("#zoom_chart_15_21").click( function () {window.open("../topo/run_0_otapie_40247_40300.html");});
+$("#zoom_chart_15_22").click( function () {window.open("../topo/run_0_otapie_40247_40301.html");});
+$("#zoom_chart_15_23").click( function () {window.open("../topo/run_0_otapie_40247_40302.html");});
+$("#zoom_chart_15_24").click( function () {window.open("../topo/run_0_otapie_40247_40303.html");});
+$("#zoom_chart_15_25").click( function () {window.open("../topo/run_0_otapie_40247_40304.html");});
+$("#zoom_chart_15_26").click( function () {window.open("../topo/run_0_otapie_40247_40305.html");});
+$("#zoom_chart_15_27").click( function () {window.open("../topo/run_0_otapie_40247_40306.html");});
+$("#zoom_chart_15_28").click( function () {window.open("../topo/run_0_otapie_40247_40307.html");});
+$("#zoom_chart_15_29").click( function () {window.open("../topo/run_0_otapie_40247_40308.html");});
+$("#zoom_chart_15_30").click( function () {window.open("../topo/run_0_otapie_40247_40309.html");});
+$("#zoom_chart_15_31").click( function () {window.open("../topo/run_0_otapie_40247_40310.html");});
   }
   if (selector_type.value == "sorted"
   &&  selector_run.value  == "1") {
 $(document).ready(function(){
-  var ordinals = ['otapie_33306_33367','otapie_33306_33359','otapie_33306_33365','otapie_33306_33353','otapie_33306_33339','otapie_33306_33349','otapie_33306_33341','otapie_33306_33364','otapie_33306_33360','otapie_33306_33356','otapie_33306_33362','otapie_33306_33346','otapie_33306_33358','otapie_33306_33352','otapie_33306_33348','otapie_33306_33350','otapie_33306_33368','otapie_33306_33361','otapie_33306_33369'];
-  var data = [{value:0.29268309473991,offset:0, i:0,color:"#333399"},{value:0.2909796833992,offset:0, i:1,color:"#333399"},{value:0.19474197924137,offset:0, i:2,color:"#333399"},{value:0.19436347484589,offset:0, i:3,color:"#333399"},{value:0.19398647546768,offset:0, i:4,color:"#333399"},{value:0.19398646056652,offset:0, i:5,color:"#333399"},{value:0.19398646056652,offset:0, i:6,color:"#333399"},{value:0.19398646056652,offset:0, i:7,color:"#333399"},{value:0.19398644566536,offset:0, i:8,color:"#333399"},{value:0.097465917468071,offset:0, i:9,color:"#333399"},{value:0.097465887665749,offset:0, i:10,color:"#333399"},{value:0.097276285290718,offset:0, i:11,color:"#333399"},{value:0.097276270389557,offset:0, i:12,color:"#333399"},{value:0.097087413072586,offset:0, i:13,color:"#333399"},{value:0.097087368369102,offset:0, i:14,color:"#333399"},{value:0.09699323028326,offset:0, i:15,color:"#333399"},{value:0.09699322283268,offset:0, i:16,color:"#333399"},{value:0.09699322283268,offset:0, i:17,color:"#333399"},{value:0.096993207931519,offset:0, i:18,color:"#333399"}];
+  var ordinals = ['otapie_40247_40295','otapie_40247_40290','otapie_40247_40302','otapie_40247_40283','otapie_40247_40299','otapie_40247_40296','otapie_40247_40287','otapie_40247_40307','otapie_40247_40291','otapie_40247_40303','otapie_40247_40301','otapie_40247_40280','otapie_40247_40282','otapie_40247_40285','otapie_40247_40294','otapie_40247_40247','otapie_40247_40298','otapie_40247_40306','otapie_40247_40284','otapie_40247_40309','otapie_40247_40281','otapie_40247_40286','otapie_40247_40289','otapie_40247_40292','otapie_40247_40293','otapie_40247_40308','otapie_40247_40288','otapie_40247_40305','otapie_40247_40310','otapie_40247_40304','otapie_40247_40297','otapie_40247_40300'];
+  var data = [{value:4.1002297401428,offset:0, i:0,color:"#333399"},{value:3.2438485622406,offset:0, i:1,color:"#333399"},{value:3.0303044319153,offset:0, i:2,color:"#333399"},{value:3.0235161781311,offset:0, i:3,color:"#333399"},{value:2.8669722080231,offset:0, i:4,color:"#333399"},{value:2.2650065422058,offset:0, i:5,color:"#333399"},{value:2.249719619751,offset:0, i:6,color:"#333399"},{value:2.2471921443939,offset:0, i:7,color:"#333399"},{value:2.2471919059753,offset:0, i:8,color:"#333399"},{value:2.0247476100922,offset:0, i:9,color:"#333399"},{value:2.013423204422,offset:0, i:10,color:"#333399"},{value:1.7917144298553,offset:0, i:11,color:"#333399"},{value:1.7897101640701,offset:0, i:12,color:"#333399"},{value:1.7897100448608,offset:0, i:13,color:"#333399"},{value:1.7897098064423,offset:0, i:14,color:"#333399"},{value:1.7301038503647,offset:0, i:15,color:"#333399"},{value:1.6835027933121,offset:0, i:16,color:"#333399"},{value:1.6778529882431,offset:0, i:17,color:"#333399"},{value:1.6778529882431,offset:0, i:18,color:"#333399"},{value:1.6778529882431,offset:0, i:19,color:"#333399"},{value:1.6778529882431,offset:0, i:20,color:"#333399"},{value:1.5695074796677,offset:0, i:21,color:"#333399"},{value:1.5659960508347,offset:0, i:22,color:"#333399"},{value:1.4590357542038,offset:0, i:23,color:"#333399"},{value:1.3437856435776,offset:0, i:24,color:"#333399"},{value:1.2318032979965,offset:0, i:25,color:"#333399"},{value:1.2304254770279,offset:0, i:26,color:"#333399"},{value:1.2304254770279,offset:0, i:27,color:"#333399"},{value:1.1185683012009,offset:0, i:28,color:"#333399"},{value:1.0078392028809,offset:0, i:29,color:"#333399"},{value:0.89686143398285,offset:0, i:30,color:"#333399"},{value:0.78651714324951,offset:0, i:31,color:"#333399"}];
   var widthgl  = _width;
   var widthin  = _width;
   var heightgl = 480;
@@ -818,7 +789,7 @@ $(document).ready(function(){
   height = heightgl - margin.top - margin.bottom,
   radius = (Math.min(width, height) / 2) - 10,
   node;
-  const svg = d3.select('#chart_cat_22')
+  const svg = d3.select('#chart_cat_14')
       .append('svg')
       .attr('width', widthin)
       .attr('height', heightin)
@@ -874,13 +845,13 @@ $(document).ready(function(){
     .text("Coverage (%)");
   let bars = svg.append('g')
     .attr('clip-path','url(#my-clip-path)')
-    .attr('id', 'zoom_chart_22')
+    .attr('id', 'zoom_chart_14')
     .selectAll('.bar')
     .data(data)
     .enter()
     .append('rect')
     .attr('class', 'bar')
-    .attr('id', function (d, i){ return 'zoom_chart_22_'+i;})
+    .attr('id', function (d, i){ return 'zoom_chart_14_'+i;})
     .attr('x', function(d, i){
       return xScale(d.i) - xBand.bandwidth()*0.9/2
     })
@@ -922,31 +893,44 @@ $(document).ready(function(){
       bars.attr("transform", "translate(" + d3.event.transform.x+",0)scale(" + d3.event.transform.k + ",1)")
   }
 });
-$("#zoom_chart_22_0").click( function () {window.open("../topo/run_0_otapie_33306_33367.html");});
-$("#zoom_chart_22_1").click( function () {window.open("../topo/run_0_otapie_33306_33359.html");});
-$("#zoom_chart_22_2").click( function () {window.open("../topo/run_0_otapie_33306_33365.html");});
-$("#zoom_chart_22_3").click( function () {window.open("../topo/run_0_otapie_33306_33353.html");});
-$("#zoom_chart_22_4").click( function () {window.open("../topo/run_0_otapie_33306_33339.html");});
-$("#zoom_chart_22_5").click( function () {window.open("../topo/run_0_otapie_33306_33349.html");});
-$("#zoom_chart_22_6").click( function () {window.open("../topo/run_0_otapie_33306_33341.html");});
-$("#zoom_chart_22_7").click( function () {window.open("../topo/run_0_otapie_33306_33364.html");});
-$("#zoom_chart_22_8").click( function () {window.open("../topo/run_0_otapie_33306_33360.html");});
-$("#zoom_chart_22_9").click( function () {window.open("../topo/run_0_otapie_33306_33356.html");});
-$("#zoom_chart_22_10").click( function () {window.open("../topo/run_0_otapie_33306_33362.html");});
-$("#zoom_chart_22_11").click( function () {window.open("../topo/run_0_otapie_33306_33346.html");});
-$("#zoom_chart_22_12").click( function () {window.open("../topo/run_0_otapie_33306_33358.html");});
-$("#zoom_chart_22_13").click( function () {window.open("../topo/run_0_otapie_33306_33352.html");});
-$("#zoom_chart_22_14").click( function () {window.open("../topo/run_0_otapie_33306_33348.html");});
-$("#zoom_chart_22_15").click( function () {window.open("../topo/run_0_otapie_33306_33350.html");});
-$("#zoom_chart_22_16").click( function () {window.open("../topo/run_0_otapie_33306_33368.html");});
-$("#zoom_chart_22_17").click( function () {window.open("../topo/run_0_otapie_33306_33361.html");});
-$("#zoom_chart_22_18").click( function () {window.open("../topo/run_0_otapie_33306_33369.html");});
+$("#zoom_chart_14_0").click( function () {window.open("../topo/run_0_otapie_40247_40295.html");});
+$("#zoom_chart_14_1").click( function () {window.open("../topo/run_0_otapie_40247_40290.html");});
+$("#zoom_chart_14_2").click( function () {window.open("../topo/run_0_otapie_40247_40302.html");});
+$("#zoom_chart_14_3").click( function () {window.open("../topo/run_0_otapie_40247_40283.html");});
+$("#zoom_chart_14_4").click( function () {window.open("../topo/run_0_otapie_40247_40299.html");});
+$("#zoom_chart_14_5").click( function () {window.open("../topo/run_0_otapie_40247_40296.html");});
+$("#zoom_chart_14_6").click( function () {window.open("../topo/run_0_otapie_40247_40287.html");});
+$("#zoom_chart_14_7").click( function () {window.open("../topo/run_0_otapie_40247_40307.html");});
+$("#zoom_chart_14_8").click( function () {window.open("../topo/run_0_otapie_40247_40291.html");});
+$("#zoom_chart_14_9").click( function () {window.open("../topo/run_0_otapie_40247_40303.html");});
+$("#zoom_chart_14_10").click( function () {window.open("../topo/run_0_otapie_40247_40301.html");});
+$("#zoom_chart_14_11").click( function () {window.open("../topo/run_0_otapie_40247_40280.html");});
+$("#zoom_chart_14_12").click( function () {window.open("../topo/run_0_otapie_40247_40282.html");});
+$("#zoom_chart_14_13").click( function () {window.open("../topo/run_0_otapie_40247_40285.html");});
+$("#zoom_chart_14_14").click( function () {window.open("../topo/run_0_otapie_40247_40294.html");});
+$("#zoom_chart_14_15").click( function () {window.open("../topo/run_0_otapie_40247_40247.html");});
+$("#zoom_chart_14_16").click( function () {window.open("../topo/run_0_otapie_40247_40298.html");});
+$("#zoom_chart_14_17").click( function () {window.open("../topo/run_0_otapie_40247_40306.html");});
+$("#zoom_chart_14_18").click( function () {window.open("../topo/run_0_otapie_40247_40284.html");});
+$("#zoom_chart_14_19").click( function () {window.open("../topo/run_0_otapie_40247_40309.html");});
+$("#zoom_chart_14_20").click( function () {window.open("../topo/run_0_otapie_40247_40281.html");});
+$("#zoom_chart_14_21").click( function () {window.open("../topo/run_0_otapie_40247_40286.html");});
+$("#zoom_chart_14_22").click( function () {window.open("../topo/run_0_otapie_40247_40289.html");});
+$("#zoom_chart_14_23").click( function () {window.open("../topo/run_0_otapie_40247_40292.html");});
+$("#zoom_chart_14_24").click( function () {window.open("../topo/run_0_otapie_40247_40293.html");});
+$("#zoom_chart_14_25").click( function () {window.open("../topo/run_0_otapie_40247_40308.html");});
+$("#zoom_chart_14_26").click( function () {window.open("../topo/run_0_otapie_40247_40288.html");});
+$("#zoom_chart_14_27").click( function () {window.open("../topo/run_0_otapie_40247_40305.html");});
+$("#zoom_chart_14_28").click( function () {window.open("../topo/run_0_otapie_40247_40310.html");});
+$("#zoom_chart_14_29").click( function () {window.open("../topo/run_0_otapie_40247_40304.html");});
+$("#zoom_chart_14_30").click( function () {window.open("../topo/run_0_otapie_40247_40297.html");});
+$("#zoom_chart_14_31").click( function () {window.open("../topo/run_0_otapie_40247_40300.html");});
   }
   if (selector_type.value == "sorted"
   &&  selector_run.value  == "1") {
 $(document).ready(function(){
-  var ordinals = ['otapie_33306_33359','otapie_33306_33367','otapie_33306_33360','otapie_33306_33364','otapie_33306_33349','otapie_33306_33365','otapie_33306_33341','otapie_33306_33353','otapie_33306_33339','otapie_33306_33346','otapie_33306_33361','otapie_33306_33362','otapie_33306_33358','otapie_33306_33356','otapie_33306_33348','otapie_33306_33368','otapie_33306_33350','otapie_33306_33352','otapie_33306_33369'];
-  var data = [{value:0.014999998733401,offset:0, i:0,color:"#333399"},{value:0.014999998733401,offset:0, i:1,color:"#333399"},{value:0.0099999997764826,offset:0, i:2,color:"#333399"},{value:0.0099999997764826,offset:0, i:3,color:"#333399"},{value:0.0099999997764826,offset:0, i:4,color:"#333399"},{value:0.0099999997764826,offset:0, i:5,color:"#333399"},{value:0.0099999997764826,offset:0, i:6,color:"#333399"},{value:0.00999999884516,offset:0, i:7,color:"#333399"},{value:0.00999999884516,offset:0, i:8,color:"#333399"},{value:0.0050000003539026,offset:0, i:9,color:"#333399"},{value:0.0049999998882413,offset:0, i:10,color:"#333399"},{value:0.0049999998882413,offset:0, i:11,color:"#333399"},{value:0.0049999998882413,offset:0, i:12,color:"#333399"},{value:0.0049999998882413,offset:0, i:13,color:"#333399"},{value:0.0049999998882413,offset:0, i:14,color:"#333399"},{value:0.0049999998882413,offset:0, i:15,color:"#333399"},{value:0.0049999998882413,offset:0, i:16,color:"#333399"},{value:0.0049999998882413,offset:0, i:17,color:"#333399"},{value:0.00499999942258,offset:0, i:18,color:"#333399"}];
+  var ordinals = ['otapie_40247_40295','otapie_40247_40290','otapie_40247_40283','otapie_40247_40302','otapie_40247_40299','otapie_40247_40287','otapie_40247_40307','otapie_40247_40291','otapie_40247_40296','otapie_40247_40303','otapie_40247_40301','otapie_40247_40285','otapie_40247_40280','otapie_40247_40294','otapie_40247_40282','otapie_40247_40309','otapie_40247_40306','otapie_40247_40281','otapie_40247_40284','otapie_40247_40298','otapie_40247_40247','otapie_40247_40286','otapie_40247_40289','otapie_40247_40292','otapie_40247_40293','otapie_40247_40308','otapie_40247_40305','otapie_40247_40288','otapie_40247_40310','otapie_40247_40304','otapie_40247_40297','otapie_40247_40300'];
+  var data = [{value:0.17999996244907,offset:0, i:0,color:"#333399"},{value:0.14499996602535,offset:0, i:1,color:"#333399"},{value:0.13499996066093,offset:0, i:2,color:"#333399"},{value:0.13499996066093,offset:0, i:3,color:"#333399"},{value:0.12499997764826,offset:0, i:4,color:"#333399"},{value:0.099999971687794,offset:0, i:5,color:"#333399"},{value:0.099999971687794,offset:0, i:6,color:"#333399"},{value:0.099999971687794,offset:0, i:7,color:"#333399"},{value:0.099999971687794,offset:0, i:8,color:"#333399"},{value:0.089999988675117,offset:0, i:9,color:"#333399"},{value:0.089999981224537,offset:0, i:10,color:"#333399"},{value:0.07999999076128,offset:0, i:11,color:"#333399"},{value:0.079999983310699,offset:0, i:12,color:"#333399"},{value:0.079999975860119,offset:0, i:13,color:"#333399"},{value:0.079999975860119,offset:0, i:14,color:"#333399"},{value:0.074999988079071,offset:0, i:15,color:"#333399"},{value:0.074999988079071,offset:0, i:16,color:"#333399"},{value:0.074999988079071,offset:0, i:17,color:"#333399"},{value:0.074999988079071,offset:0, i:18,color:"#333399"},{value:0.074999988079071,offset:0, i:19,color:"#333399"},{value:0.07499998062849,offset:0, i:20,color:"#333399"},{value:0.069999985396862,offset:0, i:21,color:"#333399"},{value:0.069999977946281,offset:0, i:22,color:"#333399"},{value:0.064999982714653,offset:0, i:23,color:"#333399"},{value:0.059999983757734,offset:0, i:24,color:"#333399"},{value:0.054999988526106,offset:0, i:25,color:"#333399"},{value:0.054999988526106,offset:0, i:26,color:"#333399"},{value:0.054999988526106,offset:0, i:27,color:"#333399"},{value:0.049999989569187,offset:0, i:28,color:"#333399"},{value:0.044999994337559,offset:0, i:29,color:"#333399"},{value:0.03999999165535,offset:0, i:30,color:"#333399"},{value:0.034999996423721,offset:0, i:31,color:"#333399"}];
   var widthgl  = _width;
   var widthin  = _width;
   var heightgl = 480;
@@ -956,7 +940,7 @@ $(document).ready(function(){
   height = heightgl - margin.top - margin.bottom,
   radius = (Math.min(width, height) / 2) - 10,
   node;
-  const svg = d3.select('#chart_cat_23')
+  const svg = d3.select('#chart_cat_15')
       .append('svg')
       .attr('width', widthin)
       .attr('height', heightin)
@@ -1012,13 +996,13 @@ $(document).ready(function(){
     .text("Time (s)");
   let bars = svg.append('g')
     .attr('clip-path','url(#my-clip-path)')
-    .attr('id', 'zoom_chart_23')
+    .attr('id', 'zoom_chart_15')
     .selectAll('.bar')
     .data(data)
     .enter()
     .append('rect')
     .attr('class', 'bar')
-    .attr('id', function (d, i){ return 'zoom_chart_23_'+i;})
+    .attr('id', function (d, i){ return 'zoom_chart_15_'+i;})
     .attr('x', function(d, i){
       return xScale(d.i) - xBand.bandwidth()*0.9/2
     })
@@ -1060,31 +1044,44 @@ $(document).ready(function(){
       bars.attr("transform", "translate(" + d3.event.transform.x+",0)scale(" + d3.event.transform.k + ",1)")
   }
 });
-$("#zoom_chart_23_0").click( function () {window.open("../topo/run_0_otapie_33306_33359.html");});
-$("#zoom_chart_23_1").click( function () {window.open("../topo/run_0_otapie_33306_33367.html");});
-$("#zoom_chart_23_2").click( function () {window.open("../topo/run_0_otapie_33306_33360.html");});
-$("#zoom_chart_23_3").click( function () {window.open("../topo/run_0_otapie_33306_33364.html");});
-$("#zoom_chart_23_4").click( function () {window.open("../topo/run_0_otapie_33306_33349.html");});
-$("#zoom_chart_23_5").click( function () {window.open("../topo/run_0_otapie_33306_33365.html");});
-$("#zoom_chart_23_6").click( function () {window.open("../topo/run_0_otapie_33306_33341.html");});
-$("#zoom_chart_23_7").click( function () {window.open("../topo/run_0_otapie_33306_33353.html");});
-$("#zoom_chart_23_8").click( function () {window.open("../topo/run_0_otapie_33306_33339.html");});
-$("#zoom_chart_23_9").click( function () {window.open("../topo/run_0_otapie_33306_33346.html");});
-$("#zoom_chart_23_10").click( function () {window.open("../topo/run_0_otapie_33306_33361.html");});
-$("#zoom_chart_23_11").click( function () {window.open("../topo/run_0_otapie_33306_33362.html");});
-$("#zoom_chart_23_12").click( function () {window.open("../topo/run_0_otapie_33306_33358.html");});
-$("#zoom_chart_23_13").click( function () {window.open("../topo/run_0_otapie_33306_33356.html");});
-$("#zoom_chart_23_14").click( function () {window.open("../topo/run_0_otapie_33306_33348.html");});
-$("#zoom_chart_23_15").click( function () {window.open("../topo/run_0_otapie_33306_33368.html");});
-$("#zoom_chart_23_16").click( function () {window.open("../topo/run_0_otapie_33306_33350.html");});
-$("#zoom_chart_23_17").click( function () {window.open("../topo/run_0_otapie_33306_33352.html");});
-$("#zoom_chart_23_18").click( function () {window.open("../topo/run_0_otapie_33306_33369.html");});
+$("#zoom_chart_15_0").click( function () {window.open("../topo/run_0_otapie_40247_40295.html");});
+$("#zoom_chart_15_1").click( function () {window.open("../topo/run_0_otapie_40247_40290.html");});
+$("#zoom_chart_15_2").click( function () {window.open("../topo/run_0_otapie_40247_40283.html");});
+$("#zoom_chart_15_3").click( function () {window.open("../topo/run_0_otapie_40247_40302.html");});
+$("#zoom_chart_15_4").click( function () {window.open("../topo/run_0_otapie_40247_40299.html");});
+$("#zoom_chart_15_5").click( function () {window.open("../topo/run_0_otapie_40247_40287.html");});
+$("#zoom_chart_15_6").click( function () {window.open("../topo/run_0_otapie_40247_40307.html");});
+$("#zoom_chart_15_7").click( function () {window.open("../topo/run_0_otapie_40247_40291.html");});
+$("#zoom_chart_15_8").click( function () {window.open("../topo/run_0_otapie_40247_40296.html");});
+$("#zoom_chart_15_9").click( function () {window.open("../topo/run_0_otapie_40247_40303.html");});
+$("#zoom_chart_15_10").click( function () {window.open("../topo/run_0_otapie_40247_40301.html");});
+$("#zoom_chart_15_11").click( function () {window.open("../topo/run_0_otapie_40247_40285.html");});
+$("#zoom_chart_15_12").click( function () {window.open("../topo/run_0_otapie_40247_40280.html");});
+$("#zoom_chart_15_13").click( function () {window.open("../topo/run_0_otapie_40247_40294.html");});
+$("#zoom_chart_15_14").click( function () {window.open("../topo/run_0_otapie_40247_40282.html");});
+$("#zoom_chart_15_15").click( function () {window.open("../topo/run_0_otapie_40247_40309.html");});
+$("#zoom_chart_15_16").click( function () {window.open("../topo/run_0_otapie_40247_40306.html");});
+$("#zoom_chart_15_17").click( function () {window.open("../topo/run_0_otapie_40247_40281.html");});
+$("#zoom_chart_15_18").click( function () {window.open("../topo/run_0_otapie_40247_40284.html");});
+$("#zoom_chart_15_19").click( function () {window.open("../topo/run_0_otapie_40247_40298.html");});
+$("#zoom_chart_15_20").click( function () {window.open("../topo/run_0_otapie_40247_40247.html");});
+$("#zoom_chart_15_21").click( function () {window.open("../topo/run_0_otapie_40247_40286.html");});
+$("#zoom_chart_15_22").click( function () {window.open("../topo/run_0_otapie_40247_40289.html");});
+$("#zoom_chart_15_23").click( function () {window.open("../topo/run_0_otapie_40247_40292.html");});
+$("#zoom_chart_15_24").click( function () {window.open("../topo/run_0_otapie_40247_40293.html");});
+$("#zoom_chart_15_25").click( function () {window.open("../topo/run_0_otapie_40247_40308.html");});
+$("#zoom_chart_15_26").click( function () {window.open("../topo/run_0_otapie_40247_40305.html");});
+$("#zoom_chart_15_27").click( function () {window.open("../topo/run_0_otapie_40247_40288.html");});
+$("#zoom_chart_15_28").click( function () {window.open("../topo/run_0_otapie_40247_40310.html");});
+$("#zoom_chart_15_29").click( function () {window.open("../topo/run_0_otapie_40247_40304.html");});
+$("#zoom_chart_15_30").click( function () {window.open("../topo/run_0_otapie_40247_40297.html");});
+$("#zoom_chart_15_31").click( function () {window.open("../topo/run_0_otapie_40247_40300.html");});
   }
   if (selector_type.value == "all"
   &&  selector_run.value  == "1") {
 $(document).ready(function(){
-  var ordinals = ['otapie_33306_33306','otapie_33306_33339','otapie_33306_33340','otapie_33306_33341','otapie_33306_33342','otapie_33306_33343','otapie_33306_33344','otapie_33306_33345','otapie_33306_33346','otapie_33306_33347','otapie_33306_33348','otapie_33306_33349','otapie_33306_33350','otapie_33306_33351','otapie_33306_33352','otapie_33306_33353','otapie_33306_33354','otapie_33306_33355','otapie_33306_33356','otapie_33306_33357','otapie_33306_33358','otapie_33306_33359','otapie_33306_33360','otapie_33306_33361','otapie_33306_33362','otapie_33306_33363','otapie_33306_33364','otapie_33306_33365','otapie_33306_33366','otapie_33306_33367','otapie_33306_33368','otapie_33306_33369'];
-  var data = [{value:0,offset:0, i:0,color:"#333399"},{value:0.19398647546768,offset:0, i:1,color:"#333399"},{value:0,offset:0, i:2,color:"#333399"},{value:0.19398646056652,offset:0, i:3,color:"#333399"},{value:0,offset:0, i:4,color:"#333399"},{value:0,offset:0, i:5,color:"#333399"},{value:0,offset:0, i:6,color:"#333399"},{value:0,offset:0, i:7,color:"#333399"},{value:0.097276285290718,offset:0, i:8,color:"#333399"},{value:0,offset:0, i:9,color:"#333399"},{value:0.097087368369102,offset:0, i:10,color:"#333399"},{value:0.19398646056652,offset:0, i:11,color:"#333399"},{value:0.09699323028326,offset:0, i:12,color:"#333399"},{value:0,offset:0, i:13,color:"#333399"},{value:0.097087413072586,offset:0, i:14,color:"#333399"},{value:0.19436347484589,offset:0, i:15,color:"#333399"},{value:0,offset:0, i:16,color:"#333399"},{value:0,offset:0, i:17,color:"#333399"},{value:0.097465917468071,offset:0, i:18,color:"#333399"},{value:0,offset:0, i:19,color:"#333399"},{value:0.097276270389557,offset:0, i:20,color:"#333399"},{value:0.2909796833992,offset:0, i:21,color:"#333399"},{value:0.19398644566536,offset:0, i:22,color:"#333399"},{value:0.09699322283268,offset:0, i:23,color:"#333399"},{value:0.097465887665749,offset:0, i:24,color:"#333399"},{value:0,offset:0, i:25,color:"#333399"},{value:0.19398646056652,offset:0, i:26,color:"#333399"},{value:0.19474197924137,offset:0, i:27,color:"#333399"},{value:0,offset:0, i:28,color:"#333399"},{value:0.29268309473991,offset:0, i:29,color:"#333399"},{value:0.09699322283268,offset:0, i:30,color:"#333399"},{value:0.096993207931519,offset:0, i:31,color:"#333399"}];
+  var ordinals = ['otapie_40247_40247','otapie_40247_40280','otapie_40247_40281','otapie_40247_40282','otapie_40247_40283','otapie_40247_40284','otapie_40247_40285','otapie_40247_40286','otapie_40247_40287','otapie_40247_40288','otapie_40247_40289','otapie_40247_40290','otapie_40247_40291','otapie_40247_40292','otapie_40247_40293','otapie_40247_40294','otapie_40247_40295','otapie_40247_40296','otapie_40247_40297','otapie_40247_40298','otapie_40247_40299','otapie_40247_40300','otapie_40247_40301','otapie_40247_40302','otapie_40247_40303','otapie_40247_40304','otapie_40247_40305','otapie_40247_40306','otapie_40247_40307','otapie_40247_40308','otapie_40247_40309','otapie_40247_40310'];
+  var data = [{value:1.7301038503647,offset:0, i:0,color:"#333399"},{value:1.7917144298553,offset:0, i:1,color:"#333399"},{value:1.6778529882431,offset:0, i:2,color:"#333399"},{value:1.7897101640701,offset:0, i:3,color:"#333399"},{value:3.0235161781311,offset:0, i:4,color:"#333399"},{value:1.6778529882431,offset:0, i:5,color:"#333399"},{value:1.7897100448608,offset:0, i:6,color:"#333399"},{value:1.5695074796677,offset:0, i:7,color:"#333399"},{value:2.249719619751,offset:0, i:8,color:"#333399"},{value:1.2304254770279,offset:0, i:9,color:"#333399"},{value:1.5659960508347,offset:0, i:10,color:"#333399"},{value:3.2438485622406,offset:0, i:11,color:"#333399"},{value:2.2471919059753,offset:0, i:12,color:"#333399"},{value:1.4590357542038,offset:0, i:13,color:"#333399"},{value:1.3437856435776,offset:0, i:14,color:"#333399"},{value:1.7897098064423,offset:0, i:15,color:"#333399"},{value:4.1002297401428,offset:0, i:16,color:"#333399"},{value:2.2650065422058,offset:0, i:17,color:"#333399"},{value:0.89686143398285,offset:0, i:18,color:"#333399"},{value:1.6835027933121,offset:0, i:19,color:"#333399"},{value:2.8669722080231,offset:0, i:20,color:"#333399"},{value:0.78651714324951,offset:0, i:21,color:"#333399"},{value:2.013423204422,offset:0, i:22,color:"#333399"},{value:3.0303044319153,offset:0, i:23,color:"#333399"},{value:2.0247476100922,offset:0, i:24,color:"#333399"},{value:1.0078392028809,offset:0, i:25,color:"#333399"},{value:1.2304254770279,offset:0, i:26,color:"#333399"},{value:1.6778529882431,offset:0, i:27,color:"#333399"},{value:2.2471921443939,offset:0, i:28,color:"#333399"},{value:1.2318032979965,offset:0, i:29,color:"#333399"},{value:1.6778529882431,offset:0, i:30,color:"#333399"},{value:1.1185683012009,offset:0, i:31,color:"#333399"}];
   var widthgl  = _width;
   var widthin  = _width;
   var heightgl = 480;
@@ -1094,7 +1091,7 @@ $(document).ready(function(){
   height = heightgl - margin.top - margin.bottom,
   radius = (Math.min(width, height) / 2) - 10,
   node;
-  const svg = d3.select('#chart_cat_22')
+  const svg = d3.select('#chart_cat_14')
       .append('svg')
       .attr('width', widthin)
       .attr('height', heightin)
@@ -1150,13 +1147,13 @@ $(document).ready(function(){
     .text("Coverage (%)");
   let bars = svg.append('g')
     .attr('clip-path','url(#my-clip-path)')
-    .attr('id', 'zoom_chart_22')
+    .attr('id', 'zoom_chart_14')
     .selectAll('.bar')
     .data(data)
     .enter()
     .append('rect')
     .attr('class', 'bar')
-    .attr('id', function (d, i){ return 'zoom_chart_22_'+i;})
+    .attr('id', function (d, i){ return 'zoom_chart_14_'+i;})
     .attr('x', function(d, i){
       return xScale(d.i) - xBand.bandwidth()*0.9/2
     })
@@ -1198,31 +1195,44 @@ $(document).ready(function(){
       bars.attr("transform", "translate(" + d3.event.transform.x+",0)scale(" + d3.event.transform.k + ",1)")
   }
 });
-$("#zoom_chart_22_1").click( function () {window.open("../topo/run_0_otapie_33306_33339.html");});
-$("#zoom_chart_22_3").click( function () {window.open("../topo/run_0_otapie_33306_33341.html");});
-$("#zoom_chart_22_8").click( function () {window.open("../topo/run_0_otapie_33306_33346.html");});
-$("#zoom_chart_22_10").click( function () {window.open("../topo/run_0_otapie_33306_33348.html");});
-$("#zoom_chart_22_11").click( function () {window.open("../topo/run_0_otapie_33306_33349.html");});
-$("#zoom_chart_22_12").click( function () {window.open("../topo/run_0_otapie_33306_33350.html");});
-$("#zoom_chart_22_14").click( function () {window.open("../topo/run_0_otapie_33306_33352.html");});
-$("#zoom_chart_22_15").click( function () {window.open("../topo/run_0_otapie_33306_33353.html");});
-$("#zoom_chart_22_18").click( function () {window.open("../topo/run_0_otapie_33306_33356.html");});
-$("#zoom_chart_22_20").click( function () {window.open("../topo/run_0_otapie_33306_33358.html");});
-$("#zoom_chart_22_21").click( function () {window.open("../topo/run_0_otapie_33306_33359.html");});
-$("#zoom_chart_22_22").click( function () {window.open("../topo/run_0_otapie_33306_33360.html");});
-$("#zoom_chart_22_23").click( function () {window.open("../topo/run_0_otapie_33306_33361.html");});
-$("#zoom_chart_22_24").click( function () {window.open("../topo/run_0_otapie_33306_33362.html");});
-$("#zoom_chart_22_26").click( function () {window.open("../topo/run_0_otapie_33306_33364.html");});
-$("#zoom_chart_22_27").click( function () {window.open("../topo/run_0_otapie_33306_33365.html");});
-$("#zoom_chart_22_29").click( function () {window.open("../topo/run_0_otapie_33306_33367.html");});
-$("#zoom_chart_22_30").click( function () {window.open("../topo/run_0_otapie_33306_33368.html");});
-$("#zoom_chart_22_31").click( function () {window.open("../topo/run_0_otapie_33306_33369.html");});
+$("#zoom_chart_14_0").click( function () {window.open("../topo/run_0_otapie_40247_40247.html");});
+$("#zoom_chart_14_1").click( function () {window.open("../topo/run_0_otapie_40247_40280.html");});
+$("#zoom_chart_14_2").click( function () {window.open("../topo/run_0_otapie_40247_40281.html");});
+$("#zoom_chart_14_3").click( function () {window.open("../topo/run_0_otapie_40247_40282.html");});
+$("#zoom_chart_14_4").click( function () {window.open("../topo/run_0_otapie_40247_40283.html");});
+$("#zoom_chart_14_5").click( function () {window.open("../topo/run_0_otapie_40247_40284.html");});
+$("#zoom_chart_14_6").click( function () {window.open("../topo/run_0_otapie_40247_40285.html");});
+$("#zoom_chart_14_7").click( function () {window.open("../topo/run_0_otapie_40247_40286.html");});
+$("#zoom_chart_14_8").click( function () {window.open("../topo/run_0_otapie_40247_40287.html");});
+$("#zoom_chart_14_9").click( function () {window.open("../topo/run_0_otapie_40247_40288.html");});
+$("#zoom_chart_14_10").click( function () {window.open("../topo/run_0_otapie_40247_40289.html");});
+$("#zoom_chart_14_11").click( function () {window.open("../topo/run_0_otapie_40247_40290.html");});
+$("#zoom_chart_14_12").click( function () {window.open("../topo/run_0_otapie_40247_40291.html");});
+$("#zoom_chart_14_13").click( function () {window.open("../topo/run_0_otapie_40247_40292.html");});
+$("#zoom_chart_14_14").click( function () {window.open("../topo/run_0_otapie_40247_40293.html");});
+$("#zoom_chart_14_15").click( function () {window.open("../topo/run_0_otapie_40247_40294.html");});
+$("#zoom_chart_14_16").click( function () {window.open("../topo/run_0_otapie_40247_40295.html");});
+$("#zoom_chart_14_17").click( function () {window.open("../topo/run_0_otapie_40247_40296.html");});
+$("#zoom_chart_14_18").click( function () {window.open("../topo/run_0_otapie_40247_40297.html");});
+$("#zoom_chart_14_19").click( function () {window.open("../topo/run_0_otapie_40247_40298.html");});
+$("#zoom_chart_14_20").click( function () {window.open("../topo/run_0_otapie_40247_40299.html");});
+$("#zoom_chart_14_21").click( function () {window.open("../topo/run_0_otapie_40247_40300.html");});
+$("#zoom_chart_14_22").click( function () {window.open("../topo/run_0_otapie_40247_40301.html");});
+$("#zoom_chart_14_23").click( function () {window.open("../topo/run_0_otapie_40247_40302.html");});
+$("#zoom_chart_14_24").click( function () {window.open("../topo/run_0_otapie_40247_40303.html");});
+$("#zoom_chart_14_25").click( function () {window.open("../topo/run_0_otapie_40247_40304.html");});
+$("#zoom_chart_14_26").click( function () {window.open("../topo/run_0_otapie_40247_40305.html");});
+$("#zoom_chart_14_27").click( function () {window.open("../topo/run_0_otapie_40247_40306.html");});
+$("#zoom_chart_14_28").click( function () {window.open("../topo/run_0_otapie_40247_40307.html");});
+$("#zoom_chart_14_29").click( function () {window.open("../topo/run_0_otapie_40247_40308.html");});
+$("#zoom_chart_14_30").click( function () {window.open("../topo/run_0_otapie_40247_40309.html");});
+$("#zoom_chart_14_31").click( function () {window.open("../topo/run_0_otapie_40247_40310.html");});
   }
   if (selector_type.value == "all"
   &&  selector_run.value  == "1") {
 $(document).ready(function(){
-  var ordinals = ['otapie_33306_33306','otapie_33306_33339','otapie_33306_33340','otapie_33306_33341','otapie_33306_33342','otapie_33306_33343','otapie_33306_33344','otapie_33306_33345','otapie_33306_33346','otapie_33306_33347','otapie_33306_33348','otapie_33306_33349','otapie_33306_33350','otapie_33306_33351','otapie_33306_33352','otapie_33306_33353','otapie_33306_33354','otapie_33306_33355','otapie_33306_33356','otapie_33306_33357','otapie_33306_33358','otapie_33306_33359','otapie_33306_33360','otapie_33306_33361','otapie_33306_33362','otapie_33306_33363','otapie_33306_33364','otapie_33306_33365','otapie_33306_33366','otapie_33306_33367','otapie_33306_33368','otapie_33306_33369'];
-  var data = [{value:0,offset:0, i:0,color:"#333399"},{value:0.00999999884516,offset:0, i:1,color:"#333399"},{value:0,offset:0, i:2,color:"#333399"},{value:0.0099999997764826,offset:0, i:3,color:"#333399"},{value:0,offset:0, i:4,color:"#333399"},{value:0,offset:0, i:5,color:"#333399"},{value:0,offset:0, i:6,color:"#333399"},{value:0,offset:0, i:7,color:"#333399"},{value:0.0050000003539026,offset:0, i:8,color:"#333399"},{value:0,offset:0, i:9,color:"#333399"},{value:0.0049999998882413,offset:0, i:10,color:"#333399"},{value:0.0099999997764826,offset:0, i:11,color:"#333399"},{value:0.0049999998882413,offset:0, i:12,color:"#333399"},{value:0,offset:0, i:13,color:"#333399"},{value:0.0049999998882413,offset:0, i:14,color:"#333399"},{value:0.00999999884516,offset:0, i:15,color:"#333399"},{value:0,offset:0, i:16,color:"#333399"},{value:0,offset:0, i:17,color:"#333399"},{value:0.0049999998882413,offset:0, i:18,color:"#333399"},{value:0,offset:0, i:19,color:"#333399"},{value:0.0049999998882413,offset:0, i:20,color:"#333399"},{value:0.014999998733401,offset:0, i:21,color:"#333399"},{value:0.0099999997764826,offset:0, i:22,color:"#333399"},{value:0.0049999998882413,offset:0, i:23,color:"#333399"},{value:0.0049999998882413,offset:0, i:24,color:"#333399"},{value:0,offset:0, i:25,color:"#333399"},{value:0.0099999997764826,offset:0, i:26,color:"#333399"},{value:0.0099999997764826,offset:0, i:27,color:"#333399"},{value:0,offset:0, i:28,color:"#333399"},{value:0.014999998733401,offset:0, i:29,color:"#333399"},{value:0.0049999998882413,offset:0, i:30,color:"#333399"},{value:0.00499999942258,offset:0, i:31,color:"#333399"}];
+  var ordinals = ['otapie_40247_40247','otapie_40247_40280','otapie_40247_40281','otapie_40247_40282','otapie_40247_40283','otapie_40247_40284','otapie_40247_40285','otapie_40247_40286','otapie_40247_40287','otapie_40247_40288','otapie_40247_40289','otapie_40247_40290','otapie_40247_40291','otapie_40247_40292','otapie_40247_40293','otapie_40247_40294','otapie_40247_40295','otapie_40247_40296','otapie_40247_40297','otapie_40247_40298','otapie_40247_40299','otapie_40247_40300','otapie_40247_40301','otapie_40247_40302','otapie_40247_40303','otapie_40247_40304','otapie_40247_40305','otapie_40247_40306','otapie_40247_40307','otapie_40247_40308','otapie_40247_40309','otapie_40247_40310'];
+  var data = [{value:0.07499998062849,offset:0, i:0,color:"#333399"},{value:0.079999983310699,offset:0, i:1,color:"#333399"},{value:0.074999988079071,offset:0, i:2,color:"#333399"},{value:0.079999975860119,offset:0, i:3,color:"#333399"},{value:0.13499996066093,offset:0, i:4,color:"#333399"},{value:0.074999988079071,offset:0, i:5,color:"#333399"},{value:0.07999999076128,offset:0, i:6,color:"#333399"},{value:0.069999985396862,offset:0, i:7,color:"#333399"},{value:0.099999971687794,offset:0, i:8,color:"#333399"},{value:0.054999988526106,offset:0, i:9,color:"#333399"},{value:0.069999977946281,offset:0, i:10,color:"#333399"},{value:0.14499996602535,offset:0, i:11,color:"#333399"},{value:0.099999971687794,offset:0, i:12,color:"#333399"},{value:0.064999982714653,offset:0, i:13,color:"#333399"},{value:0.059999983757734,offset:0, i:14,color:"#333399"},{value:0.079999975860119,offset:0, i:15,color:"#333399"},{value:0.17999996244907,offset:0, i:16,color:"#333399"},{value:0.099999971687794,offset:0, i:17,color:"#333399"},{value:0.03999999165535,offset:0, i:18,color:"#333399"},{value:0.074999988079071,offset:0, i:19,color:"#333399"},{value:0.12499997764826,offset:0, i:20,color:"#333399"},{value:0.034999996423721,offset:0, i:21,color:"#333399"},{value:0.089999981224537,offset:0, i:22,color:"#333399"},{value:0.13499996066093,offset:0, i:23,color:"#333399"},{value:0.089999988675117,offset:0, i:24,color:"#333399"},{value:0.044999994337559,offset:0, i:25,color:"#333399"},{value:0.054999988526106,offset:0, i:26,color:"#333399"},{value:0.074999988079071,offset:0, i:27,color:"#333399"},{value:0.099999971687794,offset:0, i:28,color:"#333399"},{value:0.054999988526106,offset:0, i:29,color:"#333399"},{value:0.074999988079071,offset:0, i:30,color:"#333399"},{value:0.049999989569187,offset:0, i:31,color:"#333399"}];
   var widthgl  = _width;
   var widthin  = _width;
   var heightgl = 480;
@@ -1232,7 +1242,7 @@ $(document).ready(function(){
   height = heightgl - margin.top - margin.bottom,
   radius = (Math.min(width, height) / 2) - 10,
   node;
-  const svg = d3.select('#chart_cat_23')
+  const svg = d3.select('#chart_cat_15')
       .append('svg')
       .attr('width', widthin)
       .attr('height', heightin)
@@ -1288,13 +1298,13 @@ $(document).ready(function(){
     .text("Time (s)");
   let bars = svg.append('g')
     .attr('clip-path','url(#my-clip-path)')
-    .attr('id', 'zoom_chart_23')
+    .attr('id', 'zoom_chart_15')
     .selectAll('.bar')
     .data(data)
     .enter()
     .append('rect')
     .attr('class', 'bar')
-    .attr('id', function (d, i){ return 'zoom_chart_23_'+i;})
+    .attr('id', function (d, i){ return 'zoom_chart_15_'+i;})
     .attr('x', function(d, i){
       return xScale(d.i) - xBand.bandwidth()*0.9/2
     })
@@ -1336,25 +1346,38 @@ $(document).ready(function(){
       bars.attr("transform", "translate(" + d3.event.transform.x+",0)scale(" + d3.event.transform.k + ",1)")
   }
 });
-$("#zoom_chart_23_1").click( function () {window.open("../topo/run_0_otapie_33306_33339.html");});
-$("#zoom_chart_23_3").click( function () {window.open("../topo/run_0_otapie_33306_33341.html");});
-$("#zoom_chart_23_8").click( function () {window.open("../topo/run_0_otapie_33306_33346.html");});
-$("#zoom_chart_23_10").click( function () {window.open("../topo/run_0_otapie_33306_33348.html");});
-$("#zoom_chart_23_11").click( function () {window.open("../topo/run_0_otapie_33306_33349.html");});
-$("#zoom_chart_23_12").click( function () {window.open("../topo/run_0_otapie_33306_33350.html");});
-$("#zoom_chart_23_14").click( function () {window.open("../topo/run_0_otapie_33306_33352.html");});
-$("#zoom_chart_23_15").click( function () {window.open("../topo/run_0_otapie_33306_33353.html");});
-$("#zoom_chart_23_18").click( function () {window.open("../topo/run_0_otapie_33306_33356.html");});
-$("#zoom_chart_23_20").click( function () {window.open("../topo/run_0_otapie_33306_33358.html");});
-$("#zoom_chart_23_21").click( function () {window.open("../topo/run_0_otapie_33306_33359.html");});
-$("#zoom_chart_23_22").click( function () {window.open("../topo/run_0_otapie_33306_33360.html");});
-$("#zoom_chart_23_23").click( function () {window.open("../topo/run_0_otapie_33306_33361.html");});
-$("#zoom_chart_23_24").click( function () {window.open("../topo/run_0_otapie_33306_33362.html");});
-$("#zoom_chart_23_26").click( function () {window.open("../topo/run_0_otapie_33306_33364.html");});
-$("#zoom_chart_23_27").click( function () {window.open("../topo/run_0_otapie_33306_33365.html");});
-$("#zoom_chart_23_29").click( function () {window.open("../topo/run_0_otapie_33306_33367.html");});
-$("#zoom_chart_23_30").click( function () {window.open("../topo/run_0_otapie_33306_33368.html");});
-$("#zoom_chart_23_31").click( function () {window.open("../topo/run_0_otapie_33306_33369.html");});
+$("#zoom_chart_15_0").click( function () {window.open("../topo/run_0_otapie_40247_40247.html");});
+$("#zoom_chart_15_1").click( function () {window.open("../topo/run_0_otapie_40247_40280.html");});
+$("#zoom_chart_15_2").click( function () {window.open("../topo/run_0_otapie_40247_40281.html");});
+$("#zoom_chart_15_3").click( function () {window.open("../topo/run_0_otapie_40247_40282.html");});
+$("#zoom_chart_15_4").click( function () {window.open("../topo/run_0_otapie_40247_40283.html");});
+$("#zoom_chart_15_5").click( function () {window.open("../topo/run_0_otapie_40247_40284.html");});
+$("#zoom_chart_15_6").click( function () {window.open("../topo/run_0_otapie_40247_40285.html");});
+$("#zoom_chart_15_7").click( function () {window.open("../topo/run_0_otapie_40247_40286.html");});
+$("#zoom_chart_15_8").click( function () {window.open("../topo/run_0_otapie_40247_40287.html");});
+$("#zoom_chart_15_9").click( function () {window.open("../topo/run_0_otapie_40247_40288.html");});
+$("#zoom_chart_15_10").click( function () {window.open("../topo/run_0_otapie_40247_40289.html");});
+$("#zoom_chart_15_11").click( function () {window.open("../topo/run_0_otapie_40247_40290.html");});
+$("#zoom_chart_15_12").click( function () {window.open("../topo/run_0_otapie_40247_40291.html");});
+$("#zoom_chart_15_13").click( function () {window.open("../topo/run_0_otapie_40247_40292.html");});
+$("#zoom_chart_15_14").click( function () {window.open("../topo/run_0_otapie_40247_40293.html");});
+$("#zoom_chart_15_15").click( function () {window.open("../topo/run_0_otapie_40247_40294.html");});
+$("#zoom_chart_15_16").click( function () {window.open("../topo/run_0_otapie_40247_40295.html");});
+$("#zoom_chart_15_17").click( function () {window.open("../topo/run_0_otapie_40247_40296.html");});
+$("#zoom_chart_15_18").click( function () {window.open("../topo/run_0_otapie_40247_40297.html");});
+$("#zoom_chart_15_19").click( function () {window.open("../topo/run_0_otapie_40247_40298.html");});
+$("#zoom_chart_15_20").click( function () {window.open("../topo/run_0_otapie_40247_40299.html");});
+$("#zoom_chart_15_21").click( function () {window.open("../topo/run_0_otapie_40247_40300.html");});
+$("#zoom_chart_15_22").click( function () {window.open("../topo/run_0_otapie_40247_40301.html");});
+$("#zoom_chart_15_23").click( function () {window.open("../topo/run_0_otapie_40247_40302.html");});
+$("#zoom_chart_15_24").click( function () {window.open("../topo/run_0_otapie_40247_40303.html");});
+$("#zoom_chart_15_25").click( function () {window.open("../topo/run_0_otapie_40247_40304.html");});
+$("#zoom_chart_15_26").click( function () {window.open("../topo/run_0_otapie_40247_40305.html");});
+$("#zoom_chart_15_27").click( function () {window.open("../topo/run_0_otapie_40247_40306.html");});
+$("#zoom_chart_15_28").click( function () {window.open("../topo/run_0_otapie_40247_40307.html");});
+$("#zoom_chart_15_29").click( function () {window.open("../topo/run_0_otapie_40247_40308.html");});
+$("#zoom_chart_15_30").click( function () {window.open("../topo/run_0_otapie_40247_40309.html");});
+$("#zoom_chart_15_31").click( function () {window.open("../topo/run_0_otapie_40247_40310.html");});
   }
 }
 function ldbal_onresize (panelId) {
@@ -1365,7 +1388,7 @@ function ldbal_onresize (panelId) {
 function ldbal_loadhelp (divId) {
   var e = document.getElementById (divId);
   if (e != null) {
-    e.setAttribute ("tooltip_id", "12");
+    e.setAttribute ("tooltip_id", "23");
   }
 }
   </script>
@@ -1375,10 +1398,10 @@ function ldbal_loadhelp (divId) {
     <table style="width:100%;text-align:center;">
       <tr>
         <td>
-          <button type="button" class="tooltip-maqao-button" title="" tooltip_id="13" onclick="set_previous_path ();">&#8592;</button>
+          <button type="button" class="tooltip-maqao-button" title="" tooltip_id="24" onclick="set_previous_path ();">&#8592;</button>
         </td>
-        <td style="border-bottom: 1px solid var(--fixed_box_borders);">Path <input id="path_selection_adv_input" type="number" min="0" max="1" value="0" style="width:35px;"> / <span id="path_selection_adv_input_max"></span><button type="button" class="tooltip-maqao-button" title="" tooltip_id="14" style="margin-left: 10px;" onclick="set_path_input ('path_selection_adv_input')" >OK</button></td>
-        <td><button type="button" class="tooltip-maqao-button" title="" tooltip_id="15" onclick="set_next_path ();">&#8594;</button></td>
+        <td style="border-bottom: 1px solid var(--fixed_box_borders);">Path <input id="path_selection_adv_input" type="number" min="0" max="1" value="0" style="width:35px;"> / <span id="path_selection_adv_input_max"></span><button type="button" class="tooltip-maqao-button" title="" tooltip_id="25" style="margin-left: 10px;" onclick="set_path_input ('path_selection_adv_input')" >OK</button></td>
+        <td><button type="button" class="tooltip-maqao-button" title="" tooltip_id="26" onclick="set_next_path ();">&#8594;</button></td>
       </tr>
     </table>
   </div>
@@ -1386,151 +1409,151 @@ function ldbal_loadhelp (divId) {
     <div id="loop_static_path_0" style="width:100%;">
       <table style="width:100%;">
         <tr><th>Metric</th><th>Value</th></tr>
-            <tr><td>CQA speedup if no scalar integer</td><td style="background-color:var(--score_color_acceptable);">1.13</td></tr>
-            <tr><td>CQA speedup if FP arith vectorized</td><td style="background-color:var(--score_color_acceptable);">1.13</td></tr>
-            <tr><td>CQA speedup if fully vectorized</td><td style="background-color:var(--score_color_medium);">4.50</td></tr>
+            <tr><td>CQA speedup if no scalar integer</td><td>1.00</td></tr>
+            <tr><td>CQA speedup if FP arith vectorized</td><td>1.00</td></tr>
+            <tr><td>CQA speedup if fully vectorized</td><td>1.00</td></tr>
             <tr><td>CQA speedup if no inter-iteration dependency</td><td>NA</td></tr>
-            <tr><td>CQA speedup if next bottleneck killed</td><td style="background-color:var(--score_color_acceptable);">1.10</td></tr>
+            <tr><td>CQA speedup if next bottleneck killed</td><td style="background-color:var(--score_color_medium);">6.00</td></tr>
             <tr><td>Bottlenecks</td><td></td></tr>
             <tr><td>Function</td><td>kernel._omp_fn.0</td></tr>
-            <tr><td>Source</td><td>driver_opti.c:20-24</td></tr>
-            <tr><td>Source loop unroll info</td><td>NA</td></tr>
-            <tr><td>Source loop unroll confidence level</td><td>NA</td></tr>
+            <tr><td>Source</td><td>driver_opti.c:22-23</td></tr>
+            <tr><td>Source loop unroll info</td><td>not unrolled or unrolled with no peel/tail loop</td></tr>
+            <tr><td>Source loop unroll confidence level</td><td>max</td></tr>
             <tr><td>Unroll/vectorization loop type</td><td>NA</td></tr>
             <tr><td>Unroll factor</td><td>NA</td></tr>
-            <tr><td>CQA cycles</td><td>9.00</td></tr>
-            <tr><td>CQA cycles if no scalar integer</td><td>8.00</td></tr>
-            <tr><td>CQA cycles if FP arith vectorized</td><td>8.00</td></tr>
-            <tr><td>CQA cycles if fully vectorized</td><td>2.00</td></tr>
-            <tr><td>Front-end cycles</td><td>8.17</td></tr>
-            <tr><td>P0 cycles</td><td>7.50</td></tr>
-            <tr><td>P1 cycles</td><td>7.50</td></tr>
-            <tr><td>P2 cycles</td><td>7.50</td></tr>
-            <tr><td>P3 cycles</td><td>7.50</td></tr>
-            <tr><td>P4 cycles</td><td>5.50</td></tr>
-            <tr><td>P5 cycles</td><td>5.17</td></tr>
-            <tr><td>P6 cycles</td><td>5.33</td></tr>
-            <tr><td>P7 cycles</td><td>0.50</td></tr>
-            <tr><td>P8 cycles</td><td>0.50</td></tr>
-            <tr><td>P9 cycles</td><td>8.00</td></tr>
-            <tr><td>P10 cycles</td><td>6.00</td></tr>
+            <tr><td>CQA cycles</td><td>24.00</td></tr>
+            <tr><td>CQA cycles if no scalar integer</td><td>24.00</td></tr>
+            <tr><td>CQA cycles if FP arith vectorized</td><td>24.00</td></tr>
+            <tr><td>CQA cycles if fully vectorized</td><td>24.00</td></tr>
+            <tr><td>Front-end cycles</td><td>1.67</td></tr>
+            <tr><td>P0 cycles</td><td>0.50</td></tr>
+            <tr><td>P1 cycles</td><td>0.50</td></tr>
+            <tr><td>P2 cycles</td><td>0.50</td></tr>
+            <tr><td>P3 cycles</td><td>0.50</td></tr>
+            <tr><td>P4 cycles</td><td>4.00</td></tr>
+            <tr><td>P5 cycles</td><td>4.00</td></tr>
+            <tr><td>P6 cycles</td><td>0.00</td></tr>
+            <tr><td>P7 cycles</td><td>0.00</td></tr>
+            <tr><td>P8 cycles</td><td>0.00</td></tr>
+            <tr><td>P9 cycles</td><td>4.00</td></tr>
+            <tr><td>P10 cycles</td><td>4.00</td></tr>
             <tr><td>DIV/SQRT cycles</td><td>0.00</td></tr>
-            <tr><td>Inter-iter dependencies cycles</td><td>NA</td></tr>
+            <tr><td>Inter-iter dependencies cycles</td><td style="background-color:var(--score_color_acceptable);">24</td></tr>
             <tr><td>FE+BE cycles (UFS)</td><td>NA</td></tr>
             <tr><td>Stall cycles (UFS)</td><td>NA</td></tr>
-            <tr><td>Nb insns</td><td>50.00</td></tr>
-            <tr><td>Nb uops</td><td>49.00</td></tr>
-            <tr><td>Nb loads</td><td>7.00</td></tr>
-            <tr><td>Nb stores</td><td>9.00</td></tr>
+            <tr><td>Nb insns</td><td>11.00</td></tr>
+            <tr><td>Nb uops</td><td>10.00</td></tr>
+            <tr><td>Nb loads</td><td>8.00</td></tr>
+            <tr><td>Nb stores</td><td>0.00</td></tr>
             <tr><td>Nb stack references</td><td style="background-color:var(--score_color_good);">0.00</td></tr>
-            <tr><td>FLOP/cycle</td><td>0.78</td></tr>
-            <tr><td>Nb FLOP add-sub</td><td>6.00</td></tr>
-            <tr><td>Nb FLOP mul</td><td>1.00</td></tr>
+            <tr><td>FLOP/cycle</td><td>1.33</td></tr>
+            <tr><td>Nb FLOP add-sub</td><td>32.00</td></tr>
+            <tr><td>Nb FLOP mul</td><td>0.00</td></tr>
             <tr><td>Nb FLOP fma</td><td>0.00</td></tr>
             <tr><td>Nb FLOP div</td><td>0.00</td></tr>
             <tr><td>Nb FLOP rcp</td><td>0.00</td></tr>
             <tr><td>Nb FLOP sqrt</td><td>0.00</td></tr>
             <tr><td>Nb FLOP rsqrt</td><td>0.00</td></tr>
-            <tr><td>Bytes/cycle</td><td>14.22</td></tr>
+            <tr><td>Bytes/cycle</td><td>10.67</td></tr>
             <tr><td>Bytes prefetched</td><td>0.00</td></tr>
-            <tr><td>Bytes loaded</td><td>56.00</td></tr>
-            <tr><td>Bytes stored</td><td>72.00</td></tr>
-            <tr><td>Stride 0</td><td>NA</td></tr>
-            <tr><td>Stride 1</td><td>NA</td></tr>
-            <tr><td>Stride n</td><td>NA</td></tr>
-            <tr><td>Stride unknown</td><td>NA</td></tr>
-            <tr><td>Stride indirect</td><td>NA</td></tr>
-            <tr><td>Vectorization ratio all</td><td style="background-color:var(--score_color_bad);">3.45</td></tr>
-            <tr><td>Vectorization ratio load</td><td style="background-color:var(--score_color_bad);">0.00</td></tr>
-            <tr><td>Vectorization ratio store</td><td style="background-color:var(--score_color_bad);">0.00</td></tr>
-            <tr><td>Vectorization ratio mul</td><td style="background-color:var(--score_color_bad);">0.00</td></tr>
-            <tr><td>Vectorization ratio add_sub</td><td style="background-color:var(--score_color_bad);">0.00</td></tr>
+            <tr><td>Bytes loaded</td><td>256.00</td></tr>
+            <tr><td>Bytes stored</td><td>0.00</td></tr>
+            <tr><td>Stride 0</td><td>0.00</td></tr>
+            <tr><td>Stride 1</td><td>0.00</td></tr>
+            <tr><td>Stride n</td><td>2.00</td></tr>
+            <tr><td>Stride unknown</td><td>0.00</td></tr>
+            <tr><td>Stride indirect</td><td>0.00</td></tr>
+            <tr><td>Vectorization ratio all</td><td style="background-color:var(--score_color_good);">100.00</td></tr>
+            <tr><td>Vectorization ratio load</td><td style="background-color:var(--score_color_good);">100.00</td></tr>
+            <tr><td>Vectorization ratio store</td><td>NA</td></tr>
+            <tr><td>Vectorization ratio mul</td><td>NA</td></tr>
+            <tr><td>Vectorization ratio add_sub</td><td style="background-color:var(--score_color_good);">100.00</td></tr>
             <tr><td>Vectorization ratio fma</td><td>NA</td></tr>
             <tr><td>Vectorization ratio div_sqrt</td><td>NA</td></tr>
-            <tr><td>Vectorization ratio other</td><td style="background-color:var(--score_color_bad);">10.00</td></tr>
-            <tr><td>Vector-efficiency ratio all</td><td>25.00</td></tr>
-            <tr><td>Vector-efficiency ratio load</td><td>25.00</td></tr>
-            <tr><td>Vector-efficiency ratio store</td><td>23.61</td></tr>
-            <tr><td>Vector-efficiency ratio mul</td><td>25.00</td></tr>
-            <tr><td>Vector-efficiency ratio add_sub</td><td>25.00</td></tr>
+            <tr><td>Vectorization ratio other</td><td>NA</td></tr>
+            <tr><td>Vector-efficiency ratio all</td><td style="background-color:var(--score_color_good);">100.00</td></tr>
+            <tr><td>Vector-efficiency ratio load</td><td style="background-color:var(--score_color_good);">100.00</td></tr>
+            <tr><td>Vector-efficiency ratio store</td><td>NA</td></tr>
+            <tr><td>Vector-efficiency ratio mul</td><td>NA</td></tr>
+            <tr><td>Vector-efficiency ratio add_sub</td><td style="background-color:var(--score_color_good);">100.00</td></tr>
             <tr><td>Vector-efficiency ratio fma</td><td>NA</td></tr>
             <tr><td>Vector-efficiency ratio div_sqrt</td><td>NA</td></tr>
-            <tr><td>Vector-efficiency ratio other</td><td>26.25</td></tr>
+            <tr><td>Vector-efficiency ratio other</td><td>NA</td></tr>
       </table>
     </div>
     <div id="loop_static_path_1" style="width:100%;">
       <table style="width:100%;">
         <tr><th>Metric</th><th>Value</th></tr>
-            <tr><td>CQA speedup if no scalar integer</td><td style="background-color:var(--score_color_acceptable);">1.13</td></tr>
-            <tr><td>CQA speedup if FP arith vectorized</td><td style="background-color:var(--score_color_acceptable);">1.13</td></tr>
-            <tr><td>CQA speedup if fully vectorized</td><td style="background-color:var(--score_color_medium);">4.50</td></tr>
+            <tr><td>CQA speedup if no scalar integer</td><td>1.00</td></tr>
+            <tr><td>CQA speedup if FP arith vectorized</td><td>1.00</td></tr>
+            <tr><td>CQA speedup if fully vectorized</td><td>1.00</td></tr>
             <tr><td>CQA speedup if no inter-iteration dependency</td><td>NA</td></tr>
-            <tr><td>CQA speedup if next bottleneck killed</td><td style="background-color:var(--score_color_acceptable);">1.10</td></tr>
+            <tr><td>CQA speedup if next bottleneck killed</td><td style="background-color:var(--score_color_medium);">6.00</td></tr>
             <tr><td>Bottlenecks</td><td></td></tr>
             <tr><td>Function</td><td>kernel._omp_fn.0</td></tr>
-            <tr><td>Source</td><td>driver_opti.c:20-24</td></tr>
-            <tr><td>Source loop unroll info</td><td>NA</td></tr>
-            <tr><td>Source loop unroll confidence level</td><td>NA</td></tr>
+            <tr><td>Source</td><td>driver_opti.c:22-23</td></tr>
+            <tr><td>Source loop unroll info</td><td>not unrolled or unrolled with no peel/tail loop</td></tr>
+            <tr><td>Source loop unroll confidence level</td><td>max</td></tr>
             <tr><td>Unroll/vectorization loop type</td><td>NA</td></tr>
             <tr><td>Unroll factor</td><td>NA</td></tr>
-            <tr><td>CQA cycles</td><td>9.00</td></tr>
-            <tr><td>CQA cycles if no scalar integer</td><td>8.00</td></tr>
-            <tr><td>CQA cycles if FP arith vectorized</td><td>8.00</td></tr>
-            <tr><td>CQA cycles if fully vectorized</td><td>2.00</td></tr>
-            <tr><td>Front-end cycles</td><td>8.17</td></tr>
-            <tr><td>P0 cycles</td><td>7.50</td></tr>
-            <tr><td>P1 cycles</td><td>7.50</td></tr>
-            <tr><td>P2 cycles</td><td>7.50</td></tr>
-            <tr><td>P3 cycles</td><td>7.50</td></tr>
-            <tr><td>P4 cycles</td><td>5.50</td></tr>
-            <tr><td>P5 cycles</td><td>5.17</td></tr>
-            <tr><td>P6 cycles</td><td>5.33</td></tr>
-            <tr><td>P7 cycles</td><td>0.50</td></tr>
-            <tr><td>P8 cycles</td><td>0.50</td></tr>
-            <tr><td>P9 cycles</td><td>8.00</td></tr>
-            <tr><td>P10 cycles</td><td>6.00</td></tr>
+            <tr><td>CQA cycles</td><td>24.00</td></tr>
+            <tr><td>CQA cycles if no scalar integer</td><td>24.00</td></tr>
+            <tr><td>CQA cycles if FP arith vectorized</td><td>24.00</td></tr>
+            <tr><td>CQA cycles if fully vectorized</td><td>24.00</td></tr>
+            <tr><td>Front-end cycles</td><td>1.67</td></tr>
+            <tr><td>P0 cycles</td><td>0.50</td></tr>
+            <tr><td>P1 cycles</td><td>0.50</td></tr>
+            <tr><td>P2 cycles</td><td>0.50</td></tr>
+            <tr><td>P3 cycles</td><td>0.50</td></tr>
+            <tr><td>P4 cycles</td><td>4.00</td></tr>
+            <tr><td>P5 cycles</td><td>4.00</td></tr>
+            <tr><td>P6 cycles</td><td>0.00</td></tr>
+            <tr><td>P7 cycles</td><td>0.00</td></tr>
+            <tr><td>P8 cycles</td><td>0.00</td></tr>
+            <tr><td>P9 cycles</td><td>4.00</td></tr>
+            <tr><td>P10 cycles</td><td>4.00</td></tr>
             <tr><td>DIV/SQRT cycles</td><td>0.00</td></tr>
-            <tr><td>Inter-iter dependencies cycles</td><td>NA</td></tr>
+            <tr><td>Inter-iter dependencies cycles</td><td style="background-color:var(--score_color_acceptable);">24</td></tr>
             <tr><td>FE+BE cycles (UFS)</td><td>NA</td></tr>
             <tr><td>Stall cycles (UFS)</td><td>NA</td></tr>
-            <tr><td>Nb insns</td><td>50.00</td></tr>
-            <tr><td>Nb uops</td><td>49.00</td></tr>
-            <tr><td>Nb loads</td><td>7.00</td></tr>
-            <tr><td>Nb stores</td><td>9.00</td></tr>
+            <tr><td>Nb insns</td><td>11.00</td></tr>
+            <tr><td>Nb uops</td><td>10.00</td></tr>
+            <tr><td>Nb loads</td><td>8.00</td></tr>
+            <tr><td>Nb stores</td><td>0.00</td></tr>
             <tr><td>Nb stack references</td><td style="background-color:var(--score_color_good);">0.00</td></tr>
-            <tr><td>FLOP/cycle</td><td>0.78</td></tr>
-            <tr><td>Nb FLOP add-sub</td><td>6.00</td></tr>
-            <tr><td>Nb FLOP mul</td><td>1.00</td></tr>
+            <tr><td>FLOP/cycle</td><td>1.33</td></tr>
+            <tr><td>Nb FLOP add-sub</td><td>32.00</td></tr>
+            <tr><td>Nb FLOP mul</td><td>0.00</td></tr>
             <tr><td>Nb FLOP fma</td><td>0.00</td></tr>
             <tr><td>Nb FLOP div</td><td>0.00</td></tr>
             <tr><td>Nb FLOP rcp</td><td>0.00</td></tr>
             <tr><td>Nb FLOP sqrt</td><td>0.00</td></tr>
             <tr><td>Nb FLOP rsqrt</td><td>0.00</td></tr>
-            <tr><td>Bytes/cycle</td><td>14.22</td></tr>
+            <tr><td>Bytes/cycle</td><td>10.67</td></tr>
             <tr><td>Bytes prefetched</td><td>0.00</td></tr>
-            <tr><td>Bytes loaded</td><td>56.00</td></tr>
-            <tr><td>Bytes stored</td><td>72.00</td></tr>
-            <tr><td>Stride 0</td><td>NA</td></tr>
-            <tr><td>Stride 1</td><td>NA</td></tr>
-            <tr><td>Stride n</td><td>NA</td></tr>
-            <tr><td>Stride unknown</td><td>NA</td></tr>
-            <tr><td>Stride indirect</td><td>NA</td></tr>
-            <tr><td>Vectorization ratio all</td><td style="background-color:var(--score_color_bad);">3.45</td></tr>
-            <tr><td>Vectorization ratio load</td><td style="background-color:var(--score_color_bad);">0.00</td></tr>
-            <tr><td>Vectorization ratio store</td><td style="background-color:var(--score_color_bad);">0.00</td></tr>
-            <tr><td>Vectorization ratio mul</td><td style="background-color:var(--score_color_bad);">0.00</td></tr>
-            <tr><td>Vectorization ratio add_sub</td><td style="background-color:var(--score_color_bad);">0.00</td></tr>
+            <tr><td>Bytes loaded</td><td>256.00</td></tr>
+            <tr><td>Bytes stored</td><td>0.00</td></tr>
+            <tr><td>Stride 0</td><td>0.00</td></tr>
+            <tr><td>Stride 1</td><td>0.00</td></tr>
+            <tr><td>Stride n</td><td>2.00</td></tr>
+            <tr><td>Stride unknown</td><td>0.00</td></tr>
+            <tr><td>Stride indirect</td><td>0.00</td></tr>
+            <tr><td>Vectorization ratio all</td><td style="background-color:var(--score_color_good);">100.00</td></tr>
+            <tr><td>Vectorization ratio load</td><td style="background-color:var(--score_color_good);">100.00</td></tr>
+            <tr><td>Vectorization ratio store</td><td>NA</td></tr>
+            <tr><td>Vectorization ratio mul</td><td>NA</td></tr>
+            <tr><td>Vectorization ratio add_sub</td><td style="background-color:var(--score_color_good);">100.00</td></tr>
             <tr><td>Vectorization ratio fma</td><td>NA</td></tr>
             <tr><td>Vectorization ratio div_sqrt</td><td>NA</td></tr>
-            <tr><td>Vectorization ratio other</td><td style="background-color:var(--score_color_bad);">10.00</td></tr>
-            <tr><td>Vector-efficiency ratio all</td><td>25.00</td></tr>
-            <tr><td>Vector-efficiency ratio load</td><td>25.00</td></tr>
-            <tr><td>Vector-efficiency ratio store</td><td>23.61</td></tr>
-            <tr><td>Vector-efficiency ratio mul</td><td>25.00</td></tr>
-            <tr><td>Vector-efficiency ratio add_sub</td><td>25.00</td></tr>
+            <tr><td>Vectorization ratio other</td><td>NA</td></tr>
+            <tr><td>Vector-efficiency ratio all</td><td style="background-color:var(--score_color_good);">100.00</td></tr>
+            <tr><td>Vector-efficiency ratio load</td><td style="background-color:var(--score_color_good);">100.00</td></tr>
+            <tr><td>Vector-efficiency ratio store</td><td>NA</td></tr>
+            <tr><td>Vector-efficiency ratio mul</td><td>NA</td></tr>
+            <tr><td>Vector-efficiency ratio add_sub</td><td style="background-color:var(--score_color_good);">100.00</td></tr>
             <tr><td>Vector-efficiency ratio fma</td><td>NA</td></tr>
             <tr><td>Vector-efficiency ratio div_sqrt</td><td>NA</td></tr>
-            <tr><td>Vector-efficiency ratio other</td><td>26.25</td></tr>
+            <tr><td>Vector-efficiency ratio other</td><td>NA</td></tr>
       </table>
     </div>
   </div>
@@ -1546,7 +1569,7 @@ function cqa_adv_onresize ()
 function cqa_adv_loadhelp (divId) {
   var e = document.getElementById (divId);
   if (e != null) {
-    e.setAttribute ("tooltip_id", "16");
+    e.setAttribute ("tooltip_id", "27");
   }
 }
   </script>
@@ -1556,10 +1579,10 @@ function cqa_adv_loadhelp (divId) {
     <table style="width:100%;text-align:center;">
       <tr>
         <td>
-          <button type="button" class="tooltip-maqao-button" title="" tooltip_id="17" onclick="set_previous_path ();">&#8592;</button>
+          <button type="button" class="tooltip-maqao-button" title="" tooltip_id="28" onclick="set_previous_path ();">&#8592;</button>
         </td>
-        <td style="border-bottom: 1px solid var(--fixed_box_borders);">Path <input id="path_selection_input" type="number" min="0" max="1" value="0" style="width:35px;"> / <span id="path_selection_input_max"></span><button type="button" class="tooltip-maqao-button" title="" tooltip_id="18" style="margin-left: 10px;" onclick="set_path_input ('path_selection_input')" >OK</button></td>
-        <td><button type="button" class="tooltip-maqao-button" title="" tooltip_id="19" onclick="set_next_path ();">&#8594;</button></td>
+        <td style="border-bottom: 1px solid var(--fixed_box_borders);">Path <input id="path_selection_input" type="number" min="0" max="1" value="0" style="width:35px;"> / <span id="path_selection_input_max"></span><button type="button" class="tooltip-maqao-button" title="" tooltip_id="29" style="margin-left: 10px;" onclick="set_path_input ('path_selection_input')" >OK</button></td>
+        <td><button type="button" class="tooltip-maqao-button" title="" tooltip_id="30" onclick="set_next_path ();">&#8594;</button></td>
       </tr>
     </table>
   </div>
@@ -1571,94 +1594,79 @@ function cqa_adv_loadhelp (divId) {
       <div style="padding-left:10px;margin-bottom: 10px;">
         <table>
           <tr><td class="_td_shift_20">Function</td><td><a href="../functions/measure_opti_parallel_5.html">kernel._omp_fn.0</a></td></tr>
-          <tr><td class="_td_shift_20">Source file and lines</td><td>driver_opti.c:20-24</td></tr>
+          <tr><td class="_td_shift_20">Source file and lines</td><td>driver_opti.c:22-23</td></tr>
         <tr><td class="_td_shift_20">Module</td><td>measure_opti_parallel</td></tr>
         </table>
-The loop is defined in /home/mac/rendu_AOC/rendu_TP1/driver_opti.c:20-24.<br /><br />Warnings:<br /><ul><li>Non-innermost loop: analyzing only self part (ignoring child loops).</li><li>Ignoring paths for analysis</li><li>Too many paths. Rerun with max-paths=15</li><li>RecMII not computed since number of paths is unknown or > max_paths</li><li>Streams not analyzed since number of paths is unknown or > max_paths</li></ul><br />Try to simplify control and/or increase the maximum number of paths per function/loop through the 'max-paths-nb' option.<br /><br />This loop has 15 execution paths.<br /><br />The presence of multiple execution paths is typically the main/first bottleneck.<br />Try to simplify control inside loop: ideally, try to remove all conditional expressions, for example by (if applicable):<br /><ul><li>hoisting them (moving them outside the loop)</li><li>turning them into conditional moves, MIN or MAX</li></ul><br /><br />Ex: if (x&lt;0) x=0 =&gt; x = (x&lt;0 ? 0 : x) (or MAX(0,x) after defining the corresponding macro)<br /><br />      </div><div class="_tab_box">
+The loop is defined in /home/mac/rendu_AOC/rendu_TP1/driver_opti.c:22-23.<br /><br />The related source loop is not unrolled or unrolled with no peel/tail loop.<br />      </div><div class="_tab_box">
   <div class="_tab_header">
     <ul>
-      <li class="_tab_header_li selected_tab" data-tab="tab2-1" onclick="change_tab (this, 'tab2-')">gain</li>
-      <li class="_tab_header_li " data-tab="tab2-2" onclick="change_tab (this, 'tab2-')">potential</li>
-      <li class="_tab_header_li " data-tab="tab2-3" onclick="change_tab (this, 'tab2-')">hint</li>
-      <li class="_tab_header_li " data-tab="tab2-4" onclick="change_tab (this, 'tab2-')">expert</li>
+      <li class="_tab_header_li selected_tab" data-tab="tab0-1" onclick="change_tab (this, 'tab0-')">gain</li>
+      <li class="_tab_header_li " data-tab="tab0-2" onclick="change_tab (this, 'tab0-')">potential</li>
+      <li class="_tab_header_li " data-tab="tab0-3" onclick="change_tab (this, 'tab0-')">hint</li>
+      <li class="_tab_header_li " data-tab="tab0-4" onclick="change_tab (this, 'tab0-')">expert</li>
     </ul>
   </div>
   <div class="_tab_content">
-  <div id="tab2-1">
-<div class="_fixed_box" ><h3 class="_header">Code clean check</h3>
-<div class="_content">Detected a slowdown caused by scalar integer instructions (typically used for address computation).
-By removing them, you can lower the cost of an iteration from 9.00 to 8.00 cycles (1.12x speedup).
-<div class="_fixed_box" style="overflow-x: auto;" ><h3 class="_header">Workaround</h3>
-<div class="_content"><ul><li>Try to reorganize arrays of structures to structures of arrays</li><li>Consider to permute loops (see vectorization gain report)</li></ul>
-</div></div></div></div><div class="_fixed_box" ><h3 class="_header">Vectorization</h3>
-<div class="_content">Your loop is probably not vectorized.
-Only 25% of vector register length is used (average across all SSE/AVX instructions).
-By vectorizing your loop, you can lower the cost of an iteration from 9.00 to 2.00 cycles (4.50x speedup).
-<div class="_fixed_box" style="overflow-x: auto;" ><h3 class="_header">Details</h3>
-<div class="_content">Store and arithmetical SSE/AVX instructions are used in scalar version (process only one data element in vector registers).
-Since your execution units are vector units, only a vectorized loop can use their full power.
+  <div id="tab0-1">
+<div class="_fixed_box" ><h3 class="_header">Vectorization</h3>
+<div class="_content">Your loop is fully vectorized, using full register length.
 
-</div></div><div class="_fixed_box" style="overflow-x: auto;" ><h3 class="_header">Workaround</h3>
-<div class="_content"><ul><li>Try another compiler or update/tune your current one</li><li>Remove inter-iterations dependences from your loop and make it unit-stride:
-<ul><li>If your arrays have 2 or more dimensions, check whether elements are accessed contiguously and, otherwise, try to permute loops accordingly:
-C storage order is row-major: for(i) for(j) a[j][i] = b[j][i]; (slow, non stride 1) =&gt; for(i) for(j) a[i][j] = b[i][j]; (fast, stride 1)<table  align="center"  class="imgtab" role="presentation"><tr><td><img src="../images/cqa/row_maj.svg"  width="500" /></td></tr>
-</table></li><li>If your loop streams arrays of structures (AoS), try to use structures of arrays instead (SoA):
-for(i) a[i].x = b[i].x; (slow, non stride 1) =&gt; for(i) a.x[i] = b.x[i]; (fast, stride 1)</li></ul></li></ul>
+<div class="_fixed_box" style="overflow-x: auto;" ><h3 class="_header">Details</h3>
+<div class="_content">All SSE/AVX instructions are used in vector version (process two or more data elements in vector registers).
+
 </div></div></div></div><div class="_fixed_box" ><h3 class="_header">Execution units bottlenecks</h3>
 <div class="_content">Found no such bottlenecks but see expert reports for more complex bottlenecks.
 </div></div></div>
-  <div id="tab2-2">
-<div class="_fixed_box" ><h3 class="_header">FMA</h3>
-<div class="_content">Presence of both ADD/SUB and MUL operations.
-<div class="_fixed_box" style="overflow-x: auto;" ><h3 class="_header">Workaround</h3>
-<div class="_content">Try to change order in which elements are evaluated (using parentheses) in arithmetic expressions containing both ADD/SUB and MUL operations to enable your compiler to generate FMA instructions wherever possible.
-For instance a + b*c is a valid FMA (MUL then ADD).
-However (a+b)* c cannot be translated into an FMA (ADD then MUL).
-</div></div></div></div></div>
-  <div id="tab2-3">
-<div class="_fixed_box" ><h3 class="_header">Type of elements and instruction set</h3>
-<div class="_content">7 SSE or AVX instructions are processing arithmetic or math operations on double precision FP elements in scalar mode (one at a time).
+  <div id="tab0-2">
+No data for this section</div>
+  <div id="tab0-3">
+<div class="_fixed_box" ><h3 class="_header">Slow data structures access</h3>
+<div class="_content">Detected data structures (typically arrays) that cannot be efficiently read/written
+<div class="_fixed_box" style="overflow-x: auto;" ><h3 class="_header">Details</h3>
+<div class="_content"><ul><li>Constant non-unit stride: 2 occurrence(s)</li></ul>Non-unit stride (uncontiguous) accesses are not efficiently using data caches
+
+</div></div><div class="_fixed_box" style="overflow-x: auto;" ><h3 class="_header">Workaround</h3>
+<div class="_content"><ul><li>Try to reorganize arrays of structures to structures of arrays</li><li>Consider to permute loops (see vectorization gain report)</li></ul>
+</div></div></div></div><div class="_fixed_box" ><h3 class="_header">Type of elements and instruction set</h3>
+<div class="_content">8 AVX instructions are processing arithmetic or math operations on double precision FP elements in vector mode (four at a time).
 
 </div></div><div class="_fixed_box" ><h3 class="_header">Matching between your loop (in the source code) and the binary loop</h3>
-<div class="_content">The binary loop is composed of 7 FP arithmetical operations:
-<ul><li>6: addition or subtraction</li><li>1: multiply</li></ul>The binary loop is loading 56 bytes (7 double precision FP elements).
-The binary loop is storing 72 bytes (9 double precision FP elements).
+<div class="_content">The binary loop is composed of 32 FP arithmetical operations:
+<ul><li>32: addition or subtraction</li></ul>The binary loop is loading 256 bytes (32 double precision FP elements).
 </div></div><div class="_fixed_box" ><h3 class="_header">Arithmetic intensity</h3>
-<div class="_content">Arithmetic intensity is 0.05 FP operations per loaded or stored byte.
-</div></div></div>
-  <div id="tab2-4">
+<div class="_content">Arithmetic intensity is 0.12 FP operations per loaded or stored byte.
+</div></div><div class="_fixed_box" ><h3 class="_header">Unroll opportunity</h3>
+<div class="_content">Loop is data access bound.
+<div class="_fixed_box" style="overflow-x: auto;" ><h3 class="_header">Workaround</h3>
+<div class="_content">Unroll your loop if trip count is significantly higher than target unroll factor and if some data references are common to consecutive iterations. This can be done manually. Or by recompiling with -funroll-loops and/or -floop-unroll-and-jam. Or with the unroll (resp. unroll_and_jam) directive on top of the inner (resp. surrounding) loop. You can enforce an unroll factor: #pragma GCC unroll N
+</div></div></div></div></div>
+  <div id="tab0-4">
 <div class="_fixed_box" ><h3 class="_header">General properties</h3>
-<div class="_content"><table><tr><td>nb instructions</td><td>50</td></tr><tr><td>nb uops</td><td>49</td></tr><tr><td>loop length</td><td>209</td></tr><tr><td>used x86 registers</td><td>7</td></tr><tr><td>used mmx registers</td><td>0</td></tr><tr><td>used xmm registers</td><td>3</td></tr><tr><td>used ymm registers</td><td>0</td></tr><tr><td>used zmm registers</td><td>0</td></tr><tr><td>nb stack references</td><td>0</td></tr><tr><td>ADD-SUB / MUL ratio</td><td>6.00</td></tr></table>
+<div class="_content"><table><tr><td>nb instructions</td><td>11</td></tr><tr><td>nb uops</td><td>10</td></tr><tr><td>loop length</td><td>59</td></tr><tr><td>used x86 registers</td><td>2</td></tr><tr><td>used mmx registers</td><td>0</td></tr><tr><td>used xmm registers</td><td>0</td></tr><tr><td>used ymm registers</td><td>8</td></tr><tr><td>used zmm registers</td><td>0</td></tr><tr><td>nb stack references</td><td>0</td></tr></table>
 </div></div><div class="_fixed_box" ><h3 class="_header">Front-end</h3>
 <div class="_content">ASSUMED MACRO FUSION
 FIT IN UOP CACHE
-<table><tr><td>micro-operation queue</td><td>8.17 cycles</td></tr><tr><td>front end</td><td>8.17 cycles</td></tr></table>
+<table><tr><td>micro-operation queue</td><td>1.67 cycles</td></tr><tr><td>front end</td><td>1.67 cycles</td></tr></table>
 </div></div><div class="_fixed_box" ><h3 class="_header">Back-end</h3>
-<div class="_content"><table><tr><th>      </th><th>ALU0/BRU0</th><th>ALU1</th><th>ALU2</th><th>ALU3/BRU1</th><th>AGU0</th><th>AGU1</th><th>AGU2</th><th>FP0</th><th>FP1</th><th>FP2</th><th>FP3</th></tr><tr><td>uops</td><td>7.50</td><td>7.50</td><td>7.50</td><td>7.50</td><td>5.50</td><td>5.17</td><td>5.33</td><td>0.50</td><td>0.50</td><td>8.00</td><td>6.00</td></tr><tr><td>cycles</td><td>7.50</td><td>7.50</td><td>7.50</td><td>7.50</td><td>5.50</td><td>5.17</td><td>5.33</td><td>0.50</td><td>0.50</td><td>8.00</td><td>6.00</td></tr></table>
+<div class="_content"><table><tr><th>      </th><th>ALU0/BRU0</th><th>ALU1</th><th>ALU2</th><th>ALU3/BRU1</th><th>AGU0</th><th>AGU1</th><th>AGU2</th><th>FP0</th><th>FP1</th><th>FP2</th><th>FP3</th></tr><tr><td>uops</td><td>0.50</td><td>0.50</td><td>0.50</td><td>0.50</td><td>4.00</td><td>4.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>4.00</td><td>4.00</td></tr><tr><td>cycles</td><td>0.50</td><td>0.50</td><td>0.50</td><td>0.50</td><td>4.00</td><td>4.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>4.00</td><td>4.00</td></tr></table>
 Execution ports to units layout:
 <ul><li>ALU0/BRU0: ALU, BRU</li><li>ALU1: ALU</li><li>ALU2: ALU</li><li>ALU3/BRU1: ALU, BRU</li><li>AGU0 (256 bits): store address, load</li><li>AGU1 (256 bits): store address, load</li><li>AGU2: store address</li><li>FP0 (256 bits): VPU</li><li>FP1 (256 bits): VPU</li><li>FP2 (256 bits): VPU, FP store data</li><li>FP3 (256 bits): VPU, DIV/SQRT</li></ul>
-<table><tr><td>Cycles executing div or sqrt instructions</td><td>NA</td></tr><tr><td>Cycles loading/storing data</td><td>9.00</td></tr></table>
+<table><tr><td>Cycles executing div or sqrt instructions</td><td>NA</td></tr><tr><td>Cycles loading/storing data</td><td>4.00</td></tr><tr><td>Longest recurrence chain latency (RecMII)</td><td>24.00</td></tr></table>
 </div></div><div class="_fixed_box" ><h3 class="_header">Cycles summary</h3>
-<div class="_content"><table><tr><td>Front-end</td><td>8.17</td></tr><tr><td>Dispatch</td><td>8.00</td></tr><tr><td>Overall L1</td><td>9.00</td></tr></table>
+<div class="_content"><table><tr><td>Front-end</td><td>1.67</td></tr><tr><td>Dispatch</td><td>4.00</td></tr><tr><td>Data deps.</td><td>24.00</td></tr><tr><td>Overall L1</td><td>24.00</td></tr></table>
 </div></div><div class="_fixed_box" ><h3 class="_header">Vectorization ratios</h3>
-<div class="_content">INT
-<table><tr><td>all</td><td>0%</td></tr><tr><td>load</td><td>NA (no load vectorizable/vectorized instructions)</td></tr><tr><td>store</td><td>0%</td></tr><tr><td>mul</td><td>NA (no mul vectorizable/vectorized instructions)</td></tr><tr><td>add-sub</td><td>0%</td></tr><tr><td>fma</td><td>NA (no fma vectorizable/vectorized instructions)</td></tr><tr><td>other</td><td>0%</td></tr></table>FP
-<table><tr><td>all</td><td>5%</td></tr><tr><td>load</td><td>0%</td></tr><tr><td>store</td><td>0%</td></tr><tr><td>mul</td><td>0%</td></tr><tr><td>add-sub</td><td>0%</td></tr><tr><td>fma</td><td>NA (no fma vectorizable/vectorized instructions)</td></tr><tr><td>div/sqrt</td><td>NA (no div/sqrt vectorizable/vectorized instructions)</td></tr><tr><td>other</td><td>100%</td></tr></table>INT+FP
-<table><tr><td>all</td><td>3%</td></tr><tr><td>load</td><td>0%</td></tr><tr><td>store</td><td>0%</td></tr><tr><td>mul</td><td>0%</td></tr><tr><td>add-sub</td><td>0%</td></tr><tr><td>fma</td><td>NA (no fma vectorizable/vectorized instructions)</td></tr><tr><td>div/sqrt</td><td>NA (no div/sqrt vectorizable/vectorized instructions)</td></tr><tr><td>other</td><td>10%</td></tr></table>
+<div class="_content"><table><tr><td>all</td><td>100%</td></tr><tr><td>load</td><td>100%</td></tr><tr><td>store</td><td>NA (no store vectorizable/vectorized instructions)</td></tr><tr><td>mul</td><td>NA (no mul vectorizable/vectorized instructions)</td></tr><tr><td>add-sub</td><td>100%</td></tr><tr><td>fma</td><td>NA (no fma vectorizable/vectorized instructions)</td></tr><tr><td>div/sqrt</td><td>NA (no div/sqrt vectorizable/vectorized instructions)</td></tr><tr><td>other</td><td>NA (no other vectorizable/vectorized instructions)</td></tr></table>
 </div></div><div class="_fixed_box" ><h3 class="_header">Vector efficiency ratios</h3>
-<div class="_content">INT
-<table><tr><td>all</td><td>22%</td></tr><tr><td>load</td><td>NA (no load vectorizable/vectorized instructions)</td></tr><tr><td>store</td><td>12%</td></tr><tr><td>mul</td><td>NA (no mul vectorizable/vectorized instructions)</td></tr><tr><td>add-sub</td><td>25%</td></tr><tr><td>fma</td><td>NA (no fma vectorizable/vectorized instructions)</td></tr><tr><td>other</td><td>23%</td></tr></table>FP
-<table><tr><td>all</td><td>26%</td></tr><tr><td>load</td><td>25%</td></tr><tr><td>store</td><td>25%</td></tr><tr><td>mul</td><td>25%</td></tr><tr><td>add-sub</td><td>25%</td></tr><tr><td>fma</td><td>NA (no fma vectorizable/vectorized instructions)</td></tr><tr><td>div/sqrt</td><td>NA (no div/sqrt vectorizable/vectorized instructions)</td></tr><tr><td>other</td><td>50%</td></tr></table>INT+FP
-<table><tr><td>all</td><td>25%</td></tr><tr><td>load</td><td>25%</td></tr><tr><td>store</td><td>23%</td></tr><tr><td>mul</td><td>25%</td></tr><tr><td>add-sub</td><td>25%</td></tr><tr><td>fma</td><td>NA (no fma vectorizable/vectorized instructions)</td></tr><tr><td>div/sqrt</td><td>NA (no div/sqrt vectorizable/vectorized instructions)</td></tr><tr><td>other</td><td>26%</td></tr></table>
+<div class="_content"><table><tr><td>all</td><td>100%</td></tr><tr><td>load</td><td>100%</td></tr><tr><td>store</td><td>NA (no store vectorizable/vectorized instructions)</td></tr><tr><td>mul</td><td>NA (no mul vectorizable/vectorized instructions)</td></tr><tr><td>add-sub</td><td>100%</td></tr><tr><td>fma</td><td>NA (no fma vectorizable/vectorized instructions)</td></tr><tr><td>div/sqrt</td><td>NA (no div/sqrt vectorizable/vectorized instructions)</td></tr><tr><td>other</td><td>NA (no other vectorizable/vectorized instructions)</td></tr></table>
 </div></div><div class="_fixed_box" ><h3 class="_header">Cycles and memory resources usage</h3>
-<div class="_content">Assuming all data fit into the L1 cache, each iteration of the binary loop takes 9.00 cycles. At this rate:
-<ul><li>9% of peak load performance is reached (6.22 out of 64.00 bytes loaded per cycle (GB/s @ 1GHz))</li><li>25% of peak store performance is reached (8.00 out of 32.00 bytes stored per cycle (GB/s @ 1GHz))</li></ul>
+<div class="_content">Assuming all data fit into the L1 cache, each iteration of the binary loop takes 24.00 cycles. At this rate:
+<ul><li>16% of peak load performance is reached (10.67 out of 64.00 bytes loaded per cycle (GB/s @ 1GHz))</li></ul>
 </div></div><div class="_fixed_box" ><h3 class="_header">Front-end bottlenecks</h3>
 <div class="_content">Found no such bottlenecks.
 </div></div><div class="_fixed_box" ><h3 class="_header">ASM code</h3>
-<div class="_content">In the binary file, the address of the loop is: 1e40
+<div class="_content">In the binary file, the address of the loop is: 1ee7
 
-<table><tr><th>Instruction</th><th>Nb FU</th><th>ALU0/BRU0</th><th>ALU1</th><th>ALU2</th><th>ALU3/BRU1</th><th>AGU0</th><th>AGU1</th><th>AGU2</th><th>FP0</th><th>FP1</th><th>FP2</th><th>FP3</th><th>Latency</th><th>Recip. throughput</th><th>Vectorization</th></tr><tr><td style='word-break:break-all;'>LEA -0x8(%R11),%RCX</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>MOV %RBP,%R12</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>MOVQ $0,(%R10)</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.33</td><td>0.33</td><td>0.33</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4</td><td>1</td><td>scal (12.5%)</td></tr><tr><td style='word-break:break-all;'>VXORPD %XMM0,%XMM0,%XMM0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.25</td><td>vect (50.0%)</td></tr><tr><td style='word-break:break-all;'>SHR $0x3,%RCX</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>SUB %R11,%R12</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>INC %RCX</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>AND $0x7,%ECX</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>scal (12.5%)</td></tr><tr><td style='word-break:break-all;'>JE 1ef7 &lt;kernel._omp_fn.0+0x137&gt;</td><td>1</td><td>0.50</td><td>0</td><td>0</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.50</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>CMP $0x1,%RCX</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>JE 1ee3 &lt;kernel._omp_fn.0+0x123&gt;</td><td>1</td><td>0.50</td><td>0</td><td>0</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.50</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>CMP $0x2,%RCX</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>JE 1ed4 &lt;kernel._omp_fn.0+0x114&gt;</td><td>1</td><td>0.50</td><td>0</td><td>0</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.50</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>CMP $0x3,%RCX</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>JE 1ec5 &lt;kernel._omp_fn.0+0x105&gt;</td><td>1</td><td>0.50</td><td>0</td><td>0</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.50</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>CMP $0x4,%RCX</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>JE 1eb6 &lt;kernel._omp_fn.0+0xf6&gt;</td><td>1</td><td>0.50</td><td>0</td><td>0</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.50</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>CMP $0x5,%RCX</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>JE 1ea7 &lt;kernel._omp_fn.0+0xe7&gt;</td><td>1</td><td>0.50</td><td>0</td><td>0</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.50</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>CMP $0x6,%RCX</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>JE 1e98 &lt;kernel._omp_fn.0+0xd8&gt;</td><td>1</td><td>0.50</td><td>0</td><td>0</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.50</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>VMOVSD (%R12),%XMM0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.50</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>ADD $0x8,%R12</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>VMOVSD %XMM0,(%R10)</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.33</td><td>0.33</td><td>0.33</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>VADDSD (%R12),%XMM0,%XMM0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>ADD $0x8,%R12</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>VMOVSD %XMM0,(%R10)</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.33</td><td>0.33</td><td>0.33</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>VADDSD (%R12),%XMM0,%XMM0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>ADD $0x8,%R12</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>VMOVSD %XMM0,(%R10)</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.33</td><td>0.33</td><td>0.33</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>VADDSD (%R12),%XMM0,%XMM0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>ADD $0x8,%R12</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>VMOVSD %XMM0,(%R10)</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.33</td><td>0.33</td><td>0.33</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>VADDSD (%R12),%XMM0,%XMM0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>ADD $0x8,%R12</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>VMOVSD %XMM0,(%R10)</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.33</td><td>0.33</td><td>0.33</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>VADDSD (%R12),%XMM0,%XMM0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>ADD $0x8,%R12</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>VMOVSD %XMM0,(%R10)</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.33</td><td>0.33</td><td>0.33</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>VADDSD (%R12),%XMM0,%XMM0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>ADD $0x8,%R12</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>VMOVSD %XMM0,(%R10)</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.33</td><td>0.33</td><td>0.33</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>CMP %R12,%RBP</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>JE 1f5f &lt;kernel._omp_fn.0+0x19f&gt;</td><td>1</td><td>0.50</td><td>0</td><td>0</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.50</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>VMULSD %XMM0,%XMM1,%XMM9</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>3</td><td>0.50</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>ADD $0x8,%R10</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>ADD %RDI,%RBP</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>VMOVSD %XMM9,-0x8(%R10)</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.33</td><td>0.33</td><td>0.33</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>CMP %RBX,%R10</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>JNE 1e40 &lt;kernel._omp_fn.0+0x80&gt;</td><td>1</td><td>0.50</td><td>0</td><td>0</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.50</td><td>N/A</td></tr></table>
+<table><tr><th>Instruction</th><th>Nb FU</th><th>ALU0/BRU0</th><th>ALU1</th><th>ALU2</th><th>ALU3/BRU1</th><th>AGU0</th><th>AGU1</th><th>AGU2</th><th>FP0</th><th>FP1</th><th>FP2</th><th>FP3</th><th>Latency</th><th>Recip. throughput</th><th>Vectorization</th></tr><tr><td style='word-break:break-all;'>VADDPD (%RAX),%YMM0,%YMM2</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>vect (100.0%)</td></tr><tr><td style='word-break:break-all;'>ADD $0x100,%RAX</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>VADDPD -0xe0(%RAX),%YMM2,%YMM3</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>vect (100.0%)</td></tr><tr><td style='word-break:break-all;'>VADDPD -0xc0(%RAX),%YMM3,%YMM4</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>vect (100.0%)</td></tr><tr><td style='word-break:break-all;'>VADDPD -0xa0(%RAX),%YMM4,%YMM5</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>vect (100.0%)</td></tr><tr><td style='word-break:break-all;'>VADDPD -0x80(%RAX),%YMM5,%YMM6</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>vect (100.0%)</td></tr><tr><td style='word-break:break-all;'>VADDPD -0x60(%RAX),%YMM6,%YMM7</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>vect (100.0%)</td></tr><tr><td style='word-break:break-all;'>VADDPD -0x40(%RAX),%YMM7,%YMM8</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>vect (100.0%)</td></tr><tr><td style='word-break:break-all;'>VADDPD -0x20(%RAX),%YMM8,%YMM0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>vect (100.0%)</td></tr><tr><td style='word-break:break-all;'>CMP %RAX,%R13</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>JNE 1ee7 &lt;kernel._omp_fn.0+0x127&gt;</td><td>1</td><td>0.50</td><td>0</td><td>0</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.50</td><td>N/A</td></tr></table>
 </div></div></div>
 </div></div>
     </div>
@@ -1666,100 +1674,85 @@ Execution ports to units layout:
       <div style="padding-left:10px;margin-bottom: 10px;">
         <table>
           <tr><td class="_td_shift_20">Function</td><td><a href="../functions/measure_opti_parallel_5.html">kernel._omp_fn.0</a></td></tr>
-          <tr><td class="_td_shift_20">Source file and lines</td><td>driver_opti.c:20-24</td></tr>
+          <tr><td class="_td_shift_20">Source file and lines</td><td>driver_opti.c:22-23</td></tr>
         <tr><td class="_td_shift_20">Module</td><td>measure_opti_parallel</td></tr>
         </table>
-The loop is defined in /home/mac/rendu_AOC/rendu_TP1/driver_opti.c:20-24.<br /><br />Warnings:<br /><ul><li>Non-innermost loop: analyzing only self part (ignoring child loops).</li><li>Ignoring paths for analysis</li><li>Too many paths. Rerun with max-paths=15</li><li>RecMII not computed since number of paths is unknown or > max_paths</li><li>Streams not analyzed since number of paths is unknown or > max_paths</li></ul><br />Try to simplify control and/or increase the maximum number of paths per function/loop through the 'max-paths-nb' option.<br /><br />This loop has 15 execution paths.<br /><br />The presence of multiple execution paths is typically the main/first bottleneck.<br />Try to simplify control inside loop: ideally, try to remove all conditional expressions, for example by (if applicable):<br /><ul><li>hoisting them (moving them outside the loop)</li><li>turning them into conditional moves, MIN or MAX</li></ul><br /><br />Ex: if (x&lt;0) x=0 =&gt; x = (x&lt;0 ? 0 : x) (or MAX(0,x) after defining the corresponding macro)<br /><br />      </div><div class="_tab_box">
+The loop is defined in /home/mac/rendu_AOC/rendu_TP1/driver_opti.c:22-23.<br /><br />The related source loop is not unrolled or unrolled with no peel/tail loop.<br />      </div><div class="_tab_box">
   <div class="_tab_header">
     <ul>
-      <li class="_tab_header_li selected_tab" data-tab="tab3-1" onclick="change_tab (this, 'tab3-')">gain</li>
-      <li class="_tab_header_li " data-tab="tab3-2" onclick="change_tab (this, 'tab3-')">potential</li>
-      <li class="_tab_header_li " data-tab="tab3-3" onclick="change_tab (this, 'tab3-')">hint</li>
-      <li class="_tab_header_li " data-tab="tab3-4" onclick="change_tab (this, 'tab3-')">expert</li>
+      <li class="_tab_header_li selected_tab" data-tab="tab1-1" onclick="change_tab (this, 'tab1-')">gain</li>
+      <li class="_tab_header_li " data-tab="tab1-2" onclick="change_tab (this, 'tab1-')">potential</li>
+      <li class="_tab_header_li " data-tab="tab1-3" onclick="change_tab (this, 'tab1-')">hint</li>
+      <li class="_tab_header_li " data-tab="tab1-4" onclick="change_tab (this, 'tab1-')">expert</li>
     </ul>
   </div>
   <div class="_tab_content">
-  <div id="tab3-1">
-<div class="_fixed_box" ><h3 class="_header">Code clean check</h3>
-<div class="_content">Detected a slowdown caused by scalar integer instructions (typically used for address computation).
-By removing them, you can lower the cost of an iteration from 9.00 to 8.00 cycles (1.12x speedup).
-<div class="_fixed_box" style="overflow-x: auto;" ><h3 class="_header">Workaround</h3>
-<div class="_content"><ul><li>Try to reorganize arrays of structures to structures of arrays</li><li>Consider to permute loops (see vectorization gain report)</li></ul>
-</div></div></div></div><div class="_fixed_box" ><h3 class="_header">Vectorization</h3>
-<div class="_content">Your loop is probably not vectorized.
-Only 25% of vector register length is used (average across all SSE/AVX instructions).
-By vectorizing your loop, you can lower the cost of an iteration from 9.00 to 2.00 cycles (4.50x speedup).
-<div class="_fixed_box" style="overflow-x: auto;" ><h3 class="_header">Details</h3>
-<div class="_content">Store and arithmetical SSE/AVX instructions are used in scalar version (process only one data element in vector registers).
-Since your execution units are vector units, only a vectorized loop can use their full power.
+  <div id="tab1-1">
+<div class="_fixed_box" ><h3 class="_header">Vectorization</h3>
+<div class="_content">Your loop is fully vectorized, using full register length.
 
-</div></div><div class="_fixed_box" style="overflow-x: auto;" ><h3 class="_header">Workaround</h3>
-<div class="_content"><ul><li>Try another compiler or update/tune your current one</li><li>Remove inter-iterations dependences from your loop and make it unit-stride:
-<ul><li>If your arrays have 2 or more dimensions, check whether elements are accessed contiguously and, otherwise, try to permute loops accordingly:
-C storage order is row-major: for(i) for(j) a[j][i] = b[j][i]; (slow, non stride 1) =&gt; for(i) for(j) a[i][j] = b[i][j]; (fast, stride 1)<table  align="center"  class="imgtab" role="presentation"><tr><td><img src="../images/cqa/row_maj.svg"  width="500" /></td></tr>
-</table></li><li>If your loop streams arrays of structures (AoS), try to use structures of arrays instead (SoA):
-for(i) a[i].x = b[i].x; (slow, non stride 1) =&gt; for(i) a.x[i] = b.x[i]; (fast, stride 1)</li></ul></li></ul>
+<div class="_fixed_box" style="overflow-x: auto;" ><h3 class="_header">Details</h3>
+<div class="_content">All SSE/AVX instructions are used in vector version (process two or more data elements in vector registers).
+
 </div></div></div></div><div class="_fixed_box" ><h3 class="_header">Execution units bottlenecks</h3>
 <div class="_content">Found no such bottlenecks but see expert reports for more complex bottlenecks.
 </div></div></div>
-  <div id="tab3-2">
-<div class="_fixed_box" ><h3 class="_header">FMA</h3>
-<div class="_content">Presence of both ADD/SUB and MUL operations.
-<div class="_fixed_box" style="overflow-x: auto;" ><h3 class="_header">Workaround</h3>
-<div class="_content">Try to change order in which elements are evaluated (using parentheses) in arithmetic expressions containing both ADD/SUB and MUL operations to enable your compiler to generate FMA instructions wherever possible.
-For instance a + b*c is a valid FMA (MUL then ADD).
-However (a+b)* c cannot be translated into an FMA (ADD then MUL).
-</div></div></div></div></div>
-  <div id="tab3-3">
-<div class="_fixed_box" ><h3 class="_header">Type of elements and instruction set</h3>
-<div class="_content">7 SSE or AVX instructions are processing arithmetic or math operations on double precision FP elements in scalar mode (one at a time).
+  <div id="tab1-2">
+No data for this section</div>
+  <div id="tab1-3">
+<div class="_fixed_box" ><h3 class="_header">Slow data structures access</h3>
+<div class="_content">Detected data structures (typically arrays) that cannot be efficiently read/written
+<div class="_fixed_box" style="overflow-x: auto;" ><h3 class="_header">Details</h3>
+<div class="_content"><ul><li>Constant non-unit stride: 2 occurrence(s)</li></ul>Non-unit stride (uncontiguous) accesses are not efficiently using data caches
+
+</div></div><div class="_fixed_box" style="overflow-x: auto;" ><h3 class="_header">Workaround</h3>
+<div class="_content"><ul><li>Try to reorganize arrays of structures to structures of arrays</li><li>Consider to permute loops (see vectorization gain report)</li></ul>
+</div></div></div></div><div class="_fixed_box" ><h3 class="_header">Type of elements and instruction set</h3>
+<div class="_content">8 AVX instructions are processing arithmetic or math operations on double precision FP elements in vector mode (four at a time).
 
 </div></div><div class="_fixed_box" ><h3 class="_header">Matching between your loop (in the source code) and the binary loop</h3>
-<div class="_content">The binary loop is composed of 7 FP arithmetical operations:
-<ul><li>6: addition or subtraction</li><li>1: multiply</li></ul>The binary loop is loading 56 bytes (7 double precision FP elements).
-The binary loop is storing 72 bytes (9 double precision FP elements).
+<div class="_content">The binary loop is composed of 32 FP arithmetical operations:
+<ul><li>32: addition or subtraction</li></ul>The binary loop is loading 256 bytes (32 double precision FP elements).
 </div></div><div class="_fixed_box" ><h3 class="_header">Arithmetic intensity</h3>
-<div class="_content">Arithmetic intensity is 0.05 FP operations per loaded or stored byte.
-</div></div></div>
-  <div id="tab3-4">
+<div class="_content">Arithmetic intensity is 0.12 FP operations per loaded or stored byte.
+</div></div><div class="_fixed_box" ><h3 class="_header">Unroll opportunity</h3>
+<div class="_content">Loop is data access bound.
+<div class="_fixed_box" style="overflow-x: auto;" ><h3 class="_header">Workaround</h3>
+<div class="_content">Unroll your loop if trip count is significantly higher than target unroll factor and if some data references are common to consecutive iterations. This can be done manually. Or by recompiling with -funroll-loops and/or -floop-unroll-and-jam. Or with the unroll (resp. unroll_and_jam) directive on top of the inner (resp. surrounding) loop. You can enforce an unroll factor: #pragma GCC unroll N
+</div></div></div></div></div>
+  <div id="tab1-4">
 <div class="_fixed_box" ><h3 class="_header">General properties</h3>
-<div class="_content"><table><tr><td>nb instructions</td><td>50</td></tr><tr><td>nb uops</td><td>49</td></tr><tr><td>loop length</td><td>209</td></tr><tr><td>used x86 registers</td><td>7</td></tr><tr><td>used mmx registers</td><td>0</td></tr><tr><td>used xmm registers</td><td>3</td></tr><tr><td>used ymm registers</td><td>0</td></tr><tr><td>used zmm registers</td><td>0</td></tr><tr><td>nb stack references</td><td>0</td></tr><tr><td>ADD-SUB / MUL ratio</td><td>6.00</td></tr></table>
+<div class="_content"><table><tr><td>nb instructions</td><td>11</td></tr><tr><td>nb uops</td><td>10</td></tr><tr><td>loop length</td><td>59</td></tr><tr><td>used x86 registers</td><td>2</td></tr><tr><td>used mmx registers</td><td>0</td></tr><tr><td>used xmm registers</td><td>0</td></tr><tr><td>used ymm registers</td><td>8</td></tr><tr><td>used zmm registers</td><td>0</td></tr><tr><td>nb stack references</td><td>0</td></tr></table>
 </div></div><div class="_fixed_box" ><h3 class="_header">Front-end</h3>
 <div class="_content">ASSUMED MACRO FUSION
 FIT IN UOP CACHE
-<table><tr><td>micro-operation queue</td><td>8.17 cycles</td></tr><tr><td>front end</td><td>8.17 cycles</td></tr></table>
+<table><tr><td>micro-operation queue</td><td>1.67 cycles</td></tr><tr><td>front end</td><td>1.67 cycles</td></tr></table>
 </div></div><div class="_fixed_box" ><h3 class="_header">Back-end</h3>
-<div class="_content"><table><tr><th>      </th><th>ALU0/BRU0</th><th>ALU1</th><th>ALU2</th><th>ALU3/BRU1</th><th>AGU0</th><th>AGU1</th><th>AGU2</th><th>FP0</th><th>FP1</th><th>FP2</th><th>FP3</th></tr><tr><td>uops</td><td>7.50</td><td>7.50</td><td>7.50</td><td>7.50</td><td>5.50</td><td>5.17</td><td>5.33</td><td>0.50</td><td>0.50</td><td>8.00</td><td>6.00</td></tr><tr><td>cycles</td><td>7.50</td><td>7.50</td><td>7.50</td><td>7.50</td><td>5.50</td><td>5.17</td><td>5.33</td><td>0.50</td><td>0.50</td><td>8.00</td><td>6.00</td></tr></table>
+<div class="_content"><table><tr><th>      </th><th>ALU0/BRU0</th><th>ALU1</th><th>ALU2</th><th>ALU3/BRU1</th><th>AGU0</th><th>AGU1</th><th>AGU2</th><th>FP0</th><th>FP1</th><th>FP2</th><th>FP3</th></tr><tr><td>uops</td><td>0.50</td><td>0.50</td><td>0.50</td><td>0.50</td><td>4.00</td><td>4.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>4.00</td><td>4.00</td></tr><tr><td>cycles</td><td>0.50</td><td>0.50</td><td>0.50</td><td>0.50</td><td>4.00</td><td>4.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>4.00</td><td>4.00</td></tr></table>
 Execution ports to units layout:
 <ul><li>ALU0/BRU0: ALU, BRU</li><li>ALU1: ALU</li><li>ALU2: ALU</li><li>ALU3/BRU1: ALU, BRU</li><li>AGU0 (256 bits): store address, load</li><li>AGU1 (256 bits): store address, load</li><li>AGU2: store address</li><li>FP0 (256 bits): VPU</li><li>FP1 (256 bits): VPU</li><li>FP2 (256 bits): VPU, FP store data</li><li>FP3 (256 bits): VPU, DIV/SQRT</li></ul>
-<table><tr><td>Cycles executing div or sqrt instructions</td><td>NA</td></tr><tr><td>Cycles loading/storing data</td><td>9.00</td></tr></table>
+<table><tr><td>Cycles executing div or sqrt instructions</td><td>NA</td></tr><tr><td>Cycles loading/storing data</td><td>4.00</td></tr><tr><td>Longest recurrence chain latency (RecMII)</td><td>24.00</td></tr></table>
 </div></div><div class="_fixed_box" ><h3 class="_header">Cycles summary</h3>
-<div class="_content"><table><tr><td>Front-end</td><td>8.17</td></tr><tr><td>Dispatch</td><td>8.00</td></tr><tr><td>Overall L1</td><td>9.00</td></tr></table>
+<div class="_content"><table><tr><td>Front-end</td><td>1.67</td></tr><tr><td>Dispatch</td><td>4.00</td></tr><tr><td>Data deps.</td><td>24.00</td></tr><tr><td>Overall L1</td><td>24.00</td></tr></table>
 </div></div><div class="_fixed_box" ><h3 class="_header">Vectorization ratios</h3>
-<div class="_content">INT
-<table><tr><td>all</td><td>0%</td></tr><tr><td>load</td><td>NA (no load vectorizable/vectorized instructions)</td></tr><tr><td>store</td><td>0%</td></tr><tr><td>mul</td><td>NA (no mul vectorizable/vectorized instructions)</td></tr><tr><td>add-sub</td><td>0%</td></tr><tr><td>fma</td><td>NA (no fma vectorizable/vectorized instructions)</td></tr><tr><td>other</td><td>0%</td></tr></table>FP
-<table><tr><td>all</td><td>5%</td></tr><tr><td>load</td><td>0%</td></tr><tr><td>store</td><td>0%</td></tr><tr><td>mul</td><td>0%</td></tr><tr><td>add-sub</td><td>0%</td></tr><tr><td>fma</td><td>NA (no fma vectorizable/vectorized instructions)</td></tr><tr><td>div/sqrt</td><td>NA (no div/sqrt vectorizable/vectorized instructions)</td></tr><tr><td>other</td><td>100%</td></tr></table>INT+FP
-<table><tr><td>all</td><td>3%</td></tr><tr><td>load</td><td>0%</td></tr><tr><td>store</td><td>0%</td></tr><tr><td>mul</td><td>0%</td></tr><tr><td>add-sub</td><td>0%</td></tr><tr><td>fma</td><td>NA (no fma vectorizable/vectorized instructions)</td></tr><tr><td>div/sqrt</td><td>NA (no div/sqrt vectorizable/vectorized instructions)</td></tr><tr><td>other</td><td>10%</td></tr></table>
+<div class="_content"><table><tr><td>all</td><td>100%</td></tr><tr><td>load</td><td>100%</td></tr><tr><td>store</td><td>NA (no store vectorizable/vectorized instructions)</td></tr><tr><td>mul</td><td>NA (no mul vectorizable/vectorized instructions)</td></tr><tr><td>add-sub</td><td>100%</td></tr><tr><td>fma</td><td>NA (no fma vectorizable/vectorized instructions)</td></tr><tr><td>div/sqrt</td><td>NA (no div/sqrt vectorizable/vectorized instructions)</td></tr><tr><td>other</td><td>NA (no other vectorizable/vectorized instructions)</td></tr></table>
 </div></div><div class="_fixed_box" ><h3 class="_header">Vector efficiency ratios</h3>
-<div class="_content">INT
-<table><tr><td>all</td><td>22%</td></tr><tr><td>load</td><td>NA (no load vectorizable/vectorized instructions)</td></tr><tr><td>store</td><td>12%</td></tr><tr><td>mul</td><td>NA (no mul vectorizable/vectorized instructions)</td></tr><tr><td>add-sub</td><td>25%</td></tr><tr><td>fma</td><td>NA (no fma vectorizable/vectorized instructions)</td></tr><tr><td>other</td><td>23%</td></tr></table>FP
-<table><tr><td>all</td><td>26%</td></tr><tr><td>load</td><td>25%</td></tr><tr><td>store</td><td>25%</td></tr><tr><td>mul</td><td>25%</td></tr><tr><td>add-sub</td><td>25%</td></tr><tr><td>fma</td><td>NA (no fma vectorizable/vectorized instructions)</td></tr><tr><td>div/sqrt</td><td>NA (no div/sqrt vectorizable/vectorized instructions)</td></tr><tr><td>other</td><td>50%</td></tr></table>INT+FP
-<table><tr><td>all</td><td>25%</td></tr><tr><td>load</td><td>25%</td></tr><tr><td>store</td><td>23%</td></tr><tr><td>mul</td><td>25%</td></tr><tr><td>add-sub</td><td>25%</td></tr><tr><td>fma</td><td>NA (no fma vectorizable/vectorized instructions)</td></tr><tr><td>div/sqrt</td><td>NA (no div/sqrt vectorizable/vectorized instructions)</td></tr><tr><td>other</td><td>26%</td></tr></table>
+<div class="_content"><table><tr><td>all</td><td>100%</td></tr><tr><td>load</td><td>100%</td></tr><tr><td>store</td><td>NA (no store vectorizable/vectorized instructions)</td></tr><tr><td>mul</td><td>NA (no mul vectorizable/vectorized instructions)</td></tr><tr><td>add-sub</td><td>100%</td></tr><tr><td>fma</td><td>NA (no fma vectorizable/vectorized instructions)</td></tr><tr><td>div/sqrt</td><td>NA (no div/sqrt vectorizable/vectorized instructions)</td></tr><tr><td>other</td><td>NA (no other vectorizable/vectorized instructions)</td></tr></table>
 </div></div><div class="_fixed_box" ><h3 class="_header">Cycles and memory resources usage</h3>
-<div class="_content">Assuming all data fit into the L1 cache, each iteration of the binary loop takes 9.00 cycles. At this rate:
-<ul><li>9% of peak load performance is reached (6.22 out of 64.00 bytes loaded per cycle (GB/s @ 1GHz))</li><li>25% of peak store performance is reached (8.00 out of 32.00 bytes stored per cycle (GB/s @ 1GHz))</li></ul>
+<div class="_content">Assuming all data fit into the L1 cache, each iteration of the binary loop takes 24.00 cycles. At this rate:
+<ul><li>16% of peak load performance is reached (10.67 out of 64.00 bytes loaded per cycle (GB/s @ 1GHz))</li></ul>
 </div></div><div class="_fixed_box" ><h3 class="_header">Front-end bottlenecks</h3>
 <div class="_content">Found no such bottlenecks.
 </div></div><div class="_fixed_box" ><h3 class="_header">ASM code</h3>
-<div class="_content">In the binary file, the address of the loop is: 1e40
+<div class="_content">In the binary file, the address of the loop is: 1ee7
 
-<table><tr><th>Instruction</th><th>Nb FU</th><th>ALU0/BRU0</th><th>ALU1</th><th>ALU2</th><th>ALU3/BRU1</th><th>AGU0</th><th>AGU1</th><th>AGU2</th><th>FP0</th><th>FP1</th><th>FP2</th><th>FP3</th><th>Latency</th><th>Recip. throughput</th><th>Vectorization</th></tr><tr><td style='word-break:break-all;'>LEA -0x8(%R11),%RCX</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>MOV %RBP,%R12</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>MOVQ $0,(%R10)</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.33</td><td>0.33</td><td>0.33</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4</td><td>1</td><td>scal (12.5%)</td></tr><tr><td style='word-break:break-all;'>VXORPD %XMM0,%XMM0,%XMM0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.25</td><td>vect (50.0%)</td></tr><tr><td style='word-break:break-all;'>SHR $0x3,%RCX</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>SUB %R11,%R12</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>INC %RCX</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>AND $0x7,%ECX</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>scal (12.5%)</td></tr><tr><td style='word-break:break-all;'>JE 1ef7 &lt;kernel._omp_fn.0+0x137&gt;</td><td>1</td><td>0.50</td><td>0</td><td>0</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.50</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>CMP $0x1,%RCX</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>JE 1ee3 &lt;kernel._omp_fn.0+0x123&gt;</td><td>1</td><td>0.50</td><td>0</td><td>0</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.50</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>CMP $0x2,%RCX</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>JE 1ed4 &lt;kernel._omp_fn.0+0x114&gt;</td><td>1</td><td>0.50</td><td>0</td><td>0</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.50</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>CMP $0x3,%RCX</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>JE 1ec5 &lt;kernel._omp_fn.0+0x105&gt;</td><td>1</td><td>0.50</td><td>0</td><td>0</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.50</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>CMP $0x4,%RCX</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>JE 1eb6 &lt;kernel._omp_fn.0+0xf6&gt;</td><td>1</td><td>0.50</td><td>0</td><td>0</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.50</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>CMP $0x5,%RCX</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>JE 1ea7 &lt;kernel._omp_fn.0+0xe7&gt;</td><td>1</td><td>0.50</td><td>0</td><td>0</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.50</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>CMP $0x6,%RCX</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>JE 1e98 &lt;kernel._omp_fn.0+0xd8&gt;</td><td>1</td><td>0.50</td><td>0</td><td>0</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.50</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>VMOVSD (%R12),%XMM0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.50</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>ADD $0x8,%R12</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>VMOVSD %XMM0,(%R10)</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.33</td><td>0.33</td><td>0.33</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>VADDSD (%R12),%XMM0,%XMM0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>ADD $0x8,%R12</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>VMOVSD %XMM0,(%R10)</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.33</td><td>0.33</td><td>0.33</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>VADDSD (%R12),%XMM0,%XMM0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>ADD $0x8,%R12</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>VMOVSD %XMM0,(%R10)</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.33</td><td>0.33</td><td>0.33</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>VADDSD (%R12),%XMM0,%XMM0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>ADD $0x8,%R12</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>VMOVSD %XMM0,(%R10)</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.33</td><td>0.33</td><td>0.33</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>VADDSD (%R12),%XMM0,%XMM0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>ADD $0x8,%R12</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>VMOVSD %XMM0,(%R10)</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.33</td><td>0.33</td><td>0.33</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>VADDSD (%R12),%XMM0,%XMM0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>ADD $0x8,%R12</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>VMOVSD %XMM0,(%R10)</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.33</td><td>0.33</td><td>0.33</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>VADDSD (%R12),%XMM0,%XMM0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>ADD $0x8,%R12</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>VMOVSD %XMM0,(%R10)</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.33</td><td>0.33</td><td>0.33</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>CMP %R12,%RBP</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>JE 1f5f &lt;kernel._omp_fn.0+0x19f&gt;</td><td>1</td><td>0.50</td><td>0</td><td>0</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.50</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>VMULSD %XMM0,%XMM1,%XMM9</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>3</td><td>0.50</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>ADD $0x8,%R10</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>ADD %RDI,%RBP</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>VMOVSD %XMM9,-0x8(%R10)</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.33</td><td>0.33</td><td>0.33</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>scal (25.0%)</td></tr><tr><td style='word-break:break-all;'>CMP %RBX,%R10</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>JNE 1e40 &lt;kernel._omp_fn.0+0x80&gt;</td><td>1</td><td>0.50</td><td>0</td><td>0</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.50</td><td>N/A</td></tr></table>
+<table><tr><th>Instruction</th><th>Nb FU</th><th>ALU0/BRU0</th><th>ALU1</th><th>ALU2</th><th>ALU3/BRU1</th><th>AGU0</th><th>AGU1</th><th>AGU2</th><th>FP0</th><th>FP1</th><th>FP2</th><th>FP3</th><th>Latency</th><th>Recip. throughput</th><th>Vectorization</th></tr><tr><td style='word-break:break-all;'>VADDPD (%RAX),%YMM0,%YMM2</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>vect (100.0%)</td></tr><tr><td style='word-break:break-all;'>ADD $0x100,%RAX</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>VADDPD -0xe0(%RAX),%YMM2,%YMM3</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>vect (100.0%)</td></tr><tr><td style='word-break:break-all;'>VADDPD -0xc0(%RAX),%YMM3,%YMM4</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>vect (100.0%)</td></tr><tr><td style='word-break:break-all;'>VADDPD -0xa0(%RAX),%YMM4,%YMM5</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>vect (100.0%)</td></tr><tr><td style='word-break:break-all;'>VADDPD -0x80(%RAX),%YMM5,%YMM6</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>vect (100.0%)</td></tr><tr><td style='word-break:break-all;'>VADDPD -0x60(%RAX),%YMM6,%YMM7</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>vect (100.0%)</td></tr><tr><td style='word-break:break-all;'>VADDPD -0x40(%RAX),%YMM7,%YMM8</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>vect (100.0%)</td></tr><tr><td style='word-break:break-all;'>VADDPD -0x20(%RAX),%YMM8,%YMM0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0.50</td><td>0.50</td><td>3</td><td>0.50</td><td>vect (100.0%)</td></tr><tr><td style='word-break:break-all;'>CMP %RAX,%R13</td><td>1</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.25</td><td>N/A</td></tr><tr><td style='word-break:break-all;'>JNE 1ee7 &lt;kernel._omp_fn.0+0x127&gt;</td><td>1</td><td>0.50</td><td>0</td><td>0</td><td>0.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.50</td><td>N/A</td></tr></table>
 </div></div></div>
 </div></div>
     </div>
   </div>
   <script>
-const cqa_panel_srcs = ["_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_20","_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_21","_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22","_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23","_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_24"];
+const cqa_panel_srcs = ["_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_22","_home_mac_rendu_AOC_rendu_TP1_driver_opti.c_23"];
 function _click_list_header (__obj__) {
   if (__obj__.innerHTML == "\u25BC") {
     __obj__.textContent = "\u25BA";
@@ -1785,7 +1778,7 @@ function cqa_onresize ()
 function cqa_loadhelp (divId) {
   var e = document.getElementById (divId);
   if (e != null) {
-    e.setAttribute ("tooltip_id", "20");
+    e.setAttribute ("tooltip_id", "31");
   }
   for (let i = 0; i < cqa_panel_srcs.length; i++) {
     let obj = document.getElementById ("panel_src_line_"+cqa_panel_srcs [i]);
@@ -2188,17 +2181,28 @@ addLoadEvent(function(){
     </div>
   </div>
 </div><script>
-var tooltips_texts = ['Go to previous loop: 5',
-'No next loop',
+var tooltips_texts = ['No previous loop',
+'Go to next loop: 7',
 'Open on a new tab',
 'Open on a new tab',
 'Check the box to display the group analysis. A group is a set of instructions accessing to the same memory area',
+'Size: 1<br>Pattern: L<br>Span: 32<br>Head: 0<br>Unroll factor: 1<br>Stride status: Success<br>Stride: 256<br>Accessed memory status: Success<br>Accessed memory: 32<br>Accessed memory without overlapping: 32<br>Accessed memory reused: 0<br>',
+'Size: 7<br>Pattern: LLLLLLL<br>Span: 224<br>Head: 0<br>Unroll factor: 7<br>Stride status: Success<br>Stride: 256<br>Accessed memory status: Success<br>Accessed memory: 224<br>Accessed memory without overlapping: 224<br>Accessed memory reused: 0<br>',
+'Size: 7<br>Pattern: LLLLLLL<br>Span: 224<br>Head: 0<br>Unroll factor: 7<br>Stride status: Success<br>Stride: 256<br>Accessed memory status: Success<br>Accessed memory: 224<br>Accessed memory without overlapping: 224<br>Accessed memory reused: 0<br>',
+'Size: 7<br>Pattern: LLLLLLL<br>Span: 224<br>Head: 0<br>Unroll factor: 7<br>Stride status: Success<br>Stride: 256<br>Accessed memory status: Success<br>Accessed memory: 224<br>Accessed memory without overlapping: 224<br>Accessed memory reused: 0<br>',
+'Size: 7<br>Pattern: LLLLLLL<br>Span: 224<br>Head: 0<br>Unroll factor: 7<br>Stride status: Success<br>Stride: 256<br>Accessed memory status: Success<br>Accessed memory: 224<br>Accessed memory without overlapping: 224<br>Accessed memory reused: 0<br>',
+'Size: 7<br>Pattern: LLLLLLL<br>Span: 224<br>Head: 0<br>Unroll factor: 7<br>Stride status: Success<br>Stride: 256<br>Accessed memory status: Success<br>Accessed memory: 224<br>Accessed memory without overlapping: 224<br>Accessed memory reused: 0<br>',
+'Size: 7<br>Pattern: LLLLLLL<br>Span: 224<br>Head: 0<br>Unroll factor: 7<br>Stride status: Success<br>Stride: 256<br>Accessed memory status: Success<br>Accessed memory: 224<br>Accessed memory without overlapping: 224<br>Accessed memory reused: 0<br>',
+'Size: 7<br>Pattern: LLLLLLL<br>Span: 224<br>Head: 0<br>Unroll factor: 7<br>Stride status: Success<br>Stride: 256<br>Accessed memory status: Success<br>Accessed memory: 224<br>Accessed memory without overlapping: 224<br>Accessed memory reused: 0<br>',
 'Assembly code of the object (loop / function).<br/>It is analyzed using MAQAO core',
 'Source code of the loop.It is extracted using MAQAO core.<br/>When the CQA panel is also displayed, source lines that are analyzed by CQA are colored.',
 'Coverage of the callchain',
 'Name of the function',
 'Location of the function source code',
 'Name of the module (binary file) that contains the function',
+'/usr/src/debug/gcc/gcc/libgomp/team.c:130',
+'',
+'',
 'Callchains extracted using LPROF.',
 'Load distribution analysis of the loop.<br/>It is generated using LPROF results.',
 'Show previous path',

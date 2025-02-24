@@ -14,14 +14,15 @@ void kernel(unsigned n, double const m[n][n], double x[n], const double y[16])
    for (unsigned k = 0; k < 16; k++) {
       const_k += y[k];
    }
+   double tmp;
    
-#pragma omp parallel for simd
+#pragma omp parallel for simd private(tmp) schedule(static)
    for (unsigned i = 0; i < n; i++) {
-      x[i] = 0.0;
+      tmp = 0.0;
       for (unsigned j = 0; j < n; j++) {
-         x[i] += m[i][j];
+         tmp += m[i][j];
       }
-      x[i] = x[i] * const_k;
+      x[i] = tmp * const_k;
    }
 }
 

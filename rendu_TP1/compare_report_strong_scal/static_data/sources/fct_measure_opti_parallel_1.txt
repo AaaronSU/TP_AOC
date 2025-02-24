@@ -1,0 +1,98 @@
+/usr/include/stdlib.h: 483 - 483
+--------------------------------------------------------------------------------
+
+483:   return (int) strtol (__nptr, (char **) NULL, 10);
+/home/mac/rendu_AOC/rendu_TP1/driver_opti.c: 15 - 134
+--------------------------------------------------------------------------------
+
+15:       const_k += y[k];
+16:    }
+17:    double tmp;
+18:    
+19: #pragma omp parallel for simd private(tmp) schedule(static)
+[...]
+41:    for (i=0; i<n; i++)
+42:       x[i] = (double) rand() / RAND_MAX;
+43: }
+44: 
+45: 
+46: int main (int argc, char *argv[]) {
+47:    /* check command line arguments */
+48:    if (argc != 4) {
+49:       fprintf (stderr, "Usage: %s <size> <nb warmup repets> <nb measure repets>\n", argv[0]);
+50:       return EXIT_FAILURE;
+51:    }
+52: 
+53:    /* get command line arguments */
+54:    const unsigned size = atoi (argv[1]); /* problem size */
+55:    const unsigned repw = atoi (argv[2]); /* number of warmup repetitions */
+56:    const unsigned repm = atoi (argv[3]); /* number of repetitions during measurement */
+57: 
+58:    uint64_t tdiff [NB_METAS];
+59: 
+60:    unsigned m;
+61:    for (m=0; m<NB_METAS; m++) {
+62:       printf ("Metarepetition %u/%d: running %u warmup instances and %u measure instances\n", m+1, NB_METAS,
+[...]
+68:       double (*mat)[size] = malloc(size * sizeof(*mat));
+69:       double *x = malloc(size * sizeof(double));
+70:       double *y = malloc(16 * sizeof(double));
+71: 
+72:       if (!mat || !x || !y) {
+73:          fprintf(stderr, "Allocation failed\n");
+74:          free(mat);
+75:          free(x);
+76:          free(y);
+77:          return EXIT_FAILURE;
+78:       }
+79:       /* init arrays */
+80:       srand(0);
+81:       init_array(size * size, (double *)mat);
+82:       init_array(16, y);
+83: 
+84:       /* warmup (repw repetitions in first meta, 1 repet in next metas) */
+85:       if (m == 0) {
+86:          for (i=0; i<repw; i++)
+[...]
+93:       const uint64_t t1 = rdtsc();
+94:       for (i=0; i<repm; i++) {
+95:          kernel(size, mat, x, y);
+96:       }
+97:       const uint64_t t2 = rdtsc();
+98:       tdiff[m] = t2 - t1;
+99: 
+100:       /* free arrays. TODO: adjust for each kernel */
+101:       free(mat);
+102:       free(x);
+103:       free(y);
+104:    }
+105: 
+106:    const unsigned nb_inner_iters = size * size * 16 * repm; // TODO adjust for each kernel
+107:    qsort (tdiff, NB_METAS, sizeof tdiff[0], cmp_uint64);
+108: 
+109:    // Minimum value: should be at least 2000 RDTSC-cycles
+110:    const uint64_t min = tdiff[0];
+111:    if (min < 2000) {
+112:       fprintf (stderr, "Time for the fastest metarepet. is less than 2000 RDTSC-cycles.\n"
+113:                "Rerun with more measure-repetitions\n");
+114:       return EXIT_FAILURE;
+115:    }
+116:    printf ("MIN %lu RDTSC-cycles (%.2f per inner-iter)\n",
+117:            min, (float) min / nb_inner_iters);
+118: 
+119:    // Median value
+120:    const uint64_t med = tdiff[NB_METAS/2];
+121:    printf ("MED %lu RDTSC-cycles (%.2f per inner-iter)\n",
+122:            med, (float) med / nb_inner_iters);
+123: 
+124:    // Stability: (med-min)/min
+125:    const float stab = (med - min) * 100.0f / min;
+126:    if (stab >= 10)
+127:       printf ("BAD STABILITY: %.2f %%\n", stab);
+128:    else if (stab >= 5)
+129:       printf ("AVERAGE STABILITY: %.2f %%\n", stab);
+130:    else
+131:       printf ("GOOD STABILITY: %.2f %%\n", stab);
+132: 
+133:    return EXIT_SUCCESS;
+134: }

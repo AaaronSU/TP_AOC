@@ -1,0 +1,1 @@
+maqao oneview -R1 --with-scalability=strong -xp=compare_report_strong_scal_6000 --replace -c=strong_scalability_6000.json 

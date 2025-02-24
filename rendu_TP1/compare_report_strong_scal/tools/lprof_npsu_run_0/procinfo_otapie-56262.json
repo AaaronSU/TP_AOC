@@ -1,0 +1,20 @@
+{
+  "content": {
+    "proc_name"          : "AMD_fam17h_mod31h",
+    "hostname"           : "otapie",
+    "architecture_code"  : "2",
+    "uarchitecture_code" : "36",
+    "architecture"       : "x86_64",
+    "uarchitecture"      : "ZEN_V2",
+    "cpui_model_name"    : "AMD Ryzen Threadripper 3970X 32-Core Processor",
+    "cpui_cache_size"    : "512 KB",
+    "cpui_cpu_cores"     : "32",
+    "max_frequency"          : "4549121",
+    "cur_frequency"      : "4266934",
+    "driver_frequency"   : "acpi-cpufreq",
+    "scaling_governor"   : "schedutil",
+    "huge_pages"         : "always",
+    "os_version"         : "Linux 6.13.3-arch1-1 #1 SMP PREEMPT_DYNAMIC Mon, 17 Feb 2025 17:42:11 +0000",
+    "is_lstopo"          : true,
+  }
+}

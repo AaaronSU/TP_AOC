@@ -1,0 +1,6 @@
+name;time_p;time_s;cpi_ratio;
+/home/mac/rendu_AOC/rendu_TP1/compare_report_strong_scal_6000/binaries/measure_opti_parallel;84.501754760742;16.655288696289;;
+/usr/lib/libc.so.6;15.265717506409;3.0088717937469;;
+/usr/lib/libgomp.so.1.0.0;0.21886332333088;0.043137941509485;;
+/usr/lib/libucm.so.0.0.0;0.00683947885409;0.0013480606721714;;
+[vdso];0.00683947885409;0.0013480606721714;;

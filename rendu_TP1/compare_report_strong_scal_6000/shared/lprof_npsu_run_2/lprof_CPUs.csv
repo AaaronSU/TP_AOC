@@ -1,0 +1,5 @@
+node;pid;tid;core_id;sample_count;
+otapie;57626;57663;1;3034;
+otapie;57626;57626;1;5434;
+otapie;57626;57662;1;3099;
+otapie;57626;57661;1;3102;

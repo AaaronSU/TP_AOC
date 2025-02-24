@@ -1,5 +1,5 @@
-/home/mac/rendu_AOC/rendu_TP1/driver_opti.c: 21 - 22
+/home/mac/rendu_AOC/rendu_TP1/driver_opti.c: 22 - 23
 --------------------------------------------------------------------------------
 
-21:       for (unsigned j = 0; j < n; j++) {
-22:          x[i] += m[i][j];
+22:       for (unsigned j = 0; j < n; j++) {
+23:          tmp += m[i][j];
