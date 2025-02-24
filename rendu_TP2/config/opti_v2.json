@@ -1,0 +1,13 @@
+{
+    "config":
+      {
+        "external_libraries":
+          [
+          "/usr/lib/libc.so.6"
+          ],
+        "executable": "exe_opti_v2",
+        "run_command": "<executable> 10 2000 3000 ",
+        "comments": "A simple experiment that analyzes a library"
+      }
+  }
+  

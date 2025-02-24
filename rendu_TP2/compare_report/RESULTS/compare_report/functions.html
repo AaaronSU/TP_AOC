@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html translate="no" lang="en-US"><head><title>OV - Compare Functions</title>
+<meta charset="utf-8" />
+<meta name="google" content="notranslate" />
+<link rel="stylesheet" type="text/css" media="screen" href="css/ui.jqgrid.css" />
+<link rel="stylesheet" type="text/css" href="css/themes/redmond_custom/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="css/themes/redmond_custom/jquery.jqplot.min.css" />
+<link rel="stylesheet" type="text/css" href="css/MAQAO_theme.css" />
+<link rel="stylesheet" type="text/css" href="css/maqao_modal.css" />
+<link rel="stylesheet" type="text/css" href="css/global.css" />
+<link rel="stylesheet" type="text/css" href="css/maqao_menu.css" />
+<script src="js/jquery-1.9.0.min.js" ></script>
+<script src="js/jquery-ui-1.10.3.custom.min.js" ></script>
+<script src="js/grid.locale-en.js" ></script>
+<script src="js/jquery.jqGrid.min.js" ></script>
+<script src="js/d3.min.js" ></script>
+<script class="include" src="js/jquery.jqplot.min.js"></script>
+<script class="include" src="js/jqplot.pieRenderer.min.js"></script>
+<script class="include" src="js/jqplot.barRenderer.min.js"></script>
+<script class="include" src="js/jqplot.categoryAxisRenderer.min.js"></script>
+<script class="include" src="js/jqplot.pointLabels.min.js"></script>
+<script class="include" src="js/jqplot.cursor.min.js"></script>
+<script class="include" src="js/jqplot.canvasTextRenderer.min.js"></script>
+<script class="include" src="js/jqplot.canvasAxisTickRenderer.min.js"></script>
+<script class="include" src="js/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<script class="include" src="js/jqplot.enhancedLegendRenderer.min.js"></script>
+<script class="include" src="js/jqplot.highlighter.min.js"></script>
+<script class="include" src="js/jqplot.logAxisRenderer.min.js"></script>
+<script class="include" src="js/maqao_menu.js"></script>
+<script>
+$( function() {
+  $( document ).tooltip({
+    content: function() {
+      if (this.classList.contains ("tooltip-maqao")
+      ||  this.classList.contains ("tooltip-maqao-button")) {
+        return tooltips_texts[$(this).attr('tooltip_id')];
+      }
+    },
+    position: {
+      my: "center bottom-20",
+        at: "center top",
+        using: function( position, feedback ) {
+          $( this ).css( position );
+          $( "<div>" )
+            .addClass( "arrow-tt" )
+            .addClass( feedback.vertical )
+            .addClass( feedback.horizontal )
+            .appendTo( this );
+        }
+      }
+  });
+} );
+
+// Code from https://www.htmlgoodies.com/beyond/javascript/article.php/3724571/Using-Multiple-JavaScript-Onload-Functions.htm
+function addLoadEvent(func) {
+  var oldonload = window.onload;
+  if (typeof window.onload != 'function') {
+    window.onload = func;
+  } else {
+    window.onload = function() {
+      if (oldonload) {
+        oldonload();
+      }
+      func();
+    }
+  }
+}
+function loadCSS(filename){ 
+  var file = document.createElement("link");
+  file.setAttribute("rel", "stylesheet");
+  file.setAttribute("type", "text/css");
+  file.setAttribute("href", filename);
+  document.head.appendChild(file);
+}
+addLoadEvent(function(){
+  var theme = localStorage.getItem("__MAQAO_OV_theme__");
+  if (theme) {
+    loadCSS("css/"+theme+".css");
+  }
+  else {
+    localStorage.setItem("__MAQAO_OV_theme__", "MAQAO_theme");
+    loadCSS("css/MAQAO_theme.css");
+  }
+});
+</script>
+</head><body>
+<div id="page_title"><img alt="MAQAO" id="maqao_logo" src="images/MAQAO_small_logo.png"/><ul id="maqao_menu"><li ><a  href="index.html">Global</a><ul><li ><a  href="config.html">Configurations</a></li></ul></li><li ><a  href="summary.html">Summary</a></li><li ><a class="_current_page _first_menu_level" href="functions.html">Functions</a></li><li ><a  href="loops.html">Loops</a></li></ul>
+<span><img alt="options" id="menu_options_icon" src="images/gear_20.png" onclick="__open_options ()"/></span>
+</div>
+<script>
+function __change_theme () {
+  var new_theme = document.getElementById("select_theme").value;
+  localStorage.setItem("__MAQAO_OV_theme__", new_theme);
+    loadCSS("css/"+new_theme+".css");
+}
+function __open_options () {
+  var elem = document.getElementById ("options_configuration");
+  if (elem.dataset.open == "false") {
+    elem.dataset.open = "true";
+    elem.style.display = "block";
+  }
+  else {
+    elem.dataset.open = "false";
+    elem.style.display = "none";
+  }
+}
+</script>
+<div id="anchor_file_start"></div>
+<div id="maqao_content">
+<div>
+  <div id="spacer_page_title" ></div>
+  <div id="options_configuration" data-open="false" style="display:none;">
+    <h3 id="options_configuration_header">Report Configuration</h3>
+    <span style="margin-left:10px;"><label for="select_theme">Theme: </label>    <select name="theme" id="select_theme" onchange="__change_theme ()">  <option value="MAQAO_theme">MAQAO_theme</option>  <option value="darkgrey">darkgrey</option>  <option value="cyan">cyan</option></select></span></div>
+</div>
+<script>
+  let theme = localStorage.getItem("__MAQAO_OV_theme__");
+  if (theme) {
+    document.getElementById("select_theme").value = theme;
+  }
+document.getElementById("spacer_page_title").style.height = (document.getElementById("page_title").clientHeight + 25)+"px";
+var obj = document.getElementById("page_title");
+if (obj) {
+  var elems = document.getElementsByClassName ("_first_menu_level")
+  if (obj.clientHeight < 90) {
+    for (var i = 0; i < elems.length; i++) {
+      elems.item(i).style.borderBottomLeftRadius = "";
+      elems.item(i).style.borderBottomRightRadius = "";
+    }
+  }
+  else {
+    for (var i = 0; i < elems.length; i++) {
+      elems.item(i).style.borderBottomLeftRadius = "10px";
+      elems.item(i).style.borderBottomRightRadius = "10px";
+    }
+  }
+}
+</script>
+<button id='button_toggle_full_fcts' style='margin: 0px 0px 15px 15px;' onclick='toggle_full_fcts();'>Show All Functions</button><button id='button_order_coverage' style='margin: 0px 0px 15px 15px;' onclick='order_fcts("coverage");'>Order by Coverages</button><button id='button_order_src' style='margin: 0px 0px 15px 15px;' onclick='order_fcts("src");'>Order by Locations</button><div class="_fixed_box"  id="main_container" ><h3 class="_header">Functions<span class="tooltip-maqao-button help-maqao" title="" tooltip_id="0" ></span></h3>
+<div class="_content"><div class="_accordion_box collapsed not_full hidden"  data-cov="228.32709369995" data-start="0" data-file="<unknown>"><h3 id="_accordion_header_1" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>&lt;unknown&gt;: 0  -  228.33 %</h3><div id="_accordion_content_1" class="_content collapsed"><table id='fct_cmp_table'><tr><td colspan='7'>Run report_baseline</td><td class='first' colspan='7'>Run report_opti_v1</td><td class='first' colspan='7'>Run report_opti_v2</td></tr>
+<tr><td><button class='button_toggle_src_1' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_1");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_1 hidden'></ul></td><td class='first'><button class='button_toggle_src_1' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_1");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_1 hidden'></ul></td><td class='first'><button class='button_toggle_src_1' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_1");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_1 hidden'></ul></td></tr>
+<tr><th>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="1" >216</span></td><td>0.04</td><td>0.02</td><td>0.02</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="2" >2271</span></td><td>13.68</td><td>2.85</td><td>2.85</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="3" >216</span></td><td>2.86</td><td>0.00</td><td>0.00</td><td>1</td><td>0.00</td><td>0.00</td></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="4" >2271</span></td><td>5.82</td><td>4.16</td><td>4.16</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="5" >384</span></td><td>31.66</td><td>6.59</td><td>6.59</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="6" >214</span></td><td>54.29</td><td>0.09</td><td>0.09</td><td>1</td><td>0.00</td><td>0.00</td></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="7" >330</span></td><td>1.91</td><td>1.37</td><td>1.37</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="8" >355</span></td><td>1.03</td><td>0.21</td><td>0.21</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="9" >400</span></td><td>2.86</td><td>0.00</td><td>0.00</td><td>1</td><td>0.00</td><td>0.00</td></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="10" >549</span></td><td>0.08</td><td>0.06</td><td>0.05</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="11" >214</span></td><td>0.29</td><td>0.06</td><td>0.06</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="12" >209</span></td><td>5.71</td><td>0.01</td><td>0.01</td><td>1</td><td>0.00</td><td>0.00</td></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="13" >384</span></td><td>9.40</td><td>6.71</td><td>6.71</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="14" >330</span></td><td>6.51</td><td>1.35</td><td>1.35</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="15" >-1</span></td><td>2.86</td><td>0.00</td><td>0.00</td><td>1</td><td>0.00</td><td>0.00</td></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="16" >548</span></td><td>0.01</td><td>0.00</td><td>0.00</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="17" >360</span></td><td>4.10</td><td>0.86</td><td>0.86</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="18" >355</span></td><td>0.34</td><td>0.24</td><td>0.24</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="19" >602</span></td><td>0.38</td><td>0.08</td><td>0.08</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="20" >1266</span></td><td>0.01</td><td>0.00</td><td>0.00</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="21" >-1</span></td><td>0.02</td><td>0.00</td><td>0.00</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="22" >341</span></td><td>0.01</td><td>0.01</td><td>0.01</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="23" >341</span></td><td>0.02</td><td>0.00</td><td>0.00</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="24" >593</span></td><td>0.02</td><td>0.01</td><td>0.01</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="25" >548</span></td><td>0.02</td><td>0.00</td><td>0.00</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="26" >214</span></td><td>0.12</td><td>0.08</td><td>0.08</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="27" >309</span></td><td>33.63</td><td>7.00</td><td>7.00</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="28" >792</span></td><td>11.31</td><td>8.07</td><td>8.07</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="29" >308</span></td><td>0.41</td><td>0.08</td><td>0.08</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="30" >393</span></td><td>0.29</td><td>0.21</td><td>0.21</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="31" >402</span></td><td>1.49</td><td>0.31</td><td>0.31</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="32" >360</span></td><td>1.29</td><td>0.92</td><td>0.92</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="33" >403</span></td><td>0.31</td><td>0.06</td><td>0.06</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="34" >546</span></td><td>0.01</td><td>0.00</td><td>0.00</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="35" >549</span></td><td>0.22</td><td>0.04</td><td>0.04</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="36" >602</span></td><td>0.10</td><td>0.07</td><td>0.07</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="37" >393</span></td><td>1.03</td><td>0.21</td><td>0.21</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="38" >308</span></td><td>0.08</td><td>0.06</td><td>0.06</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="39" >556</span></td><td>0.46</td><td>0.09</td><td>0.09</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="40" >796</span></td><td>0.25</td><td>0.17</td><td>0.17</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="41" >383</span></td><td>0.84</td><td>0.17</td><td>0.17</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="42" >309</span></td><td>10.14</td><td>7.23</td><td>7.23</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="43" >559</span></td><td>2.57</td><td>0.53</td><td>0.53</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="44" >556</span></td><td>0.33</td><td>0.23</td><td>0.23</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="45" >577</span></td><td>0.41</td><td>0.08</td><td>0.08</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="46" >559</span></td><td>0.65</td><td>0.47</td><td>0.47</td><td>1</td><td>0.00</td><td>0.00</td><td class='first'><span class="tooltip-maqao" title="" tooltip_id="47" >-1</span></td><td>0.07</td><td>0.01</td><td>0.01</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="48" >402</span></td><td>0.36</td><td>0.26</td><td>0.26</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="49" >403</span></td><td>0.01</td><td>0.00</td><td>0.00</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="50" >793</span></td><td>4.09</td><td>2.92</td><td>2.92</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="51" >795</span></td><td>5.40</td><td>3.86</td><td>3.85</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="52" >205</span></td><td>7.64</td><td>5.45</td><td>5.45</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="53" >383</span></td><td>0.17</td><td>0.12</td><td>0.12</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="54" >794</span></td><td>0.55</td><td>0.39</td><td>0.39</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="55" >577</span></td><td>0.15</td><td>0.10</td><td>0.10</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'><td class='first' colspan='7'></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="56" >-1</span></td><td>0.01</td><td>0.01</td><td>0.01</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'><td class='first' colspan='7'></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="28.571430206299" data-start="125" data-file="opti_v2.c"><h3 id="_accordion_header_2" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>opti_v2.c: 125  -  28.57 %</h3><div id="_accordion_content_2" class="_content collapsed"><table id='fct_cmp_table'><tr><td colspan='7'>Run report_baseline</td><td class='first' colspan='7'>Run report_opti_v1</td><td class='first' colspan='7'>Run report_opti_v2</td></tr>
+<tr><td><button class='button_toggle_src_2' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_2");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_2 hidden'></ul></td><td class='first'><button class='button_toggle_src_2' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_2");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_2 hidden'></ul></td><td class='first'><button class='button_toggle_src_2' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_2");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_2 hidden'><li>/usr/include/stdlib.h: 483-483</li><li>/home/mac/rendu_AOC/rendu_TP2/opti_v2.c: 125-129</li><li>/home/mac/rendu_AOC/rendu_TP2/opti_v2.c: 135-145</li><li>/home/mac/rendu_AOC/rendu_TP2/opti_v2.c: 151-175</li><li>/home/mac/rendu_AOC/rendu_TP2/opti_v2.c: 181-195</li><li>/home/mac/rendu_AOC/rendu_TP2/opti_v2.c: 205-208</li></ul></td></tr>
+<tr><th>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th></tr>
+<tr><td colspan='7'><td class='first' colspan='7'><td class='first'><span class="tooltip-maqao" title="" tooltip_id="57" >1</span></td><td>28.57</td><td>0.05</td><td>0.05</td><td>1</td><td>0.00</td><td>0.00</td></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="23.966344833374" data-start="188" data-file="max_in_grid.c"><h3 id="_accordion_header_3" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>max_in_grid.c: 188  -  23.97 %</h3><div id="_accordion_content_3" class="_content collapsed"><table id='fct_cmp_table'><tr><td colspan='7'>Run report_baseline</td><td class='first' colspan='7'>Run report_opti_v1</td><td class='first' colspan='7'>Run report_opti_v2</td></tr>
+<tr><td><button class='button_toggle_src_3' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_3");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_3 hidden'><li>/home/mac/rendu_AOC/rendu_TP2/max_in_grid.c: 188-194</li></ul></td><td class='first'><button class='button_toggle_src_3' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_3");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_3 hidden'></ul></td><td class='first'><button class='button_toggle_src_3' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_3");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_3 hidden'></ul></td></tr>
+<tr><th>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="58" >4</span></td><td>23.97</td><td>17.10</td><td>17.10</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'><td class='first' colspan='7'></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="14.86333656311" data-start="174" data-file="max_in_grid.c"><h3 id="_accordion_header_4" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>max_in_grid.c: 174  -  14.86 %</h3><div id="_accordion_content_4" class="_content collapsed"><table id='fct_cmp_table'><tr><td colspan='7'>Run report_baseline</td><td class='first' colspan='7'>Run report_opti_v1</td><td class='first' colspan='7'>Run report_opti_v2</td></tr>
+<tr><td><button class='button_toggle_src_4' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_4");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_4 hidden'><li>/home/mac/rendu_AOC/rendu_TP2/max_in_grid.c: 174-180</li></ul></td><td class='first'><button class='button_toggle_src_4' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_4");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_4 hidden'></ul></td><td class='first'><button class='button_toggle_src_4' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_4");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_4 hidden'></ul></td></tr>
+<tr><th>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="59" >3</span></td><td>14.86</td><td>10.60</td><td>10.60</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'><td class='first' colspan='7'></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="2.8571429252625" data-start="20" data-file="opti_v2.c"><h3 id="_accordion_header_5" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>opti_v2.c: 20  -  2.86 %</h3><div id="_accordion_content_5" class="_content collapsed"><table id='fct_cmp_table'><tr><td colspan='7'>Run report_baseline</td><td class='first' colspan='7'>Run report_opti_v1</td><td class='first' colspan='7'>Run report_opti_v2</td></tr>
+<tr><td><button class='button_toggle_src_5' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_5");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_5 hidden'></ul></td><td class='first'><button class='button_toggle_src_5' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_5");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_5 hidden'></ul></td><td class='first'><button class='button_toggle_src_5' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_5");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_5 hidden'><li>/home/mac/rendu_AOC/rendu_TP2/opti_v2.c: 20-73</li></ul></td></tr>
+<tr><th>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th></tr>
+<tr><td colspan='7'><td class='first' colspan='7'><td class='first'><span class="tooltip-maqao" title="" tooltip_id="60" >3</span></td><td>2.86</td><td>0.00</td><td>0.00</td><td>1</td><td>0.00</td><td>0.00</td></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.5520898103714" data-start="54" data-file="opti_v1.c"><h3 id="_accordion_header_6" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>opti_v1.c: 54  -  0.55 %</h3><div id="_accordion_content_6" class="_content collapsed"><table id='fct_cmp_table'><tr><td colspan='7'>Run report_baseline</td><td class='first' colspan='7'>Run report_opti_v1</td><td class='first' colspan='7'>Run report_opti_v2</td></tr>
+<tr><td><button class='button_toggle_src_6' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_6");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_6 hidden'></ul></td><td class='first'><button class='button_toggle_src_6' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_6");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_6 hidden'><li>/home/mac/rendu_AOC/rendu_TP2/opti_v1.c: 54-61</li><li>/home/mac/rendu_AOC/rendu_TP2/opti_v1.c: 68-107</li></ul></td><td class='first'><button class='button_toggle_src_6' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_6");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_6 hidden'></ul></td></tr>
+<tr><th>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th></tr>
+<tr><td colspan='7'><td class='first'><span class="tooltip-maqao" title="" tooltip_id="61" >4</span></td><td>0.55</td><td>0.11</td><td>0.11</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.26404294371605" data-start="110" data-file="opti_v1.c"><h3 id="_accordion_header_7" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>opti_v1.c: 110  -  0.26 %</h3><div id="_accordion_content_7" class="_content collapsed"><table id='fct_cmp_table'><tr><td colspan='7'>Run report_baseline</td><td class='first' colspan='7'>Run report_opti_v1</td><td class='first' colspan='7'>Run report_opti_v2</td></tr>
+<tr><td><button class='button_toggle_src_7' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_7");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_7 hidden'></ul></td><td class='first'><button class='button_toggle_src_7' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_7");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_7 hidden'><li>/usr/include/stdlib.h: 483-483</li><li>/home/mac/rendu_AOC/rendu_TP2/opti_v1.c: 110-114</li><li>/home/mac/rendu_AOC/rendu_TP2/opti_v1.c: 120-130</li><li>/home/mac/rendu_AOC/rendu_TP2/opti_v1.c: 136-160</li><li>/home/mac/rendu_AOC/rendu_TP2/opti_v1.c: 166-180</li><li>/home/mac/rendu_AOC/rendu_TP2/opti_v1.c: 190-193</li></ul></td><td class='first'><button class='button_toggle_src_7' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_7");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_7 hidden'></ul></td></tr>
+<tr><th>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th></tr>
+<tr><td colspan='7'><td class='first'><span class="tooltip-maqao" title="" tooltip_id="62" >1</span></td><td>0.26</td><td>0.05</td><td>0.05</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.25928497314453" data-start="76" data-file="max_in_grid.c"><h3 id="_accordion_header_8" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>max_in_grid.c: 76  -  0.26 %</h3><div id="_accordion_content_8" class="_content collapsed"><table id='fct_cmp_table'><tr><td colspan='7'>Run report_baseline</td><td class='first' colspan='7'>Run report_opti_v1</td><td class='first' colspan='7'>Run report_opti_v2</td></tr>
+<tr><td><button class='button_toggle_src_8' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_8");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_8 hidden'><li>/home/mac/rendu_AOC/rendu_TP2/max_in_grid.c: 76-83</li><li>/home/mac/rendu_AOC/rendu_TP2/max_in_grid.c: 90-140</li></ul></td><td class='first'><button class='button_toggle_src_8' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_8");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_8 hidden'></ul></td><td class='first'><button class='button_toggle_src_8' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_8");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_8 hidden'></ul></td></tr>
+<tr><th>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="63" >6</span></td><td>0.26</td><td>0.18</td><td>0.18</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'><td class='first' colspan='7'></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.21023106575012" data-start="144" data-file="max_in_grid.c"><h3 id="_accordion_header_9" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>max_in_grid.c: 144  -  0.21 %</h3><div id="_accordion_content_9" class="_content collapsed"><table id='fct_cmp_table'><tr><td colspan='7'>Run report_baseline</td><td class='first' colspan='7'>Run report_opti_v1</td><td class='first' colspan='7'>Run report_opti_v2</td></tr>
+<tr><td><button class='button_toggle_src_9' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_9");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_9 hidden'><li>/home/mac/rendu_AOC/rendu_TP2/max_in_grid.c: 144-166</li></ul></td><td class='first'><button class='button_toggle_src_9' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_9");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_9 hidden'></ul></td><td class='first'><button class='button_toggle_src_9' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_9");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_9 hidden'></ul></td></tr>
+<tr><th>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="64" >7</span></td><td>0.21</td><td>0.15</td><td>0.15</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'><td class='first' colspan='7'></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.084092438220978" data-start="238" data-file="max_in_grid.c"><h3 id="_accordion_header_10" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>max_in_grid.c: 238  -  0.08 %</h3><div id="_accordion_content_10" class="_content collapsed"><table id='fct_cmp_table'><tr><td colspan='7'>Run report_baseline</td><td class='first' colspan='7'>Run report_opti_v1</td><td class='first' colspan='7'>Run report_opti_v2</td></tr>
+<tr><td><button class='button_toggle_src_10' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_10");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_10 hidden'><li>/home/mac/rendu_AOC/rendu_TP2/max_in_grid.c: 238-252</li></ul></td><td class='first'><button class='button_toggle_src_10' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_10");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_10 hidden'></ul></td><td class='first'><button class='button_toggle_src_10' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_10");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_10 hidden'></ul></td></tr>
+<tr><th>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="65" >11</span></td><td>0.08</td><td>0.06</td><td>0.06</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'><td class='first' colspan='7'></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.024003902450204" data-start="20" data-file="opti_v1.c"><h3 id="_accordion_header_11" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>opti_v1.c: 20  -  0.02 %</h3><div id="_accordion_content_11" class="_content collapsed"><table id='fct_cmp_table'><tr><td colspan='7'>Run report_baseline</td><td class='first' colspan='7'>Run report_opti_v1</td><td class='first' colspan='7'>Run report_opti_v2</td></tr>
+<tr><td><button class='button_toggle_src_11' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_11");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_11 hidden'></ul></td><td class='first'><button class='button_toggle_src_11' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_11");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_11 hidden'><li>/home/mac/rendu_AOC/rendu_TP2/opti_v1.c: 20-41</li><li>/home/mac/rendu_AOC/rendu_TP2/opti_v1.c: 47-50</li></ul></td><td class='first'><button class='button_toggle_src_11' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_11");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_11 hidden'></ul></td></tr>
+<tr><th>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th></tr>
+<tr><td colspan='7'><td class='first'><span class="tooltip-maqao" title="" tooltip_id="66" >3</span></td><td>0.02</td><td>0.00</td><td>0.00</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.021023109555244" data-start="42" data-file="max_in_grid.c"><h3 id="_accordion_header_12" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>max_in_grid.c: 42  -  0.02 %</h3><div id="_accordion_content_12" class="_content collapsed"><table id='fct_cmp_table'><tr><td colspan='7'>Run report_baseline</td><td class='first' colspan='7'>Run report_opti_v1</td><td class='first' colspan='7'>Run report_opti_v2</td></tr>
+<tr><td><button class='button_toggle_src_12' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_12");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_12 hidden'><li>/home/mac/rendu_AOC/rendu_TP2/max_in_grid.c: 42-63</li><li>/home/mac/rendu_AOC/rendu_TP2/max_in_grid.c: 69-72</li></ul></td><td class='first'><button class='button_toggle_src_12' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_12");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_12 hidden'></ul></td><td class='first'><button class='button_toggle_src_12' style='margin: 0px 0px 15px 15px;' onclick='toggle_src("src_12");'>Show Function Source Regions</button></td><td colspan='6'><ul class='src_panel src_12 hidden'></ul></td></tr>
+<tr><th>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th><th class='first'>ASM Fct ID</th><th>Coverage (%)</th><th>Inc Time w.r.t. Wall Time (s)</th><th>Max Inc. Time over Threads(s)</th><th>Nb Threads</th><th>Deviation (cov)</th><th>Deviation (tps)</th></tr>
+<tr><td><span class="tooltip-maqao" title="" tooltip_id="67" >5</span></td><td>0.02</td><td>0.01</td><td>0.01</td><td>1</td><td>0.00</td><td>0.00</td><td class='first' colspan='7'><td class='first' colspan='7'></tr>
+</table></div></div></div></div><script>
+function toggle_src (suffix) {
+  let data = document.getElementsByClassName("button_toggle_"+suffix);
+  for (let i = 0; i < data.length; i++) {
+    let button = data[i];
+    if (button.innerHTML.localeCompare ("Show Function Source Regions") == 0) {
+      button.innerHTML = "Hide Function Source Regions";
+    }
+    else {
+      button.innerHTML = "Show Function Source Regions";
+    }
+  }
+  data = document.getElementsByClassName(suffix);
+  for (let i = 0; i < data.length; i++) {
+    data[i].classList.toggle("hidden");
+  }
+}
+function order_fcts (cmp_mode) {
+  let main_container = document.getElementById ("main_container");
+  let content = main_container.children[1];
+  let divs = [].slice.call (content.children);
+  if (cmp_mode === "coverage") {
+    divs.sort((a, b) => {return Number(a.dataset.cov) < Number(b.dataset.cov)} )
+  }
+  else if (cmp_mode === "src") {
+    divs.sort((a, b) => {if (a.dataset.file != b.dataset.file) {return a.dataset.file > b.dataset.file} else {return Number(a.dataset.start) > Number(b.dataset.start)} })
+  }
+  for (const d of divs) {
+    content.appendChild (d);
+  }
+}
+function toggle_full_fcts () {
+  var button = document.getElementById("button_toggle_full_fcts");
+  if (button.innerHTML.localeCompare ("Show All Functions") == 0) {
+    button.innerHTML = "Show Only Full Functions";
+  }
+  else {
+    button.innerHTML = "Show All Functions";
+  }
+  var data = document.getElementsByClassName("not_full");
+  for (let i = 0; i < data.length; i++) {
+    data[i].classList.toggle("hidden");
+  }
+}
+function redirect_fct (__url__) {
+  open(__url__);
+}
+function _onresize () {
+  __maqao_legacy_onresize ();
+}
+window.onresize = _onresize;
+</script>
+<style>
+.hidden {display: none;}#fct_cmp_table {border-collapse: collapse;}#fct_cmp_table .link {cursor:pointer;}#fct_cmp_table .link:hover {background-color: var(--table_row_background_hover);}#fct_cmp_table th {border-style: solid; border-color: var(--table_border); padding: 0px 3px 0px 3px; border-width: 1px 1px 3px 1px; background-color: var(--table_header_background); color: var(--table_header_font);}#fct_cmp_table td {border-style: solid; border-color: var(--table_border); padding: 0px 3px 0px 3px; border-width: 0px 1px 0px 1px;}#fct_cmp_table .first {border-left-width: 3px;}#fct_cmp_table td.s2_issue {padding-left: 15px;}#fct_cmp_table .src_panel {max-height: 300px; overflow-y:auto;}</style>
+<div class="_accordion_box collapsed" ><h3 id="_accordion_header_13" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>Old Layout</h3><div id="_accordion_content_13" class="_content collapsed"><div class="_accordion_box collapsed" ><h3 id="_accordion_header_14" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>Filters<span class="tooltip-maqao-button help-maqao" title="" tooltip_id="68" ></span></h3><div id="_accordion_content_14" class="_content collapsed"><form><u>Runs:</u><br style="margin-bottom:10px;">
+<input type="checkbox" id="checkbox_run1" class="checkbox_run" name="checkbox_run" value="1" checked  onclick="filter_run(this)"><label for="checkbox_run1">Run 1 - report_baseline<br></label><input type="checkbox" id="checkbox_run2" class="checkbox_run" name="checkbox_run" value="2" checked  onclick="filter_run(this)"><label for="checkbox_run2">Run 2 - report_opti_v1<br></label><input type="checkbox" id="checkbox_run3" class="checkbox_run" name="checkbox_run" value="3" checked  onclick="filter_run(this)"><label for="checkbox_run3">Run 3 - report_opti_v2<br></label><hr>
+<u>Modules:</u><br style="margin-bottom:10px;">
+<table><tr><td></td><td style="padding-left:25px;padding-right:25px;">report_baseline</td><td style="padding-left:25px;padding-right:25px;">report_opti_v1</td><td style="padding-left:25px;padding-right:25px;">report_opti_v2</td></tr>
+<tr><td><input id="_input_check_all_mods" type="checkbox" style="vertical-align: middle;cursor:pointer" onchange="_onchange_modules (this)" checked ><span id="_input_check_all_mods_text">Uncheck all modules</span><br></td></tr>
+<tr><td><input id="_input_check_mod_libc.so.6" type="checkbox" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" checked >libc.so.6</td><td style="text-align:center;"><span>60.58</span> %</td><td style="text-align:center;"><span>99.09</span> %</td><td style="text-align:center;"><span>65.71</span> %</td></tr>
+<tr><td><input id="_input_check_mod_binary" type="checkbox" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" checked >binary</td><td style="text-align:center;"><span>39.42</span> %</td><td style="text-align:center;"><span>0.91</span> %</td><td style="text-align:center;"><span>34.29</span> %</td></tr>
+</table>
+</form><hr><button type="button" onclick="_upd_table();" style="cursor:pointer;">Filter Results</button><br/>
+<div style="margin-top:20px;"><u>Metrics:</u><br style="margin-bottom:10px;"><table>
+<tr><td><input id="_input_check_met_cov" onchange="_onchange_metric (this)" type="checkbox" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" checked >Coverage</td></tr>
+<tr><td><input id="_input_check_met_tps" onchange="_onchange_metric (this)" type="checkbox" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" checked >Time</td></tr>
+<tr><td><input id="_input_check_met_nth" onchange="_onchange_metric (this)" type="checkbox" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" checked >Nb Threads</td></tr>
+<tr><td><input id="_input_check_met_devc" onchange="_onchange_metric (this)" type="checkbox" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" checked >Deviation (coverage)</td></tr>
+<tr><td><input id="_input_check_met_devt" onchange="_onchange_metric (this)" type="checkbox" style="margin-left: 30px;vertical-align: middle;cursor:pointer;" checked >Deviation (time)</td></tr>
+</table></div>
+</div></div><div class="_fixed_box" ><h3 class="_header">Functions</h3>
+<div class="_content"><table id="compared_functions_table" style="width:100%;"><tr><th class="th_filter" rowspan="2" style="width:35%;min-width:350px;cursor:pointer;" onclick="_sort_single_column (this)"><span></span>Name</th><th class="compared_functions_table_first_report_td th_filter" rowspan="2" style="cursor:pointer;" onclick="_sort_single_column (this)"><span></span>Module</th><th class="th_main_table compared_functions_table_first_report_td met_cov" data-metric="cov" colspan="0">Coverage (%)</th><th class="th_main_table compared_functions_table_first_report_td met_tps" data-metric="tps" colspan="0">Inclusive Time w.r.t. Wall Time(s)</th><th class="th_main_table compared_functions_table_first_report_td met_tps_th" data-metric="tps_th" colspan="0">Max Inc. Time over Threads(s)</th><th class="th_main_table compared_functions_table_first_report_td met_nth" data-metric="nth" colspan="0">Nb Threads</th><th class="th_main_table compared_functions_table_first_report_td met_devc" data-metric="devc" colspan="0">Deviation (coverage)</th><th class="th_main_table compared_functions_table_first_report_td met_devt" data-metric="devt" colspan="0">Deviation (time)</th></tr>
+<tr><th class="compared_functions_table_first_report_td th_filter met_cov th_max_width run1" data-metric="cov" data-run="1" style="cursor:pointer;" onclick="_sort_dual_column (this)"><span></span>report_baseline</th><th class="th_filter  met_cov th_max_width run2" data-metric="cov" data-run="2" style="cursor:pointer;" onclick="_sort_dual_column (this)"><span></span>report_opti_v1</th><th class="th_filter  met_cov th_max_width run3" data-metric="cov" data-run="3" style="cursor:pointer;" onclick="_sort_dual_column (this)"><span></span>report_opti_v2</th><th class="compared_functions_table_first_report_td th_filter met_tps th_max_width run1" data-metric="tps" data-run="1" style="cursor:pointer;" onclick="_sort_dual_column (this)"><span></span>report_baseline</th><th class="th_filter met_tps th_max_width run2" data-run="2" style="cursor:pointer;" data-metric="tps" onclick="_sort_dual_column (this)"><span></span>report_opti_v1</th><th class="th_filter met_tps th_max_width run3" data-run="3" style="cursor:pointer;" data-metric="tps" onclick="_sort_dual_column (this)"><span></span>report_opti_v2</th><th class="compared_functions_table_first_report_td th_filter met_tps_th th_max_width run1" data-metric="nth" data-run="1" style="cursor:pointer;" onclick="_sort_dual_column (this)"><span></span>report_baseline</th><th class="th_filter met_tps_th th_max_width run2" data-metric="tps_th" data-run="2" style="cursor:pointer;" onclick="_sort_dual_column (this)"><span></span>report_opti_v1</th><th class="th_filter met_tps_th th_max_width run3" data-metric="tps_th" data-run="3" style="cursor:pointer;" onclick="_sort_dual_column (this)"><span></span>report_opti_v2</th><th class="compared_functions_table_first_report_td th_filter met_nth th_max_width run1" data-metric="nth" data-run="1" style="cursor:pointer;" onclick="_sort_dual_column (this)"><span></span>report_baseline</th><th class="th_filter met_nth th_max_width run2" data-metric="nth" data-run="2" style="cursor:pointer;" onclick="_sort_dual_column (this)"><span></span>report_opti_v1</th><th class="th_filter met_nth th_max_width run3" data-metric="nth" data-run="3" style="cursor:pointer;" onclick="_sort_dual_column (this)"><span></span>report_opti_v2</th><th class="compared_functions_table_first_report_td th_filter met_devc th_max_width run1" data-metric="devc" data-run="1" style="cursor:pointer;" onclick="_sort_dual_column (this)"><span></span>report_baseline</th><th class="th_filter met_devc th_max_width run2" data-metric="devc" data-run="2" style="cursor:pointer;" onclick="_sort_dual_column (this)"><span></span>report_opti_v1</th><th class="th_filter met_devc th_max_width run3" data-metric="devc" data-run="3" style="cursor:pointer;" onclick="_sort_dual_column (this)"><span></span>report_opti_v2</th><th class="compared_functions_table_first_report_td th_filter met_devt th_max_width run1" data-metric="devt" data-run="1" style="cursor:pointer;" onclick="_sort_dual_column (this)"><span></span>report_baseline</th><th class="th_filter met_devt th_max_width run2" data-metric="devt" data-run="2" style="cursor:pointer;" onclick="_sort_dual_column (this)"><span></span>report_opti_v1</th><th class="th_filter met_devt th_max_width run3" data-metric="devt" data-run="3" style="cursor:pointer;" onclick="_sort_dual_column (this)"><span></span>report_opti_v2</th></tr>
+<tr class="tr_data"><td style="word-break: break-all;">random</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.12</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">0.29</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">54.29</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.08</td><td class="centered met_tps run2" data-metric="tps" data-run="2">0.06</td><td class="centered met_tps run3" data-metric="tps" data-run="3">0.09</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.08</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">0.06</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">0.09</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">1</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">0.00</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">0.00</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">strtof</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">10.14</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">33.63</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">7.23</td><td class="centered met_tps run2" data-metric="tps" data-run="2">7.00</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">7.23</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">7.00</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">__vfscanf</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">9.40</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">31.66</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">6.71</td><td class="centered met_tps run2" data-metric="tps" data-run="2">6.59</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">6.71</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">6.59</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">main</td><td class="compared_functions_table_first_report_td">binary</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">NA</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">0.26</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">28.57</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">NA</td><td class="centered met_tps run2" data-metric="tps" data-run="2">0.05</td><td class="centered met_tps run3" data-metric="tps" data-run="3">0.05</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">NA</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">0.05</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">0.05</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">NA</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">1</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">NA</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">0.00</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">NA</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">0.00</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">cmp_pv_entries_v2</td><td class="compared_functions_table_first_report_td">binary</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">23.97</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">NA</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">17.10</td><td class="centered met_tps run2" data-metric="tps" data-run="2">NA</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">17.10</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">NA</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">NA</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">NA</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">NA</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">_dl_mcount_wrapper</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">5.82</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">13.68</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">4.16</td><td class="centered met_tps run2" data-metric="tps" data-run="2">2.85</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">4.16</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">2.85</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">cmp_pv_entries_v1</td><td class="compared_functions_table_first_report_td">binary</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">14.86</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">NA</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">10.60</td><td class="centered met_tps run2" data-metric="tps" data-run="2">NA</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">10.60</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">NA</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">NA</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">NA</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">NA</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">timer_settime</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">11.31</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">NA</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">8.07</td><td class="centered met_tps run2" data-metric="tps" data-run="2">NA</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">8.07</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">NA</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">NA</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">NA</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">NA</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">__xpg_basename</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">1.91</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">6.51</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">1.37</td><td class="centered met_tps run2" data-metric="tps" data-run="2">1.35</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">1.37</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">1.35</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">putenv</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">7.64</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">NA</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">5.45</td><td class="centered met_tps run2" data-metric="tps" data-run="2">NA</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">5.45</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">NA</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">NA</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">NA</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">NA</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">rand</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">NA</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">NA</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">5.71</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">NA</td><td class="centered met_tps run2" data-metric="tps" data-run="2">NA</td><td class="centered met_tps run3" data-metric="tps" data-run="3">0.01</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">NA</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">NA</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">0.01</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">NA</td><td class="centered met_nth run2" data-metric="nth" data-run="2">NA</td><td class="centered met_nth run3" data-metric="nth" data-run="3">1</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">NA</td><td class="centered met_devc run2" data-metric="devc" data-run="2">NA</td><td class="centered met_devc run3" data-metric="devc" data-run="3">0.00</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">NA</td><td class="centered met_devt run2" data-metric="devt" data-run="2">NA</td><td class="centered met_devt run3" data-metric="devt" data-run="3">0.00</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">__libc_free</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">5.40</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">NA</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">3.86</td><td class="centered met_tps run2" data-metric="tps" data-run="2">NA</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">3.85</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">NA</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">NA</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">NA</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">NA</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">parse_printf_format</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">1.29</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">4.10</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.92</td><td class="centered met_tps run2" data-metric="tps" data-run="2">0.86</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.92</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">0.86</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">__default_morecore</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">4.09</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">NA</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">2.92</td><td class="centered met_tps run2" data-metric="tps" data-run="2">NA</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">2.92</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">NA</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">NA</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">NA</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">NA</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">_IO_sputbackc</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.65</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">2.57</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.47</td><td class="centered met_tps run2" data-metric="tps" data-run="2">0.53</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.47</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">0.53</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">unknown_function</td><td class="compared_functions_table_first_report_td">binary</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.01</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">0.07</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">2.86</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.01</td><td class="centered met_tps run2" data-metric="tps" data-run="2">0.01</td><td class="centered met_tps run3" data-metric="tps" data-run="3">0.00</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.01</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">0.01</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">0.00</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">1</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">0.00</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">0.00</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">generate_random_values</td><td class="compared_functions_table_first_report_td">binary</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.02</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">0.02</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">2.86</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.01</td><td class="centered met_tps run2" data-metric="tps" data-run="2">0.00</td><td class="centered met_tps run3" data-metric="tps" data-run="3">0.00</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.01</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">0.00</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">0.00</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">1</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">0.00</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">0.00</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">random_r</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.04</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">NA</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">2.86</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.02</td><td class="centered met_tps run2" data-metric="tps" data-run="2">NA</td><td class="centered met_tps run3" data-metric="tps" data-run="3">0.00</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.02</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">NA</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">0.00</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">NA</td><td class="centered met_nth run3" data-metric="nth" data-run="3">1</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">NA</td><td class="centered met_devc run3" data-metric="devc" data-run="3">0.00</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">NA</td><td class="centered met_devt run3" data-metric="devt" data-run="3">0.00</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">_IO_fwrite</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">NA</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">NA</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">2.86</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">NA</td><td class="centered met_tps run2" data-metric="tps" data-run="2">NA</td><td class="centered met_tps run3" data-metric="tps" data-run="3">0.00</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">NA</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">NA</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">0.00</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">NA</td><td class="centered met_nth run2" data-metric="nth" data-run="2">NA</td><td class="centered met_nth run3" data-metric="nth" data-run="3">1</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">NA</td><td class="centered met_devc run2" data-metric="devc" data-run="2">NA</td><td class="centered met_devc run3" data-metric="devc" data-run="3">0.00</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">NA</td><td class="centered met_devt run2" data-metric="devt" data-run="2">NA</td><td class="centered met_devt run3" data-metric="devt" data-run="3">0.00</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">_IO_getline_info</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.36</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">1.49</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.26</td><td class="centered met_tps run2" data-metric="tps" data-run="2">0.31</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.26</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">0.31</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">__isoc99_sscanf</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.34</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">1.03</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.24</td><td class="centered met_tps run2" data-metric="tps" data-run="2">0.21</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.24</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">0.21</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">_IO_fgets</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.29</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">1.03</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.21</td><td class="centered met_tps run2" data-metric="tps" data-run="2">0.21</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.21</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">0.21</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">_IO_vfprintf</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.17</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">0.84</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.12</td><td class="centered met_tps run2" data-metric="tps" data-run="2">0.17</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.12</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">0.17</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">load_values</td><td class="compared_functions_table_first_report_td">binary</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.26</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">0.55</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.18</td><td class="centered met_tps run2" data-metric="tps" data-run="2">0.11</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.18</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">0.11</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">_IO_enable_locks</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.33</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">0.46</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.23</td><td class="centered met_tps run2" data-metric="tps" data-run="2">0.09</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.23</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">0.09</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">_IO_list_resetlock</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.15</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">0.41</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.10</td><td class="centered met_tps run2" data-metric="tps" data-run="2">0.08</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.10</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">0.08</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">__libc_malloc</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.55</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">NA</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.39</td><td class="centered met_tps run2" data-metric="tps" data-run="2">NA</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.39</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">NA</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">NA</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">NA</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">NA</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">__strtof_internal</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.08</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">0.41</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.06</td><td class="centered met_tps run2" data-metric="tps" data-run="2">0.08</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.06</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">0.08</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">__nptl_death_event</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.10</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">0.38</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.07</td><td class="centered met_tps run2" data-metric="tps" data-run="2">0.08</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.07</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">0.08</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">_IO_getline</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.01</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">0.31</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.00</td><td class="centered met_tps run2" data-metric="tps" data-run="2">0.06</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.00</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">0.06</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">_IO_setb</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.08</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">0.22</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.06</td><td class="centered met_tps run2" data-metric="tps" data-run="2">0.04</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.05</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">0.04</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">__libc_realloc</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.25</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">NA</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.17</td><td class="centered met_tps run2" data-metric="tps" data-run="2">NA</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.17</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">NA</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">NA</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">NA</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">NA</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">load_positions</td><td class="compared_functions_table_first_report_td">binary</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.21</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">NA</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.15</td><td class="centered met_tps run2" data-metric="tps" data-run="2">NA</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.15</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">NA</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">NA</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">NA</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">NA</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">free_value_grid</td><td class="compared_functions_table_first_report_td">binary</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.08</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">NA</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.06</td><td class="centered met_tps run2" data-metric="tps" data-run="2">NA</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.06</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">NA</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">NA</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">NA</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">NA</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">_IO_fprintf</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.01</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">0.02</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.01</td><td class="centered met_tps run2" data-metric="tps" data-run="2">0.00</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.01</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">0.00</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">__uflow</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.01</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">0.02</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.00</td><td class="centered met_tps run2" data-metric="tps" data-run="2">0.00</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.00</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">0.00</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">unknown_function</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">NA</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">0.02</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">NA</td><td class="centered met_tps run2" data-metric="tps" data-run="2">0.00</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">NA</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">0.00</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">NA</td><td class="centered met_nth run2" data-metric="nth" data-run="2">1</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">NA</td><td class="centered met_devc run2" data-metric="devc" data-run="2">0.00</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">NA</td><td class="centered met_devt run2" data-metric="devt" data-run="2">0.00</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">__libc_alloca_cutoff</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.02</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">NA</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.01</td><td class="centered met_tps run2" data-metric="tps" data-run="2">NA</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.01</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">NA</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">NA</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">NA</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">NA</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">__overflow</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.01</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">NA</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.00</td><td class="centered met_tps run2" data-metric="tps" data-run="2">NA</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.00</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">NA</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">NA</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">NA</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">NA</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+<tr class="tr_data"><td style="word-break: break-all;">__read</td><td class="compared_functions_table_first_report_td">libc.so.6</td><td class="compared_functions_table_first_report_td centered met_cov run1" data-metric="cov" data-run="1">0.01</td><td class="centered  met_cov run2" data-metric="cov" data-run="2">NA</td><td class="centered  met_cov run3" data-metric="cov" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps run1" data-metric="tps" data-run="1">0.00</td><td class="centered met_tps run2" data-metric="tps" data-run="2">NA</td><td class="centered met_tps run3" data-metric="tps" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_tps_th run1" data-metric="tps_th" data-run="1">0.00</td><td class="centered met_tps_th run2" data-metric="tps_th" data-run="2">NA</td><td class="centered met_tps_th run3" data-metric="tps_th" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_nth run1" data-metric="nth" data-run="1">1</td><td class="centered met_nth run2" data-metric="nth" data-run="2">NA</td><td class="centered met_nth run3" data-metric="nth" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devc run1" data-metric="devc" data-run="1">0.00</td><td class="centered met_devc run2" data-metric="devc" data-run="2">NA</td><td class="centered met_devc run3" data-metric="devc" data-run="3">NA</td><td class="compared_functions_table_first_report_td centered met_devt run1" data-metric="devt" data-run="1">0.00</td><td class="centered met_devt run2" data-metric="devt" data-run="2">NA</td><td class="centered met_devt run3" data-metric="devt" data-run="3">NA</td></tr>
+</table>
+</div></div></div></div><style>#compared_functions_table {border-collapse: collapse;}
+#compared_functions_table th {background-color: var(--table_header_background); color: var(--table_header_font); border-style: solid;border-color: var(--table_border);border-width: 0px 0px 0px 1px;}
+#compared_functions_table td {border-style: solid;border-color: var(--table_border);border-width: 0px 0px 0px 1px;}
+#compared_functions_table tr:nth-child(odd) {background-color: var(--table_row_background_hover);}
+#compared_functions_table .compared_functions_table_first_report_td {border-width: 0px 0px 0px 4px;}
+.centered {text-align:center;}
+.th_max_width {max-width:150px; overflow-wrap:break-word;}
+</style>
+<script>
+// Function called to check / uncheck all modules in the filter
+function _onchange_modules (obj) {
+  var inputs = ["_input_check_mod_libc.so.6", "_input_check_mod_binary", ];
+  if (obj.checked == true) {
+    document.getElementById("_input_check_all_mods_text").innerHTML = "Uncheck all modules";
+    for (var i = 0; i < inputs.length; i++) {
+      document.getElementById(inputs[i]).checked = true;
+    }
+  }
+  else {
+    document.getElementById("_input_check_all_mods_text").innerHTML = "Check all modules";
+    for (var i = 0; i < inputs.length; i++) {
+      document.getElementById(inputs[i]).checked = false;
+    }
+  }
+}
+function _onchange_metric (obj) {
+  var className = obj.id.substring(13);
+  var elems = document.getElementsByClassName (className);
+  if (obj.checked == true) {
+    for (var i = 0; i < elems.length; i++) {
+      var run_id = elems.item(i).dataset.run;
+      var run = document.getElementById ("checkbox_run"+run_id);
+      if ((run != null && run.checked) || (typeof run_id === "undefined")) {
+        elems.item(i).style.display = "table-cell";
+      }
+    }
+  }
+  else {
+    for (var i = 0; i < elems.length; i++) {
+      elems.item(i).style.display = "none";
+    }
+  }
+}
+addLoadEvent(function(){
+  var inputs  = ["_input_check_all_mods", "_input_check_mod_libc.so.6", "_input_check_mod_binary", "_input_check_met_cov", "_input_check_met_tps", "_input_check_met_nth", "_input_check_met_devc", "_input_check_met_devt", "checkbox_run1", "checkbox_run2", "checkbox_run3", ];
+  var colspan_run_count = 0;
+  for (i = 0; i < inputs.length; i++) {
+    var is_checked = localStorage.getItem(inputs[i]);
+    var obj = document.getElementById(inputs[i]);
+    if (is_checked != null) {
+      obj.checked = (is_checked === "true");
+    }
+    else {
+      obj.checked = true;
+    }
+    if (inputs[i].includes("checkbox_run")) {
+      filter_run (obj);
+      if (obj.checked)
+        colspan_run_count ++;
+    }
+    else if (inputs[i].includes("checkbox_metric")) {
+      filter_metric (obj);
+    }
+  }
+  var objs = document.getElementsByClassName ("th_main_table");
+  for (var i = 0; i < objs.length; i++) {
+    objs.item(i).colSpan = colspan_run_count;
+  }
+  _onresize ();
+});
+// Function called to handle filters
+addLoadEvent(function(){
+  // Fill some data for each rows that contains all coverages
+  // These data are used to update coverages when some modules are filtered
+  // by the function _upd_table
+  var tab = document.getElementById("compared_functions_table");
+  var nb_runs = 3;
+  for (var i = 1, row; row = tab.rows[i]; i++) {
+    for (var j = 0; j < nb_runs; j++) {
+      row.setAttribute("cov_"+j, row.cells[2+j].innerText);
+    }
+  }
+});
+function _upd_table() {
+  let tab = document.getElementById("compared_functions_table");
+  let covs = [];
+  for (let r = 0; r < 3; r++) {
+    covs[r] = 0;
+  }
+  // Show / hide rows and sum displayed coverages
+  for (let i = 2, row; row = tab.rows[i]; i++) {
+    if (document.getElementById("_input_check_mod_" + row.cells[1].innerHTML.replace (/ /g, "_")).checked == true) {
+      row.classList.remove ("_tree_hidden");
+      for (let r = 0; r < 3; r++) {
+        let val = Number (row.getAttribute ("cov_"+r));
+        if (isNaN(val) == false) {
+          covs[r] = covs[r] + val;
+        }
+      }
+    }
+    else {
+      row.classList.add ("_tree_hidden");
+    }
+  }
+  // Update coverages
+  for (let r = 0; r < 3; r++) {
+    if (covs[r] > 100)
+      covs[r] = 100;
+    for (let i = 2, row; row = tab.rows[i]; i++) {
+      if (covs[r] == 0) {
+        row.cells[2+r].textContent = "0";
+      }
+      else {
+        row.cells[2+r].textContent = Math.floor((Number (row.getAttribute ("cov_"+r)) * 100 * 100) / covs[r]) / 100 ;
+      }
+    }
+  }
+}
+function filter_run (obj) {
+  localStorage.setItem(obj.id, obj.checked);
+  if (obj.checked) {
+    var objs = document.getElementsByClassName ("run"+obj.value);
+    for (var i = 0; i < objs.length; i++) {
+      var metric = document.getElementById ("_input_check_met_"+objs.item(i).dataset.metric);
+      if (metric != null) {
+        if (metric.checked) {
+           objs.item(i).style.display = "table-cell";
+        }
+      }
+      else {
+        objs.item(i).style.display = "table-cell";
+      }
+    }
+  }
+  else {
+    var objs = document.getElementsByClassName ("run"+obj.value);
+    for (var i = 0; i < objs.length; i++) {
+      objs.item(i).style.display = "none";
+    }
+  }
+  var run_count = 0;
+  var objs = document.getElementsByClassName ("checkbox_run");
+  for (var i = 0; i < objs.length; i++) {
+    if (objs.item(i).checked) {
+      run_count ++;
+   }
+ }
+ objs = document.getElementsByClassName ("th_main_table");
+ for (var i = 0; i < objs.length; i++) {
+   objs.item(i).colSpan = run_count;
+ }
+  objs = document.getElementsByClassName ("compared_functions_table_first_report_td");
+  while(objs.length > 0) {
+    objs[0].classList.remove("compared_functions_table_first_report_td");
+  }
+  var inputs = document.getElementsByClassName ("checkbox_run");
+  var first_selected = 0;
+  for (var i = 0; i < inputs.length; i++) {
+    if (inputs.item(i).checked) {
+      first_selected = i + 1;
+      break;
+    }
+  }
+  if (first_selected > 0) {
+    objs = document.getElementsByClassName ("run"+first_selected);
+    for (var i = 0; i < objs.length; i++) {
+      objs.item(i).classList.add("compared_functions_table_first_report_td");
+    }
+  }
+}
+const __getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+const __comparer = (idx, asc) => (a, b) => ((v1, v2) => 
+    v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v2 - v1 : v1.toString().localeCompare(v2)
+    )(__getCellValue(asc ? a : b, idx) === '' ? -1:__getCellValue(asc ? a : b, idx), 
+      __getCellValue(asc ? b : a, idx) === '' ? -1:__getCellValue(asc ? b : a, idx));
+function _sort_single_column (th) {
+  const table = th.closest('table');
+  // Remove all symbols in header
+  table.querySelectorAll('.th_filter').forEach(function (e) {
+    e.firstChild.textContent = "";
+  });
+  // Change the symbol on the clicked header
+  if (this.asc != true) {
+    th.firstChild.textContent = "\u25BC";
+  }
+  else {
+    th.firstChild.textContent = "\u25B2";
+  }
+  Array.from(table.querySelectorAll('.tr_data'))
+      .sort(__comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+      .forEach(tr => table.appendChild(tr) );
+}
+function _sort_dual_column (th) {
+  const table = th.closest('table');
+  // Remove all symbols in header
+  table.querySelectorAll('.th_filter').forEach(function (e) {
+    e.firstChild.textContent = "";
+  });
+  // Change the symbol on the clicked header
+  if (this.asc != true) {
+    th.firstChild.textContent = "\u25BC";
+  }
+  else {
+    th.firstChild.textContent = "\u25B2";
+  }
+  Array.from(table.querySelectorAll('.tr_data'))
+      .sort(__comparer(Array.from(th.parentNode.children).indexOf(th) + 2, this.asc = !this.asc))
+      .forEach(tr => table.appendChild(tr) );
+}
+function _onresize () {
+  var w = window,
+      d = document,
+      e = d.documentElement,
+      g = d.getElementsByTagName("body")[0],
+      x = w.innerWidth || e.clientWidth || g.clientWidth,
+      y = w.innerHeight || e.clientHeight || g.clientHeight;
+  var obj = document.getElementById("compared_functions_table").parentNode;
+  obj.style.height = (y - 200)+"px";
+  obj.style.overflow = "auto";
+  __maqao_legacy_onresize ();
+}
+var resizeId;
+window.addEventListener("resize", function() {
+  clearTimeout(resizeId);
+  resizeId = setTimeout(_onresize, 250);
+});
+</script>
+
+  <div id="MaqaoModal" class="maqao_modal">
+    <div class="maqao_modal-content">
+      <div class="maqao_modal-header">
+        <span class="maqao_close">&times;</span>
+      </div>
+      <div id="maqao_modal-body" class="maqao_modal-body">
+      </div>
+    </div>
+  </div>
+</div><script>
+var tooltips_texts = ['Source function level comparison reports: For each run, assembly functions are gathered into source functions using debug data.<br/>      For better results, the application source code must be the same for each run.<br/>      Default view shows only source functions with at least one assembly function in each run. All detected source functions can be displayed using the "Show All Functionss" button.',
+'random_r',
+'_dl_mcount_wrapper',
+'random_r',
+'_dl_mcount_wrapper',
+'__vfscanf',
+'random',
+'__xpg_basename',
+'__isoc99_sscanf',
+'_IO_fwrite',
+'_IO_setb',
+'random',
+'rand',
+'__vfscanf',
+'__xpg_basename',
+'unknown_function',
+'__uflow',
+'parse_printf_format',
+'__isoc99_sscanf',
+'__nptl_death_event',
+'__read',
+'unknown_function',
+'_IO_fprintf',
+'_IO_fprintf',
+'__libc_alloca_cutoff',
+'__uflow',
+'random',
+'strtof',
+'timer_settime',
+'__strtof_internal',
+'_IO_fgets',
+'_IO_getline_info',
+'parse_printf_format',
+'_IO_getline',
+'__overflow',
+'_IO_setb',
+'__nptl_death_event',
+'_IO_fgets',
+'__strtof_internal',
+'_IO_enable_locks',
+'__libc_realloc',
+'_IO_vfprintf',
+'strtof',
+'_IO_sputbackc',
+'_IO_enable_locks',
+'_IO_list_resetlock',
+'_IO_sputbackc',
+'unknown_function',
+'_IO_getline_info',
+'_IO_getline',
+'__default_morecore',
+'__libc_free',
+'putenv',
+'_IO_vfprintf',
+'__libc_malloc',
+'_IO_list_resetlock',
+'unknown_function',
+'main',
+'cmp_pv_entries_v2',
+'cmp_pv_entries_v1',
+'generate_random_values',
+'load_values',
+'main',
+'load_values',
+'load_positions',
+'free_value_grid',
+'generate_random_values',
+'generate_random_values',
+'A form that can be displayed / hidden by clicking on the header to specify which modules must be displayed in the profiling. By clicking on the button, only checked categories are displayed. Coverages are computed according displayed modules.'];
+var modal = document.getElementById('MaqaoModal');
+var span = document.getElementsByClassName("maqao_close")[0];
+span.onclick = function() {
+    modal.style.display = "none";
+}
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+const comparer = (idx, asc) => (a, b) => ((v1, v2) => 
+    v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v2 - v1 : v1.toString().localeCompare(v2)
+    )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
+addLoadEvent(function(){
+  document.querySelectorAll('._fixed_table:not(._no_auto_sorting) th').forEach(th => th.addEventListener('click', (() => {
+    const table = th.closest('table');
+    // Remove all symbols in header
+    table.querySelectorAll('th').forEach(function (e) {
+      e.firstChild.textContent = "";
+    });
+    // Change the symbol on the clicked header
+    if (this.asc != true) {
+      th.firstChild.textContent = "\u25BC";
+    }
+    else {
+      th.firstChild.textContent = "\u25B2";
+    }
+    Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
+        .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+        .forEach(tr => table.appendChild(tr) );
+  })));
+});
+addLoadEvent(function(){
+  document.querySelectorAll('._tree_table:not(._no_auto_sorting) th').forEach(th => th.addEventListener('click', (() => {
+    const table = th.closest('table');
+    // Remove all symbols in header
+    table.querySelectorAll('th').forEach(function (e) {
+      e.firstChild.textContent = "";
+    });
+    // Change the symbol on the clicked header
+    if (this.asc != true) {
+      th.firstChild.textContent = "\u25BC";
+    }
+    else {
+      th.firstChild.textContent = "\u25B2";
+    }
+    let last_id = "";
+    const t_outermost = new Array ();
+    const t_children  = new Map ();
+    for (let i = 1, row; row = table.rows[i]; i++) {
+      if (row.classList.contains ("_outer_row")) {
+        t_outermost.push (row);
+        last_id = row.id;
+        t_children [last_id] = new Array ();
+      }
+      else {
+        t_children [last_id].push (row);
+      }
+    }
+    t_outermost.sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc));
+    for (let i = 0, row; row = t_outermost[i]; i++) {
+      table.appendChild(row)
+      for (let j = 0, child; child = t_children[row.id][j]; j++) {
+        table.appendChild(child)
+      }
+    }
+  })));
+});
+function _check_all_checkbox_ (obj_id, opts_ids) {
+  var obj   = document.getElementById (obj_id);
+  var opts  = window[opts_ids];
+  var count = 0
+  for (i = 0; i < opts.length; i++) {
+    var obj_s = document.getElementById(opts[i]);
+    if (obj_s.checked) {
+      count ++;
+    }
+  }
+  if (count == 0) {
+    obj.value = "Select all";
+  }
+  else if (count == opts.length) {
+    obj.value = "Select none";
+  }
+}
+// Fonction for table selector
+function click_table_menu (c, obj_id, opt_ids) {
+  var is_checked = document.getElementById (c).checked;
+  localStorage.setItem(c, is_checked);
+  $("."+c).each(function(index, element) {
+    if (is_checked) {
+      element.classList.remove("_tcol_hidden");
+    }
+    else {
+      element.classList.add("_tcol_hidden");
+    }
+  });
+  if (obj_id != undefined) {
+    _check_all_checkbox_ (obj_id, opt_ids)
+  }
+}
+function set_all_table_menu (obj, var_opt_ids) {
+  var opt_ids = window[var_opt_ids];
+  var is_selected = true
+  if (obj.value == "Select all") {
+    is_selected = false;
+  }
+  for (i = 0; i < opt_ids.length; i++) {
+    var obj_s = document.getElementById(opt_ids[i]);
+    if (is_selected == obj_s.checked) {
+      obj_s.checked = !obj_s.checked;
+      click_table_menu (opt_ids[i]);
+    }
+  }
+  if (is_selected == false) {
+    obj.value = "Select none";
+  } else {
+    obj.value = "Select all";
+  }
+  localStorage.setItem(obj.id, obj.value);
+}
+// Script for accordion box
+function _click_accordion_header(obj) {
+  var content = obj.nextSibling;
+  content.classList.toggle('collapsed');
+  obj.classList.toggle('collapsed');
+  obj.parentNode.classList.toggle('collapsed');
+  // Check if the box must be openned ...
+  if (obj.classList.contains ('collapsed'))
+  {
+    obj.firstChild.textContent = "\u25B6";
+  }
+  // or closed.
+  else 
+  {
+    obj.firstChild.textContent = "\u25BC";
+  }
+  if (typeof _onresize === "function") {
+    _onresize ();
+  }
+}
+  // Script for paged table
+function _click_paged_prev(obj) {
+  var pages_content_id = '_paged_tables_page_' + obj.parentNode.parentNode.id.substr (obj.parentNode.parentNode.id.lastIndexOf('_') + 1);
+  var pages_content = document.getElementById(pages_content_id).innerHTML;
+  var max_pages = pages_content.substr (pages_content.lastIndexOf('/') + 1);
+  var cur_page  = pages_content.substring (pages_content.lastIndexOf(' ') + 1, pages_content.lastIndexOf('/'));
+  max_pages = Number (max_pages);
+  cur_page  = Number (cur_page);
+  if (cur_page > 1) {
+    var div_paged = obj.parentNode.parentNode.id;
+    var i;
+    var x = document.getElementsByClassName(div_paged + '_' + (cur_page - 1));
+    for (i = 0; i < x.length; i++) {
+      x[i].classList.toggle('_paged_hidden');
+    }
+    x = document.getElementsByClassName(div_paged + '_' + (cur_page - 2));
+    for (i = 0; i < x.length; i++) {
+      x[i].classList.toggle('_paged_hidden');
+    }
+  document.getElementById(pages_content_id).textContent = "Page " + (cur_page - 1) + "/" + max_pages;
+  }
+}
+function _click_paged_next(obj) {
+  var pages_content_id = '_paged_tables_page_' + obj.parentNode.parentNode.id.substr (obj.parentNode.parentNode.id.lastIndexOf('_') + 1);
+  var pages_content = document.getElementById(pages_content_id).innerHTML;
+  var max_pages = pages_content.substr (pages_content.lastIndexOf('/') + 1);
+  var cur_page  = pages_content.substring (pages_content.lastIndexOf(' ') + 1, pages_content.lastIndexOf('/'));
+  max_pages = Number (max_pages);
+  cur_page  = Number (cur_page);
+  if (cur_page < max_pages) {
+    var div_paged = obj.parentNode.parentNode.id;
+    var i;
+    var x = document.getElementsByClassName(div_paged + '_' + (cur_page - 1));
+    for (i = 0; i < x.length; i++) {
+      x[i].classList.toggle('_paged_hidden');
+    }
+    x = document.getElementsByClassName(div_paged + '_' + cur_page);
+    for (i = 0; i < x.length; i++) {
+      x[i].classList.toggle('_paged_hidden');
+    }
+    document.getElementById(pages_content_id).textContent = "Page " + (cur_page + 1) + "/" + max_pages;
+  }
+}
+// Function for tree table
+function _click_tree(obj) {
+  if (obj.innerHTML == "\u25BA") {
+    obj.textContent = "\u25BC";
+    // Open childs
+    var x = document.getElementsByClassName(obj.parentNode.parentNode.id);
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.toggle('_tree_hidden');
+    }
+  }
+  else if (obj.innerHTML == "\u25BC") {
+    obj.textContent = "\u25BA";
+    // Close all childs
+    var trs = document.getElementsByTagName('tr');
+    var r   = obj.parentNode.parentNode.id+'_';
+    var re  = new RegExp (r, "g");
+    for (var i = 0; i < trs.length; i++) {
+      var s = trs[i].id+""
+      if (s.match(re)) {
+        var o = document.getElementById(s);
+        if (! o.classList.contains('_tree_hidden')) {
+          o.classList.toggle('_tree_hidden');
+        }
+        if (o.firstChild.firstChild.textContent == "\u25BC") {
+          o.firstChild.firstChild.textContent = "\u25BA";
+        }
+        if (o.firstChild.childNodes.length == 3) {
+          o.firstChild.childNodes[2].textContent = '+';
+        }
+      }
+    }
+    if (obj.parentNode.childNodes.length == 3) {
+      obj.parentNode.childNodes[2].textContent = '+';
+    }
+  }
+}
+function _click_expand (obj) {
+  var trs = document.getElementsByTagName('tr');
+  var r   = obj.parentNode.parentNode.id+'_';
+  var re  = new RegExp (r, "g");
+  // Symbole + => expand all
+  if (obj.textContent == "+") {
+    for (var i = 0; i < trs.length; i++) {
+      var s = trs[i].id+"";
+      if (s.match(re)) {
+        var o = document.getElementById(s);
+        if (o.classList.contains('_tree_hidden')) {
+           o.classList.toggle('_tree_hidden');
+        }
+        if (o.firstChild.firstChild.textContent == "\u25BA") {
+          o.firstChild.firstChild.textContent = "\u25BC";
+        }
+        if (o.firstChild.childNodes.length == 3) {
+          o.firstChild.childNodes[2].textContent = '\u2010';
+        }
+      }
+    }
+    var o = obj.parentNode.parentNode;
+    if (o.firstChild.firstChild.textContent == "\u25BA") {
+      o.firstChild.firstChild.textContent = "\u25BC";
+    }
+    obj.textContent = "\u2010";
+  }
+  // Symbole - => collapse all
+  else {
+    for (var i = 0; i < trs.length; i++) {
+      var s = trs[i].id+"";
+      if (s.match(re)) {
+        var o = document.getElementById(s);
+        if (! o.classList.contains('_tree_hidden')) {
+           o.classList.toggle('_tree_hidden');
+        }
+        if (o.firstChild.firstChild.textContent == "\u25BC") {
+          o.firstChild.firstChild.textContent = "\u25BA";
+        }
+        if (o.firstChild.childNodes.length == 3) {
+          o.firstChild.childNodes[2].textContent = '+';
+        }
+      }
+    }
+    var o = obj.parentNode.parentNode;
+    if (o.firstChild.firstChild.textContent == "\u25BC") {
+      o.firstChild.firstChild.textContent = "\u25BA";
+    }
+    obj.textContent = "+";
+  }
+}
+// Hide unselected tabs
+addLoadEvent(function(){
+  var x = document.getElementsByClassName("_tab_header_li");
+  for (var i = 0; i < x.length; i++) {
+    if (x[i].classList.contains("selected_tab") == false) {
+      var e = document.getElementById (x[i].dataset.tab);
+      e.style.display = "none";
+    }
+  }
+});
+// Change tab
+function change_tab (e, baseId) {
+  // Handle tabs
+  var i = 1;
+  while (true) {
+    var id = baseId + i;
+    var t = document.getElementById (id);
+    if (t == null) {
+      break;
+    }
+    if (id == e.dataset.tab) {
+      t.style.removeProperty("display");
+    }
+    else {
+      t.style.display = "none";
+    }
+    i = i + 1;
+  }
+  // Handle headers
+  $(e).siblings().each( function () {
+    this.classList.remove("selected_tab");
+  });
+  e.classList.add("selected_tab");
+}
+function __maqao_legacy_onresize () {
+  var obj = document.getElementById("spacer_page_title");
+  if (obj) {
+    obj.style.height = (document.getElementById("page_title").clientHeight + 20)+"px";
+  }
+  var obj = document.getElementById("page_title");
+  if (obj) {
+    var elems = document.getElementsByClassName ("_first_menu_level")
+    if (obj.clientHeight < 90) {
+      for (var i = 0; i < elems.length; i++) {
+        elems.item(i).style.borderBottomLeftRadius = "";
+        elems.item(i).style.borderBottomRightRadius = "";
+      }
+    }
+    else {
+      for (var i = 0; i < elems.length; i++) {
+        elems.item(i).style.borderBottomLeftRadius = "10px";
+        elems.item(i).style.borderBottomRightRadius = "10px";
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>
