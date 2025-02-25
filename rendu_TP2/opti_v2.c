@@ -133,18 +133,18 @@ void free_value_grid(val_grid_t *val_grid){
 }
 
 void compute_max(unsigned nx, unsigned ny, float* val_grid, pos_val_t* pos_val){
-   int pos = 0;
-   float value = 0;
-   for (int i=0; i<nx*ny; i++){
-      if (value < val_grid[i]){
-         value = val_grid[i];
-         pos = i;
-      }
-   }
+    int pos = 0;
+    float value = 0;
+    for (int i=0; i<nx*ny; i++){
+        if (value < val_grid[i]){
+            value = val_grid[i];
+            pos = i;
+        }
+    }
 
-   pos_val->x = pos/ny;
-   pos_val->y = pos%ny;
-   pos_val->val = value;
+    pos_val->x = pos/ny;
+    pos_val->y = pos%ny;
+    pos_val->val = value;
 }
 
 // Program entry point: CF comments on top of this file + README
